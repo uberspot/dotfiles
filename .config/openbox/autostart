@@ -1,0 +1,18 @@
+#(sleep 3 && /usr/bin/nm-applet --sm-disable) &
+tint2 &
+conky -q &
+nitrogen --restore &
+#for i in {1..3}; do openbox-menu; done &
+openbox-menu -p -o applications.xml -t 'lxterminal -e' &
+
+xcompmgr &
+#xbacklight -set 100 &
+#/usr/bin/synclient TouchpadOff=1 &
+batti &
+(sleep 6s && sbxkb) &
+volumeicon &
+(sleep 4s && redshift -l 37.99:23.72 -t 6400:5300) &
+#numlockx on&
+
+#setxkbmap -model evdev -layout "us,gr" -variant extended \
+#          -option "grp_led:scroll,grp:alt_shift_toggle,eurosign:e,terminate:ctrl_alt_bksp" &
