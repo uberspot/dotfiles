@@ -25,6 +25,6 @@ bind 'set completion-ignore-case On'
 bind 'TAB:menu-complete'
 bind 'set mark-symlinked-directories on'
 
-. "$HOME/.alias"
-. "$HOME/.funcs"
+FILE="$HOME/.alias" ; [ -f $FILE ] && . $FILE
+FILE="$HOME/.funcs" ; [ -f $FILE ] && . $FILE
 
