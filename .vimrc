@@ -26,6 +26,16 @@ endfun
 set laststatus=2
 call <SID>SetStatusLine()
 
+" Forget compatibility with Vi. Who cares.
+set nocompatible
+
+" Write the old file out when switching between files.
+set autowrite
+
+" Ever notice a slight lag after typing the leader key + command? This lowers
+" the timeout.
+set timeoutlen=500
+
 " Set encoding
 set termencoding=utf-8
 set encoding=utf-8
@@ -126,12 +136,21 @@ set colorcolumn=+1 " next column after textwidth
 
 set expandtab " Use spaces instead of tabs
 set smarttab
+set copyindent
+set softtabstop=4
 
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
 set textwidth=120 " Maximum width of inserted text
 set whichwrap=    " Wrap cursor to next/prev line. not!
+set formatoptions=qrnl
+
+set mousehide " Hide mouse when typing
+
+" More useful command-line completion
+set wildmenu
+
 set dictionary=/usr/share/dict/words
 
 set ai "Auto indent
