@@ -21,3 +21,4 @@ set show-all-if-ambiguous on
 # Completed names which are symbolic links to
 # directories have a slash appended.
 set mark-symlinked-directories on
+
