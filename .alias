@@ -52,5 +52,5 @@ alias moo='/usr/bin/fortune -ea | cowsay -f moose -e oQ'
 alias compresspdf='gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile='
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
 alias removeexif='mogrify -strip'
-alias syncupstream='git fetch upstream && git rebase upstream/master'
+alias syncupstream='git stash && git fetch upstream && git rebase upstream/master && git stash apply'
 
