@@ -28,3 +28,4 @@ bind 'set mark-symlinked-directories on'
 FILE="$HOME/.alias" ; [ -f $FILE ] && . $FILE
 FILE="$HOME/.funcs" ; [ -f $FILE ] && . $FILE
 
+FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
