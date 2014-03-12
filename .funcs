@@ -52,3 +52,16 @@ extract() {
     return $e
 }
 
+# cd and ls in one
+cl() {
+    dir=$1
+    if [[ -z "$dir" ]]; then
+        dir=$HOME
+    fi
+    if [[ -d "$dir" ]]; then
+        cd "$dir"
+        l
+    else
+        echo "bash: cl: '$dir': Directory not found"
+    fi
+}
