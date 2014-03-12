@@ -26,6 +26,28 @@ endfun
 set laststatus=2
 call <SID>SetStatusLine()
 
+"display a warning if fileformat isnt unix
+set statusline+=%#identifier#
+set statusline+=%{&ff!='unix'?'\ ['.&ff.']':''}
+set statusline+=%*
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'\ ['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=\ %y "filetype
+
+" read only flag
+set statusline+=%#error#
+set statusline+=%r
+set statusline+=%*
+
+" modified flags
+set statusline+=%#identifier#
+set statusline+=%m
+set statusline+=%*
+
 " Forget compatibility with Vi. Who cares.
 set nocompatible
 
@@ -56,6 +78,10 @@ set sidescroll=1
 " set nornu
 " set modeline
 
+" hopefully some speed-up
+set ttyfast
+set ttyscroll=3
+set lazyredraw
 
 " Set bracket matching and comment formats
 set matchpairs+=<:>
@@ -156,6 +182,9 @@ set dictionary=/usr/share/dict/words
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" ====== shortcuts                                                                                                       
+set pastetoggle=<F2> 
 
 " ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %
