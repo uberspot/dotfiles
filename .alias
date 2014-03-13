@@ -1,9 +1,3 @@
-## Navigation:
-alias ~="cl $HOME"
-alias ..="cl .."
-alias ...="cl ../../"
-alias cd..="cl .."
-
 ## Common
 alias df="df -h -T"
 alias mkdir="mkdir -p -v"
@@ -20,6 +14,12 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
 
+## Navigation:                                                                                                           
+alias ~="cl $HOME"                                                                                                       
+alias ..="cl .."                                                                                                         
+alias ...="cl ../../"                                                                                                    
+alias cd..="cl .." 
+
 ## files
 #bash
 alias reload="source $HOME/.bashrc"
@@ -27,6 +27,7 @@ alias reload="source $HOME/.bashrc"
 alias diff='colordiff'              # requires colordiff package
 
 ## Other
+alias icurl="curl -I"
 alias tmux="tmux -2u"
 alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/tmp/chromium"
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"
@@ -58,5 +59,5 @@ alias moo='/usr/bin/fortune -ea | cowsay -f moose -e oQ'
 alias compresspdf='gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile='
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
 alias removeexif='mogrify -strip'
-alias syncupstream='git stash && git fetch upstream && git rebase upstream/master && git stash apply'
+alias syncupstream='git stash clear && git stash && git fetch upstream && git rebase upstream/master && git stash apply'
 

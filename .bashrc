@@ -26,8 +26,8 @@ bind 'set completion-ignore-case On'
 bind 'TAB:menu-complete'
 bind 'set mark-symlinked-directories on'
 
+FILE="$HOME/.alias" ; [ -f $FILE ] && . $FILE                                                                            
 FILE="$HOME/.funcs" ; [ -f $FILE ] && . $FILE 
-FILE="$HOME/.alias" ; [ -f $FILE ] && . $FILE
 
 FILE="/usr/share/doc/pkgfile/command-not-found.bash" ; [ -f $FILE ] && . $FILE
 

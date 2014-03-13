@@ -14,39 +14,43 @@ fun! FixInvisiblePunctuation()
     retab
 endfun
 
-" Set up the status line
-fun! <SID>SetStatusLine()
-    let l:s1="%-3.3n\\ %f\\ %h%m%r%w"
-    let l:s2="[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]"
-    let l:s3="%=\\ 0x%-8B\\ \\ %-14.(%l,%c%V%)\\ %<%P"
-    execute "set statusline=" . l:s1 . l:s2 . l:s3
-endfun
+function! FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return bytes
+    else
+        return (bytes / 1024) . "K"
+    endif
+endfunction
 
 " Setup statusline
 set laststatus=2
-call <SID>SetStatusLine()
 
-"display a warning if fileformat isnt unix
-set statusline+=%#identifier#
-set statusline+=%{&ff!='unix'?'\ ['.&ff.']':''}
-set statusline+=%*
+" Formatting and alignment for each item is of 
+" the form %-0{minwidth}.{maxwidth}{item}  
+" where - is left alignment, none is right
+" and 0 padds numeric elements with zeros.
+" Also the space character has to be escaped with \
 
-"display a warning if file encoding isnt utf-8
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'\ ['.&fenc.']':''}
-set statusline+=%*
-
-set statusline+=\ %y "filetype
-
-" read only flag
-set statusline+=%#error#
-set statusline+=%r
-set statusline+=%*
-
-" modified flags
-set statusline+=%#identifier#
-set statusline+=%m
-set statusline+=%*
+set statusline=\ [%-.2n]\ \                                            " number of file in total files to edit
+set statusline+=%-10.100F\ \                                           " complete filename
+set statusline+=%#error#                                               " change color for warnings
+set statusline+=%m                                                     " modified flag
+set statusline+=%r                                                     " read only flag
+set statusline+=%h                                                     " help file flag
+set statusline+=%w                                                     " preview window flag
+set statusline+=%*                                                     " return to normal color
+set statusline+=\ \|\ %{strlen(&fenc)?&fenc:'none'},\ %{&ff}\ \|\      " file, character encoding (e.g. [utf-8, unix])
+set statusline+=%y                                                     " filetype
+set statusline+=%=                                                     " switch to the right side
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ \|\  " highlight code under cursor
+set statusline+=%b\ \|\ 0x%B\ \|\                                      " ascii and hex representation of character under cursor
+set statusline+=%{FileSize()}\ \|\ \                                   " show size of file
+set statusline+=%03l/%L,\ %03v\ \|\ \                                    " show currentline/total lines, column
+set statusline+=%p%%\ \                                            " show percentage in file
 
 " Forget compatibility with Vi. Who cares.
 set nocompatible
@@ -183,8 +187,25 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-" ====== shortcuts                                                                                                       
+" Toggle paste mode
 set pastetoggle=<F2> 
+
+" Toggle line numbers
+nnoremap <F8> :set number!<CR>
+map <leader>n :set number!<cr>
 
 " ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %
+
+" fix mistyping of :W, :Q etc and turn it to :w, :q etc
+if has("user_commands")
+    command! -bang -nargs=? -complete=file E e<bang> <args>
+    command! -bang -nargs=? -complete=file W w<bang> <args>
+    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+endif
