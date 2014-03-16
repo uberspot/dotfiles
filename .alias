@@ -19,6 +19,7 @@ alias ~="cl $HOME"
 alias ..="cl .."                                                                                                         
 alias ...="cl ../../"                                                                                                    
 alias cd..="cl .." 
+alias cd="cl"
 
 ## files
 #bash

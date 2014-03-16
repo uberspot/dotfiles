@@ -59,7 +59,7 @@ cl() {
         dir=$HOME
     fi
     if [[ -d "$dir" ]]; then
-        cd "$dir"
+        \cd "$dir"
         l
     else
         echo "bash: cl: '$dir': Directory not found"

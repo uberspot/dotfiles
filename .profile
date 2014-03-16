@@ -15,4 +15,4 @@ export LESSHISTFILE="/tmp/.lesshst"
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-export PATH=$PATH:$HOME/Downloads/omnet/omnetpp-4.3.1/bin:/home/code/.gem/ruby/2.0.0/bin
+export PATH=$PATH:$HOME/Downloads/omnet/omnetpp-4.3.1/bin:$HOME/.gem/ruby/2.1.0/bin
