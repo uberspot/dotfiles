@@ -61,4 +61,5 @@ alias compresspdf='gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
 alias removeexif='mogrify -strip'
 alias syncupstream='git stash clear && git stash && git fetch upstream && git rebase upstream/master && git stash apply'
-
+alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a libmp3lame -ar 44100 -ac 2 -ab 192k "${f/%mp4/mp3}"; done'
+alias open='mimeo'
