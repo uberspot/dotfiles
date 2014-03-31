@@ -26,6 +26,15 @@ function! FileSize()
     endif
 endfunction
 
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+" Strip trailing whitespace in specific filetypes
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
 " Setup statusline
 set laststatus=2
 
@@ -127,7 +136,7 @@ let html_use_css=1 " Use css for generated html files
 
 " No annoying sound on errors
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 set tm=500
 
@@ -160,6 +169,16 @@ endtry
   
 set colorcolumn=+1 " next column after textwidth
 
+
+" ================ Persistent Undo ==================
+" " Keep undo history across sessions, by storing in file.
+" " Only works all the time.
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+      set undofile
+      endif
+
 """"""""""""""""""""""""""""""""
 " Text, tab and indent related "
 """"""""""""""""""""""""""""""""
@@ -176,7 +195,13 @@ set textwidth=120 " Maximum width of inserted text
 set whichwrap=    " Wrap cursor to next/prev line. not!
 set formatoptions=qrnl
 
+set nowrap "Don't wrap lines
+set linebreak "Wrap lines at convenient points
+
 set mousehide " Hide mouse when typing
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
 " More useful command-line completion
 set wildmenu
