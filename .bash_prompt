@@ -1,31 +1,31 @@
 if tput setaf 1 &> /dev/null; then
-	tput sgr0
-	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-		BLUE=$(tput setaf 172)
-		GREEN=$(tput setaf 190)
-		PURPLE=$(tput setaf 141)
-		WHITE=$(tput setaf 0)
-		RED=$(tput setaf 9)
-		YELLOW=$(tput setaf 11)
-	else
-		BLUE=$(tput setaf 4)
-		GREEN=$(tput setaf 2)
-		PURPLE=$(tput setaf 5)
-		WHITE=$(tput setaf 7)
-		RED=$(tput setaf 1) 
-		YELLOW=$(tput setaf 3) 
-	fi
-	BOLD=$(tput bold)
-	RESET=$(tput sgr0)
+    tput sgr0
+    if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+        BLUE=$(tput setaf 172)
+        GREEN=$(tput setaf 190)
+        PURPLE=$(tput setaf 141)
+        WHITE=$(tput setaf 0)
+        RED=$(tput setaf 9)
+        YELLOW=$(tput setaf 11)
+    else
+        BLUE=$(tput setaf 4)
+        GREEN=$(tput setaf 2)
+        PURPLE=$(tput setaf 5)
+        WHITE=$(tput setaf 7)
+        RED=$(tput setaf 1)
+        YELLOW=$(tput setaf 3)
+    fi
+    BOLD=$(tput bold)
+    RESET=$(tput sgr0)
 else
-	BLUE="\e[0;34m"
-	GREEN="\e[0;32m"
-	PURPLE="\e[0;35m"
-	WHITE="\e[0;37m"
-	RED="\e[0;31m"
-	YELLOW="\e[0;33m"
-	BOLD="\e[1m"
-	RESET="\e[0m"
+    BLUE="\e[0;34m"
+    GREEN="\e[0;32m"
+    PURPLE="\e[0;35m"
+    WHITE="\e[0;37m"
+    RED="\e[0;31m"
+    YELLOW="\e[0;33m"
+    BOLD="\e[1m"
+    RESET="\e[0m"
 fi
 
 export MAGENTA

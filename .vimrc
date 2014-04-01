@@ -164,7 +164,7 @@ set t_Co=16
 
 try
     set background=dark
-	colorscheme tomorrow
+    colorscheme tomorrow
 catch
 endtry
 
@@ -218,11 +218,11 @@ set pastetoggle=<F2>
 
 " Toggle line numbers
 nnoremap <F8> :set number!<CR>
-map <leader>n :set number!<cr>
+map <leader>n :set number!<CR>
+map <F3> :retab <CR> :w <CR>
 
 " Remove trailing whitespace by pressing t && s keys
-map ts :%s/\s\+$//<enter> :w<enter>
-
+map <F4> :%s/\s\+$//e<enter> :w<enter>
 
 " ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %

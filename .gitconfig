@@ -1,9 +1,9 @@
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [help]
-	autocorrect = 1
+    autocorrect = 1
 [color]
-	ui = true
+    ui = true
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -59,7 +59,7 @@
     branches = branch -a
     remotes = remote -v
 [push]
-	default = simple
+    default = simple
 [include]
     path = .gitconfig.user
 [core]
