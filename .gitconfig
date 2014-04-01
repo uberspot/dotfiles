@@ -14,9 +14,9 @@
     old = red
     new = green
 [color "status"]
-    added = green
-    changed = red
-    untracked = cyan
+    added = bold green
+    changed = bold red
+    untracked = bold cyan
 [alias]
     # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
