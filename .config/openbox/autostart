@@ -1,13 +1,13 @@
-(sleep 6s && sbxkb) &  
 tint2 &
 conky -q &
 nitrogen --restore &
 openbox-menu -p -o applications.xml -t 'lxterminal -e' &
 
+xcompmgr &
 #xbacklight -set 100 &
-(sleep 2s && batti) &
+(sleep 1s && batti) &
 (sleeep 2s && volumeicon) &
-(sleep 4s && redshift -l 37.99:23.72 -t 5300:5300) &
+(sleep 3s && redshift -l 37.99:23.72 -t 5300:5300) &
 #numlockx on&
 
 setxkbmap -model evdev -layout "us,gr" -variant extended -option "grp_led:scroll,grp:alt_shift_toggle,eurosign:e,terminate:ctrl_alt_bksp" & 

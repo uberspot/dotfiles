@@ -1,8 +1,6 @@
 [ ! "$UID" = "0" ] && archbey -c green
 [  "$UID" = "0" ] && archbey
 
-export PS1="\[\e[1;32m\]\u@\h:\w\$ \[\e[0m\]"
-
 # Check for an interactive session
 [ "$-" != "${-%i*}" ] || return
 
@@ -27,7 +25,7 @@ bind 'TAB:menu-complete'
 bind 'set mark-symlinked-directories on'
 
 # Load the shell dotfiles, and then some:
-for file in {$HOME/.alias,$HOME/.funcs,/usr/share/doc/pkgfile/command-not-found.bash}; do
+for file in {$HOME/.alias,$HOME/.funcs,$HOME/.bash_prompt,/usr/share/doc/pkgfile/command-not-found.bash}; do
 [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
