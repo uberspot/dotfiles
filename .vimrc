@@ -163,7 +163,8 @@ set cursorline
 set t_Co=16
 
 try
-	colorscheme Mustang
+    set background=dark
+	colorscheme tomorrow
 catch
 endtry
 
