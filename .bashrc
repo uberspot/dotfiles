@@ -9,11 +9,11 @@ export PS1="\[\e[1;32m\]\u@\h:\w\$ \[\e[0m\]"
 # shell opts: see bash(1)
 shopt -s autocd checkwinsize cdspell cmdhist cdable_vars checkjobs dirspell dotglob extglob \
          histappend histverify nocaseglob no_empty_cmd_completion
-         
+
 # notify of completed background jobs immediately
-set -o notify 
+set -o notify
 # disable core dumps
-ulimit -S -c 0 
+ulimit -S -c 0
 
 eval $(dircolors -b)
 
@@ -26,9 +26,10 @@ bind 'set completion-ignore-case On'
 bind 'TAB:menu-complete'
 bind 'set mark-symlinked-directories on'
 
-FILE="$HOME/.alias" ; [ -f $FILE ] && . $FILE                                                                            
-FILE="$HOME/.funcs" ; [ -f $FILE ] && . $FILE 
-
-FILE="/usr/share/doc/pkgfile/command-not-found.bash" ; [ -f $FILE ] && . $FILE
+# Load the shell dotfiles, and then some:
+for file in {$HOME/.alias,$HOME/.funcs,/usr/share/doc/pkgfile/command-not-found.bash}; do
+[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 
 FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)

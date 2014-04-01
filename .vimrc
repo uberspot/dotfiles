@@ -38,8 +38,8 @@ autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <
 " Setup statusline
 set laststatus=2
 
-" Formatting and alignment for each item is of 
-" the form %-0{minwidth}.{maxwidth}{item}  
+" Formatting and alignment for each item is of
+" the form %-0{minwidth}.{maxwidth}{item}
 " where - is left alignment, none is right
 " and 0 padds numeric elements with zeros.
 " Also the space character has to be escaped with \
@@ -115,16 +115,16 @@ set history=700 " Sets how many lines of history VIM has to remember
 set autoread
 set nohidden
 
-set ruler "Always show current position 
+set ruler "Always show current position
 
 set backspace=indent,eol,start "Allow backspace in insert mode
 set whichwrap+=<,>,h,l
 
-set ignorecase " Ignore case when searching 
+set ignorecase " Ignore case when searching
 
 set smartcase " When searching try to be smart about cases
 
-set hlsearch " Highlight search results  
+set hlsearch " Highlight search results
 
 set incsearch " Makes search act like search in modern browsers
 
@@ -166,7 +166,7 @@ try
 	colorscheme Mustang
 catch
 endtry
-  
+
 set colorcolumn=+1 " next column after textwidth
 
 
@@ -175,9 +175,9 @@ set colorcolumn=+1 " next column after textwidth
 " " Only works all the time.
 if has('persistent_undo')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
-    set undodir=~/.vim/backups
-      set undofile
-      endif
+  set undodir=~/.vim/backups
+  set undofile
+endif
 
 """"""""""""""""""""""""""""""""
 " Text, tab and indent related "
@@ -213,11 +213,15 @@ set si "Smart indent
 set wrap "Wrap lines
 
 " Toggle paste mode
-set pastetoggle=<F2> 
+set pastetoggle=<F2>
 
 " Toggle line numbers
 nnoremap <F8> :set number!<CR>
 map <leader>n :set number!<cr>
+
+" Remove trailing whitespace by pressing t && s keys
+map ts :%s/\s\+$//<enter> :w<enter>
+
 
 " ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %

@@ -14,15 +14,16 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
 
-## Navigation:                                                                                                           
-alias ~="cl $HOME"                                                                                                       
-alias ..="cl .."                                                                                                         
-alias ...="cl ../../"                                                                                                    
-alias cd..="cl .." 
+## Navigation:
+alias ~="cl $HOME"
+alias ..="cl .."
+alias ...="cl ../../"
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias cd..="cl .."
 alias cd="cl"
 
 ## files
-#bash
 alias reload="source $HOME/.bashrc"
 
 alias diff='colordiff'              # requires colordiff package
@@ -39,6 +40,9 @@ alias sscrot="scrot -s /tmp/shot.png"
 #alias myip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 #alias myip="curl ifconfig.me"
 alias myip="curl icanhazip.com"
+
+# View HTTP traffic
+alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'"
 
 # fortune equality
 alias fortune="fortune -e -a"

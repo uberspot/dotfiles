@@ -4,10 +4,6 @@ set bell-style none
 # completion doesnt care about case
 set completion-ignore-case on
 
-# if there are more than 'x' possible completions for a word, ask the
-# user if he wants to see all of them
-set completion-query-items 50
-
 # Adding this will result in a character being appended to
 # any file-names returned by completion, in much the same
 # way as ls -F works.
@@ -22,3 +18,28 @@ set show-all-if-ambiguous on
 # directories have a slash appended.
 set mark-symlinked-directories on
 
+# Use the text that has already been typed as the prefix for searching through
+# commands (i.e. more intelligent Up/Down behavior)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+# Show all autocomplete results at once
+set page-completions off
+
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
+
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
+
+# Be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
+
+# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off

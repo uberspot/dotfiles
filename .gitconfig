@@ -5,14 +5,18 @@
 [color]
 	ui = true
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red
-  new = green
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+    new = green
+[color "status"]
+    added = green
+    changed = red
+    untracked = cyan
 [alias]
     # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
@@ -21,10 +25,6 @@
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
     amend = commit --amend            # ammend your last commit
 
-    ds = diff --staged      # git ds - diff your staged changes == review before committing.
-    st = status -sb         # smarter status - include tag and branch info
-    # I know what you did yesterday - great for follow-up
-    fup = log --since '1 day ago' --oneline --author <YOUR_EMAIL>
     # pretty one-line log with tags, branches and authors
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
     # a verbose ls, shows changed files too
@@ -35,25 +35,32 @@
     r2 = reset HEAD^^
     rh = reset --hard
     rh1 = reset HEAD^ --hard
+    rh2 = reset HEAD^^ --hard
 
     # basic shortcuts
     cp = cherry-pick
-    st = status -s
+    s = status -s
     cl = clone
     ci = commit
     co = checkout
     br = branch·
-    diff = diff --word-diff
+    d = diff
     dc = diff --cached
+    ds = diff --staged
 
     # stash shortcuts
     sl = stash list
     sa = stash apply
     ss = stash save
-    rh2 = reset HEAD^^ --hard
+    clone = clone --recursive
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
 [push]
 	default = simple
 [include]
-  path = .gitconfig.user
+    path = .gitconfig.user
 [core]
     excludesfile = ~/.gitignore_global
