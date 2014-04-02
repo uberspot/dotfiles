@@ -1,0 +1,38 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+
+/* Remove maximum/minimum  width restriction of sidebar */
+#sidebar {
+    max-width: none !important;
+    min-width: 0px !important;
+}
+
+/* Never show “Open in New Window” when right clicking */
+#context-openlink {display: none !important;}
+
+/* Remove Back/Forward button when there’s nothing to go Back/Forward to */
+#back-button[disabled="true"] { display: none; }
+#forward-button[disabled="true"] { display: none; }
+
+/*Remove magnifying glass button from search box*/
+.search-go-button { display: none !important; }
+
+/* Remove the Bookmark Star */
+#star-button { display: none !important; }
+
+/* Make the active tab wider */
+tab[selected="true"] { min-width: 140px !important; }
+
+/* Change Cursor for Links that Open in New Window */
+:link[target="_blank"], :visited[target="_blank"],
+:link[target="_new"],   :visited[target="_new"] 
+{ cursor:  crosshair; }
+
+/* add '[pdf]' next to links to PDF files */
+a[href$=".pdf"]:after {
+    font-size: smaller;
+    content: " [pdf]";
+}
+
+}

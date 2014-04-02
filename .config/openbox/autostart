@@ -6,7 +6,7 @@ openbox-menu -p -o applications.xml -t 'lxterminal -e' &
 xcompmgr &
 #xbacklight -set 100 &
 (sleep 1s && batti) &
-(sleeep 2s && volumeicon) &
+volumeicon &
 (sleep 3s && redshift -l 37.99:23.72 -t 5300:5300) &
 #numlockx on&
 

@@ -82,8 +82,8 @@ set langmap+=αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,
 set spell spelllang=en
 set nospell
 
-set scrolloff=5 " Start scrolling when we're scrolloff lines away from margin
-set sidescrolloff=8 " Start scrolling when we're sidescrolloff chars away from margin
+set scrolloff=10 " Start scrolling when we're scrolloff lines away from margin
+set sidescrolloff=12 " Start scrolling when we're sidescrolloff chars away from margin
 set sidescroll=1
 
 " show line numbers
@@ -239,3 +239,18 @@ if has("user_commands")
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
 endif
+
+" Automatically create parent dirs for edited files if they don't exist
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
