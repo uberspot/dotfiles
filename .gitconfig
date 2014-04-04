@@ -23,12 +23,14 @@
     snapshots = !git stash list --grep snapshot
     #via http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
-    amend = commit --amend            # ammend your last commit
+    amend = commit --amend            # amend your last commit
+    ammend = commit --amend           # same for typo version of amend
 
     # pretty one-line log with tags, branches and authors
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
     # a verbose ls, shows changed files too
     lsv = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --numstat
+
     # some resets without explanation
     r = reset
     r1 = reset HEAD^

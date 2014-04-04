@@ -1,37 +1,3 @@
-" Copy/Paste from Word*doc files is a mess
-fun! FixInvisiblePunctuation()
-    silent! %s/\%u2018/'/g
-    silent! %s/\%u2019/'/g
-    silent! %s/\%u2026/.../g
-    silent! %s/\%uf0e0/->/g
-    silent! %s/\%u0092/'/g
-    silent! %s/\%u2013/--/g
-    silent! %s/\%u2014/--/g
-    silent! %s/\%u201C/"/g
-    silent! %s/\%u201D/"/g
-    silent! %s/\%u0052\%u20ac\%u2122/'/g
-    silent! %s/\%ua0/ /g
-    retab
-endfun
-
-function! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return ""
-    endif
-    if bytes < 1024
-        return bytes
-    else
-        return (bytes / 1024) . "K"
-    endif
-endfunction
-
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
 " Strip trailing whitespace in specific filetypes
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
@@ -115,6 +81,9 @@ set history=700 " Sets how many lines of history VIM has to remember
 set autoread
 set nohidden
 
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
 set ruler "Always show current position
 
 set backspace=indent,eol,start "Allow backspace in insert mode
@@ -164,7 +133,7 @@ set t_Co=16
 
 try
     set background=dark
-    colorscheme tomorrow
+    colorscheme peaksea
 catch
 endtry
 
@@ -216,6 +185,8 @@ set wrap "Wrap lines
 " Toggle paste mode
 set pastetoggle=<F2>
 
+" KEY MAPPINGS
+
 " Toggle line numbers
 nnoremap <F8> :set number!<CR>
 map <leader>n :set number!<CR>
@@ -226,6 +197,22 @@ map <F4> :%s/\s\+$//e<enter> :w<enter>
 
 " ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %
+
+" Search and replace word under cursor using F4
+nnoremap <F6> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Map <Space> to / (search)
+map <F5> /
+
+" Remap VIM = to first non-blank character
+map = ^
+
+"make <c-l> clear the highlight as well as redraw
+nnoremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
 
 " fix mistyping of :W, :Q etc and turn it to :w, :q etc
 if has("user_commands")
@@ -239,6 +226,8 @@ if has("user_commands")
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
 endif
+
+" FUNCTIONS
 
 " Automatically create parent dirs for edited files if they don't exist
 function s:MkNonExDir(file, buf)
@@ -254,3 +243,46 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \ exe "normal! g`\"" |
+     \ endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+
+" Copy/Paste from Word*doc files is a mess
+fun! FixInvisiblePunctuation()
+    silent! %s/\%u2018/'/g
+    silent! %s/\%u2019/'/g
+    silent! %s/\%u2026/.../g
+    silent! %s/\%uf0e0/->/g
+    silent! %s/\%u0092/'/g
+    silent! %s/\%u2013/--/g
+    silent! %s/\%u2014/--/g
+    silent! %s/\%u201C/"/g
+    silent! %s/\%u201D/"/g
+    silent! %s/\%u0052\%u20ac\%u2122/'/g
+    silent! %s/\%ua0/ /g
+    retab
+endfun
+
+function! FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return bytes
+    else
+        return (bytes / 1024) . "K"
+    endif
+endfunction
+
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
