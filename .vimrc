@@ -1,3 +1,6 @@
+" Forget compatibility with Vi. Who cares.
+set nocompatible
+
 " Strip trailing whitespace in specific filetypes
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
@@ -27,15 +30,14 @@ set statusline+=%{FileSize()}\ \|\ \                                   " show si
 set statusline+=%03l/%L,\ %03v\ \|\ \                                    " show currentline/total lines, column
 set statusline+=%p%%\ \                                            " show percentage in file
 
-" Forget compatibility with Vi. Who cares.
-set nocompatible
-
 " Write the old file out when switching between files.
 set autowrite
 
-" Ever notice a slight lag after typing the leader key + command? This lowers
-" the timeout.
+" Ever notice a slight lag after typing the leader key + command? This lowers the timeout.
 set timeoutlen=500
+
+set backspace=2 " Fix broken backspace in some setups
+set clipboard=unnamed " yank and paste with the system clipboard
 
 " Set encoding
 set termencoding=utf-8
@@ -44,7 +46,6 @@ set fileencoding=utf-8
 scriptencoding utf-8
 set langmap+=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ
 set langmap+=αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
-
 set spell spelllang=en
 set nospell
 
