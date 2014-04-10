@@ -1,0 +1,68 @@
+background yes
+use_xft yes
+xftfont 123:size=8
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour black
+own_window_argb_visual true
+own_window_argb_value 0
+own_window_type desktop
+own_window_transparent yes
+double_buffer yes
+minimum_size 180 5
+maximum_width 180
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color white
+default_shade_color tan2
+default_outline_color green
+alignment tl
+gap_x 10
+gap_y 8
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+override_utf8_locale no
+color1 white # 0099cc
+color2 gray
+use_spacer right
+##############################################
+#  Output
+##############################################
+TEXT
+${font size=11}$alignc$nodename
+${font sans-serif:size=25}$alignc${time %H:%Mh}
+${voffset -20}${font sans-serif:size=9}$alignc${time %A %d %b. %Y}
+
+${font sans-serif:bold:size=9}${color1}SYSTEM ${color}${hr 2}
+${font}$sysname $kernel $alignr $machine
+Uptime:$alignr$uptime
+Processes: $processes $alignr Temp:${acpitemp}C
+Battery: $battery_short $alignr $battery_time 
+
+${font sans-serif:bold:size=9}${color1}NET ${color}${hr 2}
+${font}Down: $alignr${downspeed wlan0}/s (${totaldown wlan0})
+Up: $alignr${upspeed wlan0}/s (${totalup wlan0})
+
+${font sans-serif:bold:size=9}${color1}CPU ${color}${cpubar}
+${font sans-serif:normal:size=8}${top name 1} $alignr${top cpu 1} %
+${top name 2} $alignr${top cpu 2} %
+${top name 3} $alignr${top cpu 3} %
+
+${font sans-serif:bold:size=9}${color1}RAM ${color}${membar}
+${font sans-serif:normal:size=8}${top_mem name 1}${alignr}${top mem 1} %
+${top_mem name 2}${alignr}${top mem 2} %
+$font${top_mem name 3}${alignr}${top mem 3} %
+
+${font sans-serif:bold:size=9}${color1}I/O ${color}${hr 2}
+${font sans-serif:normal:size=8}${top_io name 1}${alignr}${top_io io_perc 1} %
+${top_io name 2}${alignr}${top_io io_perc 2} %
+$font${top_io name 3}${alignr}${top_io io_perc 3} %
+
+
