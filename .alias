@@ -73,3 +73,4 @@ alias open='mimeo'
 alias youtube-dl='youtube-dl -ci -f 22/18/45/35 '
 alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downloads/music/%(title)s.%(ext)s" '
 
+alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -i --follow'
