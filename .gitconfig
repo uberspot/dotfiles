@@ -24,7 +24,9 @@
     #via http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
     amend = commit --amend            # amend your last commit
-    ammend = commit --amend           # same for typo version of amend
+    cm = commit -m
+    syncup = !git stash clear && git stash && git fetch upstream && git rebase upstream/master && git stash apply
+    syncma = !git stash clear && git stash && git pull --rebase origin master && git stash apply
 
     # pretty one-line log with tags, branches and authors
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
