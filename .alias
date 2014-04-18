@@ -1,13 +1,16 @@
 ## Common
-alias df="df -h -T"
-alias mkdir="mkdir -p -v"
+alias mkdir="mkdir -pv"
 alias ls="ls --color=auto -hva"
 alias l="ls -lF"
 alias cp="cp -ir"
 alias mv="mv -i"
 alias ln='ln -i'
 alias rm="rm -I -v"
-alias du="du -h"
+alias du="du -ach | sort -h"
+alias free="free -mt"
+alias ps="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias df="df -Tha --total"
 alias h="history"
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -25,11 +28,11 @@ alias cd="cl"
 
 ## files
 alias reload="source $HOME/.bashrc"
-
 alias diff='colordiff'              # requires colordiff package
 
 ## Other
 alias icurl="curl -I"
+alias wget="wget -c"
 alias tmux="tmux -2u"
 alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/tmp/chromium"
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"

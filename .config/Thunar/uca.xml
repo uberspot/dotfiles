@@ -1,0 +1,81 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1367857507793607-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>defcon</icon>
+	<name>Shred file</name>
+	<unique-id>1397853350203808-5</unique-id>
+	<command>zenity --question --title &quot;Are you sure?&quot; --text=&apos;Are you sure you want to shred it?&apos;; [[ $? = 0 ]] &amp;&amp; shred -fuz %F;</command>
+	<description></description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>preferences-system-search-symbolic</icon>
+	<name>Search</name>
+	<unique-id>1397852060553209-1</unique-id>
+	<command>catfish --fileman=thunar --path=%f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>drakmenustyle</icon>
+	<name>Rename to lower-case</name>
+	<unique-id>1397853070281315-2</unique-id>
+	<command>for file in %N; do mv &quot;$file&quot; &quot;$(echo &quot;$file&quot; | tr &apos;[:upper:]&apos; &apos;[:lower:]&apos;)&quot;; done</command>
+	<description>Rename the currently selected files, making the filenames lower-case.</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>accessories-text-editor</icon>
+	<name>Slugify Filename</name>
+	<unique-id>1397853109508023-3</unique-id>
+	<command>for file in %N; do mv &quot;$file&quot; &quot;$(echo &quot;$file&quot; | tr -s &apos; &apos; | tr &apos; A-Z&apos; &apos;-a-z&apos; | tr -s &apos;-&apos; | tr -c &apos;[:alnum:][:cntrl:].&apos; &apos;-&apos;)&quot;; done</command>
+	<description>Rename the currently selected files, making the filenames lower-case &amp; replacing spaces with dashes.</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>gcolor2</icon>
+	<name>Optimize with jpegoptim</name>
+	<unique-id>1397855132020207-12</unique-id>
+	<command>for file in %F; do jpegoptim --strip-all -of &quot;$file&quot;; done</command>
+	<description>Losslessly optimize JPEGs, by optimizing the Huffman tables and stripping comments and EXIF metadata from the file.</description>
+	<patterns>*.jpg;*.jpeg;*.JPG;*.JPEG</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>gcolor2</icon>
+	<name>Optimize with optipng</name>
+	<unique-id>1397855277036846-14</unique-id>
+	<command>for i in %F; do optipng -o5 -quiet -preserve &quot;$i&quot;; done</command>
+	<description>optimize png files</description>
+	<patterns>*.png;*.PNG</patterns>
+	<image-files/>
+</action>
+</actions>
