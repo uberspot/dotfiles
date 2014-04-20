@@ -16,6 +16,8 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
+alias disks="df -ha"
+alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
 
 ## Navigation:
 alias ~="cl $HOME"
@@ -36,8 +38,10 @@ alias wget="wget -c"
 alias tmux="tmux -2u"
 alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/tmp/chromium"
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"
+alias net="netstat -alputen"
 alias netbeans="netbeans --laf com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 alias sscrot="scrot -s /tmp/shot.png"
+alias curlpaste='curlpaste -p -e ca '
 
 # Shows your WAN IP, when you`re sitting behind a router
 #alias myip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
