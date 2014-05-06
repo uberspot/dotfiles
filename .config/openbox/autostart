@@ -1,15 +1,12 @@
 tint2 &
-conky -q &
 nitrogen --restore &
 openbox-menu -p -o applications.xml -t 'lxterminal -e' &
 
-xcompmgr &
-#xbacklight -set 100 &
-(sleep 1s && batti) &
+xcompmgr -n &
+batti &
 volumeicon &
-(sleep 3s && redshift -l 37.99:23.72 -t 5300:5300) &
-#numlockx on&
+(sleep 3s && redshift -t 5000:5000) &
 
 setxkbmap -model evdev -layout "us,gr" -variant extended -option "grp_led:scroll,grp:alt_shift_toggle,eurosign:e" &
 
-(sleep 4s && sbxkb) &
+(sleep 3s && sbxkb) &
