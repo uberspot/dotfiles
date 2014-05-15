@@ -164,11 +164,6 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <keybind key="C-A-Left">
-      <action name="DesktopLeft">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
     <keybind key="XF86PowerOff">
       <action name="Execute">
         <command>oblogout</command>
@@ -176,61 +171,6 @@
           <enabled>yes</enabled>
           <name>oblogout</name>
         </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="C-A-Right">
-      <action name="DesktopRight">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="C-A-Up">
-      <action name="DesktopUp">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="C-A-Down">
-      <action name="DesktopDown">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Left">
-      <action name="SendToDesktopLeft">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Right">
-      <action name="SendToDesktopRight">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Up">
-      <action name="SendToDesktopUp">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Down">
-      <action name="SendToDesktopDown">
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="W-F1">
-      <action name="Desktop">
-        <desktop>1</desktop>
-      </action>
-    </keybind>
-    <keybind key="W-F2">
-      <action name="Desktop">
-        <desktop>2</desktop>
-      </action>
-    </keybind>
-    <keybind key="W-F3">
-      <action name="Desktop">
-        <desktop>3</desktop>
-      </action>
-    </keybind>
-    <keybind key="W-F4">
-      <action name="Desktop">
-        <desktop>4</desktop>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -248,35 +188,26 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="A-F3">
-      <action name="Execute">
-        <command>~/.config/dmenu/dmenu-bind.sh</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <name>dmenu</name>
-        </startupnotify>
-      </action>
-    </keybind>
     <keybind key="A-Escape">
       <action name="Lower"/>
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
-    <keybind key="A-space">
-      <action name="ShowMenu">
-        <menu>client-menu</menu>
+    <keybind key="S-A-Tab">
+      <action name="PreviousWindow">
+          <allDesktops>yes</allDesktops>
+           <!--  TO SHOW CONTENTS WHILE CHANGING WINDOWS
+           <raise>yes</raise>
+            <finalactions>
+              <action name="Focus"/>
+              <action name="Raise"/>
+              <action name="Unshade"/>
+            </finalactions> -->
       </action>
     </keybind>
     <keybind key="A-Tab">
-      <action name="NextWindow"/>
-    </keybind>
-    <keybind key="A-S-Tab">
-      <action name="PreviousWindow"/>
-    </keybind>
-    <keybind key="C-A-Tab">
       <action name="NextWindow">
-        <panels>yes</panels>
-        <desktop>yes</desktop>
+        <allDesktops>yes</allDesktops>
       </action>
     </keybind>
     <keybind key="W-f">
@@ -304,15 +235,6 @@
           <enabled>yes</enabled>
           <wmclass>chromium</wmclass>
           <name>chromium</name>
-        </startupnotify>
-      </action>
-    </keybind>
-    <keybind key="W-g">
-      <action name="Execute">
-        <command>gucharmap</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <name>gucharmap</name>
         </startupnotify>
       </action>
     </keybind>
@@ -388,6 +310,11 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="W-Tab">
+      <action name="ShowMenu">
+        <menu>client-list-combined-menu</menu>
+      </action>
+    </keybind>
     <keybind key="W-space">
       <action name="ShowMenu">
         <menu>root-menu</menu>
@@ -407,9 +334,6 @@
     </keybind>
     <keybind key="W-Down">
       <action name="MoveToEdgeSouth"/>
-    </keybind>
-    <keybind key="W-h">
-      <action name="ToggleMaximizeHorz"/>
     </keybind>
     <keybind key="W-0">
       <action name="Execute">
@@ -452,7 +376,7 @@
     </keybind>
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>slimlock</command>
+        <command>slock</command>
       </action>
     </keybind>
     <keybind key="XF86Sleep">

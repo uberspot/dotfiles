@@ -4,13 +4,6 @@
 		<menu id="desktop-app-menu" label="Applications" execute="cat ~/.cache/applications.xml"/>
 		<menu id="Preferences" label="Preferences">
 			<menu id="root-menu-90523" label="Conky Config">
-				<item label="Edit .conkyrc">
-					<action name="Execute">
-						<execute>
-							leafpad ~/.conkyrc
-						</execute>
-					</action>
-				</item>
 				<item label="Restart Conky">
 					<action name="Execute">
 						<execute>
@@ -20,34 +13,27 @@
 				</item>
 			</menu>
 			<menu id="root-menu-525118" label="Openbox Config">
-				<item label="Edit autostart">
-					<action name="Execute">
-						<execute>
-							leafpad ~/.config/openbox/autostart
-						</execute>
-					</action>
-				</item>
 				<item label="GUI Menu Editor">
-          <action name="Execute">
-            <execute>
-              obmenu
-            </execute>
-          </action>
-        </item>
-        <item label="GUI Config Tool">
-          <action name="Execute">
-            <execute>
-              obconf
-            </execute>
-          </action>
-        </item>
-        <item label="Key Editor">
-          <action name="Execute">
-            <execute>
-              obkey
-            </execute>
-          </action>
-        </item>
+                    <action name="Execute">
+                    <execute>
+                      obmenu
+                    </execute>
+                    </action>
+                </item>
+            <item label="GUI Config Tool">
+              <action name="Execute">
+                <execute>
+                  obconf
+                </execute>
+              </action>
+            </item>
+            <item label="Key Editor">
+              <action name="Execute">
+                <execute>
+                  obkey
+                </execute>
+              </action>
+            </item>
 				<item label="Reconfigure">
 					<action name="Reconfigure"/>
 				</item>
@@ -60,13 +46,6 @@
 					<action name="Execute">
 						<execute>
 							scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/ &amp; gpicview ~/$f'
-						</execute>
-					</action>
-				</item>
-				<item label="In 5 Seconds...">
-					<action name="Execute">
-						<execute>
-							scrot -d 5 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/ &amp; gpicview ~/$f'
 						</execute>
 					</action>
 				</item>
@@ -85,22 +64,6 @@
 					</action>
 				</item>
 			</menu>
-			<menu id="root-menu-571948" label="tint2 config">
-				<item label="Edit tint2rc">
-					<action name="Execute">
-						<execute>
-							leafpad ~/.config/tint2/tint2rc
-						</execute>
-					</action>
-				</item>
-			</menu>
-			<item label="Edit /etc/rc.conf">
-				<action name="Execute">
-					<execute>
-						sudo leafpad /etc/rc.conf
-					</execute>
-				</action>
-			</item>
 			<item label="Input Device Preferences">
 				<action name="Execute">
 					<execute>
