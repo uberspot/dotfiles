@@ -1,11 +1,10 @@
-tint2 &
-nitrogen --restore &
-openbox-menu -p -o applications.xml -t 'lxterminal -e' &
+(sleep 1s && tint2) &
+(sleep 1s && nitrogen --restore) &
 
 xcompmgr -n &
 batti &
-volumeicon &
-(sleep 3s && redshift -t 5000:5000) &
+(sleep 1s && volumeicon) &
+(sleep 3s && redshift -O 5000) &
 
 # Keyboard layout handled in qxkb, leaving this for reference
 #setxkbmap -model evdev -layout "us,gr" -variant extended -option "grp_led:scroll,grp:alt_shift_toggle,eurosign:e" &
