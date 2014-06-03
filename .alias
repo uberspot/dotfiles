@@ -87,3 +87,5 @@ alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a 
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
 alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downloads/music/%(title)s.%(ext)s" '
 
+alias azamount="sshfs azazel:/media /mnt/azazel/ -C -p 1981"
+alias azaumount="fusermount -u /mnt/azazel/"

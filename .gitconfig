@@ -25,6 +25,7 @@
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
     amend = commit --amend            # amend your last commit
     cm = commit -m
+    co = checkout
     syncup = !git stash clear && git stash && git fetch upstream && git rebase upstream/master && git stash apply
     syncma = !git stash clear && git stash && git pull --rebase origin master && git stash apply
 
