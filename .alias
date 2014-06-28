@@ -78,7 +78,7 @@ alias moo='/usr/bin/fortune -ea | cowsay -f moose -e oQ'
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
 # compress/optimize
 alias compresspdf='gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile='
-alias removeexif='mogrify -strip' 
+alias removeexif='mogrify -strip'
 alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a libmp3lame -ar 44100 -ac 2 -ab 192k "${f/%mp4/mp3}"; done'
 alias optimizepngsindir='find . -iname "*.png" | xargs optipng -o2 -preserve'
 alias optimizejpgsindir='find . -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim --strip-all'
@@ -89,3 +89,15 @@ alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downl
 
 alias azamount="sshfs azazel:/media /mnt/azazel/ -C -p 1981"
 alias azaumount="fusermount -u /mnt/azazel/"
+
+
+alias updatez='packer -Syyu'
+alias cleanz='pacman -Sc'
+alias listdeps='pacman -Qdt'
+alias listallpacks="pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
+alias listallexplpacks="pacman -Qeq"
+alias updatemirrors='reflector --verbose --country Germany -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+alias restartdns='pdnsd-ctl empty-cache && /etc/rc.d/pdnsd restart'
+#alias listcleanpacks="expac "%n %N" -Q $(expac "%n %G" | grep -v ' base') | awk '$2 == "" {print $1}'"
+alias jerror='journalctl -b -p err'
+
