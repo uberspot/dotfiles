@@ -1,6 +1,6 @@
 # Mozilla Preferences I manually added
 
-user_pref("browser.cache.disk.capacity", 358400);
+user_pref("browser.cache.disk.capacity", 563200);
 user_pref("browser.cache.disk.parent_directory", "/dev/shm/firefox-cache");
 user_pref("browser.sessionstore.interval", 45000);
 user_pref("browser.sessionstore.max_tabs_undo", 20);

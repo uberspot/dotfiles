@@ -57,7 +57,7 @@ alias quickmap="nmap -T4 -F"
 
 ## Other
 alias tmux="tmux -2u"
-alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/tmp/chromium"
+alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/dev/shm/chromium-cache --disk-cache-size=300000000"
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"
 alias netbeans="netbeans --laf com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 alias sscrot="scrot -s /tmp/shot.png"

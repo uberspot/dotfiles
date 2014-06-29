@@ -374,7 +374,7 @@
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>amixer set Master toggle</command>
+        <command>pulseaudio-ctl mute</command>
       </action>
     </keybind>
     <keybind key="XF86ScreenSaver">
