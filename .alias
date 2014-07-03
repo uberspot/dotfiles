@@ -10,15 +10,18 @@ alias du="du -ch"
 alias free="free -mt"
 alias ps="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias fname="find . -iname "
 alias df="df -Tha --total"
 alias h="history"
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
+alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
 alias disks="df -ha"
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
 alias open='mimeo'
+alias fm="ranger"
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -i --follow'
 alias sysinfo='inxi -Fzx'
 
