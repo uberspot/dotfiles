@@ -36,4 +36,4 @@ export WHITE
 export BOLD
 export RESET
 
-export PS1="\[${BOLD}${GREEN}\]\u\[$WHITE\] @ \[$BLUE\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]\$ \[$WHITE\]\[$RESET\]"
+export PS1="\[${BOLD}${GREEN}\]\u\[$WHITE\] @ \[$BLUE\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]ϟ \[$WHITE\]\[$RESET\]"
