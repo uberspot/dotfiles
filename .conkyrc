@@ -77,7 +77,6 @@ ${font sans-serif:bold:size=9}${color1}SYSTEM ${color}${hr 2}
 ${font}$sysname $kernel $alignr $machine
 Uptime:$alignr$uptime
 Processes: $processes $alignr Temp:${acpitemp}C
-Battery: $battery_short $alignr $battery_time
 
 ###########
 # - NET - #
@@ -110,4 +109,5 @@ ${font}${top_io name 1}${alignr}${top_io io_perc 1} %
 ${top_io name 2}${alignr}${top_io io_perc 2} %
 ${top_io name 3}${alignr}${top_io io_perc 3} %
 
+Battery: $battery_short $alignr $battery_time
 

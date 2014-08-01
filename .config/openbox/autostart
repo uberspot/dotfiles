@@ -6,7 +6,7 @@ batti &
 (sleep 1s && volumeicon) &
 (sleep 3s && redshift -O 5000) &
 
-# Keyboard layout handled in qxkb, leaving this for reference
-#setxkbmap -model evdev -layout "us,gr" -variant extended -option "grp_led:scroll,grp:alt_shift_toggle,eurosign:e" &
+# set speaker to 100% since pulseaudio doesn't keep the change each time :/
+(sleep 5s && amixer set Speaker 100%) &
 
 (sleep 3s && qxkb) &
