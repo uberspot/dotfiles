@@ -20,6 +20,8 @@ export MANPAGER="less -X"
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+export GOPATH="$HOME/go"
+
 export USE_CCACHE=1
 export CCACHE_DIR=/tmp/ccache
 

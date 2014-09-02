@@ -252,7 +252,7 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>lxterminal --geometry=120x40</command>
+        <command>lxterminal --geometry=130x36</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>lxterminal</name>
