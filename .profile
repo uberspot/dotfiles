@@ -29,4 +29,8 @@ export CCACHE_DIR=/tmp/ccache
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+export TCL_LIBRARY=/usr/lib/tcl8.6
+
+export JAVA_HOME=/usr/lib/jvm/default
+
 export PATH="/usr/lib/ccache/bin/:$PATH:$HOME/.gem/ruby/2.1.0/bin:$HOME/adt_eclipse/sdk/platform-tools/"

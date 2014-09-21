@@ -241,6 +241,17 @@
         </startupnotify>
       </action>
     </keybind>
+    <keybind key="W-o">
+      <action name="Execute">
+        <command>opera</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <wmclass>opera</wmclass>
+          <name>opera</name>
+        </startupnotify>
+      </action>
+    </keybind>
+
     <keybind key="W-p">
       <action name="Execute">
         <command>pidgin</command>
@@ -785,7 +796,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>
