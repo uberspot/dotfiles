@@ -2,7 +2,7 @@
 (sleep 1s && nitrogen --restore) &
 
 xcompmgr -n &
-batti &
+#batti &
 (sleep 1s && volumeicon) &
 (sleep 3s && redshift -O 5000) &
 
