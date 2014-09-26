@@ -56,7 +56,7 @@ set sidescroll=1
 " show line numbers
 " set number
 " set nornu
-" set modeline
+set modeline
 
 " hopefully some speed-up
 set ttyfast
@@ -127,6 +127,8 @@ autocmd BufReadPost *
 " colorscheme selection and syntax hilighting "
 """""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+filetype indent plugin on
+
 set synmaxcol=160
 set popt+=syntax:y
 set cursorline
@@ -179,8 +181,8 @@ set wildmenu
 
 set dictionary=/usr/share/dict/words
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 
 " Toggle paste mode
