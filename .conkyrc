@@ -73,17 +73,10 @@ ${voffset -20}${font sans-serif:size=9}$alignc${time %A %d %b. %Y}
 ##############
 # - SYSTEM - #
 ##############
-${font sans-serif:bold:size=9}${color1}SYSTEM ${color}${hr 2}
+${font sans-serif:bold:size=9}${color1}SYSTEM ${color} ${hr 2}
 ${font}$sysname $kernel $alignr $machine
 Uptime:$alignr$uptime
 Processes: $processes $alignr Temp:${acpitemp}C
-
-###########
-# - NET - #
-###########
-${font sans-serif:bold:size=9}${color1}NET ${color}${hr 2}
-${font}Down: $alignr${downspeed wlan0}/s (${totaldown wlan0})
-Up: $alignr${upspeed wlan0}/s (${totalup wlan0})
 
 ###########
 # - CPU - #
@@ -104,10 +97,21 @@ ${top_mem name 3}${alignr}${top mem 3} %
 ###########
 # - I/O - #
 ###########
-${font sans-serif:bold:size=9}${color1}I/O ${color}${hr 2}
+${font sans-serif:bold:size=9}${color1}I/O ${color} ${hr 2}
 ${font}${top_io name 1}${alignr}${top_io io_perc 1} %
 ${top_io name 2}${alignr}${top_io io_perc 2} %
 ${top_io name 3}${alignr}${top_io io_perc 3} %
+
+###########
+# - NET - #
+###########
+${font sans-serif:bold:size=9}${color1}NET (wlan)${color} ${hr 2}
+${font}Down: $alignr${downspeed wlan0}/s (${totaldown wlan0})
+Up: $alignr${upspeed wlan0}/s (${totalup wlan0})
+
+${font sans-serif:bold:size=9}${color1}NET (eth0)${color} ${hr 2}
+${font}Down: $alignr${downspeed eth0}/s (${totaldown eth0})
+Up: $alignr${upspeed eth0}/s (${totalup eth0})
 
 Battery: $battery_short $alignr $battery_time
 
