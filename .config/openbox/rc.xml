@@ -251,7 +251,6 @@
         </startupnotify>
       </action>
     </keybind>
-
     <keybind key="W-p">
       <action name="Execute">
         <command>pidgin</command>

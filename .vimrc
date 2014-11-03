@@ -1,5 +1,6 @@
 " Forget compatibility with Vi. Who cares.
 set nocompatible
+filetype off
 
 " Strip trailing whitespace in specific filetypes
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
@@ -214,11 +215,34 @@ cmap w!! %!sudo tee > /dev/null %
 " Search and replace word under cursor using F4
 nnoremap <F6> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
 
+" Remap leader key to ,
+let mapleader = ","
+
+" Map toggling of folds to space
+nnoremap <space> za
+vnoremap <space> zf
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" Map <Space> to / (search)
+" Move between buffers easily
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
+
+" Map <F5> to / (search)
 map <F5> /
+
+"Map to display the list of buffers
+map <F6> :ls<CR>
+
+" ctrl-h show command history
+nnoremap <C-h> q:
+" and q: exits instead of showing command history
+nnoremap q: :q
+
+nnoremap Q :q
+nnoremap WQ :wq
+
 
 " Remap VIM = to first non-blank character
 map = ^
@@ -299,3 +323,20 @@ function! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
+
+
+" VUNDLE
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+
+call vundle#end()
+
+filetype plugin indent on
+
