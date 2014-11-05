@@ -212,7 +212,7 @@ map <F4> :%s/\s\+$//e<enter> :w<enter>
 " ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %
 
-" Search and replace word under cursor using F4
+" Search and replace word under cursor using F6
 nnoremap <F6> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
 
 " Remap leader key to ,
@@ -233,7 +233,7 @@ nmap <C-p> :bprev<CR>
 map <F5> /
 
 "Map to display the list of buffers
-map <F6> :ls<CR>
+map <F10> :ls<CR>
 
 " ctrl-h show command history
 nnoremap <C-h> q:
@@ -324,8 +324,6 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-
-
 " VUNDLE
 
 " set the runtime path to include Vundle and initialize
@@ -335,8 +333,20 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
 filetype plugin indent on
+
+
+" NerdTree conf
+
+map <C-D> :NERDTreeToggle<CR>
+
+" autoclose when nerdtree is the only window left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
