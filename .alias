@@ -24,7 +24,9 @@ alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
 alias disks="df -ha"
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
 alias open='mimeo'
-alias fm="ranger"
+alias pm='pacman'
+alias pk='packer'
+alias rg="ranger"
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -i --follow'
 alias sysinfo='inxi -Fzx'
 

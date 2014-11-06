@@ -4,7 +4,7 @@
 xcompmgr -n &
 #batti &
 (sleep 1s && volumeicon) &
-(sleep 3s && redshift -O 5000) &
+(sleep 3s && redshift -O 3800) &
 
 # set speaker to 100% since pulseaudio doesn't keep the change each time :/
 (sleep 5s && amixer set Speaker 100%) &
