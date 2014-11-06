@@ -262,10 +262,10 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>lxterminal --geometry=130x36</command>
+        <command>lilyterm --geometry=130x36</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>lxterminal</name>
+          <name>lilyterm</name>
         </startupnotify>
       </action>
     </keybind>
@@ -766,7 +766,7 @@
       <maximized>no</maximized>
     </application>
     <!-- Force terminals to appear on top and on the right of the conky -->
-    <application name="lxterminal">
+    <application name="lilyterm">
       <position force="yes">
         <x>200</x>
         <y>0</y>
