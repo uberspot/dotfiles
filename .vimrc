@@ -227,7 +227,7 @@ nmap <leader>w :w!<cr>
 
 " Move between buffers easily
 nmap <C-n> :bnext<CR>
-nmap <C-p> :bprev<CR>
+nmap <C-m> :bprev<CR>
 
 " Map <F5> to / (search)
 map <F5> /
