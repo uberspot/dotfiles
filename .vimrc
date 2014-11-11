@@ -349,4 +349,6 @@ map <C-D> :NERDTreeToggle<CR>
 " autoclose when nerdtree is the only window left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-
+" close the autocompletion window on movement in insert mode or when leaving insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
