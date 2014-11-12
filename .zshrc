@@ -20,6 +20,11 @@ export UPDATE_ZSH_DAYS=24
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
+eval $(dircolors -b)
+FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
+
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
