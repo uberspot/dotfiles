@@ -83,8 +83,11 @@ set history=700 " Sets how many lines of history VIM has to remember
 set autoread
 set nohidden
 
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
+
+set ffs=unix,dos,mac " Use Unix as the standard file type
 
 set ruler "Always show current position
 
@@ -92,6 +95,8 @@ set backspace=indent,eol,start "Allow backspace in insert mode
 set whichwrap+=<,>,h,l
 
 set ignorecase " Ignore case when searching
+
+set gdefault " Add the g flag to search/replace by default
 
 set smartcase " When searching try to be smart about cases
 
@@ -168,6 +173,7 @@ set tabstop=4
 set textwidth=120 " Maximum width of inserted text
 set whichwrap=    " Wrap cursor to next/prev line. not!
 set formatoptions=qrnl
+set nostartofline " Don’t reset cursor to start of line when moving around. 
 
 set nowrap "Don't wrap lines
 set linebreak "Wrap lines at convenient points

@@ -280,7 +280,7 @@
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>/usr/bin/viber</command>
+        <command>/opt/viber/Viber</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Viber</name>

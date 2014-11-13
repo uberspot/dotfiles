@@ -99,7 +99,7 @@ alias azamount="sshfs azazel:/media /mnt/azazel/ -C -p 1981"
 alias azaumount="fusermount -u /mnt/azazel/"
 
 
-alias updatez='packer -Syyu'
+alias upz='packer -Syyu'
 alias cleanz='pacman -Sc'
 alias listdeps='pacman -Qdt'
 alias listallpacks="pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
@@ -108,4 +108,5 @@ alias updatemirrors='reflector --verbose --country Germany -l 200 -p http --sort
 alias restartdns='pdnsd-ctl empty-cache && /etc/rc.d/pdnsd restart'
 #alias listcleanpacks="expac "%n %N" -Q $(expac "%n %G" | grep -v ' base') | awk '$2 == "" {print $1}'"
 alias jerror='journalctl -b -p err'
+alias updategitextras='(cd /tmp && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)'
 
