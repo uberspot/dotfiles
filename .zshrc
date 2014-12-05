@@ -47,6 +47,8 @@ HIST_STAMPS="dd.mm.yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export HISTCONTROL="erasedups:ignoreboth"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git adb archlinux command-not-found git-extras python dircycle)
 
@@ -80,5 +82,5 @@ unalias exit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 setopt notify nohashdirs autocd correctall globdots histignoredups noclobber automenu menucomplete \
-        completealiases pathdirs cdable_vars checkjobs dotglob  histverify
+        completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend
 

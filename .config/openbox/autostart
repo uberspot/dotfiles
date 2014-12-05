@@ -1,8 +1,8 @@
-(sleep 1s && tint2) &
 (sleep 1s && nitrogen --restore) &
 
 xcompmgr -n &
 #batti &
+(sleep 1s && tint2) &
 (sleep 1s && volumeicon) &
 (sleep 3s && redshift -O 3800) &
 

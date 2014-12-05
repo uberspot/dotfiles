@@ -135,7 +135,7 @@ autocmd BufReadPost *
 syntax on
 filetype indent plugin on
 
-set synmaxcol=160
+set synmaxcol=1000
 set popt+=syntax:y
 set cursorline
 set t_Co=16

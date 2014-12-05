@@ -1,6 +1,6 @@
 ## Common
 alias mkdir="mkdir -pv"
-alias ls="ls --color=auto -hva"
+alias ls="ls -tr --color=auto -ha"
 alias l="ls -lF"
 alias cp="cp -ir"
 alias mv="mv -i"
@@ -10,10 +10,17 @@ alias du="du -ch"
 alias dusort="du -s * | sort -h -r"
 alias free="free -mt"
 alias ps="ps auxf"
-alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
+
+# needed because the shell checks only the first word of a command for an alias so 
+# "sudo somealias" won't work if sudo isn't also an alias
+alias sudo='sudo '
+
 alias fn="find . -iname "
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
+# finds duplicate files in the current folder by checking size first and then md5 hash
+alias find_dups='find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate'
 alias df="df -Tha --total"
 alias h="history"
 alias chown='chown --preserve-root'
@@ -22,6 +29,8 @@ alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
 alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
 alias disks="df -ha"
+
+# time since installation based on oldest pacman.log entry.
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
 alias open='mimeo'
 alias pm='pacman'
@@ -30,7 +39,7 @@ alias rg="ranger"
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -i --follow'
 alias sysinfo='inxi -Fzx'
 
-## Navigation:
+## Navigation just in case:
 alias ~="cl $HOME"
 alias ..="cl .."
 alias ...="cl ../../"
@@ -40,9 +49,9 @@ alias cd..="cl .."
 alias cd="cl"
 
 ## Files
-alias reload="source $HOME/.bashrc"
+alias reload="source $HOME/.zshrc"
 alias diff="colordiff"              # requires colordiff package
-alias mount='mount | column -t'
+alias mount_column='mount | column -t'
 
 ## Network
 # Shows your WAN IP, when you`re sitting behind a router
@@ -57,11 +66,18 @@ alias ping="ping -c4"
 # View HTTP traffic
 alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'"
 
-# Show listening connections
-alias listening="lsof -Pan -i tcp -i udp"
+# Share the current dir from port 8080
+alias lanshare="python -m SimpleHTTPServer 8080"
 
-alias slymap="nmap -T4 -A -v -PN"
-alias quickmap="nmap -T4 -F"
+# Show listening connections
+alias listening_connections="lsof -Pan -i tcp -i udp"
+
+alias nmap_stealth="nmap -sS -v -T1"
+alias nmap_fin="nmap -U -v"
+alias nmap_full="nmap -sS -T4 -PE -PP -PS80,443 -PY -g 53 -A -p1-65535 -v"
+alias nmap_firewall="map -sA -p1-65535 -v -T4"
+alias nmap_fast="nmap -F -T5 --top-ports 300"
+alias nmap_version="nmap -sV -p1-65535 -O -T4 -Pn --script=vulscan"
 
 ## Other
 alias tmux="tmux -2u"
@@ -81,9 +97,10 @@ alias binclock="watch -n 1 'echo \"obase=2;\`date +%s\`\" | bc'"
 alias lotto="shuf -i 1-49 | head -n6 | sort -n | xargs"
 
 alias s="git status"
-alias exit='history -c && exit'
+alias exit='history -c; exit'
 alias moo='/usr/bin/fortune -ea | cowsay -f moose -e oQ'
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
+
 # compress/optimize
 alias compresspdf='gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile='
 alias removeexif='mogrify -strip'
@@ -98,15 +115,26 @@ alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downl
 alias azamount="sshfs azazel:/media /mnt/azazel/ -C -p 1981"
 alias azaumount="fusermount -u /mnt/azazel/"
 
-
 alias upz='packer -Syyu'
 alias cleanz='pacman -Sc'
-alias listdeps='pacman -Qdt'
+alias listdeps='pacman -Qdt' # lists unused dependencies/leftover packages
 alias listallpacks="pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
-alias listallexplpacks="pacman -Qeq"
+alias listallexplpacks="pacman -Qeq" # list all explicitly installed packages
 alias updatemirrors='reflector --verbose --country Germany -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 alias restartdns='pdnsd-ctl empty-cache && /etc/rc.d/pdnsd restart'
-#alias listcleanpacks="expac "%n %N" -Q $(expac "%n %G" | grep -v ' base') | awk '$2 == "" {print $1}'"
 alias jerror='journalctl -b -p err'
-alias updategitextras='(cd /tmp && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)'
+alias updategitextras='(cd /tmp && rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)'
 
+# mtpfs related
+alias mountandroid="mtpfs -o allow_other /media/smartphone"
+alias umountandroid="fusermount -u /media/smartphone"
+
+# One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
+alias updateall='updategitextras && echo "\nGit Extras updated\n"; sudo updatemirrors && echo "\nMirrors Updated\n"; gem update; gem clean && echo "\nGems updated\n"; upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n"; sudo hostsblock && echo "\nHostsBlock updated\n"'
+
+
+alias ssh-keygen-ed="ssh-keygen -t ed25519 -a 500 -f "
+alias ssh-keygen-rsa="ssh-keygen -t rsa -b 4096 -a 500 -f "
+
+alias scp="scp -Cvp "
+alias rsync="rsync -avzS --partial --progress "

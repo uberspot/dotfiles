@@ -78,4 +78,13 @@
 	<patterns>*.png;*.PNG</patterns>
 	<image-files/>
 </action>
+<action>
+	<icon>gcolor2</icon>
+	<name>Optimize Images</name>
+	<unique-id>1419805423063181-1</unique-id>
+	<command>picopt %F</command>
+	<description>Optimize with picopt</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>

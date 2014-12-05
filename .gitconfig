@@ -66,6 +66,9 @@
     tags = tag -l
     branches = branch -a
     remotes = remote -v
+
+    # Show latest commits since last pull from remote
+    news = log -p HEAD@{1}..HEAD@{0}
 [push]
     default = simple
 [include]
