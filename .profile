@@ -33,4 +33,4 @@ export TCL_LIBRARY=/usr/lib/tcl8.6
 
 export JAVA_HOME=/usr/lib/jvm/default
 
-export PATH="/usr/lib/ccache/bin/:$PATH:$HOME/.gem/ruby/2.2.0/bin:$HOME/adt_eclipse/sdk/platform-tools/"
+export PATH="$HOME/.ssh-ide/:/usr/lib/ccache/bin/:$PATH:$HOME/.gem/ruby/2.2.0/bin:$HOME/adt_eclipse/sdk/platform-tools/"
