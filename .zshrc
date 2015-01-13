@@ -56,15 +56,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin:/usr/local/sbin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/code/.gem/ruby/2.1.0/bin:/home/code/adt_eclipse/sdk/platform-tools/"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-[  "$UID" = "0" ] && export PATH="$PATH:/root/scripts"
-
-# export LANG=en_US.UTF-8
-
-export EDITOR='vim'
-
 [ ! "$UID" = "0" ] && archbey -c green
 [  "$UID" = "0" ] && archbey
 

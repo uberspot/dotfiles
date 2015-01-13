@@ -1,5 +1,31 @@
 #!/usr/bin/env bash
 
+# Quick function that:
+# Generates an ssh key
+# Saves it in the proper subfolder
+# Adds the key agent to the ssh-ident config
+# Adds the extra config to ssh's config file
+# Copies the pub key to the remote server
+ssh-keygen-setup() {
+    echo "Usage: call with 'ssh-keygen-setup aliasname hostname user port'"
+    aliasname=$1
+    hostname=$2
+    user=$3
+    port=$4
+    keyname="id_rsa_$aliasname"
+    keydir=$HOME/.ssh/identities/$aliasname/
+    ssh-keygen-rsa $keyname
+    mkdir -p $keydir
+    mv $keyname $keydir
+    mv $keyname".pub" $keydir
+    # prepend the new identity entry to ssh-ident config when you find the "]" character
+    sed -i "/\]/i \ \ \ \ \ \ \ \ (r\"$aliasname\",\"$aliasname\")," $HOME/.ssh/ssh-ident-config
+    printf '%s\n    %s\n    %s\n    %s\n    %s\n    %s\n' "Host $aliasname" "HostName $hostname" "User $user" "Port $port" "IdentityFile $keydir$keyname" "IdentitiesOnly yes" >> $HOME/.ssh/config
+    chmod 0700 $keydir
+    chmod 0600 $keydir/*
+    ssh-copy-id -p $port -i $keydir$keyname".pub" $user@$hostname
+}
+
 # better colors for man pages
 man() {
         env \

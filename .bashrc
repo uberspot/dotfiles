@@ -33,6 +33,5 @@ unset file
 FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 
 [  "$UID" = "0" ] \
-    && export PATH=$PATH:/root/scripts/ \
     && export PS1="\[${BOLD}${BLUE}\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]ϟ \[$WHITE\]\[$RESET\]"
 

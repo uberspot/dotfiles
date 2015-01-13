@@ -33,4 +33,7 @@ export TCL_LIBRARY=/usr/lib/tcl8.6
 
 export JAVA_HOME=/usr/lib/jvm/default
 
-export PATH="$HOME/.ssh-ide/:/usr/lib/ccache/bin/:$PATH:$HOME/.gem/ruby/2.2.0/bin:$HOME/adt_eclipse/sdk/platform-tools/"
+export PATH="$HOME/.ssh-ide/:/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin:/usr/local/sbin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/ usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.gem/ruby/2.2.0/bin:$HOME/adt_eclipse/sdk/platform-tools/"
+
+[  "$UID" = "0" ] && export PATH="$PATH:/root/scripts"
+
