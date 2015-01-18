@@ -1,0 +1,27 @@
+- /dev/*
+- /proc/*
+- /sys/*
+- /tmp/*
+- /run/*
+- /mnt/*
+- /media/*
+- /lost+found
+- /home/lost+found/*
+- /home/*/Dropbox/*
+- /home/*/android-studio/*
+- /home/*/adt_eclipse/*
+- /home/*/.cache/*
+- /home/*/Downloads/*
+- /home/*/VirtualBox\ VMs/*
+- /usr/*
+- /var/lib/pacman/sync/*
+- /var/log/*
+- /home/*/.thumbnails/*
+- /home/*/.mozilla/firefox/*.default/Cache/*
+- /home/*/.cache/chromium/*
+- /home/*/.bitcoin/blocks/*
+- /home/*/.litecoin/blocks/*
+- /home/*/.feathercoin/blk*
+- /home/*/.dogecoin/bl*
+- /home/*/.android/avd/*
+- /home/*/.Genymobile/*

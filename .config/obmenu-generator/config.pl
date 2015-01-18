@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # obmenu-generator - configuration file
-# This file will be updated automatically every time when is needed.
+# This file will be updated automatically.
 # Any additional comment and/or indentation will be lost.
 
 =for comment
@@ -93,5 +93,5 @@ our $CONFIG = {
   "missing_icon"        => "gtk-missing-image",
   "name_keys"           => ["Name"],
   "terminal"            => "xterm",
-  "VERSION"             => 0.6,
+  "VERSION"             => 0.61,
 }

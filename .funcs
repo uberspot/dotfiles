@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+duplicity_backup() {
+    (( $UID )) && { echo 'you need to be root to run this script'; return 1; }
+    echo "Usage: call with 'duplicity_backup --exclude-globbing-filelist excludefilelist src dst'"
+
+    echo "Saving installed packages to $HOME/(aur)pkglist.txt"
+
+    pacman -Qqen > $HOME/pkglist.txt
+    pacman -Qqem > $HOME/aurpkglist.txt
+    /usr/lib/systemd/scripts/pakbak
+    duplicity "$@"
+}
+
 # Quick function that:
 # Generates an ssh key
 # Saves it in the proper subfolder

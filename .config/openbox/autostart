@@ -1,9 +1,12 @@
 (sleep 1s && nitrogen --restore) &
 
-xcompmgr -n &
-#batti &
-(sleep 1s && tint2) &
-(sleep 1s && volumeicon) &
+# Launch Xcomppmgr and tint2 with openbox
+if which tint2 >/dev/null 2>&1; then
+  (sleep 1s && xcompmgr) &
+  (sleep 1s && tint2) &
+fi
+
+(sleep 2s && volumeicon) &
 (sleep 3s && redshift -O 3800) &
 
 # set speaker to 100% since pulseaudio doesn't keep the change each time :/

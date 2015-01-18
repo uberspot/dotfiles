@@ -13,6 +13,8 @@
     frag = magenta bold
     old = red
     new = green
+[diff]
+    algorithm = patience
 [color "status"]
     added = bold green
     changed = bold red
@@ -33,7 +35,7 @@
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
     # a verbose ls, shows changed files too
     lsv = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --numstat
-    
+
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
 
@@ -52,6 +54,7 @@
     ci = commit
     co = checkout
     br = branch·
+    diff = difftool -y -x "colordiff -y " | less -R
     d = diff
     dc = diff --cached
     ds = diff --staged
@@ -75,3 +78,5 @@
     path = .gitconfig.user
 [core]
     excludesfile = ~/.gitignore_global
+    editor = vim
+

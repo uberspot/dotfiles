@@ -81,6 +81,8 @@ set history=700 " Sets how many lines of history VIM has to remember
 
 " Set to auto read when a file is changed from the outside
 set autoread
+set copyindent
+set undolevels=1000
 set nohidden
 
 " Don’t add empty newlines at the end of files
@@ -145,15 +147,16 @@ try
     colorscheme peaksea
 catch
 endtry
-
-set colorcolumn=+1 " next column after textwidth
-
+if exists('+colorcolumn')
+    set colorcolumn=+1 " next column after textwidth
+    highlight ColorColumn ctermbg=red
+endif
 
 " ================ Persistent Undo ==================
 " " Keep undo history across sessions, by storing in file.
 " " Only works all the time.
 if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  silent !mkdir -p ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
 endif
@@ -178,7 +181,8 @@ set nostartofline " Don’t reset cursor to start of line when moving around.
 set nowrap "Don't wrap lines
 set linebreak "Wrap lines at convenient points
 
-set mousehide " Hide mouse when typing
+" set mouse=a " Enable VIM mouse support
+" set mousehide " Hide mouse when typing
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
