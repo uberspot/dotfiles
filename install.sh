@@ -5,7 +5,7 @@
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 chsh -s /bin/zsh
 
-echo "Do vim -> plugininstall and ' cd ~/.vim/bundle/YouCompleteMe && ./install.sh && cd - '"
+echo "Do vim -> plugininstall and then ' ~/.vim/bundle/YouCompleteMe/install.sh'"
 echo "Do ' pacman -S zsh-syntax-highlighting '"
 
 echo "Creating symlinks"

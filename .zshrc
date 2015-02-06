@@ -56,8 +56,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-[ ! "$UID" = "0" ] && archbey -c green
-[  "$UID" = "0" ] && archbey
+#[ ! "$UID" = "0" ] && archbey -c green
+#[  "$UID" = "0" ] && archbey
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -74,4 +74,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 setopt notify nohashdirs autocd correctall globdots histignoredups noclobber automenu menucomplete \
         completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend
+
+# display moo alias
+moo
 

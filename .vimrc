@@ -249,10 +249,8 @@ map <F10> :ls<CR>
 nnoremap <C-h> q:
 " and q: exits instead of showing command history
 nnoremap q: :q
-
 nnoremap Q :q
 nnoremap WQ :wq
-
 
 " Remap VIM = to first non-blank character
 map = ^
@@ -350,7 +348,6 @@ Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 
 filetype plugin indent on
-
 
 " NerdTree conf
 

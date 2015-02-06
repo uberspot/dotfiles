@@ -122,7 +122,7 @@ alias matrix="tr -c \"[:digit:]\" \" \" < /dev/urandom | dd cbs=$COLUMNS conv=un
 alias binclock="watch -n 1 'echo \"obase=2;\`date +%s\`\" | bc'"
 alias lotto="shuf -i 1-49 | head -n6 | sort -n | xargs" # randomizer
 
-alias moo='/usr/bin/fortune -ea | cowsay -f moose -e oQ'
+alias moo='/usr/bin/fortune -ea | cowsay -f small -e oQ'
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
 
 # compress/optimize
