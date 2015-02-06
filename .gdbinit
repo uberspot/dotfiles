@@ -1,0 +1,1 @@
+source ~/.extra/gdbinit/gdbinit

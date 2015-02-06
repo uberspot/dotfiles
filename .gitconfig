@@ -15,6 +15,7 @@
     new = green
 [diff]
     algorithm = patience
+	submodule = log
 [color "status"]
     added = bold green
     changed = bold red
@@ -72,6 +73,17 @@
 
     # Show latest commits since last pull from remote
     news = log -p HEAD@{1}..HEAD@{0}
+
+    # Submodule related
+    sdiff = !git diff && git submodule foreach 'git diff'
+    supdate = submodule update --remote --merge
+    spush = push --recurse-submodules=on-demand
+
+    # Prune all stale remote branches
+    prune-all = !git remote | xargs -n 1 git remote prune
+
+    # Untrack a file
+    untrack = rm --cache --
 [push]
     default = simple
 [include]

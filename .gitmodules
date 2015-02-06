@@ -1,0 +1,6 @@
+[submodule ".extra/gdbinit"]
+	path = .extra/gdbinit
+	url = https://github.com/gdbinit/Gdbinit.git
+[submodule "/home/code/.vim/bundle/Vundle.vim"]
+	path = /home/code/.vim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
