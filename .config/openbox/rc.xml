@@ -277,10 +277,19 @@
           <name>Kill an application</name>
         </startupnotify>
       </action>
-    </keybind>
+  </keybind>
+  <keybind key="W-y">
+      <action name="Execute">
+          <command>~/.screenlayout/dell.sh</command>
+          <startupnotify>
+            <enabled>yes</enabled>
+            <name>Enforce DellScreenLayout</name>
+          </startupnotify>
+      </action>
+  </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>/opt/viber/Viber</command>
+        <command>/usr/bin/viber</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Viber</name>

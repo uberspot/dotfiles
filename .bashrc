@@ -1,6 +1,3 @@
-[ ! "$UID" = "0" ] && archbey -c green
-[  "$UID" = "0" ] && archbey
-
 # Check for an interactive session
 [ "$-" != "${-%i*}" ] || return
 
@@ -35,3 +32,4 @@ FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 [  "$UID" = "0" ] \
     && export PS1="\[${BOLD}${BLUE}\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]ϟ \[$WHITE\]\[$RESET\]"
 
+moo

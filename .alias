@@ -81,6 +81,7 @@ alias icurl="curl -I"
 alias wget="wget -c"
 alias net="netstat -alputen"
 alias ping="ping -c4"
+alias wget_full="wget --random-wait -r -p -e robots=off -U mozilla " # downloads full webpage recursively
 
 alias ssh="$HOME/.ssh-ide/ssh-ident"
 alias ssh-keygen-ed="ssh-keygen -t ed25519 -a 500 -f "

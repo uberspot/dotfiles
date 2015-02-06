@@ -1,3 +1,7 @@
+if xrandr -q | grep -q "VGA1 connected" ; then 
+    ~/.screenlayout/dell.sh
+fi
+
 (sleep 1s && nitrogen --restore) &
 
 # Launch Xcomppmgr and tint2 with openbox
