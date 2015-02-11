@@ -11,6 +11,18 @@ alias du="du -ch"
 # If a directory is provided as an argument it sorts that instead.
 function ds () { du -sh ${1-.}/* | sort -hr ; }
 
+# Command line head / tail shortcuts
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+alias -g M="| most"
+alias -g LL="2>&1 | less"
+alias -g CA="2>&1 | cat -A"
+alias -g NE="2> /dev/null"
+alias -g NUL="> /dev/null 2>&1"
+alias -g P="2>&1| pygmentize -l pytb"
+
 alias free="free -mt"
 alias ps="ps auxf"
 alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
@@ -57,7 +69,6 @@ alias cd..="cl .."
 alias cd="cl"
 
 ## Files
-alias reload="source $HOME/.zshrc"
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
 function dfl () { diff $@ | less ; }
 
