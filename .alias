@@ -56,7 +56,7 @@ alias rg="ranger"
 alias less="less -x4SRFX"
 alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -i --follow'
 alias sysinfo='inxi -Fzx'
-alias s="git status"
+alias s="nocorrect git status"
 alias exit='history -c; exit'
 
 ## Navigation just in case:
@@ -98,21 +98,41 @@ alias ssh="$HOME/.ssh-ide/ssh-ident"
 alias ssh-keygen-ed="ssh-keygen -t ed25519 -a 500 -f "
 alias ssh-keygen-rsa="ssh-keygen -t rsa -b 4096 -a 500 -f "
 
-# View HTTP traffic
-alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HTTP traffic
 
-# Share the current dir from port 8080
-alias lanshare="python -m SimpleHTTPServer 8080"
+alias lanshare="python -m SimpleHTTPServer 8080" # share the current dir from port 8080
 
-# Show listening connections
-alias listening_connections="lsof -Pan -i tcp -i udp"
+alias listening_connections="lsof -Pan -i tcp -i udp" # show listening connections
 
-alias nmap_stealth="nmap -sS -v -T1"
-alias nmap_fin="nmap -U -v"
+alias openports='netstat -nape --inet' # display open ports
+
+# Some useful nmap aliases for scan modes
+
+# Nmap options are:
+#  -sS - TCP SYN scan
+#  -v - verbose
+#  -T1 - timing of scan. Options are paranoid (0), sneaky (1), polite (2), normal (3), aggressive (4), and insane (5)
+#  -sF - FIN scan (can sneak through non-stateful firewalls)
+#  -PE - ICMP echo discovery probe
+#  -PP - timestamp discovery probe
+#  -PY - SCTP init ping
+#  -g - use given number as source port
+#  -A - enable OS detection, version detection, script scanning, and traceroute (aggressive)
+#  -O - enable OS detection
+#  -sA - TCP ACK scan
+#  -F - fast scan
+#  --script=vulscan - also access vulnerabilities in target
+
+alias nmap_open_ports="nmap --open"
+alias nmap_list_interfaces="nmap --iflist"
+alias nmap_slow="nmap -sS -v -T1"
+alias nmap_fin="nmap -sF -v"
 alias nmap_full="nmap -sS -T4 -PE -PP -PS80,443 -PY -g 53 -A -p1-65535 -v"
-alias nmap_firewall="map -sA -p1-65535 -v -T4"
+alias nmap_check_for_firewall="nmap -sA -p1-65535 -v -T4"
+alias nmap_ping_through_firewall="nmap -PS -PA"
 alias nmap_fast="nmap -F -T5 --top-ports 300"
-alias nmap_version="nmap -sV -p1-65535 -O -T4 -Pn --script=vulscan"
+alias nmap_detect_versions="nmap -sV -p1-65535 -O --osscan-guess -T4 -Pn"
+alias nmap_check_for_vulns="nmap --script=vulscan"
 
 # Youtube
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
@@ -158,4 +178,11 @@ alias updatesshident="cd ~/.ssh-ide && git syncma && cd -"
 alias updategitextras='(cd /tmp && rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)'
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
 alias updateall='updategitextras && updatesshident && echo "\nGit Extras updated\n"; sudo updatemirrors && echo "\nMirrors Updated\n"; gem update; gem clean && echo "\nGems updated\n";   upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n"; sudo hostsblock && echo "\nHostsBlock updated\n" && upz'
+
+
+# fasd stuff
+alias c='fasd_cd -d' # quick directory jump
+alias v='f -t -e vim -b viminfo' # quick opening files with vim
+alias sm='f -e smplayer' # quick opening files with mplayer
+alias o='a -e xdg-open' # quick opening files with xdg-open
 

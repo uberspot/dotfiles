@@ -32,4 +32,6 @@ FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 [  "$UID" = "0" ] \
     && export PS1="\[${BOLD}${BLUE}\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]ϟ \[$WHITE\]\[$RESET\]"
 
+eval "$(fasd --init auto)"
+
 moo

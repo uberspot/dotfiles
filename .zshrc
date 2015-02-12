@@ -54,10 +54,12 @@ plugins=(git sudo adb archlinux command-not-found git-extras python dircycle col
 
 source $ZSH/oh-my-zsh.sh
 
+# Make zsh know about hosts already accessed by SSH
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
 # User configuration
 
-#[ ! "$UID" = "0" ] && archbey -c green
-#[  "$UID" = "0" ] && archbey
+eval "$(fasd --init auto)"
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -77,4 +79,5 @@ setopt notify nohashdirs autocd correctall globdots histignoredups noclobber aut
 
 # display moo alias
 moo
+
 

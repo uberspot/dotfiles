@@ -9,7 +9,8 @@ echo "Creating symlinks"
 for file in $(find ./* -type f -name \* -print | egrep -v "^(./.gitignore|./.git/)" | sed 's/.\///' ); 
 do ln -isv ~/.dotfiles/$file ~/$file; done
 
-sudo pacman -S zsh-syntax-highlighting
+sudo pacman -S zsh-syntax-highlighting zsh-completions
+packer -S fasd
 
 zsh -c "vundle-update; ~/.vim/bundle/YouCompleteMe/install.sh"
 
