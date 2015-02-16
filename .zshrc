@@ -22,7 +22,7 @@ export UPDATE_ZSH_DAYS=24
 # DISABLE_LS_COLORS="true"
 
 eval $(dircolors -b)
-FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
+FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 

@@ -76,8 +76,8 @@
 
     # Submodule related
     sdiff = !git diff && git submodule foreach 'git diff'
-    supdate = submodule update --remote --merge
     spush = push --recurse-submodules=on-demand
+    supdateall = submodule foreach git pull
 
     # Prune all stale remote branches
     prune-all = !git remote | xargs -n 1 git remote prune

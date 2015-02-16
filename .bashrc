@@ -27,7 +27,7 @@ for file in {$HOME/.alias,$HOME/.funcs,$HOME/.bash_prompt,/usr/share/doc/pkgfile
 done
 unset file
 
-FILE="$HOME/.dircolors" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
+FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 
 [  "$UID" = "0" ] \
     && export PS1="\[${BOLD}${BLUE}\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]ϟ \[$WHITE\]\[$RESET\]"
