@@ -13,3 +13,6 @@
 [submodule ".ssh-ide"]
 	path = .ssh-ide
 	url = https://github.com/ccontavalli/ssh-ident.git
+[submodule ".extra/zsh_custom/plugins/zsh-syntax-highlighting-filetypes"]
+	path = .extra/zsh_custom/plugins/zsh-syntax-highlighting-filetypes
+	url = https://github.com/trapd00r/zsh-syntax-highlighting-filetypes.git
