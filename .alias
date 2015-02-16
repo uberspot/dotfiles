@@ -60,12 +60,16 @@ alias s="nocorrect git status"
 alias exit='history -c; exit'
 
 ## Navigation just in case:
-alias ~="cl $HOME"
-alias ..="cl .."
-alias ...="cl ../../"
+# cd and ls in one. It changes directory to the first argument given (else to $HOME) 
+# and lists the files/directories there.
+cl() { \cd "${1-$HOME}" && l; }
+
+alias ~="cd $HOME"
+alias ..="cd .."
+alias ...="cd ../../"
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias cd..="cl .."
+alias cd..="cd .."
 alias cd="cl"
 
 ## Files
@@ -73,7 +77,7 @@ alias diff="colordiff -y --suppress-common-lines "              # requires color
 function dfl () { diff $@ | less ; }
 
 alias mount_column='mount | column -t'
-alias duplicity="\duplicity --verbosity info --volsize 100 --num-retries 3 --asynchronous-upload --full-if-older-than 60D --log-file /var/log/duplicity.log "
+alias duplicity="\duplicity --verbosity info --volsize 150 --num-retries 3 --asynchronous-upload --full-if-older-than 90D --log-file /var/log/duplicity.log "
 alias duplicity_test="\duplicity --dry-run --no-encryption -v info "
 
 # Mount related
@@ -177,7 +181,16 @@ alias jerror='journalctl -b -p err'
 alias updatesshident="cd ~/.ssh-ide && git syncma && cd -"
 alias updategitextras='(cd /tmp && rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)'
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
-alias updateall='updategitextras && updatesshident && echo "\nGit Extras updated\n"; sudo updatemirrors && echo "\nMirrors Updated\n"; sudo gem update; sudo gem update --system; sudo gem clean && echo "\nGems updated\n";   upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n"; sudo hostsblock && echo "\nHostsBlock updated\n" && upz'
+function updateall(){
+    updatesshident && echo "\nssh-ident updated\n";
+    updategitextras && echo "\nGit Extras updated\n";
+    sudo updatemirrors && echo "\nMirrors Updated\n";
+    sudo gem update && sudo gem update --system && sudo gem clean && echo "\nGems updated\n";
+    upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n";
+    sudo hostsblock && echo "\nHostsBlock updated\n";
+    vim +PluginUpdate +qall && echo "\nVim plugins updated\n";
+    upz && echo "\nSystem updated\n";
+}
 
 
 # fasd stuff
