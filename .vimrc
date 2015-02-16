@@ -254,6 +254,7 @@ nnoremap <C-h> q:
 nnoremap q: :q
 nnoremap Q :q
 nnoremap WQ :wq
+nnoremap X :x
 
 " Remap VIM = to first non-blank character
 map = ^

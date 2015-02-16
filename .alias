@@ -54,7 +54,8 @@ alias pm='pacman'
 alias pk='packer'
 alias rg="ranger"
 alias less="less -x4SRFX"
-alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -i --follow'
+alias ack='ack -i --follow --pager "less"'
+alias ag='ag -fi --hidden --numbers --column --stats --pager "less"'
 alias sysinfo='inxi -Fzx'
 alias s="nocorrect git status"
 alias exit='history -c; exit'
@@ -106,7 +107,7 @@ alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HT
 
 alias lanshare="python -m SimpleHTTPServer 8080" # share the current dir from port 8080
 
-alias listening_connections="lsof -Pan -i tcp -i udp" # show listening connections
+alias listening_connections="lsof -Panl -i tcp -i udp" # show listening connections
 
 alias openports='netstat -nape --inet' # display open ports
 
