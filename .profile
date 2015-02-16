@@ -37,3 +37,9 @@ export PATH="$HOME/.ssh-ide/:/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin:/
 
 [  "$UID" = "0" ] && export PATH="$PATH:/root/scripts"
 
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+

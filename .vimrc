@@ -143,6 +143,9 @@ set cursorline
 set t_Co=16
 
 try
+    if ! has("gui_running")
+        set t_Co=256
+    endif
     set background=dark
     colorscheme peaksea
 catch
@@ -176,7 +179,7 @@ set tabstop=4
 set textwidth=120 " Maximum width of inserted text
 set whichwrap=    " Wrap cursor to next/prev line. not!
 set formatoptions=qrnl
-set nostartofline " Don’t reset cursor to start of line when moving around. 
+set nostartofline " Don’t reset cursor to start of line when moving around.
 
 set nowrap "Don't wrap lines
 set linebreak "Wrap lines at convenient points
@@ -343,7 +346,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
