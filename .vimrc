@@ -205,12 +205,12 @@ set pastetoggle=<F2>
 " KEY MAPPINGS
 
 " Commenting blocks of code.
-autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
-autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
-autocmd FileType mail             let b:comment_leader = '> '
-autocmd FileType vim              let b:comment_leader = '" '
+autocmd FileType c,cpp,java,scala      let b:comment_leader = '// '
+autocmd FileType sh,ruby,python,make   let b:comment_leader = '# '
+autocmd FileType conf,fstab,sysctl     let b:comment_leader = '# '
+autocmd FileType tex                   let b:comment_leader = '% '
+autocmd FileType mail                  let b:comment_leader = '> '
+autocmd FileType vim                   let b:comment_leader = '" '
 noremap <F7> :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <F8> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
