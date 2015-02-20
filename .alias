@@ -6,10 +6,11 @@ alias cp="cp -ir"
 alias mv="mv -i"
 alias ln='ln -i'
 alias rm="rm -I -v --preserve-root"
+alias rmf="rm -rf"
 alias du="du -ch"
 # ds = dusort sorts the current directory items decreasingly.
 # If a directory is provided as an argument it sorts that instead.
-function ds () { du -sh ${1-.}/* | sort -hr ; }
+function ds () { du -sh "${1-.}"/* | sort -hr ; }
 
 # Command line head / tail shortcuts
 alias -g H='| head'
@@ -28,6 +29,15 @@ alias ps="ps auxf"
 alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
 alias scp="scp -Cvp -S '$HOME/.ssh-ide/ssh-ident' "
 alias rsync="rsync -avzS --partial --progress -e '$HOME/.ssh-ide/ssh-ident' "
+
+# Copies all the files under src directory to dst directory that match the given pattern.
+# Also preserves the directories structure (not including empty directories)
+function cp_with_dirstruct() {
+    [[ "$#" -lt 3 ]] && \
+                echo 'Usage: cp_with_dirstruct "[quoted regex pattern of files to copy (e.g *.txt)]" [src dir] [dst dir]' && \
+                return 0;
+    rsync -a --prune-empty-dirs --progress --include='*/' --include="$1" --exclude='*' "$2" "$3" ;
+}
 
 # needed because the shell checks only the first word of a command for an alias so
 # "sudo somealias" won't work if sudo isn't also an alias
@@ -61,7 +71,7 @@ alias s="nocorrect git status"
 alias exit='history -c; exit'
 
 ## Navigation just in case:
-# cd and ls in one. It changes directory to the first argument given (else to $HOME) 
+# cd and ls in one. It changes directory to the first argument given (else to $HOME)
 # and lists the files/directories there.
 cl() { \cd "${1-$HOME}" && l; }
 
@@ -75,7 +85,7 @@ alias cd="cl"
 
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
-function dfl () { diff $@ | less ; }
+function dfl () { diff "$@" | less ; }
 
 alias mount_column='mount | column -t'
 alias duplicity="\duplicity --verbosity info --volsize 150 --num-retries 3 --asynchronous-upload --full-if-older-than 90D --log-file /var/log/duplicity.log "
@@ -155,7 +165,7 @@ alias curlpaste='curlpaste -p -e ca '
 alias fortune="fortune -e -a"
 # Gets a random Futurama quote from slashdot.org(/.)
 alias futurama="curl -Is slashdot.org | egrep '^X-(F|B|L)' | cut -d \- -f 2"
-alias matrix="tr -c \"[:digit:]\" \" \" < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR=\"1;32\" grep --color \"[^ ]\""
+alias matrix="tr -c \"[:digit:]\" \" \" < /dev/urandom | dd cbs=\"$COLUMNS\" conv=unblock | GREP_COLOR=\"1;32\" grep --color \"[^ ]\""
 alias binclock="watch -n 1 'echo \"obase=2;\`date +%s\`\" | bc'"
 alias lotto="shuf -i 1-49 | head -n6 | sort -n | xargs" # randomizer
 
@@ -168,7 +178,7 @@ alias removeexif='mogrify -strip'
 alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a libmp3lame -ar 44100 -ac 2 -ab 192k "${f/%mp4/mp3}"; done'
 alias optimizepngsindir='find . -iname "*.png" | xargs optipng -o2 -preserve'
 alias optimizejpgsindir='find . -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim --strip-all'
-alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 $f "VACUUM;"; done'
+alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 "$f" "VACUUM;"; done'
 
 ## Update related
 alias upz='packer -Syyu'
