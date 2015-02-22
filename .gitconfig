@@ -85,12 +85,14 @@
     # Untrack a file
     untrack = rm --cache --
 [push]
-    default = simple
+    default = current
 [include]
     path = .gitconfig.user
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
+    autocrlf = input
+
 
 # QuickNote: To modify an old commit
 # You can use git rebase

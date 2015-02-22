@@ -78,6 +78,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 setopt notify nohashdirs autocd correctall globdots histignoredups noclobber automenu menucomplete \
         completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend
 
+# get notified when someone logs in
+watch=all                       # watch all logins
+logcheck=30                     # every 30 seconds
+WATCHFMT="%n from %M has %a tty%l at %T %W"
+
 # display moo alias
 moo
 
