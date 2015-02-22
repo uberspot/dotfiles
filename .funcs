@@ -2,7 +2,11 @@
 
 duplicity_backup() {
     (( $UID )) && { echo 'you need to be root to run this script'; return 1; }
-    echo "Usage: call with 'duplicity_backup --exclude-globbing-filelist excludefilelist src dst'"
+    [[ "$#" -lt 2 ]] && \
+        echo -e  "Usage: Call with 'duplicity_backup --exclude-globbing-filelist [excludefilelist (text file)] [src] [dst]'\n" \
+            "    Note: use 'duplicity_backup -v8 ' and as [dst] -> gdocs://YOURGOOGLEACCOUNT@gmail.com/backup'\n" \
+            "          for GDrive backup (requires python2-gdata package)" && \
+            return 0;
 
     echo "Saving installed packages to $HOME/(aur)pkglist.txt"
 

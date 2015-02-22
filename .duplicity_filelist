@@ -25,3 +25,8 @@
 - /home/*/.dogecoin/bl*
 - /home/*/.android/avd/*
 - /home/*/.Genymobile/*
+- /home/*/android/*
+- /home/*/temp/*
+- /home/*/.cache/*
+- /home/*/.AndroidStudio/*
+- /home/*/.bitcoin/chainstate/*
