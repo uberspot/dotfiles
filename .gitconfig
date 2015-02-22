@@ -93,14 +93,13 @@
     editor = vim
     autocrlf = input
 
-
 # QuickNote: To modify an old commit
 # You can use git rebase
 # for example, if you want to modify back to commit bbc643cd, run
 #
 # $ git rebase --interactive bbc643cd^
 #
-# In the default editor, modify 'pick' to 'edit' in the line whose commit you want to modify. 
+# In the default editor, modify 'pick' to 'edit' in the line whose commit you want to modify.
 # Make your changes and then stage them with
 #
 # $ git add <filepattern>
@@ -114,4 +113,20 @@
 # $ git rebase --continue
 #
 # to return back to the previous head commit.
-
+#
+################################################
+#
+# QuickNote2: To cherry-pick a commit to a new branch for a separate pull request
+#
+# Create a branch from the SHA where the original project was forked
+# $ git branch my_cherry_picked_feature 251ea14
+#
+# Move to the branch
+# $ git checkout my_cherry_picked_feature
+#
+# Cherry pick the commit I want to submit as a pull request
+# $ git cherry-pick 4252331
+#
+# Push the branch and do the pull request from the head of the new branch
+# $ git push origin my_cherry_picked_feature
+#
