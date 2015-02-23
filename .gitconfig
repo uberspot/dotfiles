@@ -27,6 +27,11 @@
     #via http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
     amend = commit --amend --reuse-message=HEAD   # amend your last commit
+
+    # amend a specific commit. Example usage: "git add -p; git fixup HEAD~5" 
+    # OR "git add -p; git stash --keep-index; git fixup HEAD~5; git stash pop"
+    # via http://stackoverflow.com/questions/3103589/how-can-i-easily-fixup-a-past-commit
+    fixup = "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && COMMIT=$(git rev-parse $1) && git commit --fixup=$COMMIT && git rebase -i --autosquash $COMMIT~1' -"
     cm = commit -m
     co = checkout
     syncup = !git stash clear && git stash && git checkout master && git fetch upstream && git rebase upstream/master && git stash apply
