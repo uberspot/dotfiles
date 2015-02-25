@@ -28,7 +28,8 @@ alias free="free -mt"
 alias ps="ps auxf"
 alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
 alias scp="scp -Cvp -S '$HOME/.ssh-ide/ssh-ident' "
-alias rsync="rsync -avzS --partial --progress -e '$HOME/.ssh-ide/ssh-ident' "
+alias rsync="rsync -avSP -e '$HOME/.ssh-ide/ssh-ident' "
+alias rsync-del="rsync --delete-before "
 
 # Copies all the files under src directory to dst directory that match the given pattern.
 # Also preserves the directories structure (not including empty directories)
@@ -47,7 +48,8 @@ alias fn="find . -iname "
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 # finds duplicate files in the current folder by checking size first and then md5 hash
-alias find_dups='find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate'
+alias fdupes="fdupes -dn -r "
+
 alias df="df -Tha --total"
 alias h="history"
 alias chown='chown --preserve-root'
@@ -56,6 +58,7 @@ alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
 alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
 alias disks="df -ha"
+alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use on /dev/sdxX
 
 # time since installation based on oldest pacman.log entry.
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
@@ -126,6 +129,7 @@ alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv
 alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downloads/music/%(title)s.%(ext)s" '
 
 ## Other
+alias screen_cmd="screen -dm sh -c " # runs the cmd that follows inside a detached screen session. Make sure to quote the cmd if there are spaces
 alias tmux="tmux -2u"
 alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/dev/shm/chromium-cache --disk-cache-size=300000000"
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"

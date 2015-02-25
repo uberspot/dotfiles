@@ -396,6 +396,53 @@
    "key": "is",
    "disableInstant": true,
    "disableSuggest": true
+  },
+  "user4": {
+   "url": "https://bitbucket.org/repo/all?name=%q",
+   "json": "https://en.wikipedia.org/w/api.php?action=opensearch&search=%q",
+   "domain": "https://bitbucket.org/repo/all",
+   "iconURI": "http://g.etfv.co/https://bitbucket.org/repo/all?name=%q",
+   "type": "user",
+   "name": "Bitbucket",
+   "id": "user4",
+   "key": "bitbucket",
+   "disableInstant": true,
+   "disableSuggest": true
+  },
+  "user5": {
+   "url": "https://addons.mozilla.org/en-us/firefox/search/?q=%q",
+   "json": "http://suggestqueries.google.com/complete/search?json&client=firefox&q=%q&hl=en",
+   "domain": "https://addons.mozilla.org/en-us/firefox/search",
+   "iconURI": "http://g.etfv.co/https://addons.mozilla.org/en-us/firefox/search/?q=%q",
+   "type": "user",
+   "name": "firefox addons",
+   "id": "user5",
+   "key": "addon",
+   "disableInstant": true,
+   "disableSuggest": true
+  },
+  "user6": {
+   "url": "https://www.deviantart.com/browse/all/?section=&global=1&q=%q",
+   "json": "http://suggestqueries.google.com/complete/search?json&client=firefox&q=%q&hl=en",
+   "domain": "http://www.deviantart.com/browse/all",
+   "iconURI": "http://g.etfv.co/https://www.deviantart.com/browse/all/?section=&global=1&q=%q",
+   "type": "user",
+   "name": "Deviantart",
+   "id": "user6",
+   "key": "deviant",
+   "disableSuggest": true
+  },
+  "user7": {
+   "url": "https://www.tumblr.com/search/%q",
+   "json": "http://suggestqueries.google.com/complete/search?json&client=firefox&q=%q&hl=en",
+   "domain": "https://www.tumblr.com/search",
+   "iconURI": "http://g.etfv.co/https://www.tumblr.com/search/%q",
+   "type": "user",
+   "name": "Tumblr",
+   "id": "user7",
+   "key": "tumblr",
+   "disableInstant": true,
+   "disableSuggest": true
   }
  },
  "contextMenu": [
@@ -417,6 +464,10 @@
   "bing",
   "user3",
   "user1",
+  "user4",
+  "user5",
+  "user6",
+  "user7",
   "searx",
   "-",
   "__search_site__"
