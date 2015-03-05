@@ -5,9 +5,10 @@ alias l="ls -lF"
 alias cp="cp -ir"
 alias mv="mv -i"
 alias ln='ln -i'
-alias rm="rm -I -v --preserve-root"
-alias rmf="rm -rf"
+#alias rm="rm -Ivr --preserve-root"
+alias rm="trash -v"
 alias du="du -ch"
+alias ncdu="ncdu -q2"
 # ds = dusort sorts the current directory items decreasingly.
 # If a directory is provided as an argument it sorts that instead.
 function ds () { du -sh "${1-.}"/* | sort -hr ; }
@@ -16,6 +17,7 @@ function ds () { du -sh "${1-.}"/* | sort -hr ; }
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
+alias -g C="| column -t"
 alias -g L="| less"
 alias -g M="| most"
 alias -g LL="2>&1 | less"
@@ -67,6 +69,7 @@ alias pm='pacman'
 alias pk='packer'
 alias rg="ranger"
 alias less="less -x4SRFX"
+alias grep_search="grep -Eirn " # extended regex, recursive, ignore case, show line number
 alias ack='ack -i --follow'
 alias ag='ag -fi --hidden --numbers --column --stats'
 alias sysinfo='inxi -Fzx'
@@ -90,7 +93,6 @@ alias cd="cl"
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
 function dfl () { diff "$@" | less ; }
 
-alias mount_column='mount | column -t'
 alias duplicity="\duplicity --verbosity info --volsize 150 --num-retries 3 --asynchronous-upload --full-if-older-than 90D --log-file /var/log/duplicity.log "
 alias duplicity_test="\duplicity --dry-run --no-encryption -v info "
 
@@ -130,7 +132,6 @@ alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downl
 
 ## Other
 alias screen_cmd="screen -dm sh -c " # runs the cmd that follows inside a detached screen session. Make sure to quote the cmd if there are spaces
-alias tmux="tmux -2u"
 alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/dev/shm/chromium-cache --disk-cache-size=300000000"
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"
 alias netbeans="netbeans --laf com.sun.java.swing.plaf.gtk.GTKLookAndFeel"

@@ -5,11 +5,11 @@
 chsh -s /bin/zsh
 
 echo "Creating symlinks"
-for file in $(find ./* -type f -name \* -print | egrep -v "^(./.gitignore|./.git/)" | sed 's/.\///' ); 
+for file in $(find ./* -type f -name \* -print | egrep -v "^(./.gitignore|./.git/)" | sed 's/.\///' );
 do ln -isv ~/.dotfiles/$file ~/$file; done
 
 sudo pacman -S zsh-syntax-highlighting zsh-completions
-packer -S fasd
+packer -S fasd trash-cli the_silver_searcher
 
-zsh -c "vim +PluginInstall +qall; ~/.vim/bundle/YouCompleteMe/install.sh" 
+zsh -c "vim +PluginInstall +qall; ~/.vim/bundle/YouCompleteMe/install.sh"
 

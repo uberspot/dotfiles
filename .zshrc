@@ -51,7 +51,7 @@ HIST_STAMPS="dd.mm.yyyy"
 export HISTCONTROL="erasedups:ignoreboth"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git sudo adb archlinux command-not-found git-extras python dircycle colored-man iwhois systemd vundle rsync zsh-syntax-highlighting-filetypes nmap)
+plugins=(git sudo adb archlinux command-not-found git-extras python dircycle colored-man iwhois systemd vundle rsync zsh-syntax-highlighting-filetypes nmap httpie)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,7 +76,8 @@ unalias exit
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 setopt notify nohashdirs autocd correctall globdots histignoredups noclobber automenu menucomplete \
-        completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend
+        completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend pushdignoredups \
+        promptsubst rm_starsilent share_history complete_in_word nohup
 
 # get notified when someone logs in
 watch=all                       # watch all logins

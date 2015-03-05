@@ -205,7 +205,7 @@ set pastetoggle=<F2>
 " KEY MAPPINGS
 
 " Commenting blocks of code.
-autocmd FileType c,cpp,java,scala      let b:comment_leader = '// '
+autocmd FileType c,cpp,java,scala,javascript      let b:comment_leader = '// '
 autocmd FileType sh,ruby,python,make   let b:comment_leader = '# '
 autocmd FileType conf,fstab,sysctl     let b:comment_leader = '# '
 autocmd FileType tex                   let b:comment_leader = '% '
@@ -230,6 +230,9 @@ nnoremap <F6> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
 
 " Remap leader key to ,
 let mapleader = ","
+
+" open ag.vim
+nnoremap <leader>a :Ag
 
 " Map toggling of folds to space
 nnoremap <space> za
@@ -348,6 +351,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rking/ag.vim'
 
 call vundle#end()
 
