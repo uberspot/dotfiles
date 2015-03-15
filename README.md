@@ -7,5 +7,6 @@ Install with
 
 Quick screenshot of conky, tint, lilyterm and zsh themes
 
-![screenshot](https://github.com/uberspot/dotfiles/blob/master/.extra/quickscreenshot.png)
+![screenshot1](https://github.com/uberspot/dotfiles/blob/master/.extra/quickscreenshot1.png)
+![screenshot1](https://github.com/uberspot/dotfiles/blob/master/.extra/quickscreenshot2.png)
 
