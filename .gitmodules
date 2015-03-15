@@ -10,9 +10,9 @@
 [submodule ".extra/ls_colors"]
 	path = .extra/ls_colors
 	url = https://github.com/trapd00r/LS_COLORS.git
-[submodule ".ssh-ide"]
-	path = .ssh-ide
-	url = https://github.com/ccontavalli/ssh-ident.git
 [submodule ".extra/zsh_custom/plugins/zsh-syntax-highlighting-filetypes"]
 	path = .extra/zsh_custom/plugins/zsh-syntax-highlighting-filetypes
 	url = https://github.com/trapd00r/zsh-syntax-highlighting-filetypes.git
+[submodule ".extra/ssh-ident"]
+	path = .extra/ssh-ident
+	url = https://github.com/ccontavalli/ssh-ident.git

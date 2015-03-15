@@ -29,8 +29,8 @@ alias -g P="2>&1| pygmentize -l pytb"
 alias free="free -mt"
 alias ps="ps auxf"
 alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
-alias scp="scp -Cvp -S '$HOME/.ssh-ide/ssh-ident' "
-alias rsync="rsync -avSP -e '$HOME/.ssh-ide/ssh-ident' "
+alias scp="scp -Cvp -S '$HOME/.extra/ssh-ident/ssh-ident' "
+alias rsync="rsync -avSP -e '$HOME/.extra/ssh-ident/ssh-ident' "
 alias rsync-del="rsync --delete-before "
 
 # Copies all the files under src directory to dst directory that match the given pattern.
@@ -114,7 +114,7 @@ alias net="netstat -alputen"
 alias ping="ping -c4"
 alias wget_full="wget --random-wait -r -p -e robots=off -U mozilla " # downloads full webpage recursively
 
-alias ssh="$HOME/.ssh-ide/ssh-ident"
+alias ssh="$HOME/.extra/ssh-ident/ssh-ident"
 alias ssh-keygen-ed="ssh-keygen -t ed25519 -a 500 -f "
 alias ssh-keygen-rsa="ssh-keygen -t rsa -b 4096 -a 500 -f "
 
