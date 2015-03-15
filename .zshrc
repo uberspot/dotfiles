@@ -6,8 +6,7 @@ export ZSH_CUSTOM=$HOME/.extra/zsh_custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-[ ! "$UID" = "0" ] && ZSH_THEME="code"
-[  "$UID" = "0" ] && ZSH_THEME="code_root"
+ZSH_THEME="code"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

@@ -342,21 +342,27 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
-    <keybind key="W-a">
-      <action name="ToggleMaximizeFull"/>
-    </keybind>
-    <keybind key="W-Right">
-      <action name="MoveToEdgeEast"/>
-    </keybind>
-    <keybind key="W-Up">
-      <action name="MoveToEdgeNorth"/>
-    </keybind>
-    <keybind key="W-Left">
-      <action name="MoveToEdgeWest"/>
-    </keybind>
-    <keybind key="W-Down">
-      <action name="MoveToEdgeSouth"/>
-    </keybind>
+    <keybind key="W-a"> <action name="ToggleMaximizeFull"/> </keybind>
+    <keybind key="W-Right"> <action name="MoveToEdgeEast"/> </keybind>
+    <keybind key="W-Up"> <action name="MoveToEdgeNorth"/> </keybind>
+    <keybind key="W-Left"> <action name="MoveToEdgeWest"/> </keybind>
+    <keybind key="W-Down"> <action name="MoveToEdgeSouth"/> </keybind>
+    <!-- Keybindings for window switching with the arrow keys -->
+    <keybind key="C-A-Right"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
+    <keybind key="C-A-Left">  <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
+    <keybind key="C-A-Up">    <action name="DirectionalCycleWindows"> <direction>up</direction>    </action> </keybind>
+    <keybind key="C-A-Down">  <action name="DirectionalCycleWindows"> <direction>down</direction>  </action> </keybind>
+
+    <keybind key="C-A-KP_6"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
+    <keybind key="C-A-KP_4"> <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
+    <keybind key="C-A-KP_8"> <action name="DirectionalCycleWindows"> <direction>up</direction>    </action> </keybind>
+    <keybind key="C-A-KP_2"> <action name="DirectionalCycleWindows"> <direction>down</direction>  </action> </keybind>
+
+    <keybind key="C-A-KP_3"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
+    <keybind key="C-A-KP_9"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
+    <keybind key="C-A-KP_7"> <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
+    <keybind key="C-A-KP_1"> <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
+
     <keybind key="W-0">
       <action name="Execute">
         <command>scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/ &amp; shotwell ~/$f'</command>
