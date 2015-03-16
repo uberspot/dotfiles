@@ -222,7 +222,7 @@ map <F3> :retab <CR> :w <CR>
 " Remove trailing whitespace by pressing t && s keys
 map <F4> :%s/\s\+$//e<enter> :w<enter>
 
-" ask for sudo password when editing a read-only file
+" Ask for sudo password when editing a read-only file
 cmap w!! %!sudo tee > /dev/null %
 
 " Search and replace word under cursor using F6
@@ -231,7 +231,7 @@ nnoremap <F6> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
 " Remap leader key to ,
 let mapleader = ","
 
-" open ag.vim
+" Open ag.vim
 nnoremap <leader>a :Ag
 
 " Map toggling of folds to space
@@ -352,13 +352,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 
 filetype plugin indent on
 
 " NerdTree conf
-
 map <C-D> :NERDTreeToggle<CR>
 
 " autoclose when nerdtree is the only window left open
@@ -367,3 +367,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " close the autocompletion window on movement in insert mode or when leaving insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Rainbow parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

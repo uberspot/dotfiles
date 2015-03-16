@@ -34,8 +34,11 @@
     fixup = "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && COMMIT=$(git rev-parse $1) && git commit --fixup=$COMMIT && git rebase -i --autosquash $COMMIT~1' -"
     cm = commit -m
     co = checkout
-    syncup = !git stash clear && git stash && git checkout master && git fetch upstream && git rebase upstream/master && git stash apply
-    syncma = !git stash clear && git stash && git pull --rebase origin master && git stash apply
+    ec = config --global -e
+    cache = !git stash clear && git stash
+    uncache = !git stash apply
+    syncup = !git cache && git checkout master && git fetch --prune upstream && git rebase upstream/master && git uncache
+    syncma = !git cache && git pull --rebase --prune origin "${@-.}" && git uncache
 
     # pretty one-line log with tags, branches and authors
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
