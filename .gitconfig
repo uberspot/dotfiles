@@ -28,17 +28,18 @@
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
     amend = commit --amend --reuse-message=HEAD   # amend your last commit
 
-    # amend a specific commit. Example usage: "git add -p; git fixup HEAD~5" 
+    # amend a specific commit. Example usage: "git add -p; git fixup HEAD~5"
     # OR "git add -p; git stash --keep-index; git fixup HEAD~5; git stash pop"
     # via http://stackoverflow.com/questions/3103589/how-can-i-easily-fixup-a-past-commit
     fixup = "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && COMMIT=$(git rev-parse $1) && git commit --fixup=$COMMIT && git rebase -i --autosquash $COMMIT~1' -"
     cm = commit -m
-    co = checkout
     ec = config --global -e
-    cache = !git stash clear && git stash
-    uncache = !git stash apply
-    syncup = !git cache && git checkout master && git fetch --prune upstream && git rebase upstream/master && git uncache
-    syncma = !git cache && git pull --rebase --prune origin "${@-.}" && git uncache
+    current-branch = git symbolic-ref -q --short HEAD
+
+    # sync with the remote origin branch given as argument OR with master if no argument is given
+    syncbr = !git stash && CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && git pull --rebase --prune origin "${@-$CURRENT_BRANCH}" && git stash pop
+    # sync with the upstream remote on the given branch OR with master if no argument is given
+    syncupbr = !git stash && CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --prune upstream "$TARGET_BRANCH" && git stash pop
 
     # pretty one-line log with tags, branches and authors
     ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
@@ -87,8 +88,12 @@
     spush = push --recurse-submodules=on-demand
     supdateall = submodule foreach git pull
 
-    # Prune all stale remote branches
-    prune-all = !git remote | xargs -n 1 git remote prune
+    # Prune all stale remote branches not found locally
+    prune-all-remote-branches = !git remote | xargs -n 1 git remote prune
+
+    # Prune all local branches not found remotely. Accepts as argument the name
+    # of the default (otherwise assumes it's master)
+    prune-all-local-branches = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 
     # Untrack a file
     untrack = rm --cache --
