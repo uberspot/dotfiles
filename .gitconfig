@@ -59,7 +59,7 @@
 
     # basic shortcuts
     cp = cherry-pick
-    s = status -s
+    s = status
     cl = clone
     ci = commit
     co = checkout
