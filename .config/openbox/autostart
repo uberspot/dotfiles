@@ -1,6 +1,9 @@
-if xrandr -q | grep -q "VGA1 connected" ; then 
+if xrandr -q | grep -q "VGA1 connected" ; then
     ~/.screenlayout/dell.sh
 fi
+
+udiskie &
+syndaemon -t -i 2 -d &
 
 (sleep 1s && nitrogen --restore) &
 

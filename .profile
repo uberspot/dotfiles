@@ -43,3 +43,6 @@ else
     export TERM='xterm-color'
 fi
 
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+#[[ "$(tty)" == "/dev/tty1" ]] && [[ $- == *i* ]] && exec startx
+
