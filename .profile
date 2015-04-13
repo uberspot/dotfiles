@@ -10,7 +10,8 @@ export GREP_COLOR="1;34"
 export GREP_OPTIONS='--color=auto -I'
 
 export LESS="-FXRS"
-export LESSHISTFILE="/tmp/.lesshst"
+# disable ~/.lesshst (potential data leakage)
+export LESSHISTFILE="/dev/null"
 
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
@@ -42,6 +43,9 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
     export TERM='xterm-color'
 fi
+
+# define the prefered visual terminal
+export VTERM=x-terminal-emulator
 
 #[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 #[[ "$(tty)" == "/dev/tty1" ]] && [[ $- == *i* ]] && exec startx

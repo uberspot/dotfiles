@@ -97,3 +97,58 @@ extract() {
     return $e
 }
 
+path_prepend() {
+    if test -d "$1"; then
+        PATH="$1:$PATH"
+    fi
+}
+
+path_append() {
+    if test -d "$1"; then
+        PATH="$PATH:$1"
+    fi
+}
+
+mkcd() {
+    mkdir -p "$1"
+    builtin cd "$1"
+}
+
+# right align text and echo it; helper function for _truncated_ls
+_right_align() {
+    local PADDING=$(($COLUMNS - $(builtin echo "$1" | wc --chars)))
+    if [[ $PADDING -gt 0 ]]; then
+        for i in {1..$PADDING}; do
+            builtin echo -n " "
+        done
+    fi
+    builtin echo "$1"
+}
+
+# a pretty ls truncated to at most N lines; helper function for cd, popd, pushd
+_truncated_ls() {
+    local LS_LINES=25 # use no more than N lines for ls output
+    local RESERVED_LINES=1 # reserve N lines of the term, for short windows
+    # eg. if a window is only 8 lines high, we want to avoid filling up the
+    # whole screen, so instead only 3 lines would be consumed.
+
+    # if using all N lines makes us go over the reserved number of lines
+    if [[ $(($LINES - $RESERVED_LINES)) -lt $LS_LINES ]]; then
+        local LS_LINES=$(($LINES - $RESERVED_LINES))
+    fi
+
+    # compute and store the result of ls
+    local RAW_LS_OUT="$(ls -lha -r -lhaF --group-directories-first \
+                                   --color=always \
+                                   --width=$COLUMNS)"
+    local RAW_LS_LINES=$(builtin echo -E "$RAW_LS_OUT" | wc -l)
+
+    if [[ $RAW_LS_LINES -gt $LS_LINES ]]; then
+        builtin echo -E "$RAW_LS_OUT" | tail -n $(($LS_LINES - 1))
+        _right_align "... $(($RAW_LS_LINES - $LS_LINES + 1)) lines hidden"
+    else
+        builtin echo -E "$RAW_LS_OUT"
+    fi
+}
+
+

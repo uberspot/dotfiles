@@ -141,6 +141,8 @@ set synmaxcol=1000
 set popt+=syntax:y
 set cursorline
 set t_Co=16
+set t_ut= " disable background color erase
+let base16colorspace="256"
 
 try
     if ! has("gui_running")
@@ -156,13 +158,16 @@ if exists('+colorcolumn')
 endif
 
 " ================ Persistent Undo ==================
-" " Keep undo history across sessions, by storing in file.
-" " Only works all the time.
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
 if has('persistent_undo')
   silent !mkdir -p ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
 endif
+
+" Autocomplete me when opening a file:
+set wildmode=longest,list
 
 """"""""""""""""""""""""""""""""
 " Text, tab and indent related "
@@ -184,8 +189,8 @@ set nostartofline " Don’t reset cursor to start of line when moving around.
 set nowrap "Don't wrap lines
 set linebreak "Wrap lines at convenient points
 
-" set mouse=a " Enable VIM mouse support
-" set mousehide " Hide mouse when typing
+set mouse=a " Enable VIM mouse support
+set mousehide " Hide mouse when typing
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -303,7 +308,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-
 " Copy/Paste from Word*doc files is a mess
 fun! FixInvisiblePunctuation()
     silent! %s/\%u2018/'/g
@@ -350,7 +354,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 

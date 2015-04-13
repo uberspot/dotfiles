@@ -1,6 +1,6 @@
 ## Common
 alias mkdir="mkdir -pv"
-alias ls="ls -tr --color=auto -ha"
+alias ls="ls -tr --color=auto -ha --group-directories-first"
 alias l="ls -lF"
 alias cp="cp -ir"
 alias mv="mv -i"
@@ -69,6 +69,7 @@ alias open='mimeo'
 alias pm='pacman'
 alias pk='packer'
 alias rg="ranger"
+tree() { command tree --charset UTF8 -C "$@" | less -RXF }
 alias less="less -x4SRFX"
 alias grep_search="grep -Eirn " # extended regex, recursive, ignore case, show line number
 alias ack='ack -i --follow'
@@ -88,7 +89,10 @@ alias ...="cd ../../"
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cd..="cd .."
-alias cd="cl"
+#alias cd="cl"
+cd() { builtin cd "$@" && _truncated_ls }
+popd() { builtin popd "$@" && _truncated_ls }
+pushd() { builtin pushd "$@" && _truncated_ls }
 
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
@@ -173,7 +177,7 @@ function updateall(){
     git supdateall && echo "\nSubmodules of dotfiles updated\n";
     updategitextras && echo "\nGit Extras updated\n";
     sudo updatemirrors && echo "\nMirrors Updated\n";
-    sudo gem update && sudo gem update --system && sudo gem clean && echo "\nGems updated\n";
+    sudo gem update && sudo gem update --system && sudo gem clean && sudo gem cleanup && echo "\nGems updated\n";
     upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n";
     sudo hostsblock && echo "\nHostsBlock updated\n";
     vim +PluginUpdate +qall && echo "\nVim plugins updated\n";
@@ -187,3 +191,7 @@ alias v='f -t -e vim -b viminfo' # quick opening files with vim
 alias sm='f -e smplayer' # quick opening files with mplayer
 alias o='a -e xdg-open' # quick opening files with xdg-open
 
+# ack is shorter than ack-grep
+if ! type ack > /dev/null; then # Some systems already define `ack`
+    alias ack=ack-grep
+fi

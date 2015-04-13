@@ -15,7 +15,10 @@
     new = green
 [diff]
     algorithm = patience
-	submodule = log
+    submodule = log
+[log]
+    decorate = true
+    date = relative
 [color "status"]
     added = bold green
     changed = bold red
@@ -26,7 +29,8 @@
     snapshots = !git stash list --grep snapshot
     #via http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
-    amend = commit --amend --reuse-message=HEAD   # amend your last commit
+    amend = commit --amend --no-edit   # amend your last commit and don't edit the commit message
+    edit = commit --amend --only       # amend your last commit without adding the already staged files
 
     # amend a specific commit. Example usage: "git add -p; git fixup HEAD~5"
     # OR "git add -p; git stash --keep-index; git fixup HEAD~5; git stash pop"
@@ -48,6 +52,19 @@
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
+
+    # from mathiasbynens dotfiles:
+    # Find branches containing commit
+    findcommitinbranches = "!f() { git branch -a --contains $1; }; f"
+
+    # Find tags containing commit
+    findcommitintags = "!f() { git describe --always --contains $1; }; f"
+
+    # Find commits by source code
+    findcommitswithsourcecode = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+    # Find commits by commit message
+    findcommitswithcommitmessage = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
     # some resets without explanation
     r = reset

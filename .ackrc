@@ -1,9 +1,9 @@
 --type-set=xresources=.Xresources,.Xcolor
 --type-set=stumpwm=.stump,.stumpdump,.dump
 
-#--cc
+--cc
 #--clojure
-#--cpp
+--cpp
 #--css
 #--elisp
 #--go
@@ -13,17 +13,27 @@
 #--make
 #--mason
 #--perl
-#--python
-#--ruby
+--python
+--ruby
 #--scala
 #--scheme
-#--shell
+--shell
 #--tcl
-#--tex
+--tex
 #--text
-#--vim
-#--xml
+--vim
+--xml
 #--yaml
+
+# always color, even if piping to another program
+--color
+
+# use a pager!
+#--pager=less -RXF
+
+# add support for more languages
+--type-set=coffeescript=.coffee
+--type-set=markdown=.md,.markdown
 
 --flush
 --follow

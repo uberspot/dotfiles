@@ -74,9 +74,14 @@ unalias exit
 # enable syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-setopt notify nohashdirs autocd correctall globdots histignoredups noclobber automenu menucomplete \
+setopt notify nohashdirs autocd correctall globdots hist_ignore_all_dups hist_ignore_space noclobber automenu menucomplete \
         completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend pushdignoredups \
         promptsubst rm_starsilent share_history complete_in_word nohup
+
+# Make cd act like pushd instead, letting us use popd to go back
+setopt autopushd
+
+unsetopt share_history # oh-my-zsh sets this, I don't want it.
 
 # get notified when someone logs in
 watch=all                       # watch all logins
