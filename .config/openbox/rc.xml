@@ -52,8 +52,8 @@
       S: shade (roll up/down)
       D: omnipresent (on all desktops).
   -->
-    <keepBorder>no</keepBorder>
-    <animateIconify>yes</animateIconify>
+    <keepBorder>yes</keepBorder>
+    <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>Standard Symbols L</name>
       <size>8</size>
@@ -143,7 +143,7 @@
      cases. -->
   <margins>
     <top>0</top>
-    <bottom>30</bottom>
+    <bottom>26</bottom>
     <left>0</left>
     <right>0</right>
   </margins>
@@ -178,6 +178,10 @@
     </keybind>
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
+    </keybind>
+    <keybind key="W-h">
+        <action name="Iconify" />
+        <action name="Unfocus" />
     </keybind>
     <keybind key="A-F4">
       <action name="Close"/>
@@ -262,10 +266,10 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>lilyterm --geometry=130x36</command>
+          <command>terminator --geometry=1100x700</command> <!-- for lilyterm geometry=130x36 -->
         <startupnotify>
           <enabled>yes</enabled>
-          <name>lilyterm</name>
+          <name>terminator</name>
         </startupnotify>
       </action>
     </keybind>
@@ -277,16 +281,16 @@
           <name>Kill an application</name>
         </startupnotify>
       </action>
-  </keybind>
-  <keybind key="W-y">
+    </keybind>
+    <keybind key="W-y">
       <action name="Execute">
-          <command>~/.screenlayout/dell.sh</command>
-          <startupnotify>
-            <enabled>yes</enabled>
-            <name>Enforce DellScreenLayout</name>
-          </startupnotify>
+        <command>~/.screenlayout/dell.sh</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Enforce DellScreenLayout</name>
+        </startupnotify>
       </action>
-  </keybind>
+    </keybind>
     <keybind key="W-v">
       <action name="Execute">
         <command>/usr/bin/viber</command>
@@ -342,27 +346,21 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
-    <keybind key="W-a"> <action name="ToggleMaximizeFull"/> </keybind>
-    <keybind key="W-Right"> <action name="MoveToEdgeEast"/> </keybind>
-    <keybind key="W-Up"> <action name="MoveToEdgeNorth"/> </keybind>
-    <keybind key="W-Left"> <action name="MoveToEdgeWest"/> </keybind>
-    <keybind key="W-Down"> <action name="MoveToEdgeSouth"/> </keybind>
-    <!-- Keybindings for window switching with the arrow keys -->
-    <keybind key="C-A-Right"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
-    <keybind key="C-A-Left">  <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
-    <keybind key="C-A-Up">    <action name="DirectionalCycleWindows"> <direction>up</direction>    </action> </keybind>
-    <keybind key="C-A-Down">  <action name="DirectionalCycleWindows"> <direction>down</direction>  </action> </keybind>
-
-    <keybind key="C-A-KP_6"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
-    <keybind key="C-A-KP_4"> <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
-    <keybind key="C-A-KP_8"> <action name="DirectionalCycleWindows"> <direction>up</direction>    </action> </keybind>
-    <keybind key="C-A-KP_2"> <action name="DirectionalCycleWindows"> <direction>down</direction>  </action> </keybind>
-
-    <keybind key="C-A-KP_3"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
-    <keybind key="C-A-KP_9"> <action name="DirectionalCycleWindows"> <direction>right</direction> </action> </keybind>
-    <keybind key="C-A-KP_7"> <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
-    <keybind key="C-A-KP_1"> <action name="DirectionalCycleWindows"> <direction>left</direction>  </action> </keybind>
-
+    <keybind key="W-a">
+      <action name="ToggleMaximizeFull"/>
+    </keybind>
+    <keybind key="W-Right">
+      <action name="MoveToEdgeEast"/>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="MoveToEdgeNorth"/>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="MoveToEdgeWest"/>
+    </keybind>
+    <keybind key="W-Down">
+      <action name="MoveToEdgeSouth"/>
+    </keybind>
     <keybind key="W-0">
       <action name="Execute">
         <command>scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/ &amp; shotwell ~/$f'</command>
@@ -451,18 +449,6 @@
       </mousebind>
       <mousebind action="Click" button="A-Down">
         <action name="DesktopNext"/>
-      </mousebind>
-      <mousebind action="Click" button="C-A-Up">
-        <action name="DesktopPrevious"/>
-      </mousebind>
-      <mousebind action="Click" button="C-A-Down">
-        <action name="DesktopNext"/>
-      </mousebind>
-      <mousebind action="Click" button="A-S-Up">
-        <action name="SendToDesktopPrevious"/>
-      </mousebind>
-      <mousebind action="Click" button="A-S-Down">
-        <action name="SendToDesktopNext"/>
       </mousebind>
     </context>
     <context name="Titlebar">
@@ -716,12 +702,12 @@
       <mousebind action="Click" button="A-Down">
         <action name="DesktopNext"/>
       </mousebind>
-      <mousebind action="Click" button="C-A-Up">
+      <!--<mousebind action="Click" button="C-A-Up">
         <action name="DesktopPrevious"/>
       </mousebind>
       <mousebind action="Click" button="C-A-Down">
         <action name="DesktopNext"/>
-      </mousebind>
+      </mousebind>-->
       <mousebind action="Press" button="Left">
         <action name="Focus"/>
         <action name="Raise"/>
@@ -781,7 +767,7 @@
       <maximized>no</maximized>
     </application>
     <!-- Force terminals to appear on top and on the right of the conky -->
-    <application name="lilyterm">
+    <application name="terminator">
       <position force="yes">
         <x>200</x>
         <y>0</y>
@@ -865,5 +851,9 @@
 
   # end of the example
 -->
+    <!-- Match all windows and remove their decorations -->
+    <application class="*">
+      <decor>no</decor>
+    </application>
   </applications>
 </openbox_config>

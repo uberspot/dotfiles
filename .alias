@@ -161,6 +161,7 @@ alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a 
 alias optimizepngsindir='find . -iname "*.png" | xargs optipng -o2 -preserve'
 alias optimizejpgsindir='find . -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim --strip-all'
 alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 "$f" "VACUUM;"; done'
+alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert -resize 70% $i $i; done'
 
 ## Update related
 alias upz='packer -Syyu'

@@ -1,0 +1,57 @@
+[global_config]
+  title_hide_sizetext = True
+  enabled_plugins = ,
+  title_receive_bg_color = "#36d300"
+  title_transmit_bg_color = "#465cff"
+  inactive_color_offset = 0.73
+  title_inactive_bg_color = "#e9e9e9"
+[keybindings]
+  close_window = <Primary><Shift>w
+  group_tab = <Primary><Alt>t
+  resize_left = <Primary><Shift><Alt>Left
+  go_right = <Primary><Alt>Right
+  go_left = <Primary><Alt>Left
+  resize_right = <Primary><Shift><Alt>Right
+  group_all = <Primary>g
+  toggle_zoom = <Primary><Alt>x
+  scaled_zoom = <Primary><Alt>z
+  resize_down = <Primary><Shift><Alt>Down
+  prev_tab = <Primary><Shift>Tab
+  split_vert = <Primary>v
+  close_term = <Primary>w
+  new_tab = <Primary>t
+  copy = <Primary><Shift>c
+  search = <Primary><Alt>f
+  go_up = <Primary><Alt>Up
+  resize_up = <Primary><Shift><Alt>Up
+  next_tab = <Primary>Tab
+  split_horiz = <Primary>h
+  go_down = <Primary><Alt>Down
+  toggle_scrollbar = <Primary><Alt>s
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#f6f4f4"
+    alternate_screen_scroll = False
+    visible_bell = True
+    background_image = None
+    background_darkness = 0.93
+    urgent_bell = True
+    background_type = transparent
+    use_system_font = False
+    cursor_color = "#ffffff"
+    foreground_color = "#eff1ff"
+    scroll_on_output = False
+    show_titlebar = False
+    font = Source Code Pro 10
+    scrollback_lines = 3000
+[layouts]
+  [[default]]
+    [[[child1]]]
+      profile = default
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
