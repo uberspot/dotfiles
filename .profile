@@ -47,6 +47,15 @@ fi
 # define the prefered visual terminal
 export VTERM=x-terminal-emulator
 
+# Firefox
+export MOZ_GLX_IGNORE_BLACKLIST=1
+export MOZ_USE_OMTC=1
+export MOZILLA_X11_XINITTHREADS=1
+export MOX_X_THREADSAFE=1
+export MOZ_ACCELERATED=1
+export MOZ_DISABLE_CRASHREPORTER=1
+export MOZ_DISABLE_PANGO=1
+
 #[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 #[[ "$(tty)" == "/dev/tty1" ]] && [[ $- == *i* ]] && exec startx
 

@@ -76,10 +76,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 setopt notify nohashdirs autocd correctall globdots hist_ignore_all_dups hist_ignore_space noclobber automenu menucomplete \
         completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend pushdignoredups \
-        promptsubst rm_starsilent share_history complete_in_word nohup
+        prompt_subst rm_starsilent share_history complete_in_word nohup
 
-# Make cd act like pushd instead, letting us use popd to go back
-setopt autopushd
+setopt autopushd # Make cd act like pushd instead, letting us use popd to go back
+setopt inc_append_history # Add comamnds as they are typed, don't wait until shell exit
 
 unsetopt share_history # oh-my-zsh sets this, I don't want it.
 

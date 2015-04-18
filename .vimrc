@@ -75,7 +75,8 @@ set comments+=n::
 " Keep backup of edited files
 set backup
 set writebackup
-set backupdir=~/.backups/
+set backupdir=~/.cache/vim_backups/
+set viminfo+=n~/.cache/vim_backups/viminfo
 
 set history=700 " Sets how many lines of history VIM has to remember
 
@@ -161,8 +162,8 @@ endif
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo')
-  silent !mkdir -p ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
+  silent !mkdir -p ~/.cache/vim_backups > /dev/null 2>&1
+  set undodir=~/.cache/vim_backups
   set undofile
 endif
 

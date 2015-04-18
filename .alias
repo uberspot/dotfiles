@@ -60,7 +60,15 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
 alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
-alias disks="df -ha"
+# Coloured df
+alias disks='df -ha |\
+             sed -e "s_/dev/sda[1-9]_\x1b[35m&\x1b[0m_" |\
+             sed -e "s_/dev/sd[b-z][1-9]_\x1b[33m&\x1b[0m_" |\
+             sed -e "s_[.,0-9]*[MG]_\x1b[36m&\x1b[0m_" |\
+             sed -e "s_[0-9]*%_\x1b[32m&\x1b[0m_" |\
+             sed -e "s_9[0-9]%_\x1b[31m&\x1b[0m_" |\
+             sed -e "s_/mnt/[-_A-Za-z0-9]*_\x1b[35;1m&\x1b[0m_"'
+
 alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use on /dev/sdxX
 
 # time since installation based on oldest pacman.log entry.
