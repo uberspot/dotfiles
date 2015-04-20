@@ -168,7 +168,7 @@ alias removeexif='mogrify -strip'
 alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a libmp3lame -ar 44100 -ac 2 -ab 192k "${f/%mp4/mp3}"; done'
 alias optimizepngsindir='find . -iname "*.png" | xargs optipng -o2 -preserve'
 alias optimizejpgsindir='find . -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim --strip-all'
-alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 "$f" "VACUUM;"; done'
+alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 "$f" "VACUUM;" && sqlite3 "$f" "REINDEX;"; done'
 alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert -resize 70% $i $i; done'
 
 ## Update related

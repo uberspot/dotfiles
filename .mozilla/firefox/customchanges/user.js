@@ -362,8 +362,6 @@ user_pref("browser.send_pings.require_same_host", true);
 user_pref("browser.sessionstore.interval", 45000);
 user_pref("browser.sessionstore.max_tabs_undo", 20);
 user_pref("browser.tabs.animate", false);
-user_pref("browser.trackingprotection.gethashURL", "");
-user_pref("browser.trackingprotection.updateURL", "");
 user_pref("clipboard.autocopy", false);
 user_pref("dom.w3c_touch_events.expose", false);
 user_pref("general.autoScroll", true);

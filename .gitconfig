@@ -110,6 +110,8 @@
     spush = push --recurse-submodules=on-demand
     supdateall = submodule foreach git pull
 
+    ref-push = push origin HEAD:refs/for/master
+
     # Prune all stale remote branches not found locally
     prune-all-remote-branches = !git remote | xargs -n 1 git remote prune
 
