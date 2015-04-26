@@ -63,7 +63,8 @@ alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
 # Coloured df
 alias disks='df -ha |\
              sed -e "s_/dev/sda[1-9]_\x1b[35m&\x1b[0m_" |\
-             sed -e "s_/dev/sd[b-z][1-9]_\x1b[33m&\x1b[0m_" |\
+             sed -e "s_/dev/sdb[1-9]_\x1b[33m&\x1b[0m_" |\
+             sed -e "s_/dev/sd[c-z][1-9]_\x1b[37m&\x1b[0m_" |\
              sed -e "s_[.,0-9]*[MG]_\x1b[36m&\x1b[0m_" |\
              sed -e "s_[0-9]*%_\x1b[32m&\x1b[0m_" |\
              sed -e "s_9[0-9]%_\x1b[31m&\x1b[0m_" |\
@@ -75,7 +76,7 @@ alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use 
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
 alias open='mimeo'
 alias pm='pacman'
-alias pk='packer'
+alias apm='apacman'
 alias rg="ranger"
 tree() { command tree --charset UTF8 -C "$@" | less -RXF }
 alias less="less -x4SRFX"
@@ -123,7 +124,6 @@ alias myip="curl icanhazip.com"
 alias traceroute="mtr "
 alias icurl="curl -I"
 alias wget="wget -c"
-alias net="netstat -alputen"
 alias ping="ping -c4"
 alias wget_full="wget --random-wait -r -p -e robots=off -U mozilla " # downloads full webpage recursively
 
@@ -133,11 +133,12 @@ alias ssh-keygen-rsa="ssh-keygen -t rsa -b 4096 -a 500 -f "
 
 alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HTTP traffic
 
-alias lanshare="python -m SimpleHTTPServer 8080" # share the current dir from port 8080
+alias sharedironlan="python -m SimpleHTTPServer 8080" # share the current dir from port 8080
 
-alias listening_connections="lsof -Panl -i tcp -i udp" # show listening connections
-
-alias openports='netstat -nape --inet' # display open ports
+alias net_listening_connections="lsof -Panl -i tcp -i udp" # show listening connections
+alias net="netstat -alputen"
+alias net_resolve="netstat -alpute"
+alias net_openports='netstat -nape --inet' # display open ports
 
 # Youtube
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
@@ -172,10 +173,10 @@ alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 
 alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert -resize 70% $i $i; done'
 
 ## Update related
-alias upz='packer -Syyu'
+alias upz='apacman -Syyu'
 alias cleanz='pacman -Sc'
 alias listdeps='pacman -Qdt' # lists unused dependencies/leftover packages
-alias listallpacks="pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
+alias listallpacks="apacman -L" #pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
 alias listallexplpacks="pacman -Qeq" # list all explicitly installed packages
 alias updatemirrors='reflector --verbose --country Germany -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 alias restartdns='pdnsd-ctl empty-cache && /etc/rc.d/pdnsd restart'
@@ -204,3 +205,8 @@ alias o='a -e xdg-open' # quick opening files with xdg-open
 if ! type ack > /dev/null; then # Some systems already define `ack`
     alias ack=ack-grep
 fi
+
+# patch stuff
+alias patchfile="patch < "
+alias patchdir="patch -p1 < "
+alias patchundo="patch -p1 -R < "
