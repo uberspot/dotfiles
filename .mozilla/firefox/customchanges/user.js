@@ -108,8 +108,8 @@ user_pref("privacy.donottrackheader.enabled",			true);
 // http://kb.mozillazine.org/Network.http.sendRefererHeader#0
 // https://bugzilla.mozilla.org/show_bug.cgi?id=822869
 // Send a referer header with the target URI as the source
-user_pref("network.http.sendRefererHeader",			1);
-user_pref("network.http.referer.spoofSource",			1);
+user_pref("network.http.sendRefererHeader",	0);
+user_pref("network.http.referer.spoofSource", true);
 // CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
 user_pref("network.http.sendSecureXSiteReferrer",		false);
 
@@ -170,7 +170,7 @@ user_pref("security.ssl.enable_ocsp_stapling",		true);
 
 // require certificate revocation check through OCSP protocol.
 // NOTICE: this leaks information about the sites you visit to the CA.
-user_pref("security.OCSP.require",			true);
+user_pref("security.OCSP.require",			false);
 
 // https://www.blackhat.com/us-13/briefings.html#NextGen
 user_pref("security.enable_tls_session_tickets",	false);

@@ -127,10 +127,6 @@ alias wget="wget -c"
 alias ping="ping -c4"
 alias wget_full="wget --random-wait -r -p -e robots=off -U mozilla " # downloads full webpage recursively
 
-alias ssh="$HOME/.extra/ssh-ident/ssh-ident"
-alias ssh-keygen-ed="ssh-keygen -t ed25519 -a 500 -f "
-alias ssh-keygen-rsa="ssh-keygen -t rsa -b 4096 -a 500 -f "
-
 alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HTTP traffic
 
 alias sharedironlan="python -m SimpleHTTPServer 8080" # share the current dir from port 8080
@@ -139,6 +135,15 @@ alias net_listening_connections="lsof -Panl -i tcp -i udp" # show listening conn
 alias net="netstat -alputen"
 alias net_resolve="netstat -alpute"
 alias net_openports='netstat -nape --inet' # display open ports
+
+# SSH
+alias ssh="$HOME/.extra/ssh-ident/ssh-ident"
+pwd_rounds=500
+alias ssh-keygen-ed="ssh-keygen -t ed25519 -a $pwd_rounds -f "
+alias ssh-keygen-rsa="ssh-keygen -t rsa -o -b 4096 -a $pwd_rounds -f "
+alias ssh-keyrepass="ssh-keygen -p -a $pwd_rounds -f "
+alias ssh-key-tonewformat="ssh-keygen -o -p -a $pwd_rounds -f "
+unset pwd_rounds
 
 # Youtube
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
