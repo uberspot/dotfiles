@@ -299,7 +299,16 @@
           <name>Viber</name>
         </startupnotify>
       </action>
-    </keybind>
+  </keybind>
+  <keybind key="W-n">
+      <action name="Execute">
+          <command>/usr/bin/telegram</command>
+          <startupnotify>
+              <enabled>yes</enabled>
+              <name>Telegram</name>
+          </startupnotify>
+      </action>
+  </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <command>subl</command>

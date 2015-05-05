@@ -57,6 +57,10 @@
     # a verbose ls, shows changed files too
     lsv = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --numstat
 
+     # Log of changes on origin not yet on branch (aka hg incoming).
+    incoming = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short HEAD..@{upstream}
+    # Log of changes on branch not yet on branch (aka hg outgoing).
+    outgoing = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short @{upstream}..HEAD
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
 
