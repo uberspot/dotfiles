@@ -32,6 +32,6 @@ FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $F
 [  "$UID" = "0" ] \
     && export PS1="\[${BOLD}${BLUE}\]\H\[$WHITE\]:\[$YELLOW\] \w \[$WHITE\]\[$RED\]ϟ \[$WHITE\]\[$RESET\]"
 
-eval "$(fasd --init auto)"
+command -v fasd >/dev/null 2>&1 && eval "$(fasd --init auto)"
 
 moo

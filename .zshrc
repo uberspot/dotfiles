@@ -59,7 +59,7 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 
 # User configuration
 
-eval "$(fasd --init auto)"
+command -v fasd >/dev/null 2>&1 && eval "$(fasd --init auto)"
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -88,7 +88,7 @@ watch=all                       # watch all logins
 logcheck=30                     # every 30 seconds
 WATCHFMT="%n from %M has %a tty%l at %T %W"
 
-# display moo alias
+# display moo
 moo
 
 

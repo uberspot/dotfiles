@@ -114,7 +114,7 @@
     # Submodule related
     sdiff = !git diff && git submodule foreach 'git diff'
     spush = push --recurse-submodules=on-demand
-    supdateall = submodule foreach git pull
+    supdateall = submodule foreach 'git syncbr || true' # for each submodule update the branch it currently is on
 
     ref-push = push origin HEAD:refs/for/master
 

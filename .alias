@@ -13,19 +13,21 @@ alias ncdu="ncdu -q2"
 # If a directory is provided as an argument it sorts that instead.
 function ds () { du -sh "${1-.}"/* | sort -hr ; }
 
-# Command line head / tail shortcuts
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g C="| column -t"
-alias -g L="| less"
-alias -g M="| most"
-alias -g LL="2>&1 | less"
-alias -g CA="2>&1 | cat -A"
-alias -g NE="2> /dev/null"
-alias -g NUL="> /dev/null 2>&1"
-alias -g P="2>&1| pygmentize -l pytb"
-alias -g S="sudo"
+# Command line head / tail shortcuts (only work on zsh)
+if [[ -n "$ZSH" && ! -n "$BASH" ]]; then
+    alias -g H='| head'
+    alias -g T='| tail'
+    alias -g G='| grep'
+    alias -g C="| column -t"
+    alias -g L="| less"
+    alias -g M="| most"
+    alias -g LL="2>&1 | less"
+    alias -g CA="2>&1 | cat -A"
+    alias -g NE="2> /dev/null"
+    alias -g NUL="> /dev/null 2>&1"
+    alias -g P="2>&1| pygmentize -l pytb"
+    alias -g S="sudo"
+fi
 
 alias free="free -mt"
 alias ps="ps auxf"
@@ -78,14 +80,17 @@ alias open='mimeo'
 alias pm='pacman'
 alias apm='apacman'
 alias rg="ranger"
-tree() { command tree --charset UTF8 -C "$@" | less -RXF }
+tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
 alias less="less -x4SRFX"
 alias grep_search="grep -Eirn " # extended regex, recursive, ignore case, show line number
-alias ack='ack -i --follow'
-alias ag='ag -fi --hidden --numbers --column --stats'
+alias ack="ack -i --follow"
+alias ag="ag -fi --hidden --numbers --column --stats"
 alias sysinfo='inxi -Fzx'
 alias s="nocorrect git status"
 alias exit='history -c; exit'
+
+# source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.
+alias take_webcam_picture="ffmpeg -y -r 1 -t 3 -f video4linux2 -s sxga -i /dev/video0 -vframes 1 ~/webcam-$(date +%m_%d_%Y_%H_%M).jpeg"
 
 ## Navigation just in case:
 # cd and ls in one. It changes directory to the first argument given (else to $HOME)
@@ -99,9 +104,9 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cd..="cd .."
 #alias cd="cl"
-cd() { builtin cd "$@" && _truncated_ls }
-popd() { builtin popd "$@" && _truncated_ls }
-pushd() { builtin pushd "$@" && _truncated_ls }
+cd() { builtin cd "$@" && _truncated_ls; }
+popd() { builtin popd "$@" && _truncated_ls; }
+pushd() { builtin pushd "$@" && _truncated_ls; }
 
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
@@ -165,7 +170,9 @@ alias matrix="tr -c \"[:digit:]\" \" \" < /dev/urandom | dd cbs=\"$COLUMNS\" con
 alias binclock="watch -n 1 'echo \"obase=2;\`date +%s\`\" | bc'"
 alias lotto="shuf -i 1-49 | head -n6 | sort -n | xargs" # randomizer
 
-alias moo='fortune -ea | cowsay -f small -e oQ'
+# if cowsay exists && fortune exists then -> moo
+alias moo="command -v cowsay >/dev/null 2>&1 && command -v fortune >/dev/null 2>&1 && fortune -ea | cowsay -f small -e oQ"
+
 alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
 
 # compress/optimize
@@ -215,3 +222,4 @@ fi
 alias patchfile="patch < "
 alias patchdir="patch -p1 < "
 alias patchundo="patch -p1 -R < "
+

@@ -62,12 +62,15 @@ user_pref("media.webspeech.recognition.enable",			true);
 // http://forums.mozillazine.org/viewtopic.php?p=13876331&sid=811f876b0a8869c2e5b81e059d72f264#p13876331
 user_pref("browser.newtabpage.enhanced",			false);
 user_pref("browser.newtab.preload",				false);
+// https://wiki.mozilla.org/Tiles/Technical_Documentation#Ping
+user_pref("browser.newtabpage.directory.ping",          "");
 
 // http://kb.mozillazine.org/Browser.send_pings
 user_pref("browser.send_pings",					false);
 
 // http://kb.mozillazine.org/Network.dns.disablePrefetch
 user_pref("network.dns.disablePrefetch",			true);
+user_pref("network.dns.disablePrefetchFromHTTPS",       true);
 
 // disable gamepad input
 // http://www.w3.org/TR/gamepad/
@@ -129,9 +132,6 @@ user_pref("browser.download.manager.retention",		0);
 
 // https://wiki.mozilla.org/Privacy/Reviews/New_Tab
 user_pref("browser.newtabpage.enabled",			false);
-
-// CIS Version 1.2.0 October 21st, 2011 2.2.2 Enable Warning of Loading Mixed Content
-user_pref("security.warn_viewing_mixed",		true);
 
 // CIS Version 1.2.0 October 21st, 2011 2.2.3 Enable Warning of Using Weak Encryption
 user_pref("security.warn_entering_weak",		true);
@@ -377,5 +377,23 @@ user_pref("network.http.max-persistent-connections-per-server", 5);
 user_pref("network.http.pipelining", true);
 user_pref("network.http.pipelining.maxrequests", 8);
 
+// https://support.mozilla.org/en-US/kb/certificate-pinning-reports
+//
+// we could also disable security.ssl.errorReporting.enabled, but I think it's
+// good to leave the option to report potentially malicious sites if the user
+// chooses to do so.
+//
+// you can test this at https://pinningtest.appspot.com/
+user_pref("security.ssl.errorReporting.automatic",      false);
 
+user_pref("app.support.baseURL", "");
+user_pref("app.update.url", "");
+user_pref("browser.aboutHomeSnippets.updateUrl", "");
+user_pref("extensions.getAddons.get.url", "");
+user_pref("extensions.getAddons.getWithPerformance.url", "");
+user_pref("extensions.update.background.url", "");
+
+// disable sensor API
+// https://wiki.mozilla.org/Sensor_API
+user_pref("device.sensors.enabled",                false);
 
