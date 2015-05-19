@@ -1,8 +1,13 @@
 # do not bell on tab-completion
-set bell-style none
+set bell-style none # Options: none, visible, audible
+
+# Adds punctuation as word delimiters
+set bind-tty-special-chars off
 
 # completion doesnt care about case
 set completion-ignore-case on
+
+set page-completions on
 
 # Adding this will result in a character being appended to
 # any file-names returned by completion, in much the same
@@ -13,6 +18,9 @@ set visible-stats on
 # key twice to produce a list of all possible completions.
 # A single <Tab> will suffice.
 set show-all-if-ambiguous on
+
+# List immediately, don't bell if ambigous.
+set show-all-if-unmodified on
 
 # Completed names which are symbolic links to
 # directories have a slash appended.
@@ -35,6 +43,12 @@ set visible-stats on
 set skip-completed-text on
 
 # Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# Fix for accents input with UTF-8.
+set meta-flag on
 set input-meta on
 set output-meta on
 set convert-meta off

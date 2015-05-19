@@ -50,12 +50,15 @@ HIST_STAMPS="dd.mm.yyyy"
 export HISTCONTROL="erasedups:ignoreboth"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git sudo adb archlinux command-not-found git-extras python dircycle colored-man iwhois systemd vundle rsync zsh-syntax-highlighting-filetypes nmap httpie)
+plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap httpie)
 
 source $ZSH/oh-my-zsh.sh
 
 # Make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+# cd will never select the parent directory (e.g.: cd ../<TAB>):
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 # User configuration
 
@@ -74,14 +77,17 @@ unalias exit
 # enable syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-setopt notify nohashdirs autocd correctall globdots hist_ignore_all_dups hist_ignore_space noclobber automenu menucomplete \
-        completealiases pathdirs cdable_vars checkjobs dotglob  histverify histappend pushdignoredups \
+# check zshoptions to see what these do
+setopt notify nohashdirs auto_cd globdots hist_ignore_all_dups noclobber auto_menu menu_complete \
+        complete_aliases pathdirs cdable_vars checkjobs dotglob  histverify histappend pushd_ignore_dups \
         prompt_subst rm_starsilent share_history complete_in_word nohup
 
 setopt autopushd # Make cd act like pushd instead, letting us use popd to go back
 setopt inc_append_history # Add comamnds as they are typed, don't wait until shell exit
 
 unsetopt share_history # oh-my-zsh sets this, I don't want it.
+unsetopt correct
+
 
 # get notified when someone logs in
 watch=all                       # watch all logins

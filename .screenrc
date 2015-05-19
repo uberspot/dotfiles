@@ -9,4 +9,10 @@ hardstatus alwayslastline "%{= kr} %-Lw%{=b wk} %n%f %t %{-}%+Lw %=%{= dd} %{+b 
 
 vbell off
 
-defscrollback 10000
+defscrollback 10000       # Makes the default scroll back large.
+
+defutf8 on                # Make UTF-8 encoding default.
+altscreen on              # Use alternate screen to clean exit out of vim.
+autodetach on             # Detach on hang-up.
+nonblock on               # Do not block when a program freezes.
+

@@ -1,5 +1,13 @@
 --type-set=xresources=.Xresources,.Xcolor
 --type-set=stumpwm=.stump,.stumpdump,.dump
+--type-set
+log=.log
+--type-set
+django=.py,.html
+--type-set
+less=.less
+--type-set
+front=.html,.js,.less,.css
 
 --cc
 #--clojure
@@ -10,7 +18,7 @@
 #--hh
 #--html
 #--lua
-#--make
+--make
 #--mason
 #--perl
 --python

@@ -4,7 +4,7 @@ alias ls="ls -tr --color=auto -ha --group-directories-first"
 alias l="ls -lF"
 alias cp="cp -ir"
 alias mv="mv -i"
-alias ln='ln -i'
+alias ln="ln -i"
 #alias rm="rm -Ivr --preserve-root"
 alias rm="trash -v"
 alias du="du -ch"
@@ -13,20 +13,33 @@ alias ncdu="ncdu -q2"
 # If a directory is provided as an argument it sorts that instead.
 function ds () { du -sh "${1-.}"/* | sort -hr ; }
 
-# Command line head / tail shortcuts (only work on zsh)
+# Command line head / tail shortcuts (only works on zsh, double check for bash in case bash is called from a zsh shell)
 if [[ -n "$ZSH" && ! -n "$BASH" ]]; then
-    alias -g H='| head'
-    alias -g T='| tail'
-    alias -g G='| grep'
+    # Global aliases
+
+    alias -g H="| head"
+    alias -g T="| tail"
+    alias -g G="| grep"
     alias -g C="| column -t"
     alias -g L="| less"
     alias -g M="| most"
-    alias -g LL="2>&1 | less"
+    alias -g LE="2>&1 | less"
     alias -g CA="2>&1 | cat -A"
-    alias -g NE="2> /dev/null"
+    alias -g NULE="2> /dev/null"
     alias -g NUL="> /dev/null 2>&1"
-    alias -g P="2>&1| pygmentize -l pytb"
-    alias -g S="sudo"
+    alias -g P="2>&1 | pygmentize -l pytb"
+    alias -g S="sudo "
+    alias -g GS="grep_search "
+
+    # Suffix aliases
+
+    alias -s md=vim
+    alias -s conf=vim
+    alias -s txt=vim
+    alias -s jpg=open
+    alias -s png=open
+    alias -s pdf=open
+    alias -s gif=open
 fi
 
 alias free="free -mt"
@@ -47,21 +60,21 @@ function cp_with_dirstruct() {
 
 # needed because the shell checks only the first word of a command for an alias so
 # "sudo somealias" won't work if sudo isn't also an alias
-alias sudo='sudo '
+alias sudo="sudo "
 
 alias fn="find . -iname "
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
+alias fd="find . -type d -name"
+alias ff="find . -type f -name"
 # finds duplicate files in the current folder by checking size first and then md5 hash
 alias fdupes="fdupes -dn -r "
 
 alias df="df -Tha --total"
 alias h="history"
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+alias chown="chown --preserve-root"
+alias chmod="chmod --preserve-root"
+alias chgrp="chgrp --preserve-root"
 alias cls=' echo -ne "\033c"'
-alias chmodXfolders='find . -type d -exec chmod g+x {} \;'
+alias chmodXfolders="find . -type d -exec chmod g+x {} \;"
 # Coloured df
 alias disks='df -ha |\
              sed -e "s_/dev/sda[1-9]_\x1b[35m&\x1b[0m_" |\
@@ -76,18 +89,18 @@ alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use 
 
 # time since installation based on oldest pacman.log entry.
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
-alias open='mimeo'
-alias pm='pacman'
-alias apm='apacman'
+alias open="mimeo"
+alias pm="pacman"
+alias apm="apacman"
 alias rg="ranger"
 tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
 alias less="less -x4SRFX"
-alias grep_search="grep -Eirn " # extended regex, recursive, ignore case, show line number
+alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show line number
 alias ack="ack -i --follow"
 alias ag="ag -fi --hidden --numbers --column --stats"
-alias sysinfo='inxi -Fzx'
+alias sysinfo="inxi -Fzx"
 alias s="nocorrect git status"
-alias exit='history -c; exit'
+alias exit="history -c; exit"
 
 # source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.
 alias take_webcam_picture="ffmpeg -y -r 1 -t 3 -f video4linux2 -s sxga -i /dev/video0 -vframes 1 ~/webcam-$(date +%m_%d_%Y_%H_%M).jpeg"
@@ -139,7 +152,7 @@ alias sharedironlan="python -m SimpleHTTPServer 8080" # share the current dir fr
 alias net_listening_connections="lsof -Panl -i tcp -i udp" # show listening connections
 alias net="netstat -alputen"
 alias net_resolve="netstat -alpute"
-alias net_openports='netstat -nape --inet' # display open ports
+alias net_openports="netstat -nape --inet" # display open ports
 
 # SSH
 alias ssh="$HOME/.extra/ssh-ident/ssh-ident"
@@ -160,7 +173,7 @@ alias chromium="chromium --enable-seccomp-sandbox --memory-model=low --purge-mem
 alias mutt="dtach -A $HOME/.mutt/mutt.session mutt"
 alias netbeans="netbeans --laf com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 alias sscrot="scrot -s /tmp/shot.png"
-alias curlpaste='curlpaste -p -e ca '
+alias curlpaste="curlpaste -p -e ca "
 
 # fortune equality
 alias fortune="fortune -e -a"
@@ -173,11 +186,9 @@ alias lotto="shuf -i 1-49 | head -n6 | sort -n | xargs" # randomizer
 # if cowsay exists && fortune exists then -> moo
 alias moo="command -v cowsay >/dev/null 2>&1 && command -v fortune >/dev/null 2>&1 && fortune -ea | cowsay -f small -e oQ"
 
-alias mineall='minerd -t 2 --url=stratum+tcp://eu.multipool.us:7777 --userpass=cypha.4:x'
-
 # compress/optimize
-alias compresspdf='gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile='
-alias removeexif='mogrify -strip'
+alias compresspdf="gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile="
+alias removeexif="mogrify -strip"
 alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a libmp3lame -ar 44100 -ac 2 -ab 192k "${f/%mp4/mp3}"; done'
 alias optimizepngsindir='find . -iname "*.png" | xargs optipng -o2 -preserve'
 alias optimizejpgsindir='find . -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim --strip-all'
@@ -185,15 +196,17 @@ alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 
 alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert -resize 70% $i $i; done'
 
 ## Update related
-alias upz='apacman -Syyu'
-alias cleanz='pacman -Sc'
-alias listdeps='pacman -Qdt' # lists unused dependencies/leftover packages
+alias upz="apacman -Syu"
+alias cleanz="pacman -Sc"
+alias listdeps="pacman -Qdt" # lists unused dependencies/leftover packages
 alias listallpacks="apacman -L" #pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
 alias listallexplpacks="pacman -Qeq" # list all explicitly installed packages
-alias updatemirrors='reflector --verbose --country Germany -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist'
-alias restartdns='pdnsd-ctl empty-cache && /etc/rc.d/pdnsd restart'
-alias jerror='journalctl -b -p err'
-alias updategitextras='(cd /tmp && rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)'
+alias updatemirrors="reflector --verbose --country Germany -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+alias journalctl_error="journalctl -b -p err"
+alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
+
+alias updategitextras="(cd /tmp && rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)"
+
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
 function updateall(){
     git supdateall && echo "\nSubmodules of dotfiles updated\n";
@@ -208,10 +221,10 @@ function updateall(){
 
 
 # fasd stuff
-alias c='fasd_cd -d' # quick directory jump
-alias v='f -t -e vim -b viminfo' # quick opening files with vim
-alias sm='f -e smplayer' # quick opening files with mplayer
-alias o='a -e xdg-open' # quick opening files with xdg-open
+alias c="fasd_cd -d" # quick directory jump
+alias v="f -t -e vim -b viminfo" # quick opening files with vim
+alias sm="f -e smplayer" # quick opening files with mplayer
+alias o="a -e xdg-open" # quick opening files with xdg-open
 
 # ack is shorter than ack-grep
 if ! type ack > /dev/null; then # Some systems already define `ack`

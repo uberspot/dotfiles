@@ -55,8 +55,6 @@ user_pref("dom.event.clipboardevents.enabled",			false);
 // Webpages will not be able to affect the right-click menu
 //user_pref("dom.event.contextmenu.enabled",			false);
 
-user_pref("media.webspeech.recognition.enable",			true);
-
 // Disable new tab tile ads & preload
 // http://www.thewindowsclub.com/disable-remove-ad-tiles-from-firefox
 // http://forums.mozillazine.org/viewtopic.php?p=13876331&sid=811f876b0a8869c2e5b81e059d72f264#p13876331
@@ -64,6 +62,7 @@ user_pref("browser.newtabpage.enhanced",			false);
 user_pref("browser.newtab.preload",				false);
 // https://wiki.mozilla.org/Tiles/Technical_Documentation#Ping
 user_pref("browser.newtabpage.directory.ping",          "");
+user_pref("browser.pocket.enabled", false);
 
 // http://kb.mozillazine.org/Browser.send_pings
 user_pref("browser.send_pings",					false);
@@ -71,6 +70,13 @@ user_pref("browser.send_pings",					false);
 // http://kb.mozillazine.org/Network.dns.disablePrefetch
 user_pref("network.dns.disablePrefetch",			true);
 user_pref("network.dns.disablePrefetchFromHTTPS",       true);
+
+// https://wiki.mozilla.org/Privacy/Reviews/Necko
+user_pref("network.predictor.enabled",              false);
+
+// https://wiki.mozilla.org/Security/Reviews/Firefox/NavigationTimingAPI
+user_pref("dom.enable_performance",             false);
+user_pref("media.webspeech.recognition.enable", false);
 
 // disable gamepad input
 // http://www.w3.org/TR/gamepad/
@@ -270,13 +276,9 @@ user_pref("security.ssl3.ecdhe_ecdsa_aes_256_sha",	true);
 user_pref("security.ssl3.ecdhe_ecdsa_aes_128_gcm_sha256",	true);
 user_pref("security.ssl3.ecdhe_rsa_aes_128_gcm_sha256",		true);
 
-/* ciphers with DHE and > 128bits
- * des-ede3 = 168 bits
- */
-user_pref("security.ssl3.dhe_rsa_camellia_256_sha",	true);
-//user_pref("security.ssl3.dhe_dss_camellia_256_sha",	true);
-user_pref("security.ssl3.dhe_rsa_aes_256_sha",		true);
-//user_pref("security.ssl3.dhe_dss_aes_256_sha",		true);
+/* susceptible to the logjam attack – https://weakdh.org/  */
+user_pref("security.ssl3.dhe_rsa_camellia_256_sha",	false);
+user_pref("security.ssl3.dhe_rsa_aes_256_sha",	false);
 
 // ciphers with DSA (max 1024 bits)
 user_pref("security.ssl3.dhe_dss_aes_128_sha",		false);
@@ -285,10 +287,8 @@ user_pref("security.ssl3.dhe_dss_camellia_128_sha",	false);
 user_pref("security.ssl3.dhe_dss_camellia_256_sha",	false);
 user_pref("security.ssl3.dhe_dss_des_ede3_sha",		false);
 
-/* fallbacks
- */
+/* fallbacks */
 user_pref("security.ssl3.rsa_aes_256_sha",		true);
-// CloudFront
 user_pref("security.ssl3.rsa_aes_128_sha",		true);
 
 /*
@@ -397,3 +397,7 @@ user_pref("extensions.update.background.url", "");
 // https://wiki.mozilla.org/Sensor_API
 user_pref("device.sensors.enabled",                false);
 
+user_pref("browser.devedition.theme.enabled", true);
+user_pref("devtools.theme". "light");
+user_pref("browser.altClickSave", true);
+user_pref("browser.urlbar.trimURLs", false);

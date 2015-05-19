@@ -78,12 +78,10 @@
     findcommitswithcommitmessage = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
     # some resets without explanation
-    r = reset
-    r1 = reset HEAD^
-    r2 = reset HEAD^^
-    rh = reset --hard
-    rh1 = reset HEAD^ --hard
-    rh2 = reset HEAD^^ --hard
+    unadd = reset --mixed
+    uncommit = reset --soft
+    undo = reset --hard
+    unstage = reset
 
     # basic shortcuts
     cp = cherry-pick
@@ -143,6 +141,8 @@
     editor = vim
     autocrlf = input
     quotepath = false
+    legacyheaders = false
+	filemode = false
 
 # QuickNote: To modify an old commit
 # You can use git rebase

@@ -4,3 +4,8 @@ set $COLOR_REGVAL = $YELLOW
 set $COLOR_REGVAL_MODIFIED  = $RED
 set $COLOR_SEPARATOR = $BLUE
 set $COLOR_CPUFLAGS = $CYAN
+
+set history save on
+set history size 100000
+set history filename ~/.cache/gdb_hist
+set print pretty on

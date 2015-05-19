@@ -38,6 +38,10 @@ export PATH="$HOME/.extra/bin/:/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin
 
 [  "$UID" = "0" ] && export PATH="$PATH:/root/scripts"
 
+# source env variables from android sdk and ndk
+source /etc/profile.d/android-sdk.sh
+source /etc/profile.d/android-ndk.sh
+
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
 else

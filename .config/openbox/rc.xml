@@ -309,6 +309,15 @@
           </startupnotify>
       </action>
   </keybind>
+  <keybind key="W-m">
+      <action name="Execute">
+          <command>/usr/bin/thunderbird</command>
+          <startupnotify>
+              <enabled>yes</enabled>
+              <name>Thunderbird</name>
+          </startupnotify>
+      </action>
+  </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <command>subl</command>
@@ -318,7 +327,7 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="W-m">
+    <keybind key="W-k">
       <action name="Execute">
         <command>smplayer</command>
         <startupnotify>
