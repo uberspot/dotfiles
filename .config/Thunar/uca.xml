@@ -87,4 +87,13 @@
 	<patterns>*</patterns>
 	<image-files/>
 </action>
+<action>
+	<icon>gtk3-demo</icon>
+	<name>Remove exif</name>
+	<unique-id>1433635931856044-2</unique-id>
+	<command>for file in %F; do mogrify -strip &quot;$file&quot;; done</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>

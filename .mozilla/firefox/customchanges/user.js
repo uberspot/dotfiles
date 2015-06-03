@@ -36,10 +36,6 @@ user_pref("network.proxy.socks_remote_dns",		true);
 // We change it to direct connection
 user_pref("network.proxy.type", 0);
 
-// DO NOT consult a third-party provider to determine whether a site is phishy
-// http://kb.mozillazine.org/Browser.safebrowsing.remoteLookups
-user_pref("browser.safebrowsing.remoteLookups",		false);
-
 // disable sending of the health report
 // https://support.mozilla.org/en-US/kb/firefox-health-report-understand-your-browser-perf
 user_pref("datareporting.healthreport.uploadEnabled",	false);
@@ -127,6 +123,9 @@ user_pref("network.http.sendSecureXSiteReferrer",		false);
  ******************************************************************************/
 
 user_pref("privacy.clearOnShutdown.downloads",		true);
+
+// https://bugzil.la/238789#c19
+user_pref("browser.helperApps.deleteTempFileOnExit",    true);
 
 // CIS Version 1.2.0 October 21st, 2011 2.5.5 Delete Download History
 // Zero (0) is an indication that no download history is retained for the current profile.

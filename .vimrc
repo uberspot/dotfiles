@@ -265,6 +265,9 @@ nnoremap Q :q
 nnoremap WQ :wq
 nnoremap X :x
 
+" F passes whole file from xml identation formatting
+nnoremap F :%!xmllint --format -
+
 " Remap VIM = to first non-blank character
 map = ^
 
