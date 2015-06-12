@@ -125,6 +125,15 @@
 
     # Untrack a file
     untrack = rm --cache --
+    
+    # Inject a change/ammendement to an older commit. E.g.:
+    # git inject <commit-ref> <patch-ref>
+    # git inject HEAD^^ -a # inject all work-dir modifications
+    # git inject a28kd8 -p # interactively select patches to inject
+    # git inject HEAD~4 file1 # inject the modifications in file1
+    # OR add a new commit and do `git rebase -i` to re-order and squash the two commits together
+    inject = "!f() { set -e; local HASH=$(git show $1 --pretty=format:\"%H\" -q); shift; git commit -m \"fixup! $HASH\" \"$@\"; [ -n \"$(git diff-files)\" ] && git stash && local DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+
 [push]
     default = current
 [status]
