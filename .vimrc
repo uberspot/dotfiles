@@ -212,11 +212,11 @@ set pastetoggle=<F2>
 
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala,javascript      let b:comment_leader = '// '
-autocmd FileType sh,ruby,python,make   let b:comment_leader = '# '
-autocmd FileType conf,fstab,sysctl     let b:comment_leader = '# '
-autocmd FileType tex                   let b:comment_leader = '% '
-autocmd FileType mail                  let b:comment_leader = '> '
-autocmd FileType vim                   let b:comment_leader = '" '
+autocmd FileType sh,ruby,python,make              let b:comment_leader = '# '
+autocmd FileType conf,fstab,sysctl                let b:comment_leader = '# '
+autocmd FileType tex                              let b:comment_leader = '% '
+autocmd FileType mail                             let b:comment_leader = '> '
+autocmd FileType vim                              let b:comment_leader = '" '
 noremap <F7> :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <F8> :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
@@ -225,7 +225,7 @@ nnoremap <F9> :set number!<CR>
 map <leader>n :set number!<CR>
 map <F3> :retab <CR> :w <CR>
 
-" Remove trailing whitespace by pressing t && s keys
+" Remove trailing whitespaces
 map <F4> :%s/\s\+$//e<enter> :w<enter>
 
 " Ask for sudo password when editing a read-only file
@@ -234,31 +234,60 @@ cmap w!! %!sudo tee > /dev/null %
 " Search and replace word under cursor using F6
 nnoremap <F6> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
 
-" Remap leader key to ,
-let mapleader = ","
+" Remap leader key to space
+let mapleader = "\<Space>"
+" let mapleader = ","
 
-" Open ag.vim
-nnoremap <leader>a :Ag
+" Open ag.vim with <leader> + s(earch)
+nnoremap <leader>s :Ag
 
 " Map toggling of folds to space
 nnoremap <space> za
 vnoremap <space> zf
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nnoremap <leader>w :w!<cr>
+
+" Fast quit
+nnoremap <leader>q :q<cr>
+
+" Open files
+nnoremap <Leader>o :CtrlP<CR>
+
+" Copy & paste to system clipboard with <Space>p and <Space>y:
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Enter visual line mode with <Space><Space>:
+nmap <Leader><Leader> V
+
+" Easier search-and-replace
+" Search things usual way using /something
+" Hit cs, replace first match, and hit <Esc>
+" Hit n.n.n.n.n. reviewing and replacing all matches
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
+" Enter to go to end of file
+nnoremap <leader><CR> G
+" Backspace to go to beginning of file
+nnoremap <leader><BS> gg
 
 " Move between buffers easily
-nmap <C-n> :bnext<CR>
-nmap <C-m> :bprev<CR>
-
-" Map <F5> to / (search)
-map <F5> /
+nmap <leader>n :bnext<CR>
+nmap <leader>m :bprev<CR>
 
 "Map to display the list of buffers
-map <F10> :ls<CR>
+map <leader>b :ls<CR>
 
 " ctrl-h show command history
-nnoremap <C-h> q:
+nnoremap <leader>h q:
+
 " and q: exits instead of showing command history
 nnoremap q: :q
 nnoremap Q :q
@@ -266,14 +295,14 @@ nnoremap WQ :wq
 nnoremap X :x
 
 " F passes whole file from xml identation formatting
-nnoremap F :%!xmllint --format -
+nnoremap <leader>xml :%!xmllint --format -
 
 " Remap VIM = to first non-blank character
 map = ^
 
 "make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
+nnoremap <leader>l :nohls<CR><C-L>
+inoremap <leader>l <C-O>:nohls<CR>
 
 " fix mistyping of :W, :Q etc and turn it to :w, :q etc
 if has("user_commands")
@@ -381,3 +410,17 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" Use git or silver searcher for CTRL+P autocompletion
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
+
