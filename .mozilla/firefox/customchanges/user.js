@@ -40,6 +40,9 @@ user_pref("network.proxy.type", 0);
 // https://support.mozilla.org/en-US/kb/firefox-health-report-understand-your-browser-perf
 user_pref("datareporting.healthreport.uploadEnabled",	false);
 
+// disable collection of the data (the healthreport.sqlite* files)
+user_pref("datareporting.healthreport.service.enabled", false);
+
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
 user_pref("dom.battery.enabled",				false);
 // https://wiki.mozilla.org/WebAPI/Security/WebTelephony

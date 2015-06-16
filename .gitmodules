@@ -16,3 +16,6 @@
 [submodule ".extra/ssh-ident"]
 	path = .extra/ssh-ident
 	url = https://github.com/ccontavalli/ssh-ident.git
+[submodule ".extra/zsh_custom/plugins/git-extra-commands"]
+	path = .extra/zsh_custom/plugins/git-extra-commands
+	url = https://github.com/unixorn/git-extra-commands.git

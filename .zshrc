@@ -50,7 +50,7 @@ HIST_STAMPS="dd.mm.yyyy"
 export HISTCONTROL="erasedups:ignoreboth"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap httpie)
+plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap httpie git-extra-commands)
 
 source $ZSH/oh-my-zsh.sh
 

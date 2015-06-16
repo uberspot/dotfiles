@@ -206,7 +206,7 @@ alias updatemirrors="reflector --verbose --country Germany -l 200 -p http --sort
 alias journalctl_error="journalctl -b -p err"
 alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
 
-alias updategitextras="(cd /tmp && rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && cd git-extras && sudo make install)"
+alias updategitextras="(\cd /tmp && \rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && \cd git-extras && sudo make install)"
 
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
 function updateall(){

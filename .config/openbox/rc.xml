@@ -689,9 +689,12 @@
       </position>
       <maximized>Vertical</maximized>
     </application>
-    <application name="Telegram">
+    <application name="telegram">
       <desktop>2</desktop>
-    </application>
+  </application>
+  <application class="Thunderbird">
+    <desktop>1</desktop>
+  </application>
     <application name="Pidgin">
       <desktop>2</desktop>
   </application>
