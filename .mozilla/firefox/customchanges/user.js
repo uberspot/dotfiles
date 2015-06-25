@@ -134,6 +134,10 @@ user_pref("browser.helperApps.deleteTempFileOnExit",    true);
 // Zero (0) is an indication that no download history is retained for the current profile.
 user_pref("browser.download.manager.retention",		0);
 
+// https://wiki.mozilla.org/SVGOpenTypeFonts
+// the iSEC Partners Report recommends to disable this
+user_pref("gfx.font_rendering.opentype_svg.enabled",       false);
+
 /******************************************************************************
  * UI related                                                                 *
  ******************************************************************************/
@@ -327,8 +331,6 @@ user_pref("browser.geolocation.warning.infoURL", "");
 user_pref("browser.newtab.url", "about:blank");
 user_pref("browser.safebrowsing.downloads.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.enabled", false);
-user_pref("browser.safebrowsing.enabled", false);
-user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.updateURL", "");
 user_pref("browser.search.countryCode", "US");
 user_pref("browser.search.geoSpecificDefaults", false);

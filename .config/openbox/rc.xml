@@ -682,7 +682,7 @@
     </application>
     <!-- Force terminals to appear on top and on the right of the conky -->
     <application name="terminator">
-        <desktop>1</desktop>
+      <desktop>1</desktop>
       <position force="yes">
         <x>200</x>
         <y>0</y>
@@ -691,15 +691,20 @@
     </application>
     <application name="telegram">
       <desktop>2</desktop>
-  </application>
-  <application class="Thunderbird">
-    <desktop>1</desktop>
-  </application>
+    </application>
+    <application class="Thunderbird">
+      <desktop>1</desktop>
+      <position force="yes">
+        <x>200</x>
+        <y>0</y>
+      </position>
+      <maximized>Vertical</maximized>
+    </application>
     <application name="Pidgin">
       <desktop>2</desktop>
-  </application>
-  <application class="Firefox">
+    </application>
+    <application class="Firefox">
       <desktop>1</desktop>
-  </application>
+    </application>
   </applications>
 </openbox_config>

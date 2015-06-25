@@ -247,9 +247,12 @@ vnoremap <space> zf
 
 " Fast saving
 nnoremap <leader>w :w!<cr>
+nnoremap <leader>wq :wq!<cr>
+nnoremap <leader>w11 :w!!<cr>
 
 " Fast quit
 nnoremap <leader>q :q<cr>
+nnoremap <leader>q1 :q!<cr>
 
 " Open files
 nnoremap <Leader>o :CtrlP<CR>
