@@ -99,7 +99,7 @@ alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show li
 alias ack="ack -i --follow"
 alias ag="ag -fi --hidden --numbers --column --stats"
 alias sysinfo="inxi -Fzx"
-alias s="nocorrect git status"
+alias s="[ -d \".repo\" ] && nocorrect repo status  ||  nocorrect git status"
 alias exit="history -c; exit"
 
 # source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.

@@ -684,7 +684,7 @@
     <application name="terminator">
       <desktop>1</desktop>
       <position force="yes">
-        <x>200</x>
+        <x>210</x>
         <y>0</y>
       </position>
       <maximized>Vertical</maximized>
@@ -695,7 +695,7 @@
     <application class="Thunderbird">
       <desktop>1</desktop>
       <position force="yes">
-        <x>200</x>
+        <x>210</x>
         <y>0</y>
       </position>
       <maximized>Vertical</maximized>

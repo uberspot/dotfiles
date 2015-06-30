@@ -5,6 +5,12 @@ filetype off
 " Strip trailing whitespace in specific filetypes
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
+" Set syntax highlighting for specific file types
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" Enable spellchecking for Markdown
+autocmd FileType markdown setlocal spell
+
 " Setup statusline
 set laststatus=2
 
@@ -254,19 +260,22 @@ nnoremap <leader>w11 :w!!<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>q1 :q!<cr>
 
+" Fast escape in insert mode
+inoremap <leader>ee <ESC>
+
 " Open files
-nnoremap <Leader>o :CtrlP<CR>
+nnoremap <leader>o :CtrlP<CR>
 
 " Copy & paste to system clipboard with <Space>p and <Space>y:
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
 
 " Enter visual line mode with <Space><Space>:
-nmap <Leader><Leader> V
+nmap <leader><leader> V
 
 " Easier search-and-replace
 " Search things usual way using /something
@@ -300,10 +309,13 @@ nnoremap X :x
 " F passes whole file from xml identation formatting
 nnoremap <leader>xml :%!xmllint --format -
 
+" Run commands that require an interactive shell
+nnoremap <leader>run :RunInInteractiveShell<space>
+
 " Remap VIM = to first non-blank character
 map = ^
 
-"make <c-l> clear the highlight as well as redraw
+"make <leader-l> clear the highlight as well as redraw
 nnoremap <leader>l :nohls<CR><C-L>
 inoremap <leader>l <C-O>:nohls<CR>
 
@@ -399,7 +411,7 @@ call vundle#end()
 filetype plugin indent on
 
 " NerdTree conf
-map <C-D> :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 
 " autoclose when nerdtree is the only window left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -419,7 +431,10 @@ let g:ctrlp_use_caching = 0
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+
 else
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
   let g:ctrlp_prompt_mappings = {

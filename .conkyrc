@@ -1,117 +1,86 @@
-######################
-# - Conky settings - #
-######################
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
 
-update_interval 1
-total_run_times 0
-net_avg_samples 2
-cpu_avg_samples 2
-if_up_strictness link
+conky.config = {
+    alignment = 'top_left',
+    total_run_times = 0,
+    background = true,
+    border_width = 0,
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+	default_color = 'lightgray',
+    default_outline_color = 'gray',
+    default_shade_color = 'gray',
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'sans-serif:normal:size=9',
+    xftalpha = 0.8,
+    uppercase = false,
+    gap_x = 10,
+    gap_y = 8,
+    minimum_height = 5,
+	minimum_width = 200,
+	maximum_width = 200,
+    if_up_strictness = 'link',
+    imlib_cache_size = 0,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour = 'black',
+    own_window_argb_visual = true,
+    own_window_argb_value = 255,
+    own_window_type = 'desktop',
+    own_window_transparent = true,
+    stippled_borders = 0,
+    update_interval = 2.0,
+    uppercase = false,
+    text_buffer_size = 2048,
+    use_spacer = 'right',
+    show_graph_scale = false,
+    show_graph_range = false
+}
 
-imlib_cache_size 0
-double_buffer yes
-no_buffers yes
+conky.text = [[
 
-format_human_readable
-
-#####################
-# - Text settings - #
-#####################
-uppercase no
-override_utf8_locale no
-use_xft yes
-xftfont sans-serif:normal:size=9
-xftalpha 1
-text_buffer_size 2048
-
-#############################
-# - Window specifications - #
-#############################
-own_window_class Conky
-own_window yes
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_colour black
-own_window_argb_visual yes
-own_window_argb_value 255
-own_window_type desktop
-own_window_transparent yes
-
-background yes
-minimum_size 180 5
-maximum_width 180
-alignment tl
-gap_x 10
-gap_y 8
-
-#########################
-# - Graphics settings - #
-#########################
-
-draw_shades no
-draw_outline no
-draw_borders no
-draw_graph_borders no
-default_color azure
-default_shade_color gray
-default_outline_color gray
-color1 AFBAC7
-color2 gray
-use_spacer right
-
-##############
-# - Output - #
-##############
-
-TEXT
-############
-# - DATE - #
-############
-${font size=12}$alignc${color1}$nodename${color}
+${font size=12}$alignc$nodename
 ${font sans-serif:size=25}$alignc${time %H:%Mh}
 ${voffset -20}${font sans-serif:size=9}$alignc${time %A %d %b. %Y}
-
-##############
-# - SYSTEM - #
-##############
-${font sans-serif:bold:size=9}${color1}SYSTEM ${color} ${hr 2}
-${font}$sysname $kernel $alignr $machine
+${hr}
+$sysname $kernel $alignr $machine
 Uptime:$alignr$uptime
 Processes: $processes $alignr Temp:${acpitemp}C
 
-###########
-# - CPU - #
-###########
-${font sans-serif:bold:size=9}${color1}CPU ${color}${cpubar}
-${font}${top name 1} $alignr${top cpu 1} %
-${top name 2} $alignr${top cpu 2} %
-${top name 3} $alignr${top cpu 3} %
+${font sans-serif:bold:size=9}CPU $cpu% ${cpubar}
+RAM $mem/$memmax ${membar}
 
-###########
-# - RAM - #
-###########
-${font sans-serif:bold:size=9}${color1}RAM ${color}${membar}
-${font}${top_mem name 1}${alignr}${top mem 1} %
-${top_mem name 2}${alignr}${top mem 2} %
-${top_mem name 3}${alignr}${top mem 3} %
+Name                 CPU%  RAM%${font}
+${hr}
+${top_mem name 1}${alignr}${top cpu 1} %${top mem 1} %
+${top_mem name 2}${alignr}${top cpu 2} %${top mem 2} %
+${top_mem name 3}${alignr}${top cpu 3} %${top mem 3} %
 
-###########
-# - I/O - #
-###########
-${font sans-serif:bold:size=9}${color1}I/O ${color} ${hr 2}
+${font sans-serif:bold:size=9}I/O  ${hr}
 ${font}${top_io name 1}${alignr}${top_io io_perc 1} %
 ${top_io name 2}${alignr}${top_io io_perc 2} %
 ${top_io name 3}${alignr}${top_io io_perc 3} %
-
-###########
-# - NET - #
-###########
-${font sans-serif:bold:size=9}${color1}NET (wlan)${color} ${hr 2}
+${if_up wlan0}
+${font sans-serif:bold:size=9}NET (wlan0) ${hr}
 ${font}Down: $alignr${downspeed wlan0}/s (${totaldown wlan0})
 Up: $alignr${upspeed wlan0}/s (${totalup wlan0})
-
-${font sans-serif:bold:size=9}${color1}NET (eth0)${color} ${hr 2}
+Local IP: $alignr${addrs wlan0}${endif}
+${if_up eth0}${font sans-serif:bold:size=9}NET (eth0) ${hr}
 ${font}Down: $alignr${downspeed eth0}/s (${totaldown eth0})
 Up: $alignr${upspeed eth0}/s (${totalup eth0})
+Local IP: $alignr${addrs eth0}
+${endif}
+Battery: ${alignr} $battery_short  $battery_time
 
-Battery: $battery_short $alignr $battery_time
 
+]]
