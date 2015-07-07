@@ -194,6 +194,11 @@ user_pref("security.enable_tls_session_tickets",	false);
 user_pref("security.tls.version.min",			1);
 user_pref("security.tls.version.max",			3);
 
+// https://developer.mozilla.org/en-US/Firefox/Releases/38#Security
+// https://bugzil.la/1138882
+// https://rc4.io/
+user_pref("security.tls.unrestricted_rc4_fallback",    false);
+
 // disable SSLv3 (CVE-2014-3566)
 user_pref("security.enable_ssl3",			false);
 

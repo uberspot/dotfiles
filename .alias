@@ -237,3 +237,6 @@ alias patchfile="patch < "
 alias patchdir="patch -p1 < "
 alias patchundo="patch -p1 -R < "
 
+# docker
+# alias docker_remove_all_stopped_containers="docker rm $(docker ps -a -q)"
+# alias docker_remove_all_untagged_images='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
