@@ -6,7 +6,7 @@
 # ID 1
 rounded = 0
 border_width = 0
-background_color = #000000 41
+background_color = #000000 40
 border_color = #212121 0
 
 # Panel
@@ -86,7 +86,7 @@ tooltip_font = Source Code Pro 11
 tooltip_font_color = #FFFFFF 100
 
 # Mouse
-mouse_middle = toggle
+mouse_middle = desktop_right
 mouse_right = close
 mouse_scroll_up = toggle
 mouse_scroll_down = iconify

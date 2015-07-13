@@ -159,6 +159,7 @@ try
     colorscheme peaksea
 catch
 endtry
+
 if exists('+colorcolumn')
     set colorcolumn=+1 " next column after textwidth
     highlight ColorColumn ctermbg=red

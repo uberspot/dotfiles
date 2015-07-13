@@ -167,13 +167,13 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="W-o">
+    <keybind key="W-v">
       <action name="Execute">
-        <command>opera</command>
+        <command>vivaldi-preview</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <wmclass>opera</wmclass>
-          <name>opera</name>
+          <wmclass>vivaldi</wmclass>
+          <name>vivaldi</name>
         </startupnotify>
       </action>
     </keybind>
