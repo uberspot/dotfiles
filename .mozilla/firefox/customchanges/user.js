@@ -61,7 +61,11 @@ user_pref("browser.newtabpage.enhanced",			false);
 user_pref("browser.newtab.preload",				false);
 // https://wiki.mozilla.org/Tiles/Technical_Documentation#Ping
 user_pref("browser.newtabpage.directory.ping",          "");
+// Disable pocket completely
+user_pref("browser.pocket.api", "");
 user_pref("browser.pocket.enabled", false);
+user_pref("browser.pocket.enabledLocales", "");
+user_pref("browser.toolbarbuttons.introduced.pocket-button", false);
 
 // http://kb.mozillazine.org/Browser.send_pings
 user_pref("browser.send_pings",					false);
@@ -137,6 +141,9 @@ user_pref("browser.download.manager.retention",		0);
 // https://wiki.mozilla.org/SVGOpenTypeFonts
 // the iSEC Partners Report recommends to disable this
 user_pref("gfx.font_rendering.opentype_svg.enabled",       false);
+user_pref("gfx.font_rendering.cleartype_params.pixel_structure", 1);
+user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 5);
+user_pref("gfx.font_rendering.fallback.always_use_cmaps", true);
 
 /******************************************************************************
  * UI related                                                                 *

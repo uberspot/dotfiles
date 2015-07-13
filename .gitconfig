@@ -53,7 +53,7 @@
     syncupbr = !git stash && CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --prune upstream "$TARGET_BRANCH" && git stash pop
 
     # pretty one-line log with tags, branches and authors
-    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --all
     # a verbose ls, shows changed files too
     lsv = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --numstat
 
