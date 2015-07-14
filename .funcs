@@ -55,48 +55,6 @@ man() {
                         man "$@"
 }
 
-extract() {
-    local c e i
-
-    (($#)) || return
-
-    for i; do
-        c=''
-        e=1
-
-        if [[ ! -r $i ]]; then
-            echo "$0: file is unreadable: \`$i'" >&2
-            continue
-        fi
-
-        case $i in
-                *.tar.bz2) c='tar xvjf $1' ;;
-                *.tar.gz) c='tar xvzf $1' ;;
-                *.tar) c='tar xvf $1' ;;
-                *.tbz2) c='tar xvjf $1' ;;
-                *.tgz) c='tar xvzf $1' ;;
-                *.7z)  c='7z x';;
-                *.Z)   c='uncompress';;
-                *.bz2) c='bunzip2';;
-                *.exe) c='cabextract';;
-                *.gz)  c='gunzip';;
-                *.exe) c='cabextract';;
-                *.lzma) c='unlzma';;
-                *.tar.xz) c='tar xvJf';;
-                *.rar) c='unrar x';;
-                *.xz)  c='unxz';;
-                *.zip) c='unzip';;
-                *)     echo "$0: unrecognized file extension: \`$i'" >&2
-                    continue;;
-        esac
-
-        command $c "$i"
-        e=$?
-    done
-
-    return $e
-}
-
 path_prepend() {
     if test -d "$1"; then
         PATH="$1:$PATH"

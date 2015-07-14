@@ -93,6 +93,7 @@ alias open="mimeo"
 alias pm="pacman"
 alias apm="apacman"
 alias rg="ranger"
+alias extract="atool -x"
 tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
 alias less="less -x4SRFX"
 alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show line number
@@ -102,6 +103,13 @@ alias sysinfo="inxi -Fzx"
 alias s="[ -d \".repo\" ] && nocorrect repo status  ||  nocorrect git status"
 alias exit="history -c; exit"
 
+# Do something and receive a desktop alert when it completes `sudo apt-get install something | alert`
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias clip_copy='xclip -selection clipboard'
+alias clip_paste='xclip -selection clipboard -o'
+
+start_detached() { nohup "$@" > /dev/null 2>&1 < /dev/null & ; }
 # source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.
 alias take_webcam_picture="ffmpeg -y -r 1 -t 3 -f video4linux2 -s sxga -i /dev/video0 -vframes 1 ~/webcam-$(date +%m_%d_%Y_%H_%M).jpeg"
 
