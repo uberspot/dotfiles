@@ -125,7 +125,7 @@
 
     # Untrack a file
     untrack = rm --cache --
-    
+
     # Inject a change/ammendement to an older commit. E.g.:
     # git inject <commit-ref> <patch-ref>
     # git inject HEAD^^ -a # inject all work-dir modifications
@@ -152,6 +152,30 @@
     quotepath = false
     legacyheaders = false
 	filemode = false
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+# URL shorthands
+
+[url "git@github.com:"]
+
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+
+    insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+
+    insteadOf = "gist:"
+
 
 # QuickNote: To modify an old commit
 # You can use git rebase

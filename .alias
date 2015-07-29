@@ -89,7 +89,7 @@ alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use 
 
 # time since installation based on oldest pacman.log entry.
 alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
-alias open="mimeo"
+function open() { mimeo $1 &> /dev/null &disown; }
 alias pm="pacman"
 alias apm="apacman"
 alias rg="ranger"
@@ -132,6 +132,7 @@ pushd() { builtin pushd "$@" && _truncated_ls; }
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
 function dfl () { diff "$@" | less ; }
+function mkd() { mkdir -p "$@" && cd "$_"; }                    # create a new dir and cd into it
 
 alias duplicity="\duplicity --verbosity info --volsize 150 --num-retries 3 --asynchronous-upload --full-if-older-than 90D --log-file /var/log/duplicity.log "
 alias duplicity_test="\duplicity --dry-run --no-encryption -v info "
@@ -144,8 +145,9 @@ alias azaumount="fusermount -u /mnt/azazel/"
 
 ## Network related
 # Shows your WAN IP, when you`re sitting behind a router
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias myip2="curl ifconfig.me"
-alias myip="curl icanhazip.com"
+alias myip3="curl icanhazip.com"
 
 alias traceroute="mtr "
 alias icurl="curl -I"

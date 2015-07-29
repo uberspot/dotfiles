@@ -318,7 +318,6 @@ map = ^
 
 "make <leader-l> clear the highlight as well as redraw
 nnoremap <leader>l :nohls<CR><C-L>
-inoremap <leader>l <C-O>:nohls<CR>
 
 " fix mistyping of :W, :Q etc and turn it to :w, :q etc
 if has("user_commands")
