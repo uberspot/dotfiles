@@ -9,7 +9,7 @@
     <followMouse>no</followMouse>
     <focusLast>yes</focusLast>
     <underMouse>no</underMouse>
-    <focusDelay>200</focusDelay>
+    <focusDelay>100</focusDelay>
     <raiseOnFocus>no</raiseOnFocus>
   </focus>
   <placement>
@@ -278,6 +278,71 @@
     <keybind key="S-W-Left">
       <action name="SendToDesktopPrevious"/>
     </keybind>
+    <!-- Vertical tiling -->
+    <keybind key="S-W-v">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+      </action>
+      <action name="MaximizeVert"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+      </action>
+      <action name="NextWindow">
+        <interactive>no</interactive>
+        <dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+            <width>50%</width>
+          </action>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo">
+            <x>-0</x>
+            <y>0</y>
+          </action>
+        </finalactions>
+      </action>
+    </keybind>
+    <!-- Horizontal tiling -->
+    <keybind key="S-W-h">
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo">
+        <height>50%</height>
+      </action>
+      <action name="MaximizeHorz"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+      </action>
+      <action name="NextWindow">
+        <interactive>no</interactive>
+        <dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo">
+            <height>50%</height>
+          </action>
+          <action name="MaximizeHorz"/>
+          <action name="MoveResizeTo">
+            <x>0</x>
+            <y>-0</y>
+          </action>
+        </finalactions>
+      </action>
+    </keybind>
+    <!-- Restore window dimensions -->
+    <keybind key="S-W-n">
+      <action name="UnmaximizeFull"/>
+      <action name="NextWindow">
+        <interactive>no</interactive>
+        <dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+        </finalactions>
+      </action>
+    </keybind>
     <keybind key="W-a">
       <action name="ToggleMaximizeFull"/>
     </keybind>
@@ -383,10 +448,12 @@
       <mousebind action="Drag" button="A-Right">
         <action name="Resize"/>
       </mousebind>
-      <mousebind action="Press" button="A-Middle">
-        <action name="Lower"/>
-        <action name="FocusToBottom"/>
-        <action name="Unfocus"/>
+      <!-- W + Middle click to grow a window to the edges of windows surrounding it. -->
+      <mousebind button="W-Middle" action="Press">
+        <action name="GrowToEdgeNorth"/>
+        <action name="GrowToEdgeSouth"/>
+        <action name="GrowToEdgeEast"/>
+        <action name="GrowToEdgeWest"/>
       </mousebind>
     </context>
     <context name="Titlebar">
@@ -689,7 +756,7 @@
       </position>
       <maximized>Vertical</maximized>
     </application>
-    <application name="telegram">
+    <application name="Telegram">
       <desktop>2</desktop>
     </application>
     <application class="Thunderbird">
