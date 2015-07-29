@@ -10,8 +10,8 @@ duplicity_backup() {
 
     echo "Saving installed packages to $HOME/(aur)pkglist.txt"
 
-    pacman -Qqen > $HOME/pkglist.txt
-    pacman -Qqem > $HOME/aurpkglist.txt
+    pacman -Qqen >! $HOME/pkglist.txt
+    pacman -Qqem >! $HOME/aurpkglist.txt
     /usr/lib/systemd/scripts/pakbak
     duplicity "$@"
 }

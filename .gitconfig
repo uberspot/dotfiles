@@ -123,6 +123,9 @@
     # of the default (otherwise assumes it's master)
     prune-all-local-branches = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 
+    # Push to all remotes, by default to master branch or to the branch provided as argument
+    push-to-all-remotes = "!for r in $(git remote); do git push $r ${1-master}; done"
+
     # Untrack a file
     untrack = rm --cache --
 

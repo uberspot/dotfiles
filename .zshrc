@@ -79,7 +79,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # check zshoptions to see what these do
 setopt notify nohashdirs auto_cd globdots hist_ignore_all_dups noclobber auto_menu menu_complete \
-        complete_aliases pathdirs cdable_vars checkjobs dotglob  histverify histappend pushd_ignore_dups \
+        pathdirs cdable_vars checkjobs dotglob  histverify histappend pushd_ignore_dups \
         prompt_subst rm_starsilent share_history complete_in_word nohup
 
 setopt autopushd # Make cd act like pushd instead, letting us use popd to go back
@@ -87,7 +87,7 @@ setopt inc_append_history # Add comamnds as they are typed, don't wait until she
 
 unsetopt share_history # oh-my-zsh sets this, I don't want it.
 unsetopt correct
-
+unsetopt complete_aliases # expand aliases after tab completion finishes
 
 # get notified when someone logs in
 watch=all                       # watch all logins
