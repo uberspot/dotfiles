@@ -53,9 +53,9 @@
     syncupbr = !git stash && CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --prune upstream "$TARGET_BRANCH" && git stash pop
 
     # pretty one-line log with tags, branches and authors
-    ls = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --all
+    ls = "!f() { git log --format='%aN' 2> /dev/null | awk '!len || length($0) > len {len=length($0);s=$0} END{print len}'; }; git log --graph --pretty=format:\"%C(red)%h %C(bold blue)%<($(f),trunc)<%an>%Creset %C(green)(%cr) %Creset%s%C(yellow)%d\" --decorate --all --date=short"
     # a verbose ls, shows changed files too
-    lsv = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short --numstat
+    lsf = "!f() { git log --format='%aN' 2> /dev/null | awk '!len || length($0) > len {len=length($0);s=$0} END{print len}'; }; git log --graph --pretty=format:\"%C(red)%h %C(bold blue)%<($(f),trunc)<%an>%Creset %C(green)(%cr) %Creset%s%C(yellow)%d\" --decorate --all --date=iso --numstat"
 
      # Log of changes on origin not yet on branch (aka hg incoming).
     incoming = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short HEAD..@{upstream}
@@ -114,7 +114,7 @@
     spush = push --recurse-submodules=on-demand
     supdateall = submodule foreach 'git syncbr || true' # for each submodule update the branch it currently is on
 
-    ref-push = push origin HEAD:refs/for/master
+    push-ref = push origin HEAD:refs/for/master
 
     # Prune all stale remote branches not found locally
     prune-all-remote-branches = !git remote | xargs -n 1 git remote prune
