@@ -182,7 +182,7 @@ user_pref("network.http.spdy.enabled.v3",		true);
 user_pref("network.http.spdy.enabled.v3-1",		true);
 
 // CIS Version 1.2.0 October 21st, 2011 2.2.4 Enable Online Certificate Status Protocol
-user_pref("security.OCSP.enabled",			true);
+user_pref("security.OCSP.enabled",			1);
 
 // https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
 user_pref("security.ssl.enable_ocsp_stapling",		true);
@@ -245,7 +245,6 @@ user_pref("security.ssl3.rsa_rc4_128_md5",	false);
 user_pref("security.ssl3.rsa_rc4_128_sha",		false);
 //user_pref("security.ssl3.rsa_rc4_128_md5",		false);
 user_pref("security.ssl3.rsa_camellia_128_sha",		false);
-//user_pref("security.ssl3.rsa_aes_128_sha",		false);
 user_pref("security.ssl3.ecdhe_rsa_rc4_128_sha",	false);
 user_pref("security.ssl3.ecdhe_rsa_aes_128_sha",	false);
 user_pref("security.ssl3.ecdhe_ecdsa_rc4_128_sha",	false);
@@ -265,10 +264,7 @@ user_pref("security.ssl3.dhe_rsa_aes_128_sha",		false);
  *
  * see also: http://www-archive.mozilla.org/projects/security/pki/nss/ssl/fips-ssl-ciphersuites.html
  */
-user_pref("security.ssl3.dhe_dss_des_ede3_sha",		false);
 user_pref("security.ssl3.dhe_rsa_des_ede3_sha",		false);
-user_pref("security.ssl3.ecdh_ecdsa_des_ede3_sha",	false);
-user_pref("security.ssl3.ecdh_rsa_des_ede3_sha",	false);
 user_pref("security.ssl3.ecdhe_ecdsa_des_ede3_sha",	false);
 user_pref("security.ssl3.ecdhe_rsa_des_ede3_sha",	false);
 user_pref("security.ssl3.rsa_des_ede3_sha",		false);
@@ -306,7 +302,6 @@ user_pref("security.ssl3.dhe_dss_camellia_256_sha",	false);
 user_pref("security.ssl3.dhe_dss_des_ede3_sha",		false);
 
 /* fallbacks */
-user_pref("security.ssl3.rsa_aes_256_sha",		true);
 user_pref("security.ssl3.rsa_aes_128_sha",		true);
 
 /*

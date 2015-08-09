@@ -44,7 +44,7 @@
                                 "/usr/share/icons/Tango",
                             ],
 
-    | strict_icon_dirs    : A true value will make the module to look only inside the directories
+    | strict_icon_dirs    : A true value will make the script to look only inside the directories
                             specified by you in either one of the above three options.
 
     | gtk_rc_filename     : Absolute path to the GTK configuration file.
@@ -57,7 +57,7 @@
 
 
 || PATHS
-    | desktop_files_paths   : Absolute paths which contains .desktop files.
+    | desktop_files_paths   : Absolute paths which contain .desktop files.
                               Example: [
                                 '/usr/share/applications',
                                 "$ENV{HOME}/.local/share/applications",
@@ -68,7 +68,7 @@
 || NOTES
     | Regular expressions:
         * use qr/RE/ instead of 'RE'
-        * use qr/RE/i for case insenstive mode
+        * use qr/RE/i for case insensitive mode
 
 =cut
 
@@ -93,5 +93,5 @@ our $CONFIG = {
   "missing_icon"        => "gtk-missing-image",
   "name_keys"           => ["Name"],
   "terminal"            => "xterm",
-  "VERSION"             => 0.65,
+  "VERSION"             => 0.66,
 }
