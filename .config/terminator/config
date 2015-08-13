@@ -33,9 +33,9 @@
   [[default]]
     scrollbar_position = hidden
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#f6f4f4"
+    copy_on_selection = True
     alternate_screen_scroll = False
     visible_bell = True
-    copy_on_selection = True
     background_image = None
     background_darkness = 0.93
     urgent_bell = True
@@ -46,7 +46,7 @@
     scroll_on_output = False
     show_titlebar = False
     font = Source Code Pro 10
-    scrollback_lines = 3000
+    scrollback_lines = 5000
 [layouts]
   [[default]]
     [[[child1]]]
