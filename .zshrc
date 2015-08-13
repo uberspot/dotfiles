@@ -85,6 +85,10 @@ setopt notify nohashdirs auto_cd globdots hist_ignore_all_dups noclobber auto_me
 setopt autopushd # Make cd act like pushd instead, letting us use popd to go back
 setopt inc_append_history # Add comamnds as they are typed, don't wait until shell exit
 
+# no beep sound
+setopt nolistbeep
+setopt no_beep
+
 unsetopt share_history # oh-my-zsh sets this, I don't want it.
 unsetopt correct
 unsetopt complete_aliases # expand aliases after tab completion finishes

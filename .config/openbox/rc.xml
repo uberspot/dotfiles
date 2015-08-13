@@ -407,6 +407,16 @@
         <command>sudo pm-suspend</command>
       </action>
     </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>xbacklight +5</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>xbacklight -5</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>12</dragThreshold>
