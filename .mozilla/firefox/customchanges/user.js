@@ -70,6 +70,13 @@ user_pref("browser.toolbarbuttons.introduced.pocket-button", false);
 // http://kb.mozillazine.org/Browser.send_pings
 user_pref("browser.send_pings",					false);
 
+/* See: https://developer.mozilla.org/en-US/Firefox/Releases/40/Site_Compatibility#Security
+Sub-resources HTTP-authentication:
+   0 - don't allow sub-resources to open HTTP authentication credentials dialogs
+   1 - allow sub-resources to open HTTP authentication credentials dialogs, but don't allow it for cross-origin sub-resources
+   2 - allow the cross-origin authentication as well */
+user_pref("network.auth.allow-subresource-auth", 2);
+
 // http://kb.mozillazine.org/Network.dns.disablePrefetch
 user_pref("network.dns.disablePrefetch",			true);
 user_pref("network.dns.disablePrefetchFromHTTPS",       true);
