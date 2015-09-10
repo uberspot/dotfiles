@@ -313,6 +313,8 @@ nnoremap <leader>xml :%!xmllint --format -
 " Run commands that require an interactive shell
 nnoremap <leader>run :RunInInteractiveShell<space>
 
+noremap <leader>format :Autoformat<CR>
+
 " Remap VIM = to first non-blank character
 map = ^
 
@@ -398,13 +400,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 
