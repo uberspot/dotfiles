@@ -61,10 +61,18 @@ user_pref("browser.newtabpage.enhanced",			false);
 user_pref("browser.newtab.preload",				false);
 // https://wiki.mozilla.org/Tiles/Technical_Documentation#Ping
 user_pref("browser.newtabpage.directory.ping",          "");
-// Disable pocket completely
-user_pref("browser.pocket.api", "");
-user_pref("browser.pocket.enabled", false);
-user_pref("browser.pocket.enabledLocales", "");
+
+user_pref("accessibility.blockautorefresh",true); // Instead of refreshing a page automatically when <meta http-equiv="refresh"> is present (or Refresh HTTP headers),
+// display a browser message indicating the refresh and allow the user to follow it manually. 
+
+// disable pocket
+user_pref("browser.pocket.api",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+user_pref("browser.pocket.enabled",false); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+user_pref("browser.pocket.enabledLocales",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+user_pref("browser.pocket.oAuthConsumerKey",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+user_pref("browser.pocket.site",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+user_pref("browser.pocket.useLocaleList",false); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+
 user_pref("browser.toolbarbuttons.introduced.pocket-button", false);
 
 // http://kb.mozillazine.org/Browser.send_pings
@@ -127,8 +135,8 @@ user_pref("privacy.donottrackheader.enabled",			true);
 // http://kb.mozillazine.org/Network.http.sendRefererHeader#0
 // https://bugzilla.mozilla.org/show_bug.cgi?id=822869
 // Send a referer header with the target URI as the source
-user_pref("network.http.sendRefererHeader",	0);
-user_pref("network.http.referer.spoofSource", true);
+//user_pref("network.http.sendRefererHeader",	0);
+//user_pref("network.http.referer.spoofSource", true);
 // CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
 user_pref("network.http.sendSecureXSiteReferrer",		false);
 
