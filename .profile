@@ -7,7 +7,6 @@ export DE="openbox"
 export HISTCONTROL=erasedups:ignorespace
 
 export GREP_COLOR="1;34"
-export GREP_OPTIONS='--color=auto -I'
 
 export LESS="-FXRS"
 # disable ~/.lesshst (potential data leakage)
@@ -34,7 +33,19 @@ export TCL_LIBRARY=/usr/lib/tcl8.6
 
 export JAVA_HOME=/usr/lib/jvm/default
 
-export PATH="$HOME/.extra/bin/:/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin:/usr/local/sbin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/ usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/"
+export PATH="$HOME/.extra/bin/:/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin:/usr/local/sbin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/"
+
+#export PATH="$HOME/temp/openwrt/staging_dir/host/bin:$PATH"
+
+#export STAGING_DIR="$HOME/temp/openwrt/staging_dir/"
+#export TOOLCHAIN_DIR="$STAGING_DIR/toolchain-mips_34kc_gcc-4.8-linaro_musl-1.1.11"
+#export LDCFLAGS="$TOOLCHAIN_DIR/usr/lib"
+#export LD_LIBRARY_PATH="$TOOLCHAIN_DIR/usr/lib"
+#export PATH="$TOOLCHAIN_DIR/bin:$PATH"
+
+CHROMIUM_FLAGS="--enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/dev/shm/chromium-cache --disk-cache-size=300000000"
+
+CHROMIUM_USER_FLAGS="$CHROMIUM_FLAGS"
 
 [  "$UID" = "0" ] && export PATH="$PATH:/root/scripts"
 

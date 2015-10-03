@@ -88,7 +88,6 @@ alias disks='df -ha |\
 alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use on /dev/sdxX
 
 # time since installation based on oldest pacman.log entry.
-alias timesinceinstall="echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
 function open() { mimeo $1 &> /dev/null &disown; }
 alias pm="pacman"
 alias apm="apacman"
@@ -96,6 +95,7 @@ alias rg="ranger"
 alias extract="atool -x"
 tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
 alias less="less -x4SRFX"
+alias grep="grep --color=auto -I"
 alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show line number
 alias ack="ack -i --follow"
 alias ag="ag -fi --hidden --numbers --column --stats"
@@ -131,7 +131,7 @@ pushd() { builtin pushd "$@" && _truncated_ls; }
 
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
-function dfl () { diff "$@" | less ; }
+function dfl() { diff "$@" | less ; }
 function mkd() { mkdir -p "$@" && cd "$_"; }                    # create a new dir and cd into it
 
 alias duplicity="\duplicity --verbosity info --volsize 150 --num-retries 3 --asynchronous-upload --full-if-older-than 90D --log-file /var/log/duplicity.log "
@@ -175,7 +175,16 @@ unset pwd_rounds
 
 # Youtube
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
-alias youtube-dlm='youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downloads/music/%(title)s.%(ext)s" '
+function youtube-dlm() { 
+    if (( $# < 2 )); then
+        subdir=""
+        arguments="$@"
+    else
+        subdir=$1/
+        arguments="${@:2}"
+    fi
+    youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downloads/music/$subdir%(title)s.%(ext)s" $arguments
+}
 
 ## Other
 alias screen_cmd="screen -dm sh -c " # runs the cmd that follows inside a detached screen session. Make sure to quote the cmd if there are spaces
