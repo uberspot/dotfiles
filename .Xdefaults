@@ -1,0 +1,23 @@
+#Background and Foreground
+foreground = #839496
+background = #171a1f
+
+# Dark
+color0 = #3f3f4c
+color1 = #ac6a76
+color2 = #7b8c58
+color3 = #bc945a
+color4 = #58698c
+color5 = #7b5e8d
+color6 = #82a1b2
+color7 = #cccaca
+# Light
+color8 = #525263
+color9 = #c47987
+color10 = #90a366
+color11 = #d4a765
+color12 = #7086b2
+color13 = #9572ab
+color14 = #95b9cc
+color15 = #edeff2
+

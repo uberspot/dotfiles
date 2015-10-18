@@ -2,14 +2,14 @@
 # Clones necessary dependencies and creates symlinks.
 # This is very basic cause I don't replicate the confs that often and it serves mostly as a personal note.
 
-chsh -s /bin/zsh
-
 echo "Creating symlinks"
 for file in $(find ./* -type f -name \* -print | egrep -v "^(./.gitignore|./.git/)" | sed 's/.\///' );
 do ln -isv ~/.dotfiles/$file ~/$file; done
 
-sudo pacman -S zsh-syntax-highlighting zsh-completions
-packer -S fasd trash-cli the_silver_searcher
+sudo pacman -S zsh-syntax-highlighting zsh htop cowsay fortune-mod vim terminator git ncdu fdupes atool inxi xclip colordiff mtr youtube-dl screen imagemagick zsh-completions
+apacman -S fasd trash-cli the_silver_searcher
 
-zsh -c "vim +PluginInstall +qall; ~/.vim/bundle/YouCompleteMe/install.sh"
+chsh -s /bin/zsh
+
+zsh -c "vim +PluginInstall +qall;"
 

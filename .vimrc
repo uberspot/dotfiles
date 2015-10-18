@@ -162,7 +162,7 @@ endtry
 
 if exists('+colorcolumn')
     set colorcolumn=+1 " next column after textwidth
-    highlight ColorColumn ctermbg=red
+    highlight ColorColumn ctermbg=lightblue
 endif
 
 " ================ Persistent Undo ==================
@@ -404,7 +404,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-utils/vim-troll-stopper'
 Plugin 'rking/ag.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Chiel92/vim-autoformat'

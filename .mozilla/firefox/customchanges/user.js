@@ -5,6 +5,33 @@
  * with several modifications for personal usage
  ************************************************/
 
+/**
+  * Update hardening                                                           *
+  * Since FF never updates url's i about:config we ensure we get the latest    *
+  * software, updates and ressources.                                          *
+  ******************************************************************************/
+
+user_pref("app.update.url",		"https://aus5.mozilla.org/update/3/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml");
+user_pref("browser.trackingprotection.gethashURL",		"https://shavar.services.mozilla.com/gethash?client=SAFEBROWSING_ID&appver=%VERSION%&pver=2.2");
+user_pref("browser.trackingprotection.updateURL",		"https://shavar.services.mozilla.com/downloads?client=SAFEBROWSING_ID&appver=%VERSION%&pver=2.2");
+user_pref("media.gmp-manager.certs.1.commonName",		"aus5.mozilla.org");
+user_pref("media.gmp-manager.certs.1.issuerName",		"CN=DigiCert SHA2 Secure Server CA,O=DigiCert Inc,C=US");
+user_pref("media.gmp-manager.certs.2.commonName",		"aus5.mozilla.org");
+user_pref("media.gmp-manager.certs.2.issuerName",		"CN=thawte SSL CA - G2,O="thawte, Inc.",C=US");
+user_pref("media.gmp-manager.url",		"https://aus5.mozilla.org/update/3/GMP/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml");
+user_pref("privacy.trackingprotection.introURL",		"https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/tracking-protection/start/");
+user_pref("signon.recipes.path",		"chrome://passwordmgr/content/recipes.json");
+user_pref("browser.safebrowsing.reportMalwareMistakeURL",		"https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&url=");
+user_pref("browser.safebrowsing.reportPhishMistakeURL",		"https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&url=");
+user_pref("browser.safebrowsing.reportPhishURL",		"https://%LOCALE%.phish-report.mozilla.com/?hl=%LOCALE%&url=");
+user_pref("media.peerconnection.default_iceservers",		"[]");
+
+// Prevent CSS History Leak
+// https://blog.mozilla.org/security/2010/03/31/plugging-the-css-history-leak/
+user_pref("layout.css.visited_links_enabled",		false);
+
+/******************************************************************************/
+
 // disable link prefetching
 // http://kb.mozillazine.org/Network.prefetch-next
 user_pref("network.prefetch-next",		false);
@@ -18,15 +45,21 @@ user_pref("geo.enabled",			false);
 // https://wiki.mozilla.org/Security/Reviews/Firefox6/ReviewNotes/telemetry
 user_pref("toolkit.telemetry.enabled",			false);
 
+// https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
+user_pref("toolkit.telemetry.unified",      false);
+
+// https://wiki.mozilla.org/Telemetry/Experiments
+user_pref("experiments.supported",		false);
+user_pref("experiments.enabled",		false);
+
 // always ask the user where to download
 // https://developer.mozilla.org/en/Download_Manager_preferences
 user_pref("browser.download.useDownloadDir",		false);
 
-// https://wiki.mozilla.org/Polaris#Tracking_protection
+// https://wiki.mozilla.org/Security#Tracking_protection
 // https://support.mozilla.org/en-US/kb/tracking-protection-firefox
 // TODO: are these two the same?
 user_pref("privacy.trackingprotection.enabled",		true);
-user_pref("browser.polaris.enabled",			true);
 
 // https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers
 user_pref("network.proxy.socks_remote_dns",		true);
@@ -42,6 +75,9 @@ user_pref("datareporting.healthreport.uploadEnabled",	false);
 
 // disable collection of the data (the healthreport.sqlite* files)
 user_pref("datareporting.healthreport.service.enabled", false);
+
+// https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
+user_pref("datareporting.policy.dataSubmissionEnabled",     false);
 
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
 user_pref("dom.battery.enabled",				false);
@@ -91,10 +127,13 @@ user_pref("network.dns.disablePrefetchFromHTTPS",       true);
 
 // https://wiki.mozilla.org/Privacy/Reviews/Necko
 user_pref("network.predictor.enabled",              false);
+user_pref("network.allow-experiments",              false);
 
 // https://wiki.mozilla.org/Security/Reviews/Firefox/NavigationTimingAPI
 user_pref("dom.enable_performance",             false);
 user_pref("media.webspeech.recognition.enable", false);
+
+user_pref("media.video_stats.enabled",      false);
 
 // disable gamepad input
 // http://www.w3.org/TR/gamepad/
@@ -126,6 +165,11 @@ user_pref("network.negotiate-auth.allow-insecure-ntlm-v1",	false);
 
 // CSP https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
 user_pref("security.csp.enable",				true);
+
+// Subresource integrity
+// https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+// https://wiki.mozilla.org/Security/Subresource_Integrity
+user_pref("security.sri.enable",		true);
 
 // DNT HTTP header
 // http://dnt.mozilla.org/
@@ -427,3 +471,11 @@ user_pref("browser.devedition.theme.enabled", true);
 user_pref("devtools.theme". "light");
 user_pref("browser.altClickSave", true);
 user_pref("browser.urlbar.trimURLs", false);
+
+
+// Protection against Javascript exploits to block eval() 
+// See: https://hackademix.net/2011/09/29/script-surrogates-quick-reference/
+noscript.surrogate.noeval.replacement,		window.eval = null;document.eval=null;
+noscript.surrogate.noeval.sources,		@^http://[a-z]+[^/]+\.[a-z]+(?:/|$);
+noscript.surrogate.noeval.exceptions;
+

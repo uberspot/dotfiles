@@ -19,3 +19,6 @@
 [submodule ".extra/zsh_custom/plugins/git-extra-commands"]
 	path = .extra/zsh_custom/plugins/git-extra-commands
 	url = https://github.com/unixorn/git-extra-commands.git
+[submodule ".extra/.nano"]
+	path = .extra/.nano
+	url = https://github.com/scopatz/nanorc.git
