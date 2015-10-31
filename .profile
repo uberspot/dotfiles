@@ -1,5 +1,6 @@
 # Set defaults
 export EDITOR="vim"
+export SUDO_EDITOR="vim"
 export BROWSER="firefox"
 export PAGER="less"
 export DE="openbox"

@@ -150,7 +150,7 @@
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>firefox</command>
+        <command>firejail --seccomp firefox</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Minefield Web Browser</name>
@@ -227,7 +227,7 @@
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
-        <command>/usr/bin/thunderbird</command>
+        <command>firejail --seccomp thunderbird</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Thunderbird</name>
