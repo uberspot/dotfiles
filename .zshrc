@@ -32,7 +32,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -97,6 +97,8 @@ unsetopt complete_aliases # expand aliases after tab completion finishes
 watch=all                       # watch all logins
 logcheck=30                     # every 30 seconds
 WATCHFMT="%n from %M has %a tty%l at %T %W"
+
+fpath+="$HOME/.extra/aurtab"
 
 # display moo
 moo

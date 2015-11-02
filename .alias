@@ -227,6 +227,8 @@ alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
 
 alias updategitextras="(\cd /tmp && \rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && \cd git-extras && sudo make install)"
 
+alias updateaurcache="$HOME/.extra/aurtab/aurtab.py"
+
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
 function updateall(){
     git supdateall && echo "\nSubmodules of dotfiles updated\n";
@@ -236,6 +238,7 @@ function updateall(){
     upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n";
     sudo hostsblock && echo "\nHostsBlock updated\n";
     vim +PluginUpdate +qall && echo "\nVim plugins updated\n";
+    updateaurcache && echo "\nUpdated AUR cache\n";
     upz && echo "\nSystem updated\n";
 }
 
