@@ -34,7 +34,9 @@ set modelines=0
 
 " hopefully some speed-up
 set ttyfast
-set ttyscroll=3
+if !has('nvim')
+	set ttyscroll=3
+endif
 set lazyredraw
 
 set mouse=a " Enable VIM mouse support
@@ -174,7 +176,11 @@ autocmd BufWinEnter *.* silent loadview
 set backup
 set writebackup
 set backupdir=~/.cache/vim_backups/
-set viminfo+=n~/.cache/vim_backups/viminfo
+if !has('nvim')
+	set viminfo+=n~/.cache/vim_backups/viminfo
+else
+	set viminfo+=n~/.cache/vim_backups/nviminfo
+endif
 
 set history=700 " Sets how many lines of history VIM has to remember
 
