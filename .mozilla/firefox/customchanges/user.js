@@ -193,6 +193,10 @@ user_pref("privacy.clearOnShutdown.downloads",		true);
 // https://bugzil.la/238789#c19
 user_pref("browser.helperApps.deleteTempFileOnExit",    true);
 
+// https://support.mozilla.org/en-US/questions/973320
+// https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/browser.pagethumbnails.capturing_disabled
+user_pref("browser.pagethumbnails.capturing_disabled",		false);
+
 // CIS Version 1.2.0 October 21st, 2011 2.5.5 Delete Download History
 // Zero (0) is an indication that no download history is retained for the current profile.
 user_pref("browser.download.manager.retention",		0);
@@ -233,12 +237,6 @@ user_pref("security.ssl.warn_missing_rfc5746",		1);
 // https://blog.mozilla.org/security/2012/11/01/preloading-hsts/
 // https://wiki.mozilla.org/Privacy/Features/HSTS_Preload_List
 user_pref("network.stricttransportsecurity.preloadlist",	true);
-
-// enable SPDY
-// https://en.wikipedia.org/wiki/SPDY
-user_pref("network.http.spdy.enabled",			true);
-user_pref("network.http.spdy.enabled.v3",		true);
-user_pref("network.http.spdy.enabled.v3-1",		true);
 
 // CIS Version 1.2.0 October 21st, 2011 2.2.4 Enable Online Certificate Status Protocol
 user_pref("security.OCSP.enabled",			1);

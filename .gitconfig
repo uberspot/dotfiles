@@ -145,7 +145,8 @@
     relativePaths = false
     submodulesummary = true
 [merge]
-        log = true
+    log = true
+	tool = meld
 [include]
     path = .gitconfig.user
 [core]
