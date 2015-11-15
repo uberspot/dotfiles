@@ -52,7 +52,7 @@ export HISTCONTROL="erasedups:ignoreboth"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap httpie git-extra-commands)
 
-source $ZSH/oh-my-zsh.sh
+FILE="$ZSH/oh-my-zsh.sh"; [ -f $FILE ] && source $FILE;
 
 # Make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
@@ -75,7 +75,7 @@ unset file
 unalias exit
 
 # enable syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+FILE="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"; [ -f $FILE ] && source $FILE;
 
 # check zshoptions to see what these do
 setopt notify nohashdirs auto_cd globdots hist_ignore_all_dups noclobber auto_menu menu_complete \

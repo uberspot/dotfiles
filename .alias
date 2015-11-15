@@ -157,7 +157,7 @@ alias wget_full="wget --random-wait -r -p -e robots=off -U mozilla " # downloads
 
 alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HTTP traffic
 
-alias sharedironlan="python -m SimpleHTTPServer 8080" # share the current dir from port 8080
+alias sharedironlan="python2.7 -m SimpleHTTPServer 8080" # share the current dir from port 8080
 
 alias net_listening_connections="lsof -Panl -i tcp -i udp" # show listening connections
 alias net="netstat -alputen"

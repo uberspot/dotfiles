@@ -169,7 +169,7 @@
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>vivaldi-preview</command>
+        <command>vivaldi</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>vivaldi</wmclass>

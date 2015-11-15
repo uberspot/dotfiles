@@ -51,8 +51,8 @@ CHROMIUM_USER_FLAGS="$CHROMIUM_FLAGS"
 [  "$UID" = "0" ] && export PATH="$PATH:/root/scripts"
 
 # source env variables from android sdk and ndk
-source /etc/profile.d/android-sdk.sh
-source /etc/profile.d/android-ndk.sh
+[ -f /etc/profile.d/android-sdk.sh ] && source /etc/profile.d/android-sdk.sh
+[ -f /etc/profile.d/android-ndk.sh ] && source /etc/profile.d/android-ndk.sh
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'

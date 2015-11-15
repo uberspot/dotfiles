@@ -494,3 +494,15 @@ else
 endif
 
 " }}}
+
+
+
+" NVim specific {{{
+if has('nvim')
+
+    " Use cursor shape feature
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+
+endif
+
+" }}}

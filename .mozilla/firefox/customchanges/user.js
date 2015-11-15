@@ -26,6 +26,8 @@ user_pref("browser.safebrowsing.reportPhishMistakeURL",		"https://%LOCALE%.phish
 user_pref("browser.safebrowsing.reportPhishURL",		"https://%LOCALE%.phish-report.mozilla.com/?hl=%LOCALE%&url=");
 user_pref("media.peerconnection.default_iceservers",		"[]");
 
+// https://wiki.mozilla.org/Media/WebRTC/Privacy
+user_pref("media-peerconnection.ice.default_address_only",		true);
 // Prevent CSS History Leak
 // https://blog.mozilla.org/security/2010/03/31/plugging-the-css-history-leak/
 user_pref("layout.css.visited_links_enabled",		false);
@@ -134,6 +136,9 @@ user_pref("dom.enable_performance",             false);
 user_pref("media.webspeech.recognition.enable", false);
 
 user_pref("media.video_stats.enabled",      false);
+
+// Disable face detection by default
+user_pref("camera.control.face_detection.enabled",    false);
 
 // disable gamepad input
 // http://www.w3.org/TR/gamepad/
@@ -460,6 +465,9 @@ user_pref("browser.aboutHomeSnippets.updateUrl", "");
 user_pref("extensions.getAddons.get.url", "");
 user_pref("extensions.getAddons.getWithPerformance.url", "");
 user_pref("extensions.update.background.url", "");
+
+// Opt-out of add-on metadata updates
+user_pref("extensions.getAddons.cache.enabled",   false);
 
 // disable sensor API
 // https://wiki.mozilla.org/Sensor_API
