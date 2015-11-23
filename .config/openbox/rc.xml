@@ -150,7 +150,7 @@
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>firejail --seccomp firefox</command>
+        <command>firefox</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Minefield Web Browser</name>

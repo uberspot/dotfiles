@@ -200,7 +200,7 @@ user_pref("browser.helperApps.deleteTempFileOnExit",    true);
 
 // https://support.mozilla.org/en-US/questions/973320
 // https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/browser.pagethumbnails.capturing_disabled
-user_pref("browser.pagethumbnails.capturing_disabled",		false);
+user_pref("browser.pagethumbnails.capturing_disabled",		true);
 
 // CIS Version 1.2.0 October 21st, 2011 2.5.5 Delete Download History
 // Zero (0) is an indication that no download history is retained for the current profile.

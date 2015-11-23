@@ -472,7 +472,6 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_quiet_messages = { "type": "style" }
-let g:syntactic_quiet_messages = { "type": "invalid-name" }
 " Echo current error to the command window
 let g:syntastic_echo_current_error = 1
 

@@ -1,0 +1,14 @@
+{
+	"auto_complete_delay": 100,
+	"enable_telemetry": false,
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"margin": 4,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"translate_tabs_to_spaces": true,
+	"update_check": false
+}

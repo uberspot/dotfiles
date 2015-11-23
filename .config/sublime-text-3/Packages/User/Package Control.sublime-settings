@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"BracketHighlighter",
+		"CTags",
+		"DocBlockr",
+		"GitGutter",
+		"Package Control",
+		"PackageResourceViewer",
+		"SublimeREPL"
+	]
+}
