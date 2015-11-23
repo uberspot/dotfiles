@@ -464,6 +464,56 @@ call vundle#end()
 " NerdTree
 map <leader>t :NERDTreeToggle<CR>
 
+" Syntactic
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntactic_quiet_messages = { "type": "invalid-name" }
+" Echo current error to the command window
+let g:syntastic_echo_current_error = 1
+
+" ==== Ignoring certain errors/warnings ====
+" - Pylint is checking the modules against python2, don't know how to change that.
+" - Disabling import checks.
+" - Disabling 80 character width style warning.
+" - I don't care about missing module docstrings.
+" - Don't complain if I use dashes in my filenames for example (invalid-name).
+" - Parens are neccessary after print keyword in python3.
+" - Ignored too-many-* warnings make no sense to me.
+" - ConnectionResetError is only on python3 namespace.
+" - I like to use strings as comments (pointless-string-statements).
+" - too-few-public-methods makes no sense.
+" - global-variable-not-assigned does not detect if some properties of the variable are changed.
+" - Python 3 automatically supports unicode (invalid-encoded-data)
+" - [syntax-error] pylint gets python3 syntax wrong sometimes
+" - [-bad-builtin] hardly makes any sense??
+" - [-star-args] why???
+" - [-global-statements] i do like to use them sometimes ...
+" - FileNotFoundError is introduced in python3 i believe
+let pylint_ignore_regexp = 
+    \'\(invalid-name\|Missing module docstring\|line-too-long\|no-name-in-module\|
+    \import-error\|redefined-outer-name\|no-member\|too-many-instance-attributes\|
+    \pointless-string-statement\|too-few-public-methods\|
+    \global-variable-not-assigned\|invalid-encoded-data\|
+    \syntax-error\|bad-builtin\|star-args\|global-statement\|
+    \FileNotFoundError\)'
+" E501 = 80 character width style warning
+" ConnectionResetError is only on python3 namespace
+" E302 => sometimes i like to use nested functions
+"         (2 lines warning not appropriate there)
+" E301 => 1 lines warning inappropriate when using nested function
+let flake8_ignore_regexp =
+    \'\(E501\|undefined name .ConnectionResetError\|E302\|E301\)'
+" Ignore 80 character width style warning
+let g:syntastic_python_flake8_quiet_messages = { 'regex': flake8_ignore_regexp }
+let g:syntastic_python_pylint_quiet_messages = { 'regex': pylint_ignore_regexp }
+
+nmap <leader>sc :SyntasticCheck<CR>
+
 " Autoclose when nerdtree is the only window left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
