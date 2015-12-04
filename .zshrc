@@ -25,6 +25,9 @@ FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $F
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# Increase the zsh limit of "do you wish to list all NNN possibilities?"
+LISTMAX=500
+
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -78,7 +81,7 @@ unalias exit
 FILE="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"; [ -f $FILE ] && source $FILE;
 
 # check zshoptions to see what these do
-setopt notify nohashdirs auto_cd globdots hist_ignore_all_dups noclobber auto_menu menu_complete \
+setopt notify nohashdirs auto_cd globdots hist_ignore_all_dups noclobber auto_menu \
         pathdirs cdable_vars checkjobs dotglob  histverify histappend pushd_ignore_dups \
         prompt_subst rm_starsilent share_history complete_in_word nohup
 
