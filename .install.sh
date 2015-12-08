@@ -7,7 +7,7 @@ for file in $(find ./* -maxdepth 0 -name \* -print | egrep -v "^(./.gitignore|./
 do ln -isv ~/.dotfiles/$file ~/$file; done
 
 sudo pacman -S zsh-syntax-highlighting zsh htop cowsay fortune-mod vim terminator git ncdu fdupes atool inxi xclip colordiff mtr youtube-dl screen imagemagick zsh-completions
-apacman -S fasd trash-cli the_silver_searcher
+apacman -S trash-cli the_silver_searcher
 
 chsh -s /bin/zsh
 

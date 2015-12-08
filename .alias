@@ -40,6 +40,8 @@ if [[ -n "$ZSH" && ! -n "$BASH" ]]; then
     alias -s png=open
     alias -s pdf=open
     alias -s gif=open
+else
+    alias g="git "
 fi
 
 alias free="free -mt"
@@ -175,7 +177,7 @@ unset pwd_rounds
 
 # Youtube
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
-function youtube-dlm() { 
+function youtube-dlm() {
     if (( $# < 2 )); then
         subdir=""
         arguments="$@"
@@ -241,13 +243,6 @@ function updateall(){
     updateaurcache && echo "\nUpdated AUR cache\n";
     upz && echo "\nSystem updated\n";
 }
-
-
-# fasd stuff
-alias c="fasd_cd -d" # quick directory jump
-alias v="f -t -e vim -b viminfo" # quick opening files with vim
-alias sm="f -e smplayer" # quick opening files with mplayer
-alias o="a -e xdg-open" # quick opening files with xdg-open
 
 # ack is shorter than ack-grep
 if ! type ack > /dev/null; then # Some systems already define `ack`
