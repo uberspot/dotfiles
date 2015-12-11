@@ -188,7 +188,7 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>terminator --geometry=1100x700</command>
+        <command>terminator --geometry=1150x700</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>terminator</name>

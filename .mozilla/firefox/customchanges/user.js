@@ -62,6 +62,8 @@ user_pref("browser.download.useDownloadDir",		false);
 // https://support.mozilla.org/en-US/kb/tracking-protection-firefox
 // TODO: are these two the same?
 user_pref("privacy.trackingprotection.enabled",		true);
+// https://support.mozilla.org/en-US/kb/tracking-protection-pbm
+user_pref("privacy.trackingprotection.pbmode.enabled",		true);
 
 // https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers
 user_pref("network.proxy.socks_remote_dns",		true);
