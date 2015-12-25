@@ -20,3 +20,6 @@ fi
 (sleep 5s && amixer set Speaker 100%) &
 
 (sleep 3s && qxkb) &
+
+
+(sleep 4s && killall pulseaudio) &

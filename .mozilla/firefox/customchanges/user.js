@@ -27,7 +27,7 @@ user_pref("browser.safebrowsing.reportPhishURL",		"https://%LOCALE%.phish-report
 user_pref("media.peerconnection.default_iceservers",		"[]");
 
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
-user_pref("media-peerconnection.ice.default_address_only",		true);
+user_pref("media.peerconnection.ice.default_address_only",		true);
 // Prevent CSS History Leak
 // https://blog.mozilla.org/security/2010/03/31/plugging-the-css-history-leak/
 user_pref("layout.css.visited_links_enabled",		false);
@@ -64,6 +64,10 @@ user_pref("browser.download.useDownloadDir",		false);
 user_pref("privacy.trackingprotection.enabled",		true);
 // https://support.mozilla.org/en-US/kb/tracking-protection-pbm
 user_pref("privacy.trackingprotection.pbmode.enabled",		true);
+
+// Make sure that third-party cookies (if enabled) never persist beyond the session.
+// https://feeding.cloud.geek.nz/posts/tweaking-cookies-for-privacy-in-firefox/
+user_pref("network.cookie.thirdparty.sessionOnly",      true);
 
 // https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers
 user_pref("network.proxy.socks_remote_dns",		true);
@@ -246,7 +250,7 @@ user_pref("security.ssl.warn_missing_rfc5746",		1);
 user_pref("network.stricttransportsecurity.preloadlist",	true);
 
 // CIS Version 1.2.0 October 21st, 2011 2.2.4 Enable Online Certificate Status Protocol
-user_pref("security.OCSP.enabled",			1);
+//user_pref("security.OCSP.enabled",			1);
 
 // https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
 user_pref("security.ssl.enable_ocsp_stapling",		true);
@@ -451,6 +455,12 @@ user_pref("network.http.max-connections", 64);
 user_pref("network.http.max-persistent-connections-per-server", 5);
 user_pref("network.http.pipelining", true);
 user_pref("network.http.pipelining.maxrequests", 8);
+
+// https://wiki.mozilla.org/Privacy/Reviews/Necko#Principle:_Real_Choice
+user_pref("network.seer.enabled",		false);
+
+// https://support.mozilla.org/en-US/kb/how-stop-firefox-making-automatic-connections#w_speculative-pre-connections
+user_pref("network.http.speculative-parallel-limit",		0);
 
 // https://support.mozilla.org/en-US/kb/certificate-pinning-reports
 //
