@@ -1,5 +1,9 @@
 if xrandr -q | grep -q "VGA1 connected" ; then
-    ~/.screenlayout/dell.sh
+    ~/.screenlayout/vga1.sh
+fi
+
+if xrandr -q | grep -q "HDMI1 connected" ; then
+    ~/.screenlayout/hdmi1.sh
 fi
 
 udiskie &

@@ -227,7 +227,7 @@ alias cleanz="pacman -Sc"
 alias listdeps="pacman -Qdt" # lists unused dependencies/leftover packages
 alias listallpacks="apacman -L" #pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
 alias listallexplpacks="pacman -Qeq" # list all explicitly installed packages
-alias updatemirrors="reflector --verbose --country Sweden -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+alias updatemirrors="reflector --verbose --country Netherlands -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
 alias journalctl_error="journalctl -b -p err"
 alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
 
