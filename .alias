@@ -235,17 +235,21 @@ alias updategitextras="(\cd /tmp && \rm -rf /tmp/git-extras && git clone --depth
 
 alias updateaurcache="$HOME/.extra/aurtab/aurtab.py"
 
+function echoSection(){
+    echo "\n-------------------- $@ ---------------------\n"
+}
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
 function updateall(){
-    git supdateall && echo "\nSubmodules of dotfiles updated\n";
-    updategitextras && echo "\nGit Extras updated\n";
-    sudo updatemirrors && echo "\nMirrors Updated\n";
-    sudo gem update && sudo gem update --system && sudo gem clean && sudo gem cleanup && echo "\nGems updated\n";
-    upgrade_oh_my_zsh && echo "\n Oh My Zsh updated\n";
-    sudo hostsblock && echo "\nHostsBlock updated\n";
-    vim +PluginUpdate +qall && echo "\nVim plugins updated\n";
-    updateaurcache && echo "\nUpdated AUR cache\n";
-    upz && echo "\nSystem updated\n";
+    git supdateall && echoSection "Submodules of dotfiles updated";
+    updategitextras && echoSection "Git Extras updated";
+    sudo updatemirrors && echoSection "Mirrors updated";
+    sudo gem update && sudo gem update --system && sudo gem clean && sudo gem cleanup && echoSection "Gems updated";
+    upgrade_oh_my_zsh && echoSection "Oh My Zsh updated";
+    sudo pacman-key --refresh-keys && echoSection " Pacman keys refreshed"
+    sudo hostsblock && echoSection "HostsBlock updated";
+    vim +PluginUpdate +qall && echoSection "Vim plugins updated";
+    updateaurcache && echoSection "AUR cache updated";
+    upz && echoSection "System updated";
 }
 
 # ack is shorter than ack-grep

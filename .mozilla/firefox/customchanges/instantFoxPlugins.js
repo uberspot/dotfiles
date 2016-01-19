@@ -470,6 +470,18 @@
             "id": "user9",
             "key": "amazonde",
             "disableInstant": true
+        },
+        "user0": {
+            "url": "https://wiki.archlinux.org/index.php?%3ASearch&search=%q&go=Go",
+            "json": "https://en.wikipedia.org/w/api.php?action=opensearch&search=%q",
+            "domain": "https://wiki.archlinux.org/index.php",
+            "iconURI": "http://www.google.com/s2/favicons?domain=https://wiki.archlinux.org/index.php?%3ASearch&search=%q&go=Go",
+            "type": "user",
+            "name": "arch",
+            "id": "user0",
+            "key": "arch",
+            "disableInstant": true,
+            "disableSuggest": true
         }
     },
     "contextMenu": [
@@ -484,7 +496,6 @@
         "startpage (ssl)",
         "google (ssl)",
         "duckduckgo",
-        "user0",
         "user2",
         "github",
         "yahoo",
@@ -496,7 +507,8 @@
         "user6",
         "user7",
         "user8",
-        "disconnectsearch",
+        "user9",
+        "user0",
         "searx",
         "-",
         "__search_site__"

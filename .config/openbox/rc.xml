@@ -204,15 +204,24 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="S-W-y">
+    <keybind key="C-S-W-v">
       <action name="Execute">
-        <command>~/.screenlayout/dell.sh</command>
+        <command>~/.screenlayout/vga1.sh</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Enforce DellScreenLayout</name>
+          <name>Enforce VGA screen layout</name>
         </startupnotify>
       </action>
-    </keybind>
+  </keybind>
+  <keybind key="C-S-W-h">
+¦ <action name="Execute">
+    ¦   <command>~/.screenlayout/hdmi1.sh</command>
+    ¦   <startupnotify>
+    ¦   ¦ <enabled>yes</enabled>
+    ¦   ¦ <name>Enforce HDMI screen layout</name>
+    ¦   </startupnotify>
+    ¦ </action>
+  </keybind>
     <keybind key="W-n">
       <action name="Execute">
         <command>/usr/bin/telegram</command>
