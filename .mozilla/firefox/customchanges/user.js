@@ -119,6 +119,14 @@ user_pref("browser.pocket.useLocaleList",false); // https://support.mozilla.org/
 
 user_pref("browser.toolbarbuttons.introduced.pocket-button", false);
 
+// Kill all social related addons
+user_pref("social.whitelist", "");
+user_pref("social.manifest.facebook", false);
+// Do not allow remote installation in the background without permissions
+user_pref("social.remote-install.enabled", false);
+// Kills the share it button
+user_pref("social.share.activationPanelEnabled", false)
+
 // http://kb.mozillazine.org/Browser.send_pings
 user_pref("browser.send_pings",					false);
 

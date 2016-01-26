@@ -23,7 +23,9 @@ duplicity_backup() {
 # Adds the extra config to ssh's config file
 # Copies the pub key to the remote server
 ssh-keygen-setup() {
-    echo "Usage: call with 'ssh-keygen-setup aliasname hostname user port'"
+    [[ "$#" -lt 4 ]] && \
+		echo "Usage: call with 'ssh-keygen-setup aliasname hostname user port'" && \
+		return 0;
     aliasname=$1
     hostname=$2
     user=$3
