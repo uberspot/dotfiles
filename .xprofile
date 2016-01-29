@@ -1,1 +1,3 @@
 exec openbox-session
+
+#exec ck-launch-session i3
