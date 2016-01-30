@@ -9,21 +9,21 @@ fi
 udiskie &
 syndaemon -t -i 2 -d &
 
-(sleep 1s && nitrogen --restore) &
-(sleep 1s && numlockx) &
-# Launch Xcomppmgr and tint2 with openbox
+nitrogen --restore &
+numlockx &
+# Launch compton and tint2 with openbox
 if which tint2 >/dev/null 2>&1; then
-  (sleep 1s && xcompmgr) &
-  (sleep 1s && tint2) &
+  compton --config ~/.config/compton.conf -b
+  tint2 &
 fi
 
-(sleep 2s && volumeicon) &
-(sleep 3s && redshift -O 3800) &
+volumeicon &
+redshift -O 3800 &
 
 # set speaker to 100% since pulseaudio doesn't keep the change each time :/
-(sleep 5s && amixer set Speaker 100%) &
+amixer set Speaker 100% &
 
-(sleep 3s && qxkb) &
+qxkb &
 
-
-(sleep 4s && killall pulseaudio) &
+# sigh, pulseaudio ...
+(sleep 2s && killall pulseaudio) &
