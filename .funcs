@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+# Source a file if it exists.
+function try_source {
+	[ -f "$1" ] && source "$1"
+}
+
+# Test if a command exists.
+function try_command {
+	command -v "$1" >/dev/null 2>&1
+}
+
 duplicity_backup() {
     (( $UID )) && { echo 'you need to be root to run this script'; return 1; }
     [[ "$#" -lt 2 ]] && \

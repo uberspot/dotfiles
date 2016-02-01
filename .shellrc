@@ -1,0 +1,14 @@
+# load useful functions first
+file="$HOME/.funcs"; [ -f "$file" ] && source "$file"
+
+# Load the shell dotfiles, and then some:
+for file in {$HOME/.alias,/usr/share/doc/pkgfile/command-not-found.bash}; do
+try_source "$file"
+done
+unset file
+
+eval $(dircolors -b)
+FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
+
+# make less more friendly for non-text input files
+# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

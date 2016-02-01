@@ -2,6 +2,8 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.extra/zsh_custom
 
+file="$HOME/.shellrc"; [ -f "$file" ] && source "$file"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -10,9 +12,6 @@ ZSH_THEME="code"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
-
-eval $(dircolors -b)
-FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 
 # Increase the zsh limit of "do you wish to list all NNN possibilities?"
 LISTMAX=500
@@ -35,7 +34,7 @@ export HISTCONTROL="erasedups:ignoreboth"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap git-extra-commands)
 
-FILE="$ZSH/oh-my-zsh.sh"; [ -f $FILE ] && source $FILE;
+try_source "$ZSH/oh-my-zsh.sh"
 
 # Completion
 
@@ -75,13 +74,7 @@ zstyle ':completion:*:approximate:*' max-errors 2
 
 # User configuration
 
-# make less more friendly for non-text input files
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-for file in {$HOME/.alias,$HOME/.funcs,/usr/share/doc/pkgfile/command-not-found.bash,/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}; do
-[ -r "$file" ] && [ -f "$file" ] && source "$file"
-done
-unset file
+try_source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 unalias exit
 
@@ -114,7 +107,7 @@ fpath+="$HOME/.extra/aurtab"
 # prepend sudo with ^S
 insert-root-prefix() {
   BUFFER="sudo $BUFFER"
-  CURSOR=$(($CURSOR + 5))
+  CURSOR="$(($CURSOR + 5))"
 }
 zle -N insert-root-prefix
 bindkey '^S' insert-root-prefix
@@ -143,5 +136,4 @@ bindkey '^F' inline-ls
 
 # display moo
 moo
-
 
