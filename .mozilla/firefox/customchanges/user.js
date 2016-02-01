@@ -28,6 +28,18 @@ user_pref("media.peerconnection.default_iceservers",		"[]");
 
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
 user_pref("media.peerconnection.ice.default_address_only",		true);
+
+// Disable WebRTC:
+// WebRTC leak test (among other things): https://ipleak.net/
+// https://hacks.mozilla.org/2012/11/progress-update-on-webrtc-for-firefox-on-desktop/
+// https://mozilla.github.io/webrtc-landing/
+// https://wiki.mozilla.org/Media/getUserMedia
+user_pref("media.peerconnection.enabled", false);
+user_pref("media.peerconnection.use_document_iceservers", false);
+user_pref("media.navigator.enabled", false);
+user_pref("media.getusermedia.screensharing.enabled", false);
+user_pref("media.getusermedia.screensharing.allowed_domains", "");
+
 // Prevent CSS History Leak
 // https://blog.mozilla.org/security/2010/03/31/plugging-the-css-history-leak/
 user_pref("layout.css.visited_links_enabled",		false);
@@ -49,6 +61,7 @@ user_pref("toolkit.telemetry.enabled",			false);
 
 // https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
 user_pref("toolkit.telemetry.unified",      false);
+user_pref("toolkit.telemetry.archive.enabled", false);
 
 // https://wiki.mozilla.org/Telemetry/Experiments
 user_pref("experiments.supported",		false);
@@ -86,6 +99,7 @@ user_pref("datareporting.healthreport.service.enabled", false);
 
 // https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
 user_pref("datareporting.policy.dataSubmissionEnabled",     false);
+user_pref("datareporting.policy.dataSubmissionEnabled.v2", false);
 
 // https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
 user_pref("dom.battery.enabled",				false);
@@ -97,6 +111,7 @@ user_pref("beacon.enabled",					false);
 user_pref("dom.event.clipboardevents.enabled",			false);
 // Webpages will not be able to affect the right-click menu
 //user_pref("dom.event.contextmenu.enabled",			false);
+user_pref("dom.cellbroadcast.enabled", false);
 
 // Disable new tab tile ads & preload
 // http://www.thewindowsclub.com/disable-remove-ad-tiles-from-firefox
@@ -105,9 +120,12 @@ user_pref("browser.newtabpage.enhanced",			false);
 user_pref("browser.newtab.preload",				false);
 // https://wiki.mozilla.org/Tiles/Technical_Documentation#Ping
 user_pref("browser.newtabpage.directory.ping",          "");
+user_pref("browser.newtab.url", "about:blank");
+user_pref("browser.newtabpage.directory.ping", "");
+user_pref("browser.newtabpage.directory.source", "");
 
 user_pref("accessibility.blockautorefresh",true); // Instead of refreshing a page automatically when <meta http-equiv="refresh"> is present (or Refresh HTTP headers),
-// display a browser message indicating the refresh and allow the user to follow it manually. 
+// display a browser message indicating the refresh and allow the user to follow it manually.
 
 // disable pocket
 user_pref("browser.pocket.api",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
@@ -129,6 +147,7 @@ user_pref("social.share.activationPanelEnabled", false)
 
 // http://kb.mozillazine.org/Browser.send_pings
 user_pref("browser.send_pings",					false);
+user_pref("browser.send_pings.require_same_host", true);
 
 /* See: https://developer.mozilla.org/en-US/Firefox/Releases/40/Site_Compatibility#Security
 Sub-resources HTTP-authentication:
@@ -147,8 +166,13 @@ user_pref("network.allow-experiments",              false);
 
 // https://wiki.mozilla.org/Security/Reviews/Firefox/NavigationTimingAPI
 user_pref("dom.enable_performance",             false);
-user_pref("media.webspeech.recognition.enable", false);
+user_pref("dom.webnotifications.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/notification
+user_pref("dom.webnotifications.serviceworker.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/notification
+user_pref("media.webspeech.recognition.enable", false); // https://wiki.mozilla.org/HTML5_Speech_API
+user_pref("dom.netinfo.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API
 
+// Disable HTML5 video stats:
+// https://bugzilla.mozilla.org/show_bug.cgi?id=654550
 user_pref("media.video_stats.enabled",      false);
 
 // Disable face detection by default
@@ -161,6 +185,8 @@ user_pref("dom.gamepad.enabled",				false);
 // disable virtual reality devices
 // https://developer.mozilla.org/en-US/Firefox/Releases/36#Interfaces.2FAPIs.2FDOM
 user_pref("dom.vr.enabled",					false);
+user_pref("dom.vr.oculus.enabled", false);
+user_pref("dom.vr.oculus050.enabled", false);
 
 // CIS Mozilla Firefox 24 ESR v1.0.0 - 3.7 Disable JAR from opening Unsafe File Types
 // http://kb.mozillazine.org/Network.jar.open-unsafe-types
@@ -194,6 +220,7 @@ user_pref("security.sri.enable",		true);
 // http://dnt.mozilla.org/
 // https://en.wikipedia.org/wiki/Do_not_track_header
 user_pref("privacy.donottrackheader.enabled",			true);
+user_pref("privacy.donottrackheader.value", 1);
 
 // http://kb.mozillazine.org/Network.http.sendRefererHeader#0
 // https://bugzilla.mozilla.org/show_bug.cgi?id=822869
@@ -418,13 +445,8 @@ user_pref("browser.safebrowsing.updateURL", "");
 user_pref("browser.search.countryCode", "US");
 user_pref("browser.search.geoSpecificDefaults", false);
 user_pref("browser.search.geoip.url", "");
-user_pref("browser.send_pings.require_same_host", true);
 user_pref("geo.wifi.uri", "");
 user_pref("mousewheel.min_line_scroll_amount", 25);
-user_pref("network.http.pipelining.aggressive", true);
-user_pref("network.http.pipelining.max-optimistic-requests", 8);
-user_pref("network.http.pipelining.ssl", true);
-user_pref("network.http.proxy.pipelining", true);
 user_pref("network.predictor.cleaned-up", true);
 user_pref("network.warnOnAboutNetworking", false);
 user_pref("nglayout.initialpaint.delay", 0);
@@ -445,7 +467,6 @@ user_pref("browser.download.panel.firstSessionCompleted", true);
 user_pref("browser.download.panel.shown", true);
 user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.selfsupport.url", "");
-user_pref("browser.send_pings.require_same_host", true);
 user_pref("browser.sessionstore.interval", 45000);
 user_pref("browser.sessionstore.max_tabs_undo", 20);
 user_pref("browser.tabs.animate", false);
@@ -455,14 +476,37 @@ user_pref("general.autoScroll", true);
 user_pref("general.warnOnAboutConfig", false);
 user_pref("geo.wifi.logging.enabled", false);
 user_pref("network.cookie.prefsMigrated", true);
-user_pref("network.dns.disableIPv6", true);
-user_pref("network.dns.disablePrefetch", true);
 user_pref("network.dnsCacheEntries", 100);
 user_pref("network.dnsCacheExpiration", 600);
-user_pref("network.http.max-connections", 64);
-user_pref("network.http.max-persistent-connections-per-server", 5);
+
+// http://knowipv6.digitalelement.com/?p=66
+user_pref("network.http.fast-fallback-to-IPv4", true);
+user_pref("network.dns.disableIPv6", true);
+
+// Network
+// Default network values from Tor Browser 4.5.3:
+user_pref("network.http.max-connections", 256);
+user_pref("network.http.max-persistent-connections-per-proxy", 256);
+user_pref("network.http.max-persistent-connections-per-server", 6);
 user_pref("network.http.pipelining", true);
-user_pref("network.http.pipelining.maxrequests", 8);
+user_pref("network.http.pipelining.abtest", false);
+user_pref("network.http.pipelining.aggressive", true);
+user_pref("network.http.pipelining.max-optimistic-requests", 3);
+user_pref("network.http.pipelining.maxrequests", 12);
+user_pref("network.http.pipelining.maxsize", 300000);
+user_pref("network.http.pipelining.read-timeout", 60000);
+user_pref("network.http.pipelining.reschedule-on-timeout", true);
+user_pref("network.http.pipelining.reschedule-timeout", 15000);
+user_pref("network.http.pipelining.ssl", true);
+user_pref("network.http.proxy.pipelining", true);
+user_pref("network.http.redirection-limit", 20);
+
+// Enable new cache:
+// https://bugzilla.mozilla.org/show_bug.cgi?id=913807
+user_pref("browser.cache.use_new_backend", 1);
+
+// Disable geotargeting:
+user_pref("browser.search.geoSpecificDefaults", false);
 
 // https://wiki.mozilla.org/Privacy/Reviews/Necko#Principle:_Real_Choice
 user_pref("network.seer.enabled",		false);
@@ -479,6 +523,9 @@ user_pref("network.http.speculative-parallel-limit",		0);
 // you can test this at https://pinningtest.appspot.com/
 user_pref("security.ssl.errorReporting.automatic",      false);
 
+// Block mixed content:
+user_pref("security.mixed_content.block_active_content", true); // (eg. insecure CSS or JS on a HTTPS page - this is enabled by default)
+
 user_pref("app.support.baseURL", "");
 user_pref("app.update.url", "");
 user_pref("browser.aboutHomeSnippets.updateUrl", "");
@@ -494,14 +541,86 @@ user_pref("extensions.getAddons.cache.enabled",   false);
 user_pref("device.sensors.enabled",                false);
 
 user_pref("browser.devedition.theme.enabled", true);
-user_pref("devtools.theme". "light");
+user_pref("devtools.theme". "dark");
 user_pref("browser.altClickSave", true);
 user_pref("browser.urlbar.trimURLs", false);
+// Get rid of the useless/redundant "Visit (site)" and "(keyword) - search with (engine)" dropdown in the URL bar (since FF43):
+user_pref("browser.urlbar.unifiedcomplete", false);
 
+// Remove "(site) is now fullscreen" nag message:
+user_pref("full-screen-api.warning.delay", 0);
+user_pref("full-screen-api.warning.timeout", 0);
 
-// Protection against Javascript exploits to block eval() 
+// Disable fullscreen URL bar animation:
+user_pref("browser.fullscreen.animate", false);
+
+// Disable tab animation:
+    // http://www.askvg.com/how-to-disable-animation-while-opening-new-tab-in-mozilla-firefox-4-0/
+user_pref("browser.tabs.animate", false);
+
+// Don't warn on opening about:config:
+user_pref("general.warnOnAboutConfig", false);
+
+// Prevent sites/popups from messing with certain UI elements:
+// http://kb.mozillazine.org/Prevent_websites_from_disabling_new_window_features
+user_pref("dom.disable_window_open_feature.location", true); // Always show the URL bar
+user_pref("dom.disable_window_open_feature.resizable", true); // Allow to resize the window
+user_pref("dom.disable_window_open_feature.status", true); // Always show the status bar
+
+// Protection against Javascript exploits to block eval()
 // See: https://hackademix.net/2011/09/29/script-surrogates-quick-reference/
 noscript.surrogate.noeval.replacement,		window.eval = null;document.eval=null;
 noscript.surrogate.noeval.sources,		@^http://[a-z]+[^/]+\.[a-z]+(?:/|$);
 noscript.surrogate.noeval.exceptions;
 
+// Enable autoscrolling
+user_pref("general.autoScroll", false);
+
+// Enable eyedropper and screenshot in dev tools:
+user_pref("devtools.command-button-eyedropper.enabled", true);
+user_pref('devtools.command-button-screenshot.enabled', true);
+
+// Speed up security delay when installing add-ons:
+user_pref("security.dialog_enable_delay", 0);
+
+// Disable EME, Adobe "Primetime Content Decryption Module" DRM malware:
+// http://techdows.com/2015/04/how-to-uninstall-or-remove-adobe-primetime-decryption-module-plugin-from-firefox-38.html
+// Additionally, you might want to delete all traces of "gmp-eme" from your Firefox profile folder.
+// Or simply use "EME-free" builds of Firefox (Windows only): https://ftp.mozilla.org/pub/firefox/releases/latest/win32-EME-free/en-US/
+user_pref("media.gmp-eme-adobe.autoupdate", false);
+user_pref("media.gmp-eme-adobe.enabled", false);
+user_pref("media.eme.apiVisible", false);
+user_pref("media.eme.enabled", false);
+user_pref("browser.eme.ui.enabled", false);
+
+// Disable "Firefox Hello" TokBox/Telefonica WebRTC PUP:
+// https://www.mozilla.org/en-US/privacy/firefox-hello/
+// https://security.stackexchange.com/questions/94284/how-secure-is-firefox-hello
+user_pref("loop.CSP", "");
+user_pref("loop.enabled", false);
+user_pref("loop.feedback.baseUrl", "");
+user_pref("loop.oauth.google.scope", ""); // What's Google doing in there as well?
+user_pref("loop.server", "");
+
+// Disable "Reader Mode":
+user_pref("reader.parse-on-load.enabled", false);
+
+// Disable pdfjs WebGL attack surface:
+user_pref("pdfjs.enableWebGL", false);
+
+// Remove default website protocol handlers
+// http://kb.mozillazine.org/Gecko.handlerService.schemes.%28protocol%29.*.uriTemplate
+// Mibbit
+user_pref("gecko.handlerService.schemes.irc.0.name", "");
+user_pref("gecko.handlerService.schemes.irc.0.uriTemplate", "");
+user_pref("gecko.handlerService.schemes.ircs.0.name", "");
+user_pref("gecko.handlerService.schemes.ircs.0.uriTemplate", "");
+// Yahoo Mail
+user_pref("gecko.handlerService.schemes.mailto.0.name", "");
+user_pref("gecko.handlerService.schemes.mailto.0.uriTemplate", "");
+// Gmail (optional)
+//user_pref("gecko.handlerService.schemes.mailto.1.name", "");
+// user_pref("gecko.handlerService.schemes.mailto.1.uriTemplate", "");
+// 30 Boxes
+user_pref("gecko.handlerService.schemes.webcal.0.name", "");
+user_pref("gecko.handlerService.schemes.webcal.0.uriTemplate", "");
