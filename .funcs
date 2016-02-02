@@ -211,4 +211,23 @@ EOF
 function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
 function dec2hex { awk 'BEGIN { printf "%x\n",$1}'; }
 
-
+# Shrinks size of pdf when it has lots of images.
+function optimize_pdf {
+	[[ "$#" -lt 2 ]] && \
+    	echo "Usage: call with '$0 input.pdf output.pdf'" && \
+    	return 0;
+	gs  -q -dNOPAUSE -dBATCH -dSAFER \
+    	-sDEVICE=pdfwrite \
+	    -dCompatibilityLevel=1.3 \
+	    -dPDFSETTINGS=/screen \
+    	-dEmbedAllFonts=true \
+	    -dSubsetFonts=true \
+    	-dColorImageDownsampleType=/Bicubic \
+	    -dColorImageResolution=76 \
+    	-dGrayImageDownsampleType=/Bicubic \
+   		-dGrayImageResolution=76 \
+	    -dMonoImageDownsampleType=/Bicubic \
+    	-dMonoImageResolution=76 \
+	    -sOutputFile=$2 \
+    	$1
+}
