@@ -13,6 +13,16 @@ alias ncdu="ncdu -q2"
 # If a directory is provided as an argument it sorts that instead.
 function ds () { du -sh "${1-.}"/* | sort -hr ; }
 
+# Source a file if it exists.
+function try_source() {
+    [ -f "$1" ] && source "$1"
+}
+
+# Test if a command exists.
+function try_command() {
+    command -v "$1" >/dev/null 2>&1
+}
+
 # Command line head / tail shortcuts (only works on zsh, double check for bash in case bash is called from a zsh shell)
 if [[ -n "$ZSH" && ! -n "$BASH" ]]; then
     # Global aliases
@@ -40,6 +50,13 @@ if [[ -n "$ZSH" && ! -n "$BASH" ]]; then
     alias -s png=open
     alias -s pdf=open
     alias -s gif=open
+
+	#list whats inside packed file
+  	alias -s zip="unzip -l"
+  	alias -s rar="unrar l"
+  	alias -s tar="tar tf"
+  	alias -s tar.gz="echo "
+  	alias -s ace="unace l"
 else
     alias g="git "
 fi
@@ -107,7 +124,7 @@ alias sysinfo="inxi -Fzx"
 try_command nocorrect || alias nocorrect=""
 
 alias s="[ -d \".repo\" ] && nocorrect repo status  ||  nocorrect git status"
-alias exit="history -c; exit"
+#alias exit="history -c; exit"
 
 # Do something and receive a desktop alert when it completes `sudo apt-get install something | alert`
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

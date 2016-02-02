@@ -1,8 +1,8 @@
 # load useful functions first
-file="$HOME/.funcs"; [ -f "$file" ] && source "$file"
+file="$HOME/.alias"; [ -f "$file" ] && source "$file"
 
 # Load the shell dotfiles, and then some:
-for file in {$HOME/.alias,/usr/share/doc/pkgfile/command-not-found.bash}; do
+for file in {$HOME/.funcs,/usr/share/doc/pkgfile/command-not-found.bash}; do
 try_source "$file"
 done
 unset file

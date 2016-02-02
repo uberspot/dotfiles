@@ -2,7 +2,6 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.extra/zsh_custom
 
-file="$HOME/.shellrc"; [ -f "$file" ] && source "$file"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -34,7 +33,7 @@ export HISTCONTROL="erasedups:ignoreboth"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap git-extra-commands)
 
-try_source "$ZSH/oh-my-zsh.sh"
+file="$ZSH/oh-my-zsh.sh"; [ -f "$file" ] && source "$file"
 
 # Completion
 
@@ -74,9 +73,7 @@ zstyle ':completion:*:approximate:*' max-errors 2
 
 # User configuration
 
-try_source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-unalias exit
+file="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"; [ -f "$file" ] && source "$file"
 
 # check zshoptions to see what these do
 setopt notify nohashdirs autocd globdots hist_ignore_all_dups noclobber auto_menu \
@@ -133,6 +130,8 @@ inline-ls() {
 }
 zle -N inline-ls
 bindkey '^F' inline-ls
+
+file="$HOME/.shellrc"; [ -f "$file" ] && source "$file"
 
 # display moo
 moo

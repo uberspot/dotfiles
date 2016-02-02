@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-# Source a file if it exists.
-function try_source {
-	[ -f "$1" ] && source "$1"
-}
-
-# Test if a command exists.
-function try_command {
-	command -v "$1" >/dev/null 2>&1
-}
-
 duplicity_backup() {
     (( $UID )) && { echo 'you need to be root to run this script'; return 1; }
     [[ "$#" -lt 2 ]] && \
@@ -208,11 +198,11 @@ EOF
 
 }
 
-function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
-function dec2hex { awk 'BEGIN { printf "%x\n",$1}'; }
+function hex2dec() { awk 'BEGIN { printf "%d\n",0x$1}'; }
+function dec2hex() { awk 'BEGIN { printf "%x\n",$1}'; }
 
 # Shrinks size of pdf when it has lots of images.
-function optimize_pdf {
+function optimize_pdf() {
 	[[ "$#" -lt 2 ]] && \
     	echo "Usage: call with '$0 input.pdf output.pdf'" && \
     	return 0;
@@ -231,3 +221,21 @@ function optimize_pdf {
 	    -sOutputFile=$2 \
     	$1
 }
+
+function print_remotely() {
+	[[ "$#" -lt 2 ]] && \
+    	echo "Usage: call with '$0 [FILENAME] [REMOTE_PRINTER_SSH_ALIAS] [optional:NUM_OF_COPIES]'" && \
+    	return 0;
+
+	local file="$1"
+	local remote_printer_alias="$2"
+	local copies="${3-1}" # use third argument or 1 if it doesn't exist
+	
+	# If you'd like to staple your prints, run the following on the remote printer:
+	#   lpoptions -o StapleLocation=UpperLeft
+	# And if you want color:
+	#   lpoptions -o ColorModel=Color
+
+	cat $file | /usr/bin/ssh -q $remote_printer_alias lpr -#$copies || exit 1
+}
+
