@@ -239,3 +239,7 @@ function print_remotely() {
 	cat $file | /usr/bin/ssh -q $remote_printer_alias lpr -#$copies || exit 1
 }
 
+function format_all_cpp_code() {
+	find "${1-.}" \( -name '*.h' -or -name '*.cxx' -or -name "*.cpp" \) -type f -print0 | xargs -0 clang-format -style=llvm -i
+}
+
