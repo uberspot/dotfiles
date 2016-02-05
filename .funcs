@@ -26,12 +26,12 @@ ssh-keygen-setup() {
     [[ "$#" -lt 4 ]] && \
 		echo "Usage: call with 'ssh-keygen-setup aliasname hostname user port'" && \
 		return 0;
-    aliasname=$1
-    hostname=$2
-    user=$3
-    port=$4
-    keyname="id_rsa_$aliasname"
-    keydir=$HOME/.ssh/identities/$aliasname/
+    local aliasname=$1
+    local hostname=$2
+    local user=$3
+    local port=$4
+    local keyname="id_rsa_$aliasname"
+    local keydir=$HOME/.ssh/identities/$aliasname/
     ssh-keygen-rsa $keyname
     mkdir -p $keydir
     mv $keyname $keydir
@@ -137,10 +137,10 @@ function dataurl() {
 }
 
 function git-fixup() {
-    amount=${1:-10}
-    array=(${(@f)"$(git --no-pager log -n $amount --pretty=format:%s)"})
+    local amount=${1:-10}
+    local array=(${(@f)"$(git --no-pager log -n $amount --pretty=format:%s)"})
     for (( i = 1; i <= $#array; i++ )) do
-      key="$i"
+      local key="$i"
       if [[ $#i == 1 ]]; then
         key=" $key"
       fi
@@ -161,22 +161,22 @@ function git-fixup() {
 
 function colortest() {
 
-	esc="$(echo -en '\e')"
+	local esc="$(echo -en '\e')"
 
-	blackf="${esc}[30m";   redf="${esc}[31m";    greenf="${esc}[32m"
- 	yellowf="${esc}[33m"   bluef="${esc}[34m";   purplef="${esc}[35m"
-  	cyanf="${esc}[36m";    whitef="${esc}[37m"
+	local blackf="${esc}[30m";   local redf="${esc}[31m";    local greenf="${esc}[32m"
+ 	local yellowf="${esc}[33m";   local bluef="${esc}[34m";   local purplef="${esc}[35m"
+  	local cyanf="${esc}[36m";    local whitef="${esc}[37m"
 
-  	blackb="${esc}[40m";   redb="${esc}[41m";    greenb="${esc}[42m"
-	yellowb="${esc}[43m"   blueb="${esc}[44m";   purpleb="${esc}[45m"
-  	cyanb="${esc}[46m";    whiteb="${esc}[47m"
+  	local blackb="${esc}[40m";   local redb="${esc}[41m";    local greenb="${esc}[42m"
+	local yellowb="${esc}[43m"   local blueb="${esc}[44m";   local purpleb="${esc}[45m"
+  	local cyanb="${esc}[46m";    local whiteb="${esc}[47m"
 
-  	boldon="${esc}[1m";    boldoff="${esc}[22m"
-  	italicson="${esc}[3m"; italicsoff="${esc}[23m"
-  	ulon="${esc}[4m";      uloff="${esc}[24m"
-  	invon="${esc}[7m";     invoff="${esc}[27m"
+  	local boldon="${esc}[1m";    local boldoff="${esc}[22m"
+  	local italicson="${esc}[3m"; local italicsoff="${esc}[23m"
+  	local ulon="${esc}[4m";      local uloff="${esc}[24m"
+  	local invon="${esc}[7m";     local invoff="${esc}[27m"
 
-  	reset="${esc}[0m"
+  	local reset="${esc}[0m"
 
 	cat << EOF
 

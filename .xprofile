@@ -1,3 +1,3 @@
 exec openbox-session
 
-#exec ck-launch-session i3
+#exec ck-launch-session i3 -V >>~/i3log 2>&1

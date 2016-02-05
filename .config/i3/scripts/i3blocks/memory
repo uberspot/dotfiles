@@ -1,0 +1,55 @@
+#!/bin/sh
+# Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+TYPE="${BLOCK_INSTANCE:-mem}"
+
+awk -v type=$TYPE '
+/^MemTotal:/ {
+	mem_total=$2
+}
+/^MemFree:/ {
+	mem_free=$2
+}
+/^Buffers:/ {
+	mem_free+=$2
+}
+/^Cached:/ {
+	mem_free+=$2
+}
+/^SwapTotal:/ {
+	swap_total=$2
+}
+/^SwapFree:/ {
+	swap_free=$2
+}
+END {
+	# full text
+	if (type == "swap")
+        printf("%.2f%% (%.2fG/%.2fG)\n", (swap_free / swap_total) * 100, swap_free/1024/1024, swap_free/1024/1024)
+	else
+        printf("%.2f%% (%.2fG/%.2fG)\n", (mem_free / mem_total) * 100, mem_free/1024/1024, mem_total/1024/1024)
+
+	# TODO: short text
+    printf("\n")
+
+	# TODO: color (if less than X%)
+    if ((mem_free / mem_total) < 0.2)
+        printf("#EF4836")  # red
+    else
+        printf("#26C281")  # green 
+        #printf("#00A5FF") # neon blue
+}
+' /proc/meminfo

@@ -4,6 +4,7 @@ export SUDO_EDITOR="vim"
 export BROWSER="firefox"
 export PAGER="less"
 export DE="openbox"
+export TERMINAL="terminator"
 
 export HISTCONTROL=erasedups:ignorespace
 
@@ -71,3 +72,4 @@ export MOZ_DISABLE_PANGO=1
 #[[ "$(tty)" == "/dev/tty1" ]] && [[ $- == *i* ]] && exec startx
 
 export ANDROID_HOME="/opt/android-sdk"
+

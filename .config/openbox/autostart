@@ -7,7 +7,7 @@ if xrandr -q | grep -q "HDMI1 connected" ; then
 fi
 
 udiskie &
-syndaemon -t -i 2 -d &
+syndaemon -i 2 -d &
 
 nitrogen --restore &
 numlockx &

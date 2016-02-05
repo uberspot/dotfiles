@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+#
+# Copyright (C) 2015 James Murphy                                                  
+# Licensed under the terms of the GNU GPL v2 only.                                 
+#                                                                                  
+# i3blocks blocklet script to display pending system upgrades 
+
+# FontAwesome refresh symbol, change if you do not want to install FontAwesome
+PENDING_SYMBOL="APT "
+
+# By default, show both the symbol and the numbers
+SYMBOL_ONLY=0
+
+# By default, show something when no upgrades are pending
+ALWAYS_PRINT=1
+
+# Colors for when there is/isn't a pending upgrade
+PENDING_COLOR="#EF4836"
+NONPENDING_COLOR="#26C281"
+
+while getopts s:oc:n:Nh opt; do
+    case "$opt" in
+        s) PENDING_SYMBOL="$OPTARG" ;;
+        o) SYMBOL_ONLY=1 ;;
+        c) PENDING_COLOR="$OPTARG" ;;
+        n) NONPENDING_COLOR="$OPTARG" ;;
+        N) ALWAYS_PRINT=0 ;;
+        h) printf \
+"Usage: apt-upgrades [-s pending_symbol] [-o] [-c pending_color] [-N|-n nonpending_color] [-h]
+Options:
+-s\tSpecify a refresh symbol. Default: \"\\\\uf021 \"
+-o\tShow refresh symbol only, but no numbers.
+-c\tColor when upgrade is pending. Default:  #00FF00
+-n\tColor when no upgrade is pending. Default: #FFFFFF
+-N\tOnly display text if upgrade is pending (supercedes -n)
+-h\tShow this help text\n" && exit 0;;
+    esac
+done
+
+read upgraded new removed held < <(
+aptitude full-upgrade --simulate --assume-yes |\
+    grep -m1 '^[0-9]\+ packages upgraded,' |\
+    tr -cd '0-9 ' |\
+    tr ' ' '\n' |\
+    grep '[0-9]\+' |\
+    xargs echo)
+
+if [[ $upgraded != 0 ]] || [[ $new != 0 ]] || [[ $removed != 0 ]] || [[ $held != 0 ]]; then
+    color="$PENDING_COLOR"
+    if [[ $SYMBOL_ONLY == 1 ]]; then
+        echo -e "$PENDING_SYMBOL"
+        echo -e "$PENDING_SYMBOL"
+    else
+        echo -e "$PENDING_SYMBOL$upgraded/$new/$removed/$held"
+        echo -e "$PENDING_SYMBOL$upgraded/$new/$removed/$held"
+    fi
+    echo $color
+elif [[ $ALWAYS_PRINT == 1 ]]; then
+    color="$NONPENDING_COLOR"
+    echo -e "$PENDING_SYMBOL$upgraded/$new/$removed/$held"
+    echo -e "$PENDING_SYMBOL$upgraded/$new/$removed/$held"
+    echo $color
+fi
+

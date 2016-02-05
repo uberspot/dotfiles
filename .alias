@@ -218,6 +218,11 @@ alias sscrot="scrot -s /tmp/shot.png"
 alias curlpaste="curlpaste -p -e ca "
 alias openbox_getOBAPP="obxprop | grep \"^_OB_APP\""
 
+# AV aliases
+alias check_rootkits="sudo rkhunter --update; sudo rkhunter --propupd; sudo rkhunter --check"
+alias check_virus="clamscan --recursive=yes --infected /home"
+alias update_antivirus="sudo freshclam"
+
 # fortune equality
 alias fortune="fortune -e -a"
 # Gets a random Futurama quote from slashdot.org(/.)
@@ -266,6 +271,7 @@ function updateall(){
     sudo hostsblock && echoSection "HostsBlock updated";
     vim +PluginUpdate +qall && echoSection "Vim plugins updated";
     updateaurcache && echoSection "AUR cache updated";
+    update_antivirus && echoSection "Antivirus database updated";
     upz && echoSection "System updated";
 }
 
