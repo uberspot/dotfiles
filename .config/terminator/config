@@ -1,60 +1,60 @@
 [global_config]
-  geometry_hinting = False
-  title_hide_sizetext = True
-  suppress_multiple_term_dialog = True
   enabled_plugins = ,
+  geometry_hinting = False
+  inactive_color_offset = 0.73
+  suppress_multiple_term_dialog = True
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#e9e9e9"
   title_receive_bg_color = "#36d300"
   title_transmit_bg_color = "#465cff"
-  inactive_color_offset = 0.73
-  title_inactive_bg_color = "#e9e9e9"
 [keybindings]
-  close_window = <Primary><Shift>w
-  group_tab = <Primary><Alt>t
-  resize_left = <Primary><Shift><Alt>Left
-  go_right = <Primary><Alt>Right
-  go_left = <Primary><Alt>Left
-  resize_right = <Primary><Shift><Alt>Right
-  group_all = <Primary>g
-  toggle_zoom = <Primary><Alt>x
-  scaled_zoom = <Primary><Alt>z
-  resize_down = <Primary><Shift><Alt>Down
-  prev_tab = <Primary><Shift>Tab
-  split_vert = <Primary>v
   close_term = <Primary>w
-  new_tab = <Primary>t
+  close_window = <Primary><Shift>w
   copy = <Primary><Shift>c
-  search = <Primary><Alt>f
-  go_up = <Primary><Alt>Up
-  resize_up = <Primary><Shift><Alt>Up
-  next_tab = <Primary>Tab
-  split_horiz = <Primary>h
   go_down = <Primary><Alt>Down
+  go_left = <Primary><Alt>Left
+  go_right = <Primary><Alt>Right
+  go_up = <Primary><Alt>Up
+  group_all = <Primary>g
+  group_tab = <Primary><Alt>t
+  new_tab = <Primary>t
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+  resize_down = <Primary><Shift><Alt>Down
+  resize_left = <Primary><Shift><Alt>Left
+  resize_right = <Primary><Shift><Alt>Right
+  resize_up = <Primary><Shift><Alt>Up
+  scaled_zoom = <Primary><Alt>z
+  search = <Primary><Alt>f
+  split_horiz = <Primary>h
+  split_vert = <Primary>v
   toggle_scrollbar = <Primary><Alt>s
-[profiles]
-  [[default]]
-    scrollbar_position = hidden
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#f6f4f4"
-    copy_on_selection = True
-    alternate_screen_scroll = False
-    visible_bell = True
-    background_image = None
-    background_darkness = 0.93
-    urgent_bell = True
-    background_type = transparent
-    use_system_font = False
-    cursor_color = "#ffffff"
-    foreground_color = "#eff1ff"
-    scroll_on_output = False
-    show_titlebar = False
-    font = Source Code Pro 10
-    scrollback_lines = 5000
+  toggle_zoom = <Primary><Alt>x
 [layouts]
   [[default]]
     [[[child1]]]
+      parent = window0
       profile = default
       type = Terminal
-      parent = window0
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    alternate_screen_scroll = False
+    background_darkness = 0.93
+    background_image = None
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#ffffff"
+    font = Source Code Pro 10
+    foreground_color = "#eff1ff"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#f6f4f4"
+    scroll_on_output = False
+    scrollback_lines = 50000
+    scrollbar_position = hidden
+    show_titlebar = False
+    urgent_bell = True
+    use_system_font = False
+    visible_bell = True

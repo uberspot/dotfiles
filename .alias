@@ -7,6 +7,7 @@ alias mv="mv -i"
 alias ln="ln -i"
 #alias rm="rm -Ivr --preserve-root"
 alias rm="trash -v"
+alias pkill="pkill -f"
 alias du="du -ch"
 alias ncdu="ncdu -q2"
 # ds = dusort sorts the current directory items decreasingly.
@@ -217,6 +218,7 @@ alias netbeans="netbeans --laf com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 alias sscrot="scrot -s /tmp/shot.png"
 alias curlpaste="curlpaste -p -e ca "
 alias openbox_getOBAPP="obxprop | grep \"^_OB_APP\""
+alias valgrind_memcheck="valgrind --leak-check=full --tool=memcheck --track-origins=yes"
 
 # AV aliases
 alias check_rootkits="sudo rkhunter --update; sudo rkhunter --propupd; sudo rkhunter --check"

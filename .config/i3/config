@@ -2,88 +2,93 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $super Mod4
+set $alt Mod1
+
+# Workspace variables
+set $WEB web
+set $TERM term
+set $MISC misc
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Source Code Pro 11
 
-new_window 1pixel
-new_float 1pixel
+new_window pixel 1
+new_float pixel 1
+for_window [class="^.*"] border pixel 1
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
 
 focus_follows_mouse no
 hide_edge_borders both
 
 # start a terminal
-bindsym $mod+t exec i3-sensible-terminal
+bindsym $super+t exec i3-msg 'workspace term; exec /usr/bin/terminator'
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $super+Shift+w exec kill
+
+# xkill window
+bindsym $super+Shift+q exec xkill
 
 # start dmenu (a program launcher)
-#bindsym $mod+space exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+space exec rofi -show run -bg "#222222" -fg "#2ECC71" -hlbg "#445544" -hlfg "#2EEE71" -bw 4 -eh 1 -opacity "80" -lines 8 -line-margin 4 -width 100 -padding 160 -terminal terminator
+#bindsym $super+space exec --no-startup-id i3-dmenu-desktop
+bindsym $super+space exec rofi -show run -bg "#222222" -fg "#2ECC71" -hlbg "#445544" -hlfg "#2EEE71" -bw 4 -eh 1 -opacity "80" -lines 8 -line-margin 4 -width 100 -padding 160 -terminal terminator
 
 #Move focus:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Ctrl+Left move left
-bindsym $mod+Ctrl+Down move down
-bindsym $mod+Ctrl+Up move up
-bindsym $mod+Ctrl+Right move right
+bindsym $super+Control+Left move left
+bindsym $super+Control+Down move down
+bindsym $super+Control+Up move up
+bindsym $super+Control+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+h split h
+bindsym $super+Shift+h split h
 
 # split in vertical orientation
-bindsym $mod+Shift+v split v
+bindsym $super+Shift+v split v
 
 # enter fullscreen mode for the focused container
-#bindsym $mod+Shift+f fullscreen toggle
+bindsym $super+a fullscreen toggle
 bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+t layout toggle all
-#bindsym $mod+Shift+a layout stacking
-#bindsym $mod+Shift+t layout tabbed
-#bindsym $mod+Shift+s layout toggle split
+bindsym $super+Shift+t layout toggle all
+#bindsym $super+Shift+a layout stacking
+#bindsym $super+Shift+t layout tabbed
+#bindsym $super+Shift+s layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $super+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
+#bindsym $super+space focus mode_toggle
 
 # focus the parent container
-#bindsym $mod+u focus parent
+#bindsym $super+u focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
-
-# Workspace variables
-set $WS1 web
-set $WS2 term
-set $WS3 misc
+#bindsym $super+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace $WS1
-bindsym $mod+2 workspace $WS2
-bindsym $mod+3 workspace $WS3
+bindsym $super+1 workspace $WEB
+bindsym $super+2 workspace $TERM
+bindsym $super+3 workspace $MISC
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $WS1
-bindsym $mod+Shift+2 move container to workspace $WS2
-bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $super+Shift+1 move container to workspace $WEB
+bindsym $super+Shift+2 move container to workspace $TERM
+bindsym $super+Shift+3 move container to workspace $MISC
 
 # task switcher - rofi
-bindsym Mod1+Tab \
+bindsym $alt+Tab \
   exec rofi \
   -show window -terminal terminator -hide-scrollbar true  \
   -line-margin 0 -lines 20 -eh 1 -width 40 -bw 3 \
@@ -95,13 +100,13 @@ bindsym Mod1+Tab \
   -opacity 80
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $super+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $super+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $super+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 # Pressing left will shrink the window’s width.
@@ -109,10 +114,10 @@ bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
 
-bindsym $mod+Mod1+Left resize shrink width 10 px or 10 ppt
-bindsym $mod+Mod1+Down resize grow height 10 px or 10 ppt
-bindsym $mod+Mod1+Up resize shrink height 10 px or 10 ppt
-bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
+bindsym $super+$alt+Left resize shrink width 10 px or 10 ppt
+bindsym $super+$alt+Down resize grow height 10 px or 10 ppt
+bindsym $super+$alt+Up resize shrink height 10 px or 10 ppt
+bindsym $super+$alt+Right resize grow width 10 px or 10 ppt
 
 # --- custom --- #
 
@@ -120,61 +125,69 @@ bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
 
 # screenshot
 
-bindsym $mod+Shift+0 exec --no-startup-id notify-send "scrot" "\nTaking a screenshot..." -t 3000 && scrot
-bindsym $mod+0 --release exec --no-startup-id notify-send "scrot" "\nSelect a rectangle to save..." -t 3000 && scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/ '
+bindsym $super+Shift+0 exec --no-startup-id notify-send "scrot" "\nTaking a screenshot..." -t 3000 && scrot
+bindsym $super+0 --release exec --no-startup-id notify-send "scrot" "\nSelect a rectangle to save..." -t 3000 && scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/ '
 
 # screen lock
 
 # default setup
-# bindsym $mod+control+l exec --no-startup-id i3lock -c 000000
+# bindsym $super+control+l exec --no-startup-id i3lock -c 000000
 # exec_always --no-startup-id xautolock -time 15 -locker "i3lock -c 000000"
 #   or
 # use a script to control the locking
-bindsym $mod+Shift+l exec --no-startup-id slock
+bindsym $super+Shift+l exec --no-startup-id slock
 
 # multimedia keys
 
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+' unmute"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-' unmute"
+bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
 bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+
+bindsym XF86PowerOff exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym XF86Sleep exec "sudo pm-suspend"
+bindsym XF86MonBrightnessUp exec "xbacklight +5"
+bindsym XF86MonBrightnessDown exec "xbacklight -5"
+bindsym XF86Display exec ~/.extra/display.sh
+bindsym XF86Finance exec ~/.extra/display.sh
 
 # scratchpad / sticky windows
 
 # move the currently focused window to the scratchpad
-#bindsym $mod+Shift+minus move scratchpad; sticky enable
-#bindsym $mod+F12 move scratchpad; sticky enable
+#bindsym $super+Shift+minus move scratchpad; sticky enable
+#bindsym $super+F12 move scratchpad; sticky enable
 
 # show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-#bindsym $mod+minus scratchpad show
+#bindsym $super+minus scratchpad show
 #bindsym F12 scratchpad show
 
 # make current window sticky
-bindsym $mod+Shift+s sticky toggle
+bindsym $super+Shift+s sticky toggle
 
 ## workspace 
 
 # set automatic back and forth
 workspace_auto_back_and_forth yes
 # toggle between last two workspaces
-bindsym $mod+Shift+z workspace back_and_forth
+bindsym $super+Shift+z workspace back_and_forth
 
 # move to left and right workspaces
-bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+Tab workspace next
+bindsym $super+Shift+Tab workspace prev
+bindsym $super+Tab workspace next
 
 # move a window to the adjacent workspaces
-bindsym $mod+Shift+Right move container to workspace next; workspace next
-bindsym $mod+Shift+Left move container to workspace prev; workspace prev
+bindsym $super+Shift+Right move container to workspace next; workspace next
+bindsym $super+Shift+Left move container to workspace prev; workspace prev
 
 # use numpad for workspace switching
-bindsym KP_1 workspace $WS1
-bindsym KP_2 workspace $WS2
-bindsym KP_3 workspace $WS3
+bindsym KP_1 workspace $WEB
+bindsym KP_2 workspace $TERM
+bindsym KP_3 workspace $MISC
 
-# move focused container to workspace bindsym $mod+Shift+1 move container to workspace 1
-#bindsym Shift+KP_1 move container to workspace $WS1; workspace $WS1
+# move focused container to workspace bindsym $super+Shift+1 move container to workspace 1
+#bindsym Shift+KP_1 move container to workspace $WEB; workspace $WEB
 
 ## windows
 
@@ -183,8 +196,8 @@ floating_minimum_size 100 x 100
 floating_maximum_size 1500 x 1500
 
 # toggle borders and bar mode (hide or show)
-bindsym $mod+Shift+b bar mode toggle
-bindsym $mod+Shift+o border toggle
+bindsym $super+Shift+b bar mode toggle
+bindsym $super+Shift+o border toggle
 
 # floating rules
 
@@ -195,25 +208,24 @@ for_window [title="Settings$"] floating enable
 
 ## application shortcuts
 
-# audio mixer
-#bindsym $mod+a exec --no-startup-id terminator -e alsamixer
-#for_window [title="alsamixer$"] floating enable
-
 # system monitor
-#bindsym $mod+Delete exec --no-startup-id terminator -e htop
+#bindsym $super+Delete exec --no-startup-id terminator -e htop
 #for_window [title="htop$"] floating enable
 
-# web browser
-bindsym $mod+w exec --no-startup-id i3-msg 'workspace $WS1; firefox'
+# Application keybindings
+bindsym $super+w exec --no-startup-id i3-msg 'workspace $WEB; exec firefox'
+assign [class="Firefox"]   $WEB
+bindsym $super+m exec --no-startup-id i3-msg 'workspace $WEB; exec firejail --seccomp thunderbird'
+bindsym $super+f exec --no-startup-id thunar
+bindsym $super+z exec --no-startup-id i3-msg 'workspace $WEB; exec subl'
+bindsym $super+x exec --no-startup-id i3-msg 'workspace $WEB; exec chromium'
+bindsym $super+v exec --no-startup-id i3-msg 'workspace $WEB; exec vivaldi'
+bindsym $super+p exec --no-startup-id i3-msg 'workspace $MISC; exec pidgin'
+bindsym $super+n exec --no-startup-id i3-msg 'workspace $MISC; exec telegram'
+bindsym $super+s exec --no-startup-id i3-msg 'workspace $MISC; exec skype'
 
-# mail client
-bindsym $mod+m exec --no-startup-id i3-msg 'workspace $WS1; firejail --seccomp thunderbird'
-
-# file manager
-bindsym $mod+f exec --no-startup-id thunar
-
-# text editor
-bindsym $mod+z exec --no-startup-id i3-msg 'workspace $WS1; subl'
+bindsym $super+Shift+Control+v exec --no-startup-id ~/.screenlayout/vga1.sh
+bindsym $super+Shift+Control+h exec --no-startup-id ~/.screenlayout/hdmi1.sh
 
 # colors
 # class                 border  backgr. text    indicator

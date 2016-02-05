@@ -204,24 +204,6 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="C-S-W-v">
-      <action name="Execute">
-        <command>~/.screenlayout/vga1.sh</command>
-        <startupnotify>
-          <enabled>yes</enabled>
-          <name>Enforce VGA screen layout</name>
-        </startupnotify>
-      </action>
-  </keybind>
-  <keybind key="C-S-W-h">
-¦ <action name="Execute">
-    ¦   <command>~/.screenlayout/hdmi1.sh</command>
-    ¦   <startupnotify>
-    ¦   ¦ <enabled>yes</enabled>
-    ¦   ¦ <name>Enforce HDMI screen layout</name>
-    ¦   </startupnotify>
-    ¦ </action>
-  </keybind>
     <keybind key="W-n">
       <action name="Execute">
         <command>/usr/bin/telegram</command>
@@ -424,6 +406,15 @@
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
         <command>xbacklight -5</command>
+      </action>
+    </keybind>
+    <keybind key="XF86Display">
+      <action name="Execute">
+        <command>~/.extra/display.sh</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Enforce screen layout</name>
+        </startupnotify>
       </action>
     </keybind>
   </keyboard>

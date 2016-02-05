@@ -1,10 +1,4 @@
-if xrandr -q | grep -q "VGA1 connected" ; then
-    ~/.screenlayout/vga1.sh
-fi
-
-if xrandr -q | grep -q "HDMI1 connected" ; then
-    ~/.screenlayout/hdmi1.sh
-fi
+~/.extra/display.sh
 
 udiskie &
 syndaemon -i 2 -d &
@@ -19,6 +13,7 @@ fi
 
 volumeicon &
 redshift -O 3800 &
+thunar --daemon &
 
 # set speaker to 100% since pulseaudio doesn't keep the change each time :/
 amixer set Speaker 100% &
