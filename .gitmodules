@@ -25,3 +25,6 @@
 [submodule ".extra/aurtab"]
 	path = .extra/aurtab
 	url = https://github.com/worzel666/aurtab.git
+[submodule ".vim/autoload/vim-plug"]
+	path = .vim/autoload/vim-plug
+	url = https://github.com/junegunn/vim-plug.git

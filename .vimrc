@@ -87,6 +87,26 @@ autocmd BufReadPost *
 
 " }}}
 
+" Vim-plug {{{
+
+silent! if plug#begin('~/.vim/plugged')
+
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/syntastic'
+Plug 'vim-utils/vim-troll-stopper'
+Plug 'rking/ag.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
+autocmd! User indentLine doautocmd indentLine Syntax
+
+call plug#end()
+endif
+
+" }}}
+
 " Comments {{{
 
 " Commenting blocks of code.
@@ -170,19 +190,34 @@ autocmd BufWinEnter *.* silent loadview
 
 " }}}
 
-" Backups {{{
+" Backups/Undo/Dirs {{{
 
 " Keep backup of edited files
 set backup
 set writebackup
+
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+  silent !mkdir -p ~/.cache/vim_backups > /dev/null 2>&1
+  set undodir=~/.cache/vim_backups
+  set undofile
+endif
+
 set backupdir=~/.cache/vim_backups/
+
+silent !mkdir -p ~/.cache/vim_backups/view/ > /dev/null 2>&1
+set viewdir=~/.cache/vim_backups/view/
+silent !mkdir -p ~/.cache/vim_backups/swap/ > /dev/null 2>&1
+set directory=~/.cache/vim_backups/swap/
+
 if !has('nvim')
 	set viminfo+=n~/.cache/vim_backups/viminfo
 else
 	set viminfo+=n~/.cache/vim_backups/nviminfo
 endif
 
-set history=700 " Sets how many lines of history VIM has to remember
+set history=1000 " Sets how many lines of history VIM has to remember
 
 " }}}
 
@@ -252,14 +287,6 @@ endif
 " }}}
 
 " Persistent Undo {{{
-
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo')
-  silent !mkdir -p ~/.cache/vim_backups > /dev/null 2>&1
-  set undodir=~/.cache/vim_backups
-  set undofile
-endif
 
 " }}}
 
@@ -437,32 +464,13 @@ endfun
 
 " }}}
 
-" Vundle {{{
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-utils/vim-troll-stopper'
-Plugin 'rking/ag.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'Yggdroot/indentLine'
-
-call vundle#end()
-
-" }}}
-
 " Plugin configs {{{
 
 " NerdTree
 map <leader>t :NERDTreeToggle<CR>
+
+" Autoclose when nerdtree is the only window left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Syntactic
 
@@ -513,8 +521,7 @@ let g:syntastic_python_pylint_quiet_messages = { 'regex': pylint_ignore_regexp }
 
 nmap <leader>sc :SyntasticCheck<CR>
 
-" Autoclose when nerdtree is the only window left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 " Close the autocompletion window on movement in insert mode or when leaving insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -543,8 +550,6 @@ else
 endif
 
 " }}}
-
-
 
 " NVim specific {{{
 if has('nvim')
