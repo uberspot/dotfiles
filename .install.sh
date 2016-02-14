@@ -13,8 +13,10 @@ apacman -S trash-cli the_silver_searcher
 # set default shell to zsh
 chsh -s /bin/zsh
 
+chmod +x ~/.extra/z/z.sh
+
 # install vim plugins based on .vimrc
-zsh -c "vim +PluginInstall +qall;"
+zsh -c "vim +PlugInstall +qall;"
 
 # link neovim config files
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}

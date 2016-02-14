@@ -602,6 +602,9 @@ user_pref("loop.feedback.baseUrl", "");
 user_pref("loop.oauth.google.scope", ""); // What's Google doing in there as well?
 user_pref("loop.server", "");
 
+// set tabwindowpreviews on drag off
+user_pref("nglayout.enable_drag_images", false);
+
 // Disable "Reader Mode":
 user_pref("reader.parse-on-load.enabled", false);
 

@@ -3,16 +3,31 @@ startup_message off
 silencewait 300
 
 term xterm-256color
-hardstatus off
-caption always "%?%F%{= wk} * %:%{=u Kk}%? "
-hardstatus alwayslastline "%{= kr} %-Lw%{=b wk} %n%f %t %{-}%+Lw %=%{= dd} %{+b ky} %l %{= kw}%1`%{+b kg}%C%a %D %d %M %Y%{= db}"
+
+caption always '%{= bw}%-Lw%{= rW}%n%f+ %{+u}%t%{-}%{-}%+Lw%{= KW} /%-=/ %{= kg} %{= kK}/ %{= ky}%Y/%m/%d %{= kK}/ %{= kc}%c:%s%{-}'
+	# %{= bw} : color
+	# %-Lw : all window numbers and names. With '-' quailifier: up to the current window
+
+	# %{= rW} : color
+	# %n : window number 
+	# %f : flag of the window
+		# +   : fills flag position (instead of -)
+		# ' ' : margin
+	# %t : window title
+
+	# %{-}%+Lw : all window numbers and names. with '+' qualifier:
+				# 	starting with the window after the current one
 
 vbell off
 
-defscrollback 10000       # Makes the default scroll back large.
+defscrollback 5000       # Makes the default scroll back large.
 
 defutf8 on                # Make UTF-8 encoding default.
 altscreen on              # Use alternate screen to clean exit out of vim.
 autodetach on             # Detach on hang-up.
 nonblock on               # Do not block when a program freezes.
 
+# http://robotsrule.us/vim/
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"

@@ -39,6 +39,9 @@
     amend = commit --amend --no-edit   # amend your last commit and don't edit the commit message
     edit = commit --amend --only       # amend your last commit without adding the already staged files
 
+    archive-zip = archive -o "$(basename $PWD).zip" HEAD
+    archive-tgz = archive -o "$(basename $PWD).tgz" HEAD
+
     # amend a specific commit. Example usage: "git add -p; git fixup HEAD~5"
     # OR "git add -p; git stash --keep-index; git fixup HEAD~5; git stash pop"
     # via http://stackoverflow.com/questions/3103589/how-can-i-easily-fixup-a-past-commit
@@ -66,16 +69,18 @@
 
     # from mathiasbynens dotfiles:
     # Find branches containing commit
-    findcommitinbranches = "!f() { git branch -a --contains $1; }; f"
+    find-commit-in-branches = "!f() { git branch -a --contains $1; }; f"
 
     # Find tags containing commit
-    findcommitintags = "!f() { git describe --always --contains $1; }; f"
+    find-commit-in-tags = "!f() { git describe --always --contains $1; }; f"
 
     # Find commits by source code
-    findcommitswithsourcecode = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+    find-commits-with-source-code = "!f() { git lsf -S$1; }; f"
 
     # Find commits by commit message
-    findcommitswithcommitmessage = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+    find-commits-with-commit-message = "!f() { git lsf --grep=$1; }; f"
+
+    diff-for-branches = "!f() { git lsf $1..$2 ; }; f"
 
     # some resets without explanation
     unadd = reset --mixed
@@ -135,7 +140,7 @@
     # git inject a28kd8 -p # interactively select patches to inject
     # git inject HEAD~4 file1 # inject the modifications in file1
     # OR add a new commit and do `git rebase -i` to re-order and squash the two commits together
-    inject = "!f() { set -e; local HASH=$(git show $1 --pretty=format:\"%H\" -q); shift; git commit -m \"fixup! $HASH\" \"$@\"; [ -n \"$(git diff-files)\" ] && git stash && local DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+    inject = "!f() { set -e; local HASH=$(git show $1 --pretty=format:\"%H\" -q); shift; git commit -m \"fixup $HASH\" \"$@\"; [ -n \"$(git diff-files)\" ] && git stash && local DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
 
 [push]
     default = current

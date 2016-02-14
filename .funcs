@@ -230,7 +230,7 @@ function print_remotely() {
 	local file="$1"
 	local remote_printer_alias="$2"
 	local copies="${3-1}" # use third argument or 1 if it doesn't exist
-	
+
 	# If you'd like to staple your prints, run the following on the remote printer:
 	#   lpoptions -o StapleLocation=UpperLeft
 	# And if you want color:
@@ -243,3 +243,13 @@ function format_all_cpp_code() {
 	find "${1-.}" \( -name '*.h' -or -name '*.cxx' -or -name "*.cpp" \) -type f -print0 | xargs -0 clang-format -style=llvm -i
 }
 
+# repeat $1 times whatever is in the rest of the args
+function repeat() {
+  [[ "$#" -lt 2 ]] && \
+    echo "Usage: call with '$0 [times to repeat] [command]'" && \
+	    return 0;
+  local _
+  for _ in $(seq $1); do
+    eval "${@:2}"
+  done
+}

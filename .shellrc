@@ -11,4 +11,14 @@ eval $(dircolors -b)
 FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
 
 # make less more friendly for non-text input files
-# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+### Disable CTRL-S and CTRL-Q
+[[ $- =~ i ]] && stty -ixoff -ixon
+
+# Z config
+_Z_DATA="$HOME/.cache/z"
+_Z_OWNER="code"
+_Z_CMD="c"
+try_source "$HOME/.extra/z/z.sh"
+
