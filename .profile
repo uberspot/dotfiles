@@ -26,6 +26,9 @@ export GOPATH="$HOME/go"
 
 export USE_CCACHE=1
 export CCACHE_DIR="/tmp/ccache"
+export CCACHE_COMPRESS=""
+export CCACHE_MAXSIZE="3G"
+export CCACHE_PATH="/usr/bin" # Tell ccache to only use compilers here
 
 # Prefer US English and use UTF-8
 export LANG="en_US.UTF-8"

@@ -1,12 +1,15 @@
 [global_config]
+  borderless = True
   enabled_plugins = ,
   geometry_hinting = False
-  inactive_color_offset = 0.73
+  inactive_color_offset = 0.92
   suppress_multiple_term_dialog = True
+  title_font = Source Code Pro 9
   title_hide_sizetext = True
   title_inactive_bg_color = "#e9e9e9"
   title_receive_bg_color = "#36d300"
   title_transmit_bg_color = "#465cff"
+  title_use_system_font = False
 [keybindings]
   close_term = <Primary>w
   close_window = <Primary><Shift>w
@@ -42,10 +45,10 @@
 [plugins]
 [profiles]
   [[default]]
+    allow_bold = False
     alternate_screen_scroll = False
-    background_darkness = 0.93
+    background_darkness = 0.92
     background_image = None
-    background_type = transparent
     copy_on_selection = True
     cursor_color = "#ffffff"
     font = Source Code Pro 10

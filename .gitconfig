@@ -38,6 +38,7 @@
     recent-branches = !git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
     amend = commit --amend --no-edit   # amend your last commit and don't edit the commit message
     edit = commit --amend --only       # amend your last commit without adding the already staged files
+    amend-push = "!f() { git amend && git push -f;  }; f" # this is force pushing and hence it is unsafe to do if you're not the only one working on a repo. Use with care
 
     archive-zip = archive -o "$(basename $PWD).zip" HEAD
     archive-tgz = archive -o "$(basename $PWD).tgz" HEAD
