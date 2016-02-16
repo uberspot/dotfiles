@@ -229,6 +229,7 @@ user_pref("privacy.donottrackheader.value", 1);
 //user_pref("network.http.referer.spoofSource", true);
 // CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
 user_pref("network.http.sendSecureXSiteReferrer",		false);
+user_pref("network.http.sendRefererHeader", 1);
 
 /******************************************************************************
  * caching                                                                    *
@@ -604,6 +605,9 @@ user_pref("loop.server", "");
 
 // set tabwindowpreviews on drag off
 user_pref("nglayout.enable_drag_images", false);
+
+// Disable local storage
+user_pref("dom.storage.enabled", false);
 
 // Disable "Reader Mode":
 user_pref("reader.parse-on-load.enabled", false);

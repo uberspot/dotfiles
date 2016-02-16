@@ -5,7 +5,20 @@ set $COLOR_REGVAL_MODIFIED  = $RED
 set $COLOR_SEPARATOR = $BLUE
 set $COLOR_CPUFLAGS = $CYAN
 
-set history save on
+set history save
 set history size 100000
 set history filename ~/.cache/gdb_hist
 set print pretty on
+
+set follow-fork-mode child
+set print inferior-events on
+set debug-file-directory /usr/lib/debug
+
+catch fork
+catch vfork
+catch exec
+
+define segv_info
+    print $_siginfo._sifields._sigfault
+end
+

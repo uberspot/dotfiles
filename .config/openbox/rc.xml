@@ -124,7 +124,7 @@
         </startupnotify>
       </action>
     </keybind>
-    <keybind key="W-h">
+    <keybind key="W-l">
       <action name="Lower"/>
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
@@ -174,6 +174,15 @@
           <enabled>yes</enabled>
           <wmclass>vivaldi</wmclass>
           <name>vivaldi</name>
+        </startupnotify>
+      </action>
+    </keybind>
+    <keybind key="W-h">
+      <action name="Execute">
+        <command>hipchat</command>
+        <startupnotify>
+          <enabled>yes</enabled>
+          <name>Hipchat</name>
         </startupnotify>
       </action>
     </keybind>
@@ -778,6 +787,9 @@
       <maximized>Vertical</maximized>
     </application>
     <application name="Pidgin">
+      <desktop>2</desktop>
+    </application>
+    <application name="hipchat">
       <desktop>2</desktop>
     </application>
     <application class="Firefox">

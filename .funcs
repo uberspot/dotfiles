@@ -231,10 +231,10 @@ function print_remotely() {
 	local remote_printer_alias="$2"
 	local copies="${3-1}" # use third argument or 1 if it doesn't exist
 
-	# If you'd like to staple your prints, run the following on the remote printer:
-	#   lpoptions -o StapleLocation=UpperLeft
-	# And if you want color:
-	#   lpoptions -o ColorModel=Color
+	# If you'd like to staple your prints, uncomment the following:
+	# # /usr/bin/ssh -q $remote_printer_alias lpoptions -o StapleLocation=UpperLeft || exit 1
+	# # And if you want color:
+	# # /usr/bin/ssh -q $remote_printer_alias lpoptions -o ColorModel=Color || exit 1
 
 	cat $file | /usr/bin/ssh -q $remote_printer_alias lpr -#$copies || exit 1
 }
