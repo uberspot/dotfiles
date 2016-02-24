@@ -236,7 +236,7 @@ function print_remotely() {
 	# # And if you want color:
 	# # /usr/bin/ssh -q $remote_printer_alias lpoptions -o ColorModel=Color || exit 1
 
-	cat $file | /usr/bin/ssh -q $remote_printer_alias lpr -#$copies || exit 1
+	cat $file | /usr/bin/ssh -q $remote_printer_alias lpr -o ColorModel=Color -o StapleLocation=UpperLeft -#$copies || exit 1
 }
 
 function format_all_cpp_code() {

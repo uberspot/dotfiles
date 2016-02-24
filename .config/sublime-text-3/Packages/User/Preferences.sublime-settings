@@ -4,8 +4,8 @@
 	"font_size": 10,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Markdown"
+		"Markdown",
+		"Vintage"
 	],
 	"margin": 4,
 	"show_encoding": true,
