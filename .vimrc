@@ -95,6 +95,7 @@ Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'vim-utils/vim-troll-stopper'
+Plug 'junegunn/limelight.vim'
 Plug 'rking/ag.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Chiel92/vim-autoformat'
@@ -549,9 +550,13 @@ else
     \ }
 endif
 
+nmap <Leader>l :Limelight!!0.5<CR>
+xmap <Leader>l :Limelight!!0.5<CR>
+
 " }}}
 
 " NVim specific {{{
+
 if has('nvim')
 
     " Use cursor shape feature

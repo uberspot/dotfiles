@@ -169,9 +169,10 @@ alias azaumount="fusermount -u /mnt/azazel/"
 
 ## Network related
 # Shows your WAN IP, when you`re sitting behind a router
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias myip2="curl ifconfig.me"
-alias myip3="curl icanhazip.com"
+alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias wanip2="curl ifconfig.me"
+alias wanip3="curl icanhazip.com"
+alias whois="whois -h whois-servers.net"
 
 alias traceroute="mtr "
 alias icurl="curl -I"
@@ -258,6 +259,8 @@ alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
 alias updategitextras="(\cd /tmp && \rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && \cd git-extras && sudo make install)"
 
 alias updateaurcache="$HOME/.extra/aurtab/aurtab.py"
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 function echoSection(){
     echo "\n-------------------- $@ ---------------------\n"
