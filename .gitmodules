@@ -28,3 +28,6 @@
 [submodule ".extra/z"]
 	path = .extra/z
 	url = https://github.com/rupa/z.git
+[submodule ".extra/nano"]
+	path = .extra/nano
+	url = https://github.com/scopatz/nanorc.git
