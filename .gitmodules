@@ -1,9 +1,6 @@
 [submodule ".extra/gdbinit"]
 	path = .extra/gdbinit
 	url = https://github.com/gdbinit/Gdbinit.git
-[submodule ".vim/bundle/Vundle.vim"]
-	path = .vim/bundle/Vundle.vim
-    url = https://github.com/gmarik/Vundle.vim.git
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
@@ -19,9 +16,6 @@
 [submodule ".extra/zsh_custom/plugins/git-extra-commands"]
 	path = .extra/zsh_custom/plugins/git-extra-commands
 	url = https://github.com/unixorn/git-extra-commands.git
-[submodule ".extra/.nano"]
-	path = .extra/.nano
-	url = https://github.com/scopatz/nanorc.git
 [submodule ".vim/autoload/vim-plug"]
 	path = .vim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug.git

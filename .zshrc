@@ -31,7 +31,7 @@ HIST_STAMPS="dd.mm.yyyy"
 export HISTCONTROL="erasedups:ignoreboth"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap git-extra-commands)
+plugins=(sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap git-extra-commands)
 
 file="$ZSH/oh-my-zsh.sh"; [ -f "$file" ] && source "$file"
 
@@ -96,8 +96,6 @@ unsetopt listambiguous
 watch=all                       # watch all logins
 logcheck=30                     # every 30 seconds
 WATCHFMT="%n from %M has %a tty%l at %T %W"
-
-fpath+="$HOME/.extra/aurtab"
 
 # Keybindings
 

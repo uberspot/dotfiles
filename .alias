@@ -113,7 +113,7 @@ alias pm="pacman"
 alias apm="apacman"
 alias rg="ranger"
 alias extract="atool -x"
-tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
+function tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
 alias less="less -x4SRFX"
 alias grep="grep --color=auto -I"
 alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show line number
@@ -124,7 +124,19 @@ alias sysinfo="inxi -Fzx"
 # if nocorrect doesn't exist alias it out
 try_command nocorrect || alias nocorrect=""
 
-alias s="[ -d \".repo\" ] && nocorrect repo status  ||  nocorrect git status"
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+function g() {
+    if [ -d '.repo' ]; then
+        nocorrect repo "$@";
+    elif [ -d '.dotfiles' ]; then
+        nocorrect dotfiles "$@";
+    else
+        nocorrect git "$@";
+    fi
+}
+alias s="g status"
+
 #alias exit="history -c; exit"
 
 # Do something and receive a desktop alert when it completes `sudo apt-get install something | alert`
@@ -133,14 +145,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias clip_copy='xclip -selection clipboard'
 alias clip_paste='xclip -selection clipboard -o'
 
-start_detached() { nohup "$@" > /dev/null 2>&1 < /dev/null & }
+function start_detached() { nohup "$@" > /dev/null 2>&1 < /dev/null & }
 # source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.
 alias take_webcam_picture="ffmpeg -y -r 1 -t 3 -f video4linux2 -s sxga -i /dev/video0 -vframes 1 ~/webcam-$(date +%m_%d_%Y_%H_%M).jpeg"
 
 ## Navigation just in case:
 # cd and ls in one. It changes directory to the first argument given (else to $HOME)
 # and lists the files/directories there.
-cl() { \cd "${1-$HOME}" && l; }
+function cl() { \cd "${1-$HOME}" && l; }
 
 alias ~="cd $HOME"
 alias ..="cd .."
@@ -149,9 +161,9 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cd..="cd .."
 #alias cd="cl"
-cd() { builtin cd "$@" && _truncated_ls; }
-popd() { builtin popd "$@" && _truncated_ls; }
-pushd() { builtin pushd "$@" && _truncated_ls; }
+function cd() { builtin cd "$@" && _truncated_ls; }
+function popd() { builtin popd "$@" && _truncated_ls; }
+function pushd() { builtin pushd "$@" && _truncated_ls; }
 
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
@@ -256,26 +268,18 @@ alias updatemirrors="reflector --verbose --country Netherlands -l 200 -p http --
 alias journalctl_error="journalctl -b -p err"
 alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
 
-alias updategitextras="(\cd /tmp && \rm -rf /tmp/git-extras && git clone --depth 1 https://github.com/tj/git-extras.git && \cd git-extras && sudo make install)"
-
-alias updateaurcache="$HOME/.extra/aurtab/aurtab.py"
-
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
 function echoSection(){
     echo "\n-------------------- $@ ---------------------\n"
 }
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
 function updateall(){
-    git supdateall && echoSection "Submodules of dotfiles updated";
-    updategitextras && echoSection "Git Extras updated";
+    dotfiles supdateall && echoSection "Submodules of dotfiles updated";
     sudo updatemirrors && echoSection "Mirrors updated";
-    sudo gem update && sudo gem update --system && sudo gem clean && sudo gem cleanup && echoSection "Gems updated";
+    sudo gem update; sudo gem update --system; sudo gem clean; sudo gem cleanup; echoSection "Gems updated";
     upgrade_oh_my_zsh && echoSection "Oh My Zsh updated";
     sudo pacman-key --refresh-keys && echoSection " Pacman keys refreshed"
     sudo hostsblock && echoSection "HostsBlock updated";
     vim +PluginUpdate +qall && echoSection "Vim plugins updated";
-    updateaurcache && echoSection "AUR cache updated";
     update_antivirus && echoSection "Antivirus database updated";
     upz && echoSection "System updated";
 }

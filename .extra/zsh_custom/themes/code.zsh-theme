@@ -18,7 +18,7 @@ USER_PREFIX="%(!..%{$G%}%n %{$W%}😈  )";
 # GIT
 function git_prompt_info() {
       ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-      echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+      echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(git symbolic-ref -q --short HEAD)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 ZSH_THEME_GIT_PROMPT_PREFIX="["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$RESET%}"
