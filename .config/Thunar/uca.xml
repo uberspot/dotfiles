@@ -1,19 +1,24 @@
 <?xml encoding="UTF-8" version="1.0"?>
 <actions>
 <action>
-	<icon>utilities-terminal</icon>
+	<icon>terminator</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1367857507793607-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
+	<unique-id>1456757792336255-24</unique-id>
+	<command>terminator --geometry=1150x700 --new-tab -x zsh -c &quot;cd %d; exec zsh&quot;</command>
+	<description></description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 <action>
-	<icon>defcon</icon>
+	<icon>user-trash</icon>
 	<name>Shred file</name>
-	<unique-id>1397853350203808-5</unique-id>
+	<unique-id>1456755727969102-5</unique-id>
 	<command>zenity --question --title &quot;Are you sure?&quot; --text=&apos;Are you sure you want to shred it?&apos;; [[ $? = 0 ]] &amp;&amp; shred -fuz %F;</command>
 	<description></description>
 	<patterns>*</patterns>
@@ -61,27 +66,27 @@
 	<video-files/>
 </action>
 <action>
-	<icon>gcolor2</icon>
+	<icon>gtk3-demo</icon>
 	<name>Optimize with jpegoptim</name>
-	<unique-id>1397855132020207-12</unique-id>
+	<unique-id>1456755655003525-2</unique-id>
 	<command>for file in %F; do jpegoptim --strip-all -of &quot;$file&quot;; done</command>
 	<description>Losslessly optimize JPEGs, by optimizing the Huffman tables and stripping comments and EXIF metadata from the file.</description>
 	<patterns>*.jpg;*.jpeg;*.JPG;*.JPEG</patterns>
 	<image-files/>
 </action>
 <action>
-	<icon>gcolor2</icon>
+	<icon>gtk3-demo</icon>
 	<name>Optimize with optipng</name>
-	<unique-id>1397855277036846-14</unique-id>
+	<unique-id>1456755662811063-3</unique-id>
 	<command>for i in %F; do optipng -o5 -quiet -preserve &quot;$i&quot;; done</command>
 	<description>optimize png files</description>
 	<patterns>*.png;*.PNG</patterns>
 	<image-files/>
 </action>
 <action>
-	<icon>gcolor2</icon>
+	<icon>gtk3-demo</icon>
 	<name>Optimize Images</name>
-	<unique-id>1419805423063181-1</unique-id>
+	<unique-id>1456755670815443-4</unique-id>
 	<command>picopt %F</command>
 	<description>Optimize with picopt</description>
 	<patterns>*</patterns>
@@ -92,6 +97,33 @@
 	<name>Remove exif</name>
 	<unique-id>1433635931856044-2</unique-id>
 	<command>for file in %F; do mogrify -strip &quot;$file&quot;; done</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>tint2conf</icon>
+	<name>Copy Pathname to Clipboard</name>
+	<unique-id>1456755578582121-1</unique-id>
+	<command>echo -n %f | xclip -i</command>
+	<description>Copy Pathname to Clipboard</description>
+	<patterns>*</patterns>
+</action>
+<action>
+	<icon>insert-image</icon>
+	<name>Convert to jpg</name>
+	<unique-id>1456757391475237-21</unique-id>
+	<command>for file in %F; do name=$(zenity --text &quot;Enter a name for the images from $file&quot; --entry-text &quot;$file.jpg&quot; --entry) ; convert -density 300 &quot;$file&quot; &quot;$name&quot;; done</command>
+	<description></description>
+	<patterns>*.pdf</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>application-pdf</icon>
+	<name>Convert to pdf</name>
+	<unique-id>1456757232832755-20</unique-id>
+	<command>name=$(zenity --text &quot;Enter a name for the pdf&quot; --entry-text &quot;combined.pdf&quot; --entry) ; convert -compress jpeg %F $name</command>
 	<description></description>
 	<patterns>*</patterns>
 	<image-files/>

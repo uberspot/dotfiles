@@ -231,3 +231,9 @@
 # # or, if you want to leave it in your working tree
 # git rm --cached asubmodule
 # rm -rf .git/modules/asubmodule
+[transfer]
+	fsckObjects = true
+[fetch]
+	fsckObjects = true
+[receive]
+	fsckObjects = true
