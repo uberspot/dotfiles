@@ -185,6 +185,13 @@
 [url "git@heroku.com:"]
     insteadOf = "heroku:"
 
+[transfer]
+        fsckObjects = true
+[fetch]
+        fsckObjects = true
+[receive]
+        fsckObjects = true
+
 # QuickNote: To modify an old commit
 # You can use git rebase
 # for example, if you want to modify back to commit bbc643cd, run
@@ -231,9 +238,3 @@
 # # or, if you want to leave it in your working tree
 # git rm --cached asubmodule
 # rm -rf .git/modules/asubmodule
-[transfer]
-	fsckObjects = true
-[fetch]
-	fsckObjects = true
-[receive]
-	fsckObjects = true

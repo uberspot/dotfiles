@@ -9,6 +9,7 @@ autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <
 
 " Set syntax highlighting for specific file types
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.gdb set filetype=gdb
 
 " Enable spellchecking for Markdown
 autocmd FileType markdown setlocal spell

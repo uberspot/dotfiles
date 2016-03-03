@@ -30,6 +30,6 @@ zsh -c "vim +PlugInstall +qall;"
 
 # link neovim config files
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+ln -s $HOME/.vim $XDG_CONFIG_HOME/nvim
+ln -s $HOME/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
