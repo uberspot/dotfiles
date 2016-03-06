@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # load useful functions first
 file="$HOME/.alias"; [ -f "$file" ] && source "$file"
 
@@ -7,8 +9,8 @@ try_source "$file"
 done
 unset file
 
-eval $(dircolors -b)
-FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f $FILE ] && eval $(dircolors -b $FILE)
+eval "$(dircolors -b)"
+FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f "$FILE" ] && eval "$(dircolors -b $FILE)"
 
 # make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

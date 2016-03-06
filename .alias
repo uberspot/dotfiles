@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ## Common
 alias mkdir="mkdir -pv"
 alias ls="ls -tr --color=auto -ha --group-directories-first"
@@ -12,20 +14,20 @@ alias du="du -ch"
 alias ncdu="ncdu -q2"
 # ds = dusort sorts the current directory items decreasingly.
 # If a directory is provided as an argument it sorts that instead.
-function ds () { du -sh "${1-.}"/* | sort -hr ; }
+ds () { du -sh "${1-.}"/* | sort -hr ; }
 
 # Source a file if it exists.
-function try_source() {
+try_source() {
     [ -f "$1" ] && source "$1"
 }
 
 # Test if a command exists.
-function try_command() {
+try_command() {
     command -v "$1" >/dev/null 2>&1
 }
 
 # Command line head / tail shortcuts (only works on zsh, double check for bash in case bash is called from a zsh shell)
-if [[ -n "$ZSH" && ! -n "$BASH" ]]; then
+if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
     # Global aliases
 
     alias -g H="| head"
@@ -71,8 +73,8 @@ alias rsync-del="rsync --delete-before "
 
 # Copies all the files under src directory to dst directory that match the given pattern.
 # Also preserves the directories structure (not including empty directories)
-function cp_with_dirstruct() {
-    [[ "$#" -lt 3 ]] && \
+cp_with_dirstruct() {
+    [ "$#" -lt 3 ] && \
                 echo 'Usage: cp_with_dirstruct "[quoted regex pattern of files to copy (e.g *.txt)]" [src dir] [dst dir]' && \
                 return 0;
     rsync -a --prune-empty-dirs --progress --include='*/' --include="$1" --exclude='*' "$2" "$3" ;
@@ -108,12 +110,12 @@ alias disks='df -ha |\
 alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use on /dev/sdxX
 
 # time since installation based on oldest pacman.log entry.
-function open() { mimeo $1 &> /dev/null &disown; }
+open() { mimeo $1 &> /dev/null &disown; }
 alias pm="pacman"
 alias apm="apacman"
 alias rg="ranger"
 alias extract="atool -x"
-function tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
+tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
 alias less="less -x4SRFX"
 alias grep="grep --color=auto -I"
 alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show line number
@@ -126,7 +128,7 @@ try_command nocorrect || alias nocorrect=""
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-function g() {
+g() {
     if [ -d '.repo' ]; then
         nocorrect repo "$@";
     elif [ -d '.dotfiles' ]; then
@@ -145,14 +147,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias clip_copy='xclip -selection clipboard'
 alias clip_paste='xclip -selection clipboard -o'
 
-function start_detached() { nohup "$@" > /dev/null 2>&1 < /dev/null & }
+start_detached() { nohup "$@" > /dev/null 2>&1 < /dev/null & }
 # source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.
-alias take_webcam_picture="ffmpeg -y -r 1 -t 3 -f video4linux2 -s sxga -i /dev/video0 -vframes 1 ~/webcam-$(date +%m_%d_%Y_%H_%M).jpeg"
+alias take_webcam_picture='ffmpeg -y -r 1 -t 3 -f video4linux2 -s sxga -i /dev/video0 -vframes 1 ~/webcam-$(date +%m_%d_%Y_%H_%M).jpeg'
 
 ## Navigation just in case:
 # cd and ls in one. It changes directory to the first argument given (else to $HOME)
 # and lists the files/directories there.
-function cl() { \cd "${1-$HOME}" && l; }
+cl() { \cd "${1-$HOME}" && l; }
 
 alias ~="cd $HOME"
 alias ..="cd .."
@@ -161,14 +163,14 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cd..="cd .."
 #alias cd="cl"
-function cd() { builtin cd "$@" && _truncated_ls; }
-function popd() { builtin popd "$@" && _truncated_ls; }
-function pushd() { builtin pushd "$@" && _truncated_ls; }
+cd() { builtin cd "$@" && _truncated_ls; }
+popd() { builtin popd "$@" && _truncated_ls; }
+pushd() { builtin pushd "$@" && _truncated_ls; }
 
 ## Files
 alias diff="colordiff -y --suppress-common-lines "              # requires colordiff package
-function dfl() { diff "$@" | less ; }
-function mkd() { mkdir -p "$@" && cd "$_"; }                    # create a new dir and cd into it
+dfl() { diff "$@" | less ; }
+mkd() { mkdir -p "$@" && cd "$_"; }                    # create a new dir and cd into it
 
 alias duplicity="\duplicity --verbosity info --volsize 150 --num-retries 3 --asynchronous-upload --full-if-older-than 90D --log-file /var/log/duplicity.log "
 alias duplicity_test="\duplicity --dry-run --no-encryption -v info "
@@ -212,8 +214,8 @@ unset pwd_rounds
 
 # Youtube
 alias youtube-dl='youtube-dl -ci --restrict-filenames -f 22/18/45/35/h264-sd/flv/mp4-sd/mp4/best '
-function youtube-dlm() {
-    if (( $# < 2 )); then
+youtube-dlm() {
+    if [ $# -lt 2 ] ; then
         subdir=""
         arguments="$@"
     else
@@ -268,11 +270,11 @@ alias updatemirrors="reflector --verbose --country Netherlands -l 200 -p http --
 alias journalctl_error="journalctl -b -p err"
 alias increasetmpfs="mount -o remount,size=4G,noatime /tmp"
 
-function echoSection(){
+echoSection(){
     echo "\n-------------------- $@ ---------------------\n"
 }
 # One Alias to rule them all, One Alias to find them, One Alias to fetch them all and in the staleness update them
-function updateall(){
+updateall(){
     dotfiles supdateall && echoSection "Submodules of dotfiles updated";
     sudo updatemirrors && echoSection "Mirrors updated";
     sudo gem update; sudo gem update --system; sudo gem clean; sudo gem cleanup; echoSection "Gems updated";

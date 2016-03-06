@@ -1,5 +1,6 @@
 {
 	"auto_complete_delay": 100,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"enable_telemetry": false,
 	"font_size": 10,
 	"ignored_packages":
