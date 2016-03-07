@@ -12,6 +12,7 @@ alias rm="trash -v"
 alias pkill="pkill -f"
 alias du="du -ch"
 alias ncdu="ncdu -q2"
+alias v="vim "
 # ds = dusort sorts the current directory items decreasingly.
 # If a directory is provided as an argument it sorts that instead.
 ds () { du -sh "${1-.}"/* | sort -hr ; }
@@ -60,8 +61,6 @@ if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
   	alias -s tar="tar tf"
   	alias -s tar.gz="echo "
   	alias -s ace="unace l"
-else
-    alias g="git "
 fi
 
 alias free="free -mt"
