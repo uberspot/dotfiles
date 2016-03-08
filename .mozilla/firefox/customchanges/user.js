@@ -454,12 +454,9 @@ user_pref("nglayout.initialpaint.delay", 0);
 
 user_pref("breakpad.reportURL", "");
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
-user_pref("browser.cache.disk.capacity", 870400);
-user_pref("browser.cache.disk.parent_directory", "/dev/shm/firefox-cache");
-user_pref("browser.cache.disk.smart_size.enabled", false);
-user_pref("browser.cache.disk.smart_size.first_run", false);
-user_pref("browser.cache.disk.smart_size.use_old_max", false);
-user_pref("browser.cache.disk.smart_size_cached_value", 358400);
+user_pref("browser.cache.disk.enable", false);
+user_pref("browser.cache.memory.enable", true);
+user_pref("browser.cache.memory.capacity", 500000);
 user_pref("browser.cache.frecency_experiment", 4);
 user_pref("browser.customizemode.tip0.shown", true);
 user_pref("browser.download.importedFromSqlite", true);
@@ -477,7 +474,7 @@ user_pref("general.autoScroll", true);
 user_pref("general.warnOnAboutConfig", false);
 user_pref("geo.wifi.logging.enabled", false);
 user_pref("network.cookie.prefsMigrated", true);
-user_pref("network.dnsCacheEntries", 100);
+user_pref("network.dnsCacheEntries", 400);
 user_pref("network.dnsCacheExpiration", 600);
 
 // http://knowipv6.digitalelement.com/?p=66

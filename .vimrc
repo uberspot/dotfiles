@@ -40,6 +40,8 @@ if !has('nvim')
 endif
 set lazyredraw
 
+set cmdheight=1
+
 set mouse=a " Enable VIM mouse support
 set mousehide " Hide mouse when typing
 
@@ -262,10 +264,16 @@ if exists('+colorcolumn')
     hi ColorColumn guifg=#000000 guibg=#d7ffaf ctermfg=0 ctermbg=193
 endif
 
-hi Visual guibg=#CAE682 ctermbg=192
-hi Cursor guibg=#CAE682 ctermbg=192
+hi Visual guifg=#141413 guibg=#5faf5f ctermfg=232 ctermbg=71
 hi Folded guifg=#141413 guibg=#5fd787 ctermfg=232 ctermbg=78
 hi Search guifg=#141413 guibg=#af5f5f ctermfg=232 ctermbg=131
+
+hi Cursor guifg=#080808 guibg=#CAE682 ctermbg=192 ctermfg=232
+
+" Change Color when entering Insert Mode
+autocmd InsertEnter * hi Cursor guibg=#5fd7ff ctermbg=81
+" Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * hi Cursor guibg=#CAE682 ctermbg=192
 
 " }}}
 

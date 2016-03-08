@@ -1,6 +1,6 @@
 [global_config]
   borderless = True
-  enabled_plugins = ,
+  enabled_plugins = InactivityWatch, SearchPlugin, ActivityWatch, APTURLHandler
   geometry_hinting = False
   inactive_color_offset = 0.92
   suppress_multiple_term_dialog = True
@@ -50,6 +50,7 @@
     background_darkness = 0.92
     background_image = None
     copy_on_selection = True
+    cursor_blink = False
     cursor_color = "#ffffff"
     font = Source Code Pro 10
     foreground_color = "#eff1ff"

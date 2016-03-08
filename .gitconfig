@@ -142,7 +142,9 @@
     # git inject HEAD~4 file1 # inject the modifications in file1
     # OR add a new commit and do `git rebase -i` to re-order and squash the two commits together
     inject = "!f() { set -e; local HASH=$(git show $1 --pretty=format:\"%H\" -q); shift; git commit -m \"fixup $HASH\" \"$@\"; [ -n \"$(git diff-files)\" ] && git stash && local DIRTY=1; git rebase $HASH^^ -i --autosquash; [ -n \"$DIRTY\" ] && git stash pop;}; f"
+	rebase-last-five = "!b=\"$(git branch --no-color | cut -c3-)\" ; h=\"$(git rev-parse $b)\" ; echo \"Current branch: $b $h\" ; c=\"$(git rev-parse $b~4)\" ; echo \"Recreating $b branch with initial commit $c ...\" ; git checkout --orphan new-start $c ; git commit -C $c ; git rebase --onto new-start $c $b ; git branch -d new-start ; git gc"
 
+    gc-dangling-blobs = "gc --prune=\"0 days\""
 [push]
     default = current
 [status]

@@ -41,7 +41,8 @@ file="$ZSH/oh-my-zsh.sh"; [ -f "$file" ] && source "$file"
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 
-zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*:default' menu select=1
 
 # cd will never select the parent directory (e.g.: cd ../<TAB>):
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
@@ -56,6 +57,13 @@ zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:options' auto-description '%d'
+
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*:complete:scp:*:files' command command -
+zstyle ':completion:*:complete:rsync:*:files' command command -
+zstyle ':completion:*:complete:git:*:files' command command -
+zstyle ':completion:*' list-separator '==>'
+zstyle ':completion:*:manuals' separate-sections true
 
 ## add colors to processes for kill completion
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'

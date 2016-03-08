@@ -223,6 +223,7 @@ youtube-dlm() {
     fi
     youtube-dl --extract-audio --audio-format mp3 -o "$HOME/Downloads/music/$subdir%(title)s.%(ext)s" $arguments
 }
+alias mplayer_in_term="CACA_DRIVER=ncurses mplayer -cache 5000 -cache-min 0.15 -vo caca -quiet"
 
 ## Other
 alias screen_cmd="screen -dm sh -c " # runs the cmd that follows inside a detached screen session. Make sure to quote the cmd if there are spaces
@@ -232,7 +233,8 @@ alias netbeans="netbeans --laf com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 alias sscrot="scrot -s /tmp/shot.png"
 alias curlpaste="curlpaste -p -e ca "
 alias openbox_getOBAPP="obxprop | grep \"^_OB_APP\""
-alias valgrind_memcheck="valgrind --leak-check=full --tool=memcheck --track-origins=yes"
+alias valgrind_memcheck="valgrind --leak-check=full --tool=memcheck --track-origins=yes --trace-children=yes "
+alias valgrind_massif="valgrind --tool=massif --heap=yes --trace-children=yes --pages-as-heap=yes --massif-out-file=massif.out --time-unit=B "
 
 # AV aliases
 alias check_rootkits="sudo rkhunter --update; sudo rkhunter --propupd; sudo rkhunter --check"

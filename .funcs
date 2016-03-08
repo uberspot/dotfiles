@@ -6,7 +6,7 @@ duplicity_backup() {
         echo -e  "Usage: Call with 'duplicity_backup --exclude-globbing-filelist [excludefilelist (text file)] [src] [dst]'\n" \
             "    Note: use 'duplicity_backup -v8 ' and as [dst] -> gdocs://YOURGOOGLEACCOUNT@gmail.com/backup'\n" \
             "          for GDrive backup (requires python2-gdata package)" && \
-            return 0;
+            return 1;
 
     echo "Saving installed packages to $HOME/(aur)pkglist.txt"
 
@@ -25,7 +25,7 @@ duplicity_backup() {
 ssh-keygen-setup() {
     [[ "$#" -lt 4 ]] && \
 		echo "Usage: call with 'ssh-keygen-setup aliasname hostname user port'" && \
-		return 0;
+		return 1;
     local aliasname=$1
     local hostname=$2
     local user=$3
@@ -205,7 +205,7 @@ function dec2hex() { awk 'BEGIN { printf "%x\n",$1}'; }
 function optimize_pdf() {
 	[[ "$#" -lt 2 ]] && \
     	echo "Usage: call with '$0 input.pdf output.pdf'" && \
-    	return 0;
+    	return 1;
 	gs  -q -dNOPAUSE -dBATCH -dSAFER \
     	-sDEVICE=pdfwrite \
 	    -dCompatibilityLevel=1.3 \
@@ -225,7 +225,7 @@ function optimize_pdf() {
 function print_remotely() {
 	[[ "$#" -lt 2 ]] && \
     	echo "Usage: call with '$0 [FILENAME] [REMOTE_PRINTER_SSH_ALIAS] [optional:NUM_OF_COPIES]'" && \
-    	return 0;
+    	return 1;
 
 	local file="$1"
 	local remote_printer_alias="$2"
@@ -247,9 +247,16 @@ function format_all_cpp_code() {
 function repeat() {
   [[ "$#" -lt 2 ]] && \
     echo "Usage: call with '$0 [times to repeat] [command]'" && \
-	    return 0;
+	    return 1;
   local _
   for _ in $(seq $1); do
     eval "${@:2}"
   done
+}
+
+xor_with_num() { 
+	[[ "$#" -lt 2 ]] && \
+		echo "Usage: call with '$0 [xor key in decimal form] [text to xor]'" && \
+		return 1;
+	python -c "import sys; sys.stdout.write(''.join(chr(i) for i in [ord(a) ^ ${1} for a in \"${2}\"]))"; 
 }
