@@ -92,7 +92,7 @@
     # basic shortcuts
     cp = cherry-pick
     s = status
-    cl = clone
+    c = clone --recursive
     ci = commit
     co = checkout
     br = branch·

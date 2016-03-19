@@ -96,6 +96,12 @@ alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
 alias cls=' echo -ne "\033c"'
 alias chmodXfolders="find . -type d -exec chmod g+x {} \;"
+
+# canonical hex dump; some systems have this symlinked
+command -v hd > /dev/null || alias hd="hexdump -C"
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
 # Coloured df
 alias disks='df -ha |\
              sed -e "s_/dev/sda[1-9]_\x1b[35m&\x1b[0m_" |\
@@ -114,7 +120,10 @@ alias pm="pacman"
 alias apm="apacman"
 alias rg="ranger"
 alias extract="atool -x"
-tree() { command tree --charset UTF8 -C "$@" | less -RXF; }
+
+# tree command with directories listed first, ignoring .git/ dirs
+tree() { command tree --dirsfirst -I '.git' --charset UTF8 -C "$@" | less -RNXF; }
+
 alias less="less -x4SRFX"
 alias grep="grep --color=auto -I"
 alias grep_search="grep -Eir " # extended regex, recursive, ignore case, show line number
