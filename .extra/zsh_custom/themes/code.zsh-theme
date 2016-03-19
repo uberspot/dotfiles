@@ -12,7 +12,7 @@ RESET=$reset_color
 # USER OR ROOT SPECIFIC PREFIX
 # format: %(!.ROOT_PROMPT.USER_PROMPT)
 # currently root doesn't mention the username while normal users do
-USER_PREFIX="%(!..%{$G%}%n %{$W%}😈  )";
+USER_PREFIX="%(!..%{$G%}[%n] %{$W%}😈  )";
 
 
 # GIT
@@ -31,8 +31,8 @@ function return_status() {
 }
 
 # PROMPTS
-PROMPT='%{$MNB%}╭╼ $USER_PREFIX%{$B%}%m%{$W%}: %{$Y%}%~ %{$R%}ϟ%{$RESET%}
-%{$MNB%}╰╼ %{$RESET%}'
+PROMPT="%{$MNB%}╭╼ $USER_PREFIX%{$B%}[%m]%{$W%}: %{$Y%}[%~] %{$R%}ϟ%{$RESET%}
+%{$MNB%}╰╼ %{$RESET%}"
 
-RPROMPT='$(git_prompt_info) $(return_status)'
+RPROMPT="$(git_prompt_info) $(return_status)"
 
