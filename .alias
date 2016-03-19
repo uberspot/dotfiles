@@ -265,7 +265,7 @@ alias moo="try_command cowsay && try_command fortune && fortune -ea | cowsay -f 
 alias compresspdf="gs -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -sOutputFile="
 alias removeexif="mogrify -strip"
 alias mp4tomp3indir='for f in *.mp4; do ffmpeg -loglevel panic -i "$f" -vn -c:a libmp3lame -ar 44100 -ac 2 -ab 192k "${f/%mp4/mp3}"; done'
-alias optimizepngsindir='find . -iname "*.png" | xargs optipng -o2 -preserve'
+alias optimizepngsindir='find . -iname "*.png" | xargs pngquant --quality=90-98 --ext ".png" -f '
 alias optimizejpgsindir='find . -iname "*.jpg" -o -iname "*.jpeg" | xargs jpegoptim --strip-all'
 alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 "$f" "VACUUM;" && sqlite3 "$f" "REINDEX;"; done'
 alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert -resize 70% $i $i; done'

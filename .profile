@@ -76,3 +76,6 @@ export MOZ_DISABLE_PANGO=1
 
 export ANDROID_HOME="/opt/android-sdk"
 
+# remap caps lock to esc key
+xmodmap -e 'clear Lock' #ensures you're not stuck in CAPS on mode     
+xmodmap -e 'keycode 0x42=Escape' #remaps the keyboard so CAPS LOCK=ESC

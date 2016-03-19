@@ -344,6 +344,7 @@
             "name": "Yahoo",
             "id": "yahoo",
             "key": "yahoo",
+            "disabled": "invisible",
             "disableInstant": true,
             "def_url": "https://search.yahoo.com/yhs/search?p=%q&ei=UTF-8&hspart=mozilla",
             "def_name": "Yahoo",
@@ -358,6 +359,7 @@
             "name": "Bing",
             "id": "bing",
             "key": "bing",
+            "disabled": "invisible",
             "disableInstant": true,
             "def_url": "https://www.bing.com/search?q=%q&pc=MOZI",
             "def_name": "Bing",
@@ -482,6 +484,18 @@
             "key": "arch",
             "disableInstant": true,
             "disableSuggest": true
+        },
+        "user10": {
+            "url": "https://torrentz.eu/search?q=%q",
+            "json": "https://suggestqueries.google.com/complete/search?json&client=firefox&q=%q&hl=en",
+            "domain": "http://torrentz.eu/search",
+            "iconURI": "http://www.google.com/s2/favicons?domain=https://torrentz.eu/search?q=%q",
+            "type": "user",
+            "name": "torrentzeu",
+            "id": "user10",
+            "key": "torr",
+            "disableInstant": true,
+            "disableSuggest": true
         }
     },
     "contextMenu": [
@@ -509,6 +523,8 @@
         "user8",
         "user9",
         "user0",
+        "user10",
+        "user11",
         "searx",
         "-",
         "__search_site__"

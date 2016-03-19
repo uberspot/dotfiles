@@ -1,17 +1,3 @@
 {
-	"auto_complete_delay": 100,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-	"enable_telemetry": false,
-	"font_size": 10,
-	"ignored_packages":
-	[
-		"Markdown",
-		"Vintage"
-	],
-	"margin": 4,
-	"show_encoding": true,
-	"show_line_endings": true,
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
-	"update_check": false
+	"font_size": 10
 }
