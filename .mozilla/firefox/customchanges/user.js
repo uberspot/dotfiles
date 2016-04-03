@@ -310,9 +310,6 @@ user_pref("security.tls.version.max",			3);
 // https://rc4.io/
 user_pref("security.tls.unrestricted_rc4_fallback",    false);
 
-// disable SSLv3 (CVE-2014-3566)
-user_pref("security.enable_ssl3",			false);
-
 // https://wiki.mozilla.org/Security:Renegotiation#security.ssl.treat_unsafe_negotiation_as_broken
 // see also CVE-2009-3555
 user_pref("security.ssl.treat_unsafe_negotiation_as_broken",	true);
@@ -599,6 +596,8 @@ user_pref("loop.enabled", false);
 user_pref("loop.feedback.baseUrl", "");
 user_pref("loop.oauth.google.scope", ""); // What's Google doing in there as well?
 user_pref("loop.server", "");
+// https://groups.google.com/d/topic/mozilla.dev.platform/nyVkCx-_sFw/discussion
+user_pref("loop.logDomains",        false);
 
 // set tabwindowpreviews on drag off
 user_pref("nglayout.enable_drag_images", false);

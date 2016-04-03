@@ -99,7 +99,7 @@ augroup END
 
 silent! if plug#begin('~/.vim/plugged')
 
-Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'vim-utils/vim-troll-stopper'
