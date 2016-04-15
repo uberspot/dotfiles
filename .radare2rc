@@ -1,0 +1,21 @@
+# Show comments at right of disassembly if they fit in screen
+e asm.cmtright = true
+
+# Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
+# e asm.pseudo = true
+
+# Display stack and register values on top of disasembly view (visual mode)
+e cmd.stack = true
+
+# Use UTF-8
+e scr.utf8 = true
+
+# Demangle C++
+e asm.demangle = true
+e bin.demangle = true
+
+e asm.dwarf = true
+e bin.dwarf = true
+e asm.stackptr = true
+
+e cfg.fortunes = true

@@ -169,7 +169,7 @@
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>vivaldi</command>
+        <command>vivaldi-stable</command>
         <startupnotify>
           <enabled>yes</enabled>
           <wmclass>vivaldi</wmclass>
@@ -179,7 +179,7 @@
     </keybind>
     <keybind key="W-h">
       <action name="Execute">
-        <command>hipchat</command>
+          <command>HipChat4</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Hipchat</name>
@@ -215,7 +215,7 @@
     </keybind>
     <keybind key="W-n">
       <action name="Execute">
-        <command>/usr/bin/telegram</command>
+        <command>/usr/bin/telegram-desktop</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>telegram</name>

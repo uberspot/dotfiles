@@ -212,7 +212,6 @@ alias net_resolve="netstat -alpute"
 alias net_openports="netstat -nape --inet" # display open ports
 
 # SSH
-alias ssh="$HOME/.extra/ssh-ident/ssh-ident"
 pwd_rounds=500
 alias ssh-keygen-ed="ssh-keygen -t ed25519 -a $pwd_rounds -f "
 alias ssh-keygen-rsa="ssh-keygen -t rsa -o -b 4096 -a $pwd_rounds -f "
