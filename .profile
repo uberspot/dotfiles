@@ -82,3 +82,5 @@ export BINARY_SSH="/usr/bin/ssh"
 # remap caps lock to esc key
 xmodmap -e 'clear Lock' #ensures you're not stuck in CAPS on mode     
 xmodmap -e 'keycode 0x42=Escape' #remaps the keyboard so CAPS LOCK=ESC
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

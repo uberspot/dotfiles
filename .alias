@@ -248,6 +248,7 @@ alias valgrind_massif="valgrind --tool=massif --heap=yes --trace-children=yes --
 alias check_rootkits="sudo rkhunter --update; sudo rkhunter --propupd; sudo rkhunter --check"
 alias check_virus="clamscan --recursive=yes --infected /home"
 alias update_antivirus="sudo freshclam"
+alias msfconsole="msfconsole --quiet -x \"db_connect ${USER}@msf\""
 
 # fortune equality
 alias fortune="fortune -e -a"

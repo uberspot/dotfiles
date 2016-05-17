@@ -24,3 +24,4 @@ _Z_OWNER="$USER"
 _Z_CMD="c"
 try_source "$HOME/.extra/z/z.sh"
 
+try_source "$HOME/.rvm/scripts/rvm"
