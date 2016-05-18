@@ -25,3 +25,6 @@
 [submodule ".extra/gdbinit"]
 	path = .extra/gdbinit
 	url = https://github.com/gdbinit/gdbinit.git
+[submodule ".extra/zsh_custom/plugins/zsh-autosuggestions"]
+	path = .extra/zsh_custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

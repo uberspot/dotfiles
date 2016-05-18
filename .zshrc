@@ -30,8 +30,10 @@ HIST_STAMPS="dd.mm.yyyy"
 
 export HISTCONTROL="erasedups:ignoreboth"
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=24'
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(sudo adb archlinux command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-syntax-highlighting-filetypes nmap git-extra-commands)
+plugins=(sudo adb command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-autosuggestions zsh-syntax-highlighting-filetypes nmap git-extra-commands)
 
 file="$ZSH/oh-my-zsh.sh"; [ -f "$file" ] && source "$file"
 
