@@ -130,6 +130,7 @@ user_pref("accessibility.blockautorefresh",true); // Instead of refreshing a pag
 // disable pocket
 user_pref("browser.pocket.api",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
 user_pref("browser.pocket.enabled",false); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
+user_pref("extensions.pocket.enabled",false);
 user_pref("browser.pocket.enabledLocales",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
 user_pref("browser.pocket.oAuthConsumerKey",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
 user_pref("browser.pocket.site",""); // https://support.mozilla.org/en-US/kb/save-web-pages-later-pocket-firefox
@@ -229,7 +230,7 @@ user_pref("privacy.donottrackheader.value", 1);
 //user_pref("network.http.referer.spoofSource", true);
 // CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
 user_pref("network.http.sendSecureXSiteReferrer",		false);
-user_pref("network.http.sendRefererHeader", 1);
+user_pref("network.http.sendRefererHeader", 2);
 
 /******************************************************************************
  * caching                                                                    *
@@ -602,6 +603,16 @@ user_pref("loop.logDomains",        false);
 // set tabwindowpreviews on drag off
 user_pref("nglayout.enable_drag_images", false);
 
+// Disable additional Welcome URL in ESR/FF 
+user_pref("startup.homepage_welcome_url.additional",		"");
+
+// Disable dom.mozTCPSocket.enabled on ESR
+user_pref("dom.mozTCPSocket.enabled",		false);
+
+// Disable the UITour backend so there is no chance that a remote page
+// can use it to confuse Tor Browser users.
+user_pref("browser.uitour.enabled", false);
+
 // Disable local storage
 user_pref("dom.storage.enabled", false);
 
@@ -627,3 +638,7 @@ user_pref("gecko.handlerService.schemes.mailto.0.uriTemplate", "");
 // 30 Boxes
 user_pref("gecko.handlerService.schemes.webcal.0.name", "");
 user_pref("gecko.handlerService.schemes.webcal.0.uriTemplate", "");
+
+user_pref("devtools.webide.autoinstallADBHelper",       false);
+user_pref("devtools.webide.autoinstallFxdtAdapters",        false);
+user_pref("devtools.webide.enabled",        false);

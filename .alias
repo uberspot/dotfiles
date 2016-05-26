@@ -3,7 +3,7 @@
 ## Common
 alias mkdir="mkdir -pv"
 alias ls="ls -tr --color=auto -ha --group-directories-first"
-alias l="ls -lF"
+alias l="ls++ --potsf -trlFha --group-directories-first "
 alias cp="cp -ir"
 alias mv="mv -i"
 alias ln="ln -i"
@@ -64,7 +64,7 @@ if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
 fi
 
 alias free="free -mt"
-alias ps="ps auxf"
+alias ps="/usr/bin/grc ps auxf"
 alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
 alias scp="scp -Cvp -S '$HOME/.extra/ssh-ident/ssh-ident' "
 alias rsync="rsync -avSP -e '$HOME/.extra/ssh-ident/ssh-ident' "
@@ -195,11 +195,12 @@ alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias wanip2="curl ifconfig.me"
 alias wanip3="curl icanhazip.com"
 alias whois="whois -h whois-servers.net"
+alias ifconfig="/usr/bin/grc /sbin/ifconfig"
 
-alias traceroute="mtr "
+alias traceroute="/usr/bin/grc traceroute "
 alias icurl="curl -I"
 alias wget="wget -c"
-alias ping="ping -c4"
+alias ping="/usr/bin/grc ping -c4"
 alias wget_full="wget --random-wait -r -p -e robots=off -U mozilla " # downloads full webpage recursively
 
 alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HTTP traffic
@@ -207,6 +208,7 @@ alias sniffhttp="ngrep -d 'wlan0' -t '^(GET|POST) ' 'tcp and port 80'" # view HT
 alias sharedironlan="python2.7 -m SimpleHTTPServer 8080" # share the current dir from port 8080
 
 alias net_listening_connections="lsof -Panl -i tcp -i udp" # show listening connections
+alias netstat="/usr/bin/grc /bin/netstat"
 alias net="netstat -alputen"
 alias net_resolve="netstat -alpute"
 alias net_openports="netstat -nape --inet" # display open ports

@@ -18,7 +18,7 @@ dotfiles submodule update --init --recursive
 
 # install dependencies
 sudo pacman -S zsh-syntax-highlighting zsh htop cowsay fortune-mod vim terminator git ncdu fdupes atool inxi xclip colordiff mtr youtube-dl screen imagemagick zsh-completions
-apacman -S trash-cli the_silver_searcher git-extras
+apacman -S trash-cli the_silver_searcher git-extras ls++-git
 
 # set default shell to zsh
 chsh -s /bin/zsh
