@@ -1,5 +1,8 @@
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
+#TabsToolbar { height: 25px !important; }
+#PersonalToolbar {height: 25px !important;}
+
 @-moz-document url("chrome://browser/content/browser.xul") {
 
 /* Remove maximum/minimum  width restriction of sidebar */
