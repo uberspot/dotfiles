@@ -1,6 +1,7 @@
 #!/bin/sh
 # Installs repo and necessary dependencies.
 # This is very basic cause I don't replicate the confs that often and it serves mostly as a personal note.
+# The dotfiles management was inspired by https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 
 DOT_DIR=$HOME/.dotfiles
 

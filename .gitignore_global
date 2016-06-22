@@ -1,5 +1,4 @@
 # OSX       taken from: https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
-# ----------------------------------------------------------------------------------------------
 .DS_Store
 # Thumbnails
 ._*
@@ -8,7 +7,6 @@
 .Trashes
 
 # Windows   taken from: https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
-# ----------------------------------------------------------------------------------------------
 # Windows image file caches
 Thumbs.db
 
@@ -16,18 +14,35 @@ Thumbs.db
 Desktop.ini
 
 # Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
-# ----------------------------------------------------------------------------------------------
 # Ignore tags created by etags and ctags
 TAGS
 tags
 
 # Vim       taken from: https://github.com/github/gitignore/blob/master/Global/vim.gitignore
-# ----------------------------------------------------------------------------------------------
 .*.sw[a-z]
 *.un~
 Session.vim
 
 # SASS
-# ----------------------------------------------------------------------------------------------
 .sass-cache
+
+# Logs and Databases
+*.db
+*.log
+*.sql
+*.sqlite
+
+# Web stuff
+*.css.map
+*.js.map
+
+# Vagrant
+.vagrant
+
+# Project files
+.buildpath
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
 

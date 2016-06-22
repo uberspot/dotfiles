@@ -1,78 +1,167 @@
-include ~/.extra/.nano/apacheconf.nanorc
-include ~/.extra/.nano/asciidoc.nanorc
-include ~/.extra/.nano/asm.nanorc
-include ~/.extra/.nano/awk.nanorc
-include ~/.extra/.nano/c.nanorc
-include ~/.extra/.nano/cmake.nanorc
-include ~/.extra/.nano/coffeescript.nanorc
-include ~/.extra/.nano/colortest.nanorc
-include ~/.extra/.nano/conf.nanorc
-include ~/.extra/.nano/csharp.nanorc
-include ~/.extra/.nano/css.nanorc
-include ~/.extra/.nano/cython.nanorc
-include ~/.extra/.nano/dot.nanorc
-include ~/.extra/.nano/email.nanorc
-include ~/.extra/.nano/Dockerfile.nanorc
-include ~/.extra/.nano/fish.nanorc
-include ~/.extra/.nano/fortran.nanorc
-include ~/.extra/.nano/gentoo.nanorc
-include ~/.extra/.nano/git.nanorc
-include ~/.extra/.nano/gitcommit.nanorc
-include ~/.extra/.nano/glsl.nanorc
-include ~/.extra/.nano/go.nanorc
-include ~/.extra/.nano/groff.nanorc
-include ~/.extra/.nano/haml.nanorc
-include ~/.extra/.nano/html.nanorc
-include ~/.extra/.nano/ini.nanorc
-include ~/.extra/.nano/inputrc.nanorc
-include ~/.extra/.nano/java.nanorc
-include ~/.extra/.nano/javascript.nanorc
-include ~/.extra/.nano/js.nanorc
-include ~/.extra/.nano/json.nanorc
-include ~/.extra/.nano/keymap.nanorc
-include ~/.extra/.nano/kickstart.nanorc
-include ~/.extra/.nano/ledger.nanorc
-include ~/.extra/.nano/lisp.nanorc
-include ~/.extra/.nano/lua.nanorc
-include ~/.extra/.nano/makefile.nanorc
-include ~/.extra/.nano/man.nanorc
-include ~/.extra/.nano/markdown.nanorc
-include ~/.extra/.nano/mpdconf.nanorc
-include ~/.extra/.nano/mutt.nanorc
-include ~/.extra/.nano/nanorc.nanorc
-include ~/.extra/.nano/nginx.nanorc
-include ~/.extra/.nano/patch.nanorc
-include ~/.extra/.nano/peg.nanorc
-include ~/.extra/.nano/perl.nanorc
-include ~/.extra/.nano/php.nanorc
-include ~/.extra/.nano/pkg-config.nanorc
-include ~/.extra/.nano/pkgbuild.nanorc
-include ~/.extra/.nano/po.nanorc
-include ~/.extra/.nano/pov.nanorc
-include ~/.extra/.nano/privoxy.nanorc
-include ~/.extra/.nano/python.nanorc
-include ~/.extra/.nano/reST.nanorc
-include ~/.extra/.nano/rpmspec.nanorc
-include ~/.extra/.nano/ruby.nanorc
-include ~/.extra/.nano/scala.nanorc
-include ~/.extra/.nano/sed.nanorc
-include ~/.extra/.nano/sh.nanorc
-include ~/.extra/.nano/sls.nanorc
-include ~/.extra/.nano/sql.nanorc
-include ~/.extra/.nano/systemd.nanorc
-include ~/.extra/.nano/tcl.nanorc
-include ~/.extra/.nano/tex.nanorc
-include ~/.extra/.nano/vala.nanorc
-include ~/.extra/.nano/vi.nanorc
-include ~/.extra/.nano/xml.nanorc
-include ~/.extra/.nano/xresources.nanorc
-include ~/.extra/.nano/yaml.nanorc
-include ~/.extra/.nano/yum.nanorc
-include ~/.extra/.nano/zsh.nanorc
+include "~/.extra/nano/apacheconf.nanorc"
+include "~/.extra/nano/arduino.nanorc"
+include "~/.extra/nano/asciidoc.nanorc"
+include "~/.extra/nano/asm.nanorc"
+include "~/.extra/nano/awk.nanorc"
+include "~/.extra/nano/c.nanorc"
+include "~/.extra/nano/cmake.nanorc"
+include "~/.extra/nano/coffeescript.nanorc"
+include "~/.extra/nano/colortest.nanorc"
+include "~/.extra/nano/conf.nanorc"
+include "~/.extra/nano/csharp.nanorc"
+include "~/.extra/nano/css.nanorc"
+include "~/.extra/nano/cython.nanorc"
+include "~/.extra/nano/dot.nanorc"
+include "~/.extra/nano/email.nanorc"
+include "~/.extra/nano/Dockerfile.nanorc"
+include "~/.extra/nano/fish.nanorc"
+include "~/.extra/nano/fortran.nanorc"
+include "~/.extra/nano/gentoo.nanorc"
+include "~/.extra/nano/git.nanorc"
+include "~/.extra/nano/gitcommit.nanorc"
+include "~/.extra/nano/glsl.nanorc"
+include "~/.extra/nano/go.nanorc"
+include "~/.extra/nano/groff.nanorc"
+include "~/.extra/nano/haml.nanorc"
+include "~/.extra/nano/haskell.nanorc"
+include "~/.extra/nano/html.nanorc"
+include "~/.extra/nano/ini.nanorc"
+include "~/.extra/nano/inputrc.nanorc"
+include "~/.extra/nano/java.nanorc"
+include "~/.extra/nano/javascript.nanorc"
+include "~/.extra/nano/js.nanorc"
+include "~/.extra/nano/json.nanorc"
+include "~/.extra/nano/keymap.nanorc"
+include "~/.extra/nano/kickstart.nanorc"
+include "~/.extra/nano/ledger.nanorc"
+include "~/.extra/nano/lisp.nanorc"
+include "~/.extra/nano/lua.nanorc"
+include "~/.extra/nano/makefile.nanorc"
+include "~/.extra/nano/man.nanorc"
+include "~/.extra/nano/markdown.nanorc"
+include "~/.extra/nano/mpdconf.nanorc"
+include "~/.extra/nano/mutt.nanorc"
+include "~/.extra/nano/nanorc.nanorc"
+include "~/.extra/nano/nginx.nanorc"
+include "~/.extra/nano/ocaml.nanorc"
+include "~/.extra/nano/patch.nanorc"
+include "~/.extra/nano/peg.nanorc"
+include "~/.extra/nano/perl.nanorc"
+include "~/.extra/nano/perl6.nanorc"
+include "~/.extra/nano/php.nanorc"
+include "~/.extra/nano/pkg-config.nanorc"
+include "~/.extra/nano/pkgbuild.nanorc"
+include "~/.extra/nano/po.nanorc"
+include "~/.extra/nano/pov.nanorc"
+include "~/.extra/nano/privoxy.nanorc"
+include "~/.extra/nano/python.nanorc"
+include "~/.extra/nano/reST.nanorc"
+include "~/.extra/nano/rpmspec.nanorc"
+include "~/.extra/nano/ruby.nanorc"
+include "~/.extra/nano/rust.nanorc"
+include "~/.extra/nano/scala.nanorc"
+include "~/.extra/nano/sed.nanorc"
+include "~/.extra/nano/sh.nanorc"
+include "~/.extra/nano/sls.nanorc"
+include "~/.extra/nano/sql.nanorc"
+include "~/.extra/nano/swift.nanorc"
+include "~/.extra/nano/systemd.nanorc"
+include "~/.extra/nano/tcl.nanorc"
+include "~/.extra/nano/tex.nanorc"
+include "~/.extra/nano/vala.nanorc"
+include "~/.extra/nano/vi.nanorc"
+include "~/.extra/nano/xml.nanorc"
+include "~/.extra/nano/xresources.nanorc"
+include "~/.extra/nano/yaml.nanorc"
+include "~/.extra/nano/yum.nanorc"
+include "~/.extra/nano/zsh.nanorc"
 
+## Initialization file for GNU nano.
+##
+## Quotes inside string parameters don't have to be escaped with
+## backslashes.  The last double quote in the string will be treated as
+## its end.  For example, for the "brackets" option, ""')>]}" will match
+## ", ', ), >, ], and }.
 
+## Use auto-indentation.
+set autoindent
 
+## The characters treated as closing brackets when justifying
+## paragraphs.  They cannot contain blank characters.  Only closing
+## punctuation, optionally followed by closing brackets, can end
+## sentences.
+set brackets ""')>]}"
+
+## Constantly display the cursor position in the statusbar.  Note that
+## this overrides "quickblank".
+# set const
+
+## Enable ~/.nano_history for saving and reading search/replace strings.
+# set historylog
+
+## The opening and closing brackets that can be found by bracket
+## searches.  They cannot contain blank characters.  The former set must
+## come before the latter set, and both must be in the same order.
+set matchbrackets "(<[{)>]}"
+
+## Use the blank line below the titlebar as extra editing space.
+# set morespace
+
+## Enable mouse support, if available for your system.  When enabled,
+## mouse clicks can be used to place the cursor, set the mark (with a
+## double click), and execute shortcuts.  The mouse will work in the X
+## Window System, and on the console when gpm is running.
+set mouse
+
+## Allow multiple file buffers (inserting a file will put it into a
+## separate buffer).  You must have configured with --enable-multibuffer
+## for this to work.
+# set multibuffer
+
+## Don't display the helpful shortcut lists at the bottom of the screen.
+# set nohelp
+
+## Don't wrap text at all.
+# set nowrap
+
+## The characters treated as closing punctuation when justifying
+## paragraphs.  They cannot contain blank characters.  Only closing
+## punctuation, optionally followed by closing brackets, can end
+## sentences.
+set punct "!.?"
+
+## Do quick statusbar blanking.  Statusbar messages will disappear after
+## 1 keystroke instead of 26.  Note that "const" overrides this.
+# set quickblank
+
+## Fix Backspace/Delete confusion problem.
+# set rebinddelete
+
+## Fix numeric keypad key confusion problem.
+# set rebindkeypad
+
+## Make the Home key smarter.  When Home is pressed anywhere but at the
+## very beginning of non-whitespace characters on a line, the cursor
+## will jump to that beginning (either forwards or backwards).  If the
+## cursor is already at that position, it will jump to the true
+## beginning of the line.
+set smarthome
+
+## Use smooth scrolling as the default.
+set smooth
+
+## Allow nano to be suspended.
+set suspend
+
+## Use this tab size instead of the default; it must be greater than 0.
 set tabsize 4
+
+## Convert typed tabs to spaces.
 set tabstospaces
 
+## Enable the new (EXPERIMENTAL) generic undo code, not just for line cuts
+# set undo
+
+## Enable soft line wrapping (AKA full line display)
+# set softwrap
 

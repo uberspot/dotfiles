@@ -37,10 +37,10 @@ if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
     alias -g C="| column -t"
     alias -g L="| less"
     alias -g M="| most"
-    alias -g LE="2>&1 | less"
-    alias -g CA="2>&1 | cat -A"
+    alias -g RE="2>&1"
+    alias -g CA="| cat -A"
     alias -g NULE="2> /dev/null"
-    alias -g NUL="> /dev/null 2>&1"
+    alias -g NUL="> /dev/null"
     alias -g P="2>&1 | pygmentize -l pytb"
     alias -g S="sudo "
     alias -g GS="grep_search "
@@ -63,7 +63,7 @@ if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
   	alias -s ace="unace l"
 fi
 
-alias free="free -mt"
+alias free="free -ht"
 alias ps="/usr/bin/grc ps auxf"
 alias psgrep="ps | grep -v grep | grep -i -e VSZ -e"
 alias scp="scp -Cvp -S '$HOME/.extra/ssh-ident/ssh-ident' "
@@ -245,6 +245,7 @@ alias curlpaste="curlpaste -p -e ca "
 alias openbox_getOBAPP="obxprop | grep \"^_OB_APP\""
 alias valgrind_memcheck="valgrind --leak-check=full --tool=memcheck --track-origins=yes --trace-children=yes "
 alias valgrind_massif="valgrind --tool=massif --heap=yes --trace-children=yes --pages-as-heap=yes --massif-out-file=massif.out --time-unit=B "
+alias keycast="screenkey -t 0.5 -s medium --no-detach -p bottom --no-systray"
 
 # AV aliases
 alias check_rootkits="sudo rkhunter --update; sudo rkhunter --propupd; sudo rkhunter --check"

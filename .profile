@@ -63,19 +63,21 @@ fi
 export VTERM="x-terminal-emulator"
 
 # Firefox
-export MOZ_GLX_IGNORE_BLACKLIST=1
-export MOZ_USE_OMTC=1
-export MOZILLA_X11_XINITTHREADS=1
-export MOX_X_THREADSAFE=1
-export MOZ_ACCELERATED=1
-export MOZ_DISABLE_CRASHREPORTER=1
-export MOZ_DISABLE_PANGO=1
+#export MOZ_GLX_IGNORE_BLACKLIST=1
+#export MOZ_USE_OMTC=1
+#export MOZILLA_X11_XINITTHREADS=1
+#export MOX_X_THREADSAFE=1
+#export MOZ_ACCELERATED=1
+#export MOZ_DISABLE_CRASHREPORTER=1
+#export MOZ_DISABLE_PANGO=1
 
 #[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 #[[ "$(tty)" == "/dev/tty1" ]] && [[ $- == *i* ]] && exec startx
 
 export ANDROID_HOME="/opt/android-sdk"
 
+# LC_* variables are send via ssh, this will print a message on vulnerable hosts
+export LC_SHOCKED="() { :;};echo THIS HOST IS SHELL SHOCKED!"
 
 export BINARY_SSH="/usr/bin/ssh"
 

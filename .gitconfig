@@ -106,6 +106,7 @@
     sa = stash apply
     ss = stash save
     clone = clone --recursive
+    cleanup = "!f() { git fsck && git gc; }; f"
 
     # Show verbose output about tags, branches or remotes
     tags = tag -l
