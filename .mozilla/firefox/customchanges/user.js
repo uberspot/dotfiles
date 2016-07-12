@@ -27,7 +27,8 @@ user_pref("browser.safebrowsing.reportPhishURL",		"https://%LOCALE%.phish-report
 user_pref("media.peerconnection.default_iceservers",		"[]");
 
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
-user_pref("media.peerconnection.ice.default_address_only",		true);
+user_pref("media.peerconnection.ice.default_address_only",		true); // Firefox < 51
+user_pref("media.peerconnection.ice.no_host",			true); // Firefox >= 51
 
 // Disable WebRTC:
 // WebRTC leak test (among other things): https://ipleak.net/
@@ -95,7 +96,7 @@ user_pref("network.proxy.type", 0);
 user_pref("datareporting.healthreport.uploadEnabled",	false);
 
 // disable collection of the data (the healthreport.sqlite* files)
-user_pref("datareporting.healthreport.service.enabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
 
 // https://gecko.readthedocs.org/en/latest/toolkit/components/telemetry/telemetry/preferences.html
 user_pref("datareporting.policy.dataSubmissionEnabled",     false);
@@ -170,7 +171,7 @@ user_pref("dom.enable_performance",             false);
 user_pref("dom.webnotifications.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/notification
 user_pref("dom.webnotifications.serviceworker.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/notification
 user_pref("media.webspeech.recognition.enable", false); // https://wiki.mozilla.org/HTML5_Speech_API
-user_pref("dom.netinfo.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API
+user_pref("dom.webaudio.enabled", false); // https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API
 
 // Disable HTML5 video stats:
 // https://bugzilla.mozilla.org/show_bug.cgi?id=654550
@@ -263,9 +264,6 @@ user_pref("gfx.font_rendering.fallback.always_use_cmaps", true);
 // https://wiki.mozilla.org/Privacy/Reviews/New_Tab
 user_pref("browser.newtabpage.enabled",			false);
 
-// CIS Version 1.2.0 October 21st, 2011 2.2.3 Enable Warning of Using Weak Encryption
-user_pref("security.warn_entering_weak",		true);
-
 // CIS Mozilla Firefox 24 ESR v1.0.0 - 3.6 Enable IDN Show Punycode
 // http://kb.mozillazine.org/Network.IDN_show_punycode
 user_pref("network.IDN_show_punycode",			true);
@@ -273,10 +271,6 @@ user_pref("network.IDN_show_punycode",			true);
 // http://kb.mozillazine.org/Signon.autofillForms
 // https://www.torproject.org/projects/torbrowser/design/#identifier-linkability
 user_pref("signon.autofillForms",			false);
-
-// https://developer.mozilla.org/en/Preferences/Mozilla_preferences_for_uber-geeks
-// see also CVE-2009-3555
-user_pref("security.ssl.warn_missing_rfc5746",		1);
 
 /******************************************************************************
  * TLS / HTTPS / OCSP related stuff                                           *
@@ -296,8 +290,11 @@ user_pref("security.ssl.enable_ocsp_stapling",		true);
 // NOTICE: this leaks information about the sites you visit to the CA.
 user_pref("security.OCSP.require",			false);
 
-// https://www.blackhat.com/us-13/briefings.html#NextGen
-user_pref("security.enable_tls_session_tickets",	false);
+// https://media.blackhat.com/us-13/US-13-Daigniere-TLS-Secrets-Slides.pdf
+// https://media.blackhat.com/us-13/US-13-Daigniere-TLS-Secrets-WP.pdf
+// https://bugzil.la/917049
+// https://bugzil.la/967977
+user_pref("security.ssl.disable_session_identifiers",		true);
 
 // TLS 1.[012]
 // http://kb.mozillazine.org/Security.tls.version.max
@@ -545,7 +542,9 @@ user_pref("browser.urlbar.unifiedcomplete", false);
 
 // Remove "(site) is now fullscreen" nag message:
 user_pref("full-screen-api.warning.delay", 0);
-user_pref("full-screen-api.warning.timeout", 0);
+user_pref("full-screen-api.warning.timeout", 500);
+user_pref("full-screen-api.transition-duration.enter", "0 0");
+user_pref("full-screen-api.transition-duration.leave", "0 0");
 
 // Disable fullscreen URL bar animation:
 user_pref("browser.fullscreen.animate", false);
@@ -612,6 +611,9 @@ user_pref("dom.mozTCPSocket.enabled",		false);
 // Disable the UITour backend so there is no chance that a remote page
 // can use it to confuse Tor Browser users.
 user_pref("browser.uitour.enabled", false);
+
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1171228
+user_pref("webgl.enable-debug-renderer-info",			false);
 
 // Disable local storage
 user_pref("dom.storage.enabled", false);

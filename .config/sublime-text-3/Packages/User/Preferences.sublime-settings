@@ -1,3 +1,7 @@
 {
-	"font_size": 10
+	"ignored_packages":
+	[
+		"GitGutter"
+	],
+	"update_check": false
 }

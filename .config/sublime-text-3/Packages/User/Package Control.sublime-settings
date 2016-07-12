@@ -7,14 +7,15 @@
 	[
 		"Anaconda",
 		"BracketHighlighter",
+		"C++ Completions",
 		"C++ Starting Kit",
-		"CTags",
 		"DocBlockr",
-		"GitGutter",
-		"Markdown Preview",
 		"MarkdownEditing",
 		"Package Control",
 		"PackageResourceViewer",
+		"Python Breakpoints",
+		"Python Completions",
+		"SideBarEnhancements",
 		"SublimeREPL"
 	]
 }

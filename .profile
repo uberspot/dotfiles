@@ -41,7 +41,7 @@ export JAVA_HOME="/usr/lib/jvm/default"
 # Overwrites your ssh binary to ssh-ident
 export PATH="$HOME/.extra/bin/"
 
-export PATH="$PATH:/usr/lib/ccache/bin/:/usr/bin:/usr/local/bin:/bin:/usr/local/sbin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/"
+export PATH="$PATH:/usr/lib/ccache/bin/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/"
 
 export CHROMIUM_FLAGS="--enable-seccomp-sandbox --memory-model=low --purge-memory-button --disk-cache-dir=/dev/shm/chromium-cache --disk-cache-size=300000000"
 
@@ -82,7 +82,7 @@ export LC_SHOCKED="() { :;};echo THIS HOST IS SHELL SHOCKED!"
 export BINARY_SSH="/usr/bin/ssh"
 
 # remap caps lock to esc key
-xmodmap -e 'clear Lock' #ensures you're not stuck in CAPS on mode     
+xmodmap -e 'clear Lock' #ensures you're not stuck in CAPS on mode
 xmodmap -e 'keycode 0x42=Escape' #remaps the keyboard so CAPS LOCK=ESC
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
