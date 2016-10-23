@@ -117,7 +117,7 @@ alias securewipe_disk="shred --verbose --random-source=/dev/urandom -n1 " # use 
 # time since installation based on oldest pacman.log entry.
 open() { mimeo $1 &> /dev/null &disown; }
 alias pm="pacman"
-alias apm="apacman"
+alias pa="pacaur"
 alias rg="ranger"
 alias extract="atool -x"
 
@@ -274,10 +274,10 @@ alias optimizeffdbs='for f in ~/.mozilla/firefox/*.default/*.sqlite; do sqlite3 
 alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert -resize 70% $i $i; done'
 
 ## Update related
-alias upz="apacman -Syu"
-alias cleanz="pacman -Sc"
-alias listdeps="pacman -Qdt" # lists unused dependencies/leftover packages
-alias listallpacks="apacman -L" #pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
+alias upz="pacaur -Syu"
+alias cleanz="pacman -Sc; pacman -Rns $(pacman -Qtdq)"
+alias listdeps="pacman -Qtdq" # lists unused dependencies/leftover packages
+alias listallpacks="pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
 alias listallexplpacks="pacman -Qeq" # list all explicitly installed packages
 alias updatemirrors="reflector --verbose --country Netherlands -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
 alias journalctl_error="journalctl -b -p err"

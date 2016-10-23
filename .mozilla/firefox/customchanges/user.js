@@ -224,15 +224,6 @@ user_pref("security.sri.enable",		true);
 user_pref("privacy.donottrackheader.enabled",			true);
 user_pref("privacy.donottrackheader.value", 1);
 
-// http://kb.mozillazine.org/Network.http.sendRefererHeader#0
-// https://bugzilla.mozilla.org/show_bug.cgi?id=822869
-// Send a referer header with the target URI as the source
-//user_pref("network.http.sendRefererHeader",	0);
-//user_pref("network.http.referer.spoofSource", true);
-// CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
-user_pref("network.http.sendSecureXSiteReferrer",		false);
-user_pref("network.http.sendRefererHeader", 2);
-
 /******************************************************************************
  * caching                                                                    *
  ******************************************************************************/
@@ -519,12 +510,12 @@ user_pref("security.ssl.errorReporting.automatic",      false);
 // Block mixed content:
 user_pref("security.mixed_content.block_active_content", true); // (eg. insecure CSS or JS on a HTTPS page - this is enabled by default)
 
-user_pref("app.support.baseURL", "");
-user_pref("app.update.url", "");
-user_pref("browser.aboutHomeSnippets.updateUrl", "");
-user_pref("extensions.getAddons.get.url", "");
-user_pref("extensions.getAddons.getWithPerformance.url", "");
-user_pref("extensions.update.background.url", "");
+//user_pref("app.support.baseURL", "");
+//user_pref("app.update.url", "");
+//user_pref("browser.aboutHomeSnippets.updateUrl", "");
+//user_pref("extensions.getAddons.get.url", "");
+//user_pref("extensions.getAddons.getWithPerformance.url", "");
+//user_pref("extensions.update.background.url", "");
 
 // Opt-out of add-on metadata updates
 user_pref("extensions.getAddons.cache.enabled",   false);
@@ -644,3 +635,5 @@ user_pref("gecko.handlerService.schemes.webcal.0.uriTemplate", "");
 user_pref("devtools.webide.autoinstallADBHelper",       false);
 user_pref("devtools.webide.autoinstallFxdtAdapters",        false);
 user_pref("devtools.webide.enabled",        false);
+
+user_pref("extensions.webservice.discoverURL", "http://0.0.0.0");

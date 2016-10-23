@@ -396,6 +396,23 @@
       <action name="Execute">
         <command>pulseaudio-ctl mute</command>
       </action>
+  </keybind>
+  <!-- Super+PageUp -->
+    <keybind key="W-Prior">
+      <action name="Execute">
+        <command>amixer set Master 5%+ unmute</command>
+      </action>
+  </keybind>
+  <!-- Super+PageDown -->
+    <keybind key="W-Next">
+      <action name="Execute">
+        <command>amixer set Master 5%- unmute</command>
+      </action>
+    </keybind>
+    <keybind key="W-BackSpace">
+      <action name="Execute">
+        <command>pulseaudio-ctl mute</command>
+      </action>
     </keybind>
     <keybind key="XF86ScreenSaver">
       <action name="Execute">

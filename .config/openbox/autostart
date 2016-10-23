@@ -11,7 +11,6 @@ if which tint2 >/dev/null 2>&1; then
   tint2 &
 fi
 
-volumeicon &
 redshift -O 3800 &
 thunar --daemon &
 
@@ -22,3 +21,4 @@ qxkb &
 
 # sigh, pulseaudio ...
 (sleep 2s && killall pulseaudio) &
+(sleep 2s && volumeicon) &
