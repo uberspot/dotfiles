@@ -81,8 +81,7 @@ export LC_SHOCKED="() { :;};echo THIS HOST IS SHELL SHOCKED!"
 
 export BINARY_SSH="/usr/bin/ssh"
 
-# remap caps lock to esc key
-xmodmap -e 'clear Lock' #ensures you're not stuck in CAPS on mode
-xmodmap -e 'keycode 0x42=Escape' #remaps the keyboard so CAPS LOCK=ESC
+# remap caps lock to esc key, while ensuring you're not stuck in CAPS on mode
+command -v xmodmap >/dev/null 2>&1 || { xmodmap -e 'clear Lock'; xmodmap -e 'keycode 0x42=Escape'; }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

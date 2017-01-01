@@ -1,12 +1,30 @@
 #!/bin/sh
-# Sets VGA1 or HDMI1 as main screen + laptop screen as a secondary on the side
+# Sets eDP1 or DP2-1 as main screen + laptop screen as a secondary on the side
 
-if xrandr -q | grep -q "VGA1 connected" ; then
-	xrandr --output HDMI1 --off --output LVDS1 --off --output VGA1 --primary --mode 1680x1050 --pos 0x0 --rotate normal
-elif xrandr -q | grep -q "HDMI1 connected" ; then
-	xrandr --output HDMI1 --mode 1680x1050 --pos 0x0 --rotate normal --output LVDS1 --off --output VGA1 --off
-else
-	xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output HDMI1 --off
+XRANDR_OUTPUT=$(xrandr -q)
+
+xrandr --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal
+
+if  echo $XRANDR_OUTPUT | grep -q "DP2-1 connected" ; then
+	xrandr --output DP2-1 --primary --auto --left-of eDP1 --rotate normal
+else 
+	xrandr --output DP2-1 --off
+fi
+if  echo $XRANDR_OUTPUT | grep -q "DP2-2 connected" ; then
+	xrandr --output DP2-2 --auto --left-of DP2-1 --rotate normal
+else 
+	xrandr --output DP2-2 --off
+fi
+if  echo $XRANDR_OUTPUT | grep -q "HDM1 connected" ; then
+	xrandr --output HDM1 --auto --left-of eDP1 --rotate normal
+else 
+	xrandr --output HDM1 --off
+fi
+if  echo $XRANDR_OUTPUT | grep -q "DP1 connected" ; then
+	xrandr --output DP1 --auto --left-of eDP1 --rotate normal
+else 
+	xrandr --output DP1 --off
 fi
 
 nitrogen --restore &
+

@@ -179,7 +179,7 @@
     </keybind>
     <keybind key="W-h">
       <action name="Execute">
-          <command>HipChat4</command>
+        <command>HipChat4</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Hipchat</name>
@@ -236,7 +236,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>subl</command>
+        <command>subl3</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>sublime</name>
@@ -245,7 +245,7 @@
     </keybind>
     <keybind key="S-W-l">
       <action name="Execute">
-        <command>slock</command>
+        <command>dm-tool lock</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>lock</name>
@@ -396,14 +396,14 @@
       <action name="Execute">
         <command>pulseaudio-ctl mute</command>
       </action>
-  </keybind>
-  <!-- Super+PageUp -->
+    </keybind>
+    <!-- Super+PageUp -->
     <keybind key="W-Prior">
       <action name="Execute">
         <command>amixer set Master 5%+ unmute</command>
       </action>
-  </keybind>
-  <!-- Super+PageDown -->
+    </keybind>
+    <!-- Super+PageDown -->
     <keybind key="W-Next">
       <action name="Execute">
         <command>amixer set Master 5%- unmute</command>
@@ -416,7 +416,7 @@
     </keybind>
     <keybind key="XF86ScreenSaver">
       <action name="Execute">
-        <command>slock</command>
+        <command>dm-tool lock</command>
       </action>
     </keybind>
     <keybind key="XF86Sleep">
@@ -484,12 +484,15 @@
       <mousebind action="Drag" button="A-Right">
         <action name="Resize"/>
       </mousebind>
+      <mousebind action="Drag" button="W-Left">
+        <action name="Move"/>
+      </mousebind>
+      <mousebind action="Press" button="W-Right">
+        <action name="Close"/>
+      </mousebind>
       <!-- W + Middle click to grow a window to the edges of windows surrounding it. -->
       <mousebind button="W-Middle" action="Press">
-        <action name="GrowToEdgeNorth"/>
-        <action name="GrowToEdgeSouth"/>
-        <action name="GrowToEdgeEast"/>
-        <action name="GrowToEdgeWest"/>
+        <action name="ToggleMaximizeFull"/>
       </mousebind>
     </context>
     <context name="Titlebar">
@@ -786,28 +789,9 @@
     <!-- Force terminals to appear on top and on the right of the conky -->
     <application name="terminator">
       <desktop>1</desktop>
-      <position force="yes">
-        <x>210</x>
-        <y>0</y>
-      </position>
-      <maximized>Vertical</maximized>
-    </application>
-    <application name="Telegram">
-      <desktop>2</desktop>
     </application>
     <application class="Thunderbird">
       <desktop>1</desktop>
-      <position force="yes">
-        <x>210</x>
-        <y>0</y>
-      </position>
-      <maximized>Vertical</maximized>
-    </application>
-    <application name="Pidgin">
-      <desktop>2</desktop>
-    </application>
-    <application name="hipchat">
-      <desktop>2</desktop>
     </application>
     <application class="Firefox">
       <desktop>1</desktop>

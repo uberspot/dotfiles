@@ -637,3 +637,4 @@ user_pref("devtools.webide.autoinstallFxdtAdapters",        false);
 user_pref("devtools.webide.enabled",        false);
 
 user_pref("extensions.webservice.discoverURL", "http://0.0.0.0");
+user_pref("privacy.firstparty.isolate",  true);

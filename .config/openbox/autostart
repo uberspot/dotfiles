@@ -3,8 +3,9 @@
 udiskie &
 syndaemon -i 2 -d &
 
-nitrogen --restore &
+(sleep 2s && nitrogen --restore) &
 numlockx &
+
 # Launch compton and tint2 with openbox
 if which tint2 >/dev/null 2>&1; then
   compton --config ~/.config/compton.conf -b
@@ -14,8 +15,7 @@ fi
 redshift -O 3800 &
 thunar --daemon &
 
-# set speaker to 100% since pulseaudio doesn't keep the change each time :/
-amixer set Speaker 100% &
+(sleep 2s && xautolock -time 15 -locker "dm-tool lock") &
 
 qxkb &
 
