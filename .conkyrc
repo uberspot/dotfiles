@@ -1,7 +1,7 @@
 -- vim: ts=4 sw=4 noet ai cindent syntax=lua
 
 conky.config = {
-    alignment = 'top_left',
+    alignment = 'top_right',
     total_run_times = 0,
     background = true,
     border_width = 0,
@@ -21,8 +21,8 @@ conky.config = {
     gap_x = 10,
     gap_y = 8,
     minimum_height = 5,
-	minimum_width = 200,
-	maximum_width = 200,
+	minimum_width = 300,
+	maximum_width = 300,
     if_up_strictness = 'link',
     imlib_cache_size = 0,
     no_buffers = true,

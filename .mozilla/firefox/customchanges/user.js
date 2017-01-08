@@ -39,7 +39,13 @@ user_pref("media.peerconnection.enabled", false);
 user_pref("media.peerconnection.use_document_iceservers", false);
 user_pref("media.navigator.enabled", false);
 user_pref("media.getusermedia.screensharing.enabled", false);
+user_pref("media.getusermedia.audiocapture.enabled", false);
 user_pref("media.getusermedia.screensharing.allowed_domains", "");
+
+// Ensure you have a security delay when installing add-ons (milliseconds)
+// http://kb.mozillazine.org/Disable_extension_install_delay_-_Firefox
+// http://www.squarefree.com/2004/07/01/race-conditions-in-security-dialogs/
+user_pref("security.dialog_enable_delay",			1000);
 
 // Prevent CSS History Leak
 // https://blog.mozilla.org/security/2010/03/31/plugging-the-css-history-leak/
@@ -429,9 +435,19 @@ user_pref("browser.newtab.url", "about:blank");
 user_pref("browser.safebrowsing.downloads.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.safebrowsing.updateURL", "");
-user_pref("browser.search.countryCode", "US");
 user_pref("browser.search.geoSpecificDefaults", false);
-user_pref("browser.search.geoip.url", "");
+
+// Disable Captive Portal detection
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1307867
+user_pref("network.captive-portal-service.enabled", false);
+
+// GeoIP-based search
+// https://trac.torproject.org/projects/tor/ticket/16254
+user_pref("browser.search.countryCode",				"US");
+user_pref("browser.search.region",				"US");
+// https://support.mozilla.org/en-US/kb/how-stop-firefox-making-automatic-connections#w_geolocation-for-default-search-engine
+user_pref("browser.search.geoip.url",				"");
+
 user_pref("geo.wifi.uri", "");
 user_pref("mousewheel.min_line_scroll_amount", 25);
 user_pref("network.predictor.cleaned-up", true);
@@ -451,7 +467,7 @@ user_pref("browser.download.panel.firstSessionCompleted", true);
 user_pref("browser.download.panel.shown", true);
 user_pref("browser.download.useDownloadDir", false);
 user_pref("browser.selfsupport.url", "");
-user_pref("browser.sessionstore.interval", 45000);
+user_pref("browser.sessionstore.interval", 120000);
 user_pref("browser.sessionstore.max_tabs_undo", 20);
 user_pref("browser.tabs.animate", false);
 user_pref("clipboard.autocopy", false);
@@ -606,6 +622,13 @@ user_pref("browser.uitour.enabled", false);
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1171228
 user_pref("webgl.enable-debug-renderer-info",			false);
 
+// If you absolutely have to use webGL you can use the minimum capability mode
+user_pref("webgl.min_capability_mode",				true);
+// https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API#WebGL_debugging_and_testing
+user_pref("webgl.disable-extensions",				true);
+// https://trac.torproject.org/projects/tor/ticket/18603
+user_pref("webgl.disable-fail-if-major-performance-caveat",	true);
+
 // Disable local storage
 user_pref("dom.storage.enabled", false);
 
@@ -638,3 +661,15 @@ user_pref("devtools.webide.enabled",        false);
 
 user_pref("extensions.webservice.discoverURL", "http://0.0.0.0");
 user_pref("privacy.firstparty.isolate",  true);
+
+// Make sure the User Timing API does not provide a new high resolution timestamp
+// https://trac.torproject.org/projects/tor/ticket/16336
+user_pref("dom.enable_user_timing",				false);
+
+// disallow SHA-1
+// https://shattered.io/
+user_pref("security.pki.sha1_enforcement_level",		1);
+
+// Speech synthesis
+// https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
+user_pref("media.webspeech.synth.enabled", false);

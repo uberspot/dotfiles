@@ -15,7 +15,7 @@ fi
 redshift -O 3800 &
 thunar --daemon &
 
-(sleep 2s && xautolock -time 15 -locker "dm-tool lock") &
+(sleep 2s && xautolock -time 20 -locker "dm-tool lock") &
 
 qxkb &
 

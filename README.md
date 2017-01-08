@@ -31,6 +31,7 @@ I've tried to add comments in those configs that explain most of the functionali
 
 ###Quick screenshot of conky, tint, terminator and zsh theme
 
-![screenshot1](https://github.com/uberspot/dotfiles/blob/master/.extra/quickscreenshot1.png)
-![screenshot1](https://github.com/uberspot/dotfiles/blob/master/.extra/quickscreenshot2.png)
+![conky](https://github.com/uberspot/dotfiles/blob/master/.extra/conky.png)
+![vim](https://github.com/uberspot/dotfiles/blob/master/.extra/vim.png)
+![terminal](https://github.com/uberspot/dotfiles/blob/master/.extra/terminal.png)
 

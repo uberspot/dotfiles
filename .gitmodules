@@ -16,9 +16,6 @@
 [submodule ".vim/autoload/vim-plug"]
 	path = .vim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
-[submodule ".extra/z"]
-	path = .extra/z
-	url = https://github.com/rupa/z.git
 [submodule ".extra/nano"]
 	path = .extra/nano
 	url = https://github.com/scopatz/nanorc.git

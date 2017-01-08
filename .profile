@@ -31,8 +31,8 @@ export CCACHE_MAXSIZE="3G"
 export CCACHE_PATH="/usr/bin" # Tell ccache to only use compilers here
 
 # Prefer US English and use UTF-8
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LANG="en_GB.UTF-8"
+export LC_ALL="en_GB.UTF-8"
 
 export TCL_LIBRARY="/usr/lib/tcl8.6"
 

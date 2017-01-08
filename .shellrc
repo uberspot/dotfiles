@@ -22,6 +22,6 @@ FILE="$HOME/.extra/ls_colors/LS_COLORS" ; [ -f "$FILE" ] && eval "$(dircolors -b
 _Z_DATA="$HOME/.cache/z"
 _Z_OWNER="$USER"
 _Z_CMD="c"
-try_source "$HOME/.extra/z/z.sh"
+try_source "$HOME/.oh-my-zsh/plugins/z/z.sh"
 
 try_source "$HOME/.rvm/scripts/rvm"

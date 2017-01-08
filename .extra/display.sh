@@ -11,7 +11,7 @@ else
 	xrandr --output DP2-1 --off
 fi
 if  echo $XRANDR_OUTPUT | grep -q "DP2-2 connected" ; then
-	xrandr --output DP2-2 --auto --left-of DP2-1 --rotate normal
+	xrandr --output DP2-2 --auto --left-of DP2-1 --rotate right
 else 
 	xrandr --output DP2-2 --off
 fi

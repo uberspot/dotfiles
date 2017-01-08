@@ -1,4 +1,5 @@
 {
+	"font_size": 8,
 	"ignored_packages":
 	[
 		"GitGutter"
