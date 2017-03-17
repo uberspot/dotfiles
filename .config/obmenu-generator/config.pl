@@ -76,7 +76,7 @@ our $CONFIG = {
   "editor"              => "subl",
   "Linux::DesktopFiles" => {
                              desktop_files_paths     => ["/usr/share/applications"],
-                             gtk_rc_filename         => "/home/code/.gtkrc-2.0",
+                             gtk_rc_filename         => "$ENV{HOME}/.gtkrc-2.0",
                              icon_dirs_first         => undef,
                              icon_dirs_last          => undef,
                              icon_dirs_second        => undef,
@@ -93,5 +93,5 @@ our $CONFIG = {
   "missing_icon"        => "gtk-missing-image",
   "name_keys"           => ["Name"],
   "terminal"            => "xterm",
-  "VERSION"             => 0.69,
+  "VERSION"             => 0.71,
 }

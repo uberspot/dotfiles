@@ -153,7 +153,7 @@
         <command>firefox</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>Minefield Web Browser</name>
+          <name>Web Browser</name>
         </startupnotify>
       </action>
     </keybind>
@@ -254,7 +254,7 @@
     </keybind>
     <keybind key="W-s">
       <action name="Execute">
-        <command>skype</command>
+        <command>skypeforlinux</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>Skype</name>
@@ -384,12 +384,12 @@
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>amixer set Master 5%+ unmute</command>
+        <command>amixer set Master 2%+ unmute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>amixer set Master 5%- unmute</command>
+        <command>amixer set Master 2%- unmute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
@@ -400,13 +400,13 @@
     <!-- Super+PageUp -->
     <keybind key="W-Prior">
       <action name="Execute">
-        <command>amixer set Master 5%+ unmute</command>
+        <command>amixer set Master 2%+ unmute</command>
       </action>
     </keybind>
     <!-- Super+PageDown -->
     <keybind key="W-Next">
       <action name="Execute">
-        <command>amixer set Master 5%- unmute</command>
+        <command>amixer set Master 2%- unmute</command>
       </action>
     </keybind>
     <keybind key="W-BackSpace">

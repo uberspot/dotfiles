@@ -92,6 +92,7 @@
     # basic shortcuts
     cp = cherry-pick
     s = status
+    lsfo = ls-files -o -u
     c = clone --recursive
     ci = commit
     co = checkout

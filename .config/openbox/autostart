@@ -1,7 +1,6 @@
 ~/.extra/display.sh
 
 udiskie &
-syndaemon -i 2 -d &
 
 (sleep 2s && nitrogen --restore) &
 numlockx &
@@ -15,7 +14,7 @@ fi
 redshift -O 3800 &
 thunar --daemon &
 
-(sleep 2s && xautolock -time 20 -locker "dm-tool lock") &
+(sleep 2s && xautolock -detectsleep -time 20 -locker "dm-tool lock" -notify 30 -notifier "notify-send 'Locking screen in 30 seconds'" -corners ---- -cornersize 100) &
 
 qxkb &
 

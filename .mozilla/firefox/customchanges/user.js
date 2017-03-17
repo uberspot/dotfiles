@@ -435,6 +435,11 @@ user_pref("browser.newtab.url", "about:blank");
 user_pref("browser.safebrowsing.downloads.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.safebrowsing.updateURL", "");
+// PREF: When Flash is enabled, download and use Mozilla SWF URIs blocklist
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1237198
+// https://github.com/mozilla-services/shavar-plugin-blocklist
+user_pref("browser.safebrowsing.blockedURIs.enabled", true);
+
 user_pref("browser.search.geoSpecificDefaults", false);
 
 // Disable Captive Portal detection
@@ -673,3 +678,9 @@ user_pref("security.pki.sha1_enforcement_level",		1);
 // Speech synthesis
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
 user_pref("media.webspeech.synth.enabled", false);
+
+user_pref("intl.accept_languages",				"en-us, en");
+
+// PREF: Disable Shumway (Mozilla Flash renderer)
+// https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Shumway
+pref("shumway.disabled", true);

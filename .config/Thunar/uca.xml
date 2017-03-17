@@ -95,7 +95,7 @@
 <action>
 	<icon>gtk3-demo</icon>
 	<name>Remove exif</name>
-	<unique-id>1433635931856044-2</unique-id>
+	<unique-id>1492722181653099-1</unique-id>
 	<command>for file in %F; do mogrify -strip &quot;$file&quot;; done</command>
 	<description></description>
 	<patterns>*</patterns>
@@ -104,10 +104,16 @@
 <action>
 	<icon>tint2conf</icon>
 	<name>Copy Pathname to Clipboard</name>
-	<unique-id>1456755578582121-1</unique-id>
+	<unique-id>1492722203388811-2</unique-id>
 	<command>echo -n %f | xclip -i</command>
 	<description>Copy Pathname to Clipboard</description>
 	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 <action>
 	<icon>insert-image</icon>
@@ -124,6 +130,15 @@
 	<name>Convert to pdf</name>
 	<unique-id>1456757232832755-20</unique-id>
 	<command>name=$(zenity --text &quot;Enter a name for the pdf&quot; --entry-text &quot;combined.pdf&quot; --entry) ; convert -compress jpeg %F $name</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>preferences-color</icon>
+	<name>Upload to Imgur</name>
+	<unique-id>1492724414580960-5</unique-id>
+	<command>notify-send &quot;$(/usr/bin/imgur.sh %F; xclip -o | xclip -selection clipboard )&quot;</command>
 	<description></description>
 	<patterns>*</patterns>
 	<image-files/>
