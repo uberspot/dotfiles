@@ -1,8 +1,9 @@
 {
-	"font_size": 10,
+	"font_size": 18,
 	"ignored_packages":
 	[
-		"GitGutter"
+		"GitGutter",
+		"Package Control"
 	],
 	"update_check": false
 }

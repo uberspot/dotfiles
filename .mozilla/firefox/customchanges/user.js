@@ -684,3 +684,14 @@ user_pref("intl.accept_languages",				"en-us, en");
 // PREF: Disable Shumway (Mozilla Flash renderer)
 // https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Shumway
 pref("shumway.disabled", true);
+
+// PREF: Enable hardening against various fingerprinting vectors (Tor Uplift project)
+// https://wiki.mozilla.org/Security/Tor_Uplift/Tracking
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1333933
+user_pref("privacy.resistFingerprinting",			true);
+
+// PREF: Disable SHIELD
+// https://support.mozilla.org/en-US/kb/shield
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1370801
+user_pref("extensions.shield-recipe-client.enabled",		false);
+user_pref("app.shield.optoutstudies.enabled",			false);
