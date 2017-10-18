@@ -88,6 +88,7 @@
     uncommit = reset --soft
     undo = reset --hard
     unstage = reset
+    undolastcommit = reset HEAD~
 
     # basic shortcuts
     cp = cherry-pick
