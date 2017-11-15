@@ -62,6 +62,7 @@ fi
 # define the prefered visual terminal
 export VTERM="x-terminal-emulator"
 
+export ELECTRON_TRASH="trash-cli"
 # Firefox
 #export MOZ_GLX_IGNORE_BLACKLIST=1
 #export MOZ_USE_OMTC=1

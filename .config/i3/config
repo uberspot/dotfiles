@@ -217,7 +217,7 @@ bindsym $super+w exec --no-startup-id i3-msg 'workspace $WEB; exec firefox'
 assign [class="Firefox"]   $WEB
 bindsym $super+m exec --no-startup-id i3-msg 'workspace $WEB; exec firejail --seccomp thunderbird'
 bindsym $super+f exec --no-startup-id thunar
-bindsym $super+z exec --no-startup-id i3-msg 'workspace $WEB; exec subl'
+bindsym $super+z exec --no-startup-id i3-msg 'workspace $WEB; exec atom'
 bindsym $super+x exec --no-startup-id i3-msg 'workspace $WEB; exec chromium'
 bindsym $super+v exec --no-startup-id i3-msg 'workspace $WEB; exec vivaldi'
 bindsym $super+p exec --no-startup-id i3-msg 'workspace $MISC; exec pidgin'

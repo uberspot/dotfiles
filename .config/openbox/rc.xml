@@ -236,10 +236,10 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>subl3</command>
+        <command>atom</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>sublime</name>
+          <name>atom</name>
         </startupnotify>
       </action>
     </keybind>

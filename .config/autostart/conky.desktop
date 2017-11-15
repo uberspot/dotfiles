@@ -1,10 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
-Version=0.9.4
 Type=Application
-Name=conky
-Comment=
-Exec=conky -d
-StartupNotify=false
-Terminal=false
+Exec=conky -d -p 5
 Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_IN]=Conky
+Name=Conky
+Comment[en_IN]=
+Comment=
