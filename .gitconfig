@@ -48,6 +48,7 @@
     # via http://stackoverflow.com/questions/3103589/how-can-i-easily-fixup-a-past-commit
     fixup = "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && COMMIT=$(git rev-parse $1) && git commit --fixup=$COMMIT && git rebase -i --autosquash $COMMIT~1' -"
     cm = commit -m
+    csm = commit -S -m
     ec = config --global -e
     current-branch = git symbolic-ref -q --short HEAD
 
@@ -137,6 +138,9 @@
 
     # Untrack a file
     untrack = rm --cache --
+
+    # Rebase and sign all commits until whatever commit you add to the end of the alias
+    aggressive-sign-all = rebase --exec 'git commit --amend --no-edit -n -S' -i 
 
     # Inject a change/ammendement to an older commit. E.g.:
     # git inject <commit-ref> <patch-ref>
