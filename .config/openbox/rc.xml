@@ -215,7 +215,7 @@
     </keybind>
     <keybind key="W-n">
       <action name="Execute">
-          <command>/usr/bin/franz-bin</command>
+          <command>/usr/bin/franz</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>franz</name>

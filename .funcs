@@ -336,3 +336,13 @@ transfersh() {
     rm -f $tmpfile
 }
 
+# $1 is backup destination
+# Init: borg init --encryption=repokey $1/backup/folder
+# To List: borg --list --prefix '{hostname}-' --show-rc --keep-daily 7 --keep-weekly 4 --keep-monthly 6 $1/backup/folder
+borg_backup() {
+    borg create --stats --verbose --list --show-rc --compression lz4 --exclude-caches --exclude-from ~/.borg_filelist $1::'{hostname}-{now}' /
+}
+
+borg_prune() {
+    borg --list --prefix '{hostname}-' --show-rc --keep-daily 7 --keep-weekly 4 --keep-monthly 6 $1
+}
