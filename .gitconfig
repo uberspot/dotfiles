@@ -95,6 +95,8 @@
 
     # basic shortcuts
     cp = cherry-pick
+    cl = clone --recurse-submodules -j8
+    lsuntracked = ls-files . --ignored --exclude-standard --others
     s = status
     lsfo = ls-files -o -u
     c = clone --recursive
