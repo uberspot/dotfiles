@@ -30,6 +30,8 @@
     changed = bold red
     untracked = bold cyan
     unmerged = magenta bold
+[rebase]
+    autoStash = true
 [alias]
     # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
@@ -53,9 +55,9 @@
     current-branch = git symbolic-ref -q --short HEAD
 
     # sync with the remote origin branch given as argument OR with master if no argument is given
-    syncbr = !git stash && CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && git pull --rebase --prune origin "${@-$CURRENT_BRANCH}" && git stash pop
+    syncbr = !CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && git pull --rebase --prune origin "${@-$CURRENT_BRANCH}"
     # sync with the upstream remote on the given branch OR with master if no argument is given
-    syncupbr = !git stash && CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --prune upstream "$TARGET_BRANCH" && git stash pop
+    syncupbr = !CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --prune upstream "$TARGET_BRANCH"
 
     # pretty one-line log with tags, branches and authors
     ls = "!f() { git log --format='%aN' 2> /dev/null | awk '!len || length($0) > len {len=length($0);s=$0} END{print len}'; }; git log --graph --pretty=format:\"%C(red)%h %C(bold blue)%<($(f),trunc)<%an>%Creset %C(green)(%cr) %Creset%s%C(yellow)%d\" --decorate --all --date=short"
