@@ -1,4 +1,4 @@
-#dotfiles
+# dotfiles
 
 This repo is more of a collection of things that you might find useful rather than a generic solution for every user.
 
@@ -14,7 +14,7 @@ GTK and Icons theme: Vertex
 
 If you wanna know the dependencies check [.gitmodules](.gitmodules) and [.install.sh](.install.sh) (arch linux specific)
 
-##Features
+## Features
 
  - zsh/bashrc key bindings, better autocompletion, ls coloring and generally improved behavior in the shell (check [.zshrc](.zshrc), [.bashrc](.bashrc), [.inputrc](.inputrc), [.shellrc](.shellrc) ).
  - pretty theme for zsh (check [.extra/zsh_custom/themes/code.zsh-theme](.extra/zsh_custom/themes/code.zsh-theme) ) and [.bash_prompt](.bash_prompt)) 
@@ -28,8 +28,7 @@ If you wanna know the dependencies check [.gitmodules](.gitmodules) and [.instal
 
 I've tried to add comments in those configs that explain most of the functionality.
 
-
-###Quick screenshot of conky, tint, terminator and zsh theme
+### Quick screenshot of conky, tint, terminator and zsh theme
 
 ![conky](https://github.com/uberspot/dotfiles/blob/master/.extra/conky.png)
 ![vim](https://github.com/uberspot/dotfiles/blob/master/.extra/vim.png)
