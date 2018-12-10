@@ -24,7 +24,7 @@ apacman -S trash-cli the_silver_searcher git-extras ls++-git
 # set default shell to zsh
 chsh -s /bin/zsh
 
-chmod +x ~/.extra/z/z.sh
+cpan Term::ExtendedColor Term::ExtendedColor::Xresources
 
 # install vim plugins based on .vimrc
 zsh -c "vim +PlugInstall +qall;"
