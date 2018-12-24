@@ -186,8 +186,6 @@ alias duplicity_test="\duplicity --dry-run --no-encryption -v info "
 # Mount related
 alias mountandroid="mtpfs -o allow_other /media/smartphone"
 alias umountandroid="fusermount -u /media/smartphone"
-alias azamount="sshfs azazel:/media /mnt/azazel/ -C -p 1981"
-alias azaumount="fusermount -u /mnt/azazel/"
 
 ## Network related
 # Shows your WAN IP, when you`re sitting behind a router
