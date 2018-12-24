@@ -102,7 +102,7 @@
     c = clone --recursive
     ci = commit
     co = checkout
-    br = branch·
+    br = branch
     diff = difftool -y -x "colordiff -y " | less -R
     d = diff
     dc = diff --cached
