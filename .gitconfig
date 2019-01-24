@@ -55,9 +55,9 @@
     current-branch = git symbolic-ref -q --short HEAD
 
     # sync with the remote origin branch given as argument OR with master if no argument is given
-    syncbr = !CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && git pull --rebase --prune origin "${@-$CURRENT_BRANCH}"
+    syncbr = !CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && git pull --rebase --autostash --prune origin "${@-$CURRENT_BRANCH}"
     # sync with the upstream remote on the given branch OR with master if no argument is given
-    syncupbr = !CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --prune upstream "$TARGET_BRANCH"
+    syncupbr = !CURRENT_BRANCH="$(git symbolic-ref -q --short HEAD)" && TARGET_BRANCH="${@-$CURRENT_BRANCH}" && git checkout "$TARGET_BRANCH" && git pull --rebase --autostash --prune upstream "$TARGET_BRANCH"
 
     # pretty one-line log with tags, branches and authors
     ls = "!f() { git log --format='%aN' 2> /dev/null | awk '!len || length($0) > len {len=length($0);s=$0} END{print len}'; }; git log --graph --pretty=format:\"%C(red)%h %C(bold blue)%<($(f),trunc)<%an>%Creset %C(green)(%cr) %Creset%s%C(yellow)%d\" --decorate --all --date=short"
@@ -119,6 +119,7 @@
     tags = tag -l
     branches = branch -a
     remotes = remote -v
+    lsuntracked = ls-files . --ignored --exclude-standard --others
 
     # Show latest commits since last pull from remote
     news = log -p HEAD@{1}..HEAD@{0}
@@ -204,6 +205,8 @@
         fsckObjects = true
 [receive]
         fsckObjects = true
+[rebase]
+        autoStash = true
 
 # QuickNote: To modify an old commit
 # You can use git rebase
