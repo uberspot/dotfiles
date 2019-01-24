@@ -37,6 +37,8 @@ if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
     alias -g C="| column -t"
     alias -g L="| less"
     alias -g M="| most"
+    alias -g B64D="| base64 --decode "
+    alias -g B64E="| base64 -w 0 "
     alias -g RE="2>&1"
     alias -g CA="| cat -A"
     alias -g NULE="2> /dev/null"
