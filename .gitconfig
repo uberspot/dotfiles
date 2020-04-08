@@ -64,6 +64,9 @@
     # a verbose ls, shows changed files too
     lsf = "!f() { git log --format='%aN' 2> /dev/null | awk '!len || length($0) > len {len=length($0);s=$0} END{print len}'; }; git log --graph --pretty=format:\"%C(red)%h %C(bold blue)%<($(f),trunc)<%an>%Creset %C(green)(%cr) %Creset%s%C(yellow)%d\" --decorate --all --date=iso --numstat"
 
+    # http://ses4j.github.io/2020/04/01/git-alias-recent-branches/ 
+    last-branches = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+    
      # Log of changes on origin not yet on branch (aka hg incoming).
     incoming = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short HEAD..@{upstream}
     # Log of changes on branch not yet on branch (aka hg outgoing).
