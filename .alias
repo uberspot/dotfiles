@@ -156,6 +156,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias clip_copy='xclip -selection clipboard'
 alias clip_paste='xclip -selection clipboard -o'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 
 start_detached() { nohup "$@" > /dev/null 2>&1 < /dev/null & }
 # source: http://www.commandlinefu.com/commands/view/11774/press-enter-and-take-a-webcam-picture.
