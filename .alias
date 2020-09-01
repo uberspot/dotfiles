@@ -278,7 +278,7 @@ alias resizeallimages='for i in $( ls *.(jpg|png|JPG|PNG|jpeg|JPEG)); do convert
 
 ## Update related
 alias upz="pacaur -Syu"
-alias cleanz="sudo pacman -Sc;sudo pacman -Rns $(pacman -Qtdq); sudo journalctl --vacuum-size=100M;"
+alias cleanz="sudo pacman -Sc;sudo pacman -Rns \"$(pacman -Qtdq)\"; sudo journalctl --vacuum-size=100M;"
 alias listdeps="pacman -Qtdq" # lists unused dependencies/leftover packages
 alias listallpacks="pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2"
 alias listallexplpacks="pacman -Qeq" # list all explicitly installed packages

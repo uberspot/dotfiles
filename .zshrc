@@ -33,7 +33,7 @@ export HISTCONTROL="erasedups:ignoreboth"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=24'
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(sudo adb command-not-found git-extras dircycle colored-man iwhois systemd rsync zsh-autosuggestions zsh-syntax-highlighting-filetypes nmap git-extra-commands)
+plugins=(sudo adb command-not-found git-extras dircycle systemd rsync zsh-autosuggestions nmap git-extra-commands)
 
 file="$ZSH/oh-my-zsh.sh"; [ -f "$file" ] && source "$file"
 
@@ -42,7 +42,7 @@ file="$ZSH/oh-my-zsh.sh"; [ -f "$file" ] && source "$file"
 # Make zsh know about hosts already accessed by SSH
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache true
 zstyle ':completion:*:default' menu select=1
 
@@ -143,4 +143,3 @@ file="$HOME/.shellrc"; [ -f "$file" ] && source "$file"
 
 # display moo
 moo
-

@@ -20,10 +20,11 @@
 
     | substitutions       : Substitute, by using a regex, in the values from the desktop files.
                             Example: [
-                                {key => 'Exec', re => qr/xterm/, value => 'sakura', global => 1},
+                                {key => 'Exec', re => qr/xterm/, value => 'tilix', global => 1},
                             ],
 
 || ICON SETTINGS
+    | use_gtk3            : Use the Gtk3 library for resolving the icon paths. (default: 0)
     | gtk_rc_filename     : Absolute path to the GTK configuration file.
     | missing_icon        : Use this icon for missing icons (default: gtk-missing-image)
     | icon_size           : Preferred size for icons. (default: 48)
@@ -70,5 +71,6 @@ our $CONFIG = {
   "locale_support"      => 1,
   "missing_icon"        => "gtk-missing-image",
   "terminal"            => "xterm",
-  "VERSION"             => 0.84,
+  "use_gtk3"            => 0,
+  "VERSION"             => 0.88,
 }

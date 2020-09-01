@@ -236,10 +236,10 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>atom</command>
+        <command>code</command>
         <startupnotify>
           <enabled>yes</enabled>
-          <name>atom</name>
+          <name>code</name>
         </startupnotify>
       </action>
     </keybind>
