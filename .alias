@@ -13,7 +13,7 @@ alias pkill="pkill -9"
 alias du="du -ch"
 alias ncdu="ncdu -q2"
 alias v="vim "
-# ds = dusort sorts the current directory items decreasingly.
+# ds = dusort sorts the current directory items in descending order.
 # If a directory is provided as an argument it sorts that instead.
 ds () { du -sh "${1-.}"/* | sort -hr ; }
 
