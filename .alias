@@ -46,6 +46,7 @@ if [ -n "$ZSH" ] && [ ! -n "$BASH" ]; then
     alias -g P="2>&1 | pygmentize -l pytb"
     alias -g S="sudo "
     alias -g GS="grep_search "
+    alias -g UP=" |& up "
 
     # Suffix aliases
 
