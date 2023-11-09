@@ -32,6 +32,7 @@
     unmerged = magenta bold
 [rebase]
     autoStash = true
+    updateRefs = true
 [alias]
     # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
