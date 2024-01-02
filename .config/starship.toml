@@ -5,8 +5,8 @@
 add_newline = true
 
 # A minimal left prompt
-format = """[╭╼](bold purple) $username $sudo $os $hostname ⛁ $directory
-[╰╼ ╭╼](bold purple) $localip $shlvl $kubernetes $git_branch $jobs $git_status $aws $gcloud
+format = """[╭╼](bold purple) $username $sudo $os $hostname ⛁ $localip
+[╰╼ ╭╼](bold purple) $directory $shlvl $kubernetes $git_branch $jobs $git_status $aws $gcloud
 [   ╰╼](bold purple) $character"""
 
 # move the rest of the prompt to the right
@@ -248,6 +248,7 @@ disabled = false
 
 [username]
 format = '[\[$user\]]($style)'
+style_user = 'red bold'
 show_always = true
 
 [vagrant]
