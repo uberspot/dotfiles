@@ -248,7 +248,7 @@ disabled = false
 
 [username]
 format = '[\[$user\]]($style)'
-style_user = 'red bold'
+style_user = 'green bold'
 show_always = true
 
 [vagrant]
