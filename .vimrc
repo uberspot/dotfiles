@@ -40,6 +40,10 @@ if !has('nvim')
 endif
 set lazyredraw
 
+if has("nvim") 
+  set inccommand=nosplit
+endif
+
 set cmdheight=1
 
 set mouse=a " Enable VIM mouse support
