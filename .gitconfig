@@ -2,6 +2,9 @@
     autosetuprebase = always
 [help]
     autocorrect = 1
+[rerere]
+    enabled = true
+    autoUpdate = true
 [color]
     ui = true
     diff = auto
