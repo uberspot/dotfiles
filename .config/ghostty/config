@@ -1,0 +1,115 @@
+# --- Window ---------------------------------------------------------------
+
+# Terminator: borderless = True
+window-decoration = none
+
+# Terminator: show_titlebar = False
+gtk-titlebar = false
+
+# --- Splits ---------------------------------------------------------------
+
+# Terminator: inactive_color_offset = 0.92
+# Terminator dims the text colour of unfocused terminals; Ghostty dims the
+# whole unfocused split. Same intent, slightly different mechanism.
+unfocused-split-opacity = 0.92
+
+# --- Cursor and bell ------------------------------------------------------
+
+# Terminator: cursor_blink = False
+cursor-style-blink = false
+
+# Terminator: visible_bell = True (-> border), urgent_bell = True (-> attention)
+bell-features = no-system,no-audio,attention,title,border
+
+# --- Scrollback -----------------------------------------------------------
+
+# Terminator: scrollback_lines = 50000
+# Ghostty sizes scrollback in BYTES, not lines, so this is an approximation
+# rather than an exact translation. 50 MB comfortably holds 50k typical lines;
+# raise or lower it to taste. The limit is per surface, allocated lazily.
+scrollback-limit = 50000000
+
+# --- Font -----------------------------------------------------------------
+
+# Terminator: allow_bold = False
+font-style-bold = false
+
+# --- Keybindings ----------------------------------------------------------
+# Terminator's <Primary> is Ctrl on Linux.
+
+# Tabs
+# Terminator: new_tab = <Primary>t
+keybind = ctrl+t=new_tab
+# Terminator: next_tab = <Primary>Tab (also a Ghostty default)
+keybind = ctrl+tab=next_tab
+# Terminator: prev_tab = <Primary><Shift>Tab (also a Ghostty default)
+keybind = ctrl+shift+tab=previous_tab
+
+# Splitting
+# Terminator's "horizontal"/"vertical" naming describes the divider, not the
+# stacking, so it reads inverted next to Ghostty's direction-based actions:
+#   split_horiz -> VPaned -> panes stacked top/bottom -> new_split:down
+#   split_vert  -> HPaned -> panes side by side       -> new_split:right
+keybind = ctrl+h=new_split:down
+keybind = ctrl+v=new_split:right
+
+# Moving between splits
+# Terminator: go_up / go_down / go_left / go_right = <Primary><Alt>Arrow
+keybind = ctrl+alt+arrow_up=goto_split:up
+keybind = ctrl+alt+arrow_down=goto_split:down
+keybind = ctrl+alt+arrow_left=goto_split:left
+keybind = ctrl+alt+arrow_right=goto_split:right
+
+# Resizing splits
+# Terminator: resize_* = <Primary><Shift><Alt>Arrow
+keybind = ctrl+shift+alt+arrow_up=resize_split:up,10
+keybind = ctrl+shift+alt+arrow_down=resize_split:down,10
+keybind = ctrl+shift+alt+arrow_left=resize_split:left,10
+keybind = ctrl+shift+alt+arrow_right=resize_split:right,10
+
+# Zoom
+# Terminator: toggle_zoom = <Primary><Alt>x
+keybind = ctrl+alt+x=toggle_split_zoom
+# Terminator: scaled_zoom = <Primary><Alt>z
+# Ghostty has no separate "scaled" zoom, so both keys drive the same action.
+keybind = ctrl+alt+z=toggle_split_zoom
+
+# Closing
+# Terminator: close_term = <Primary>w (closes the pane, not the window)
+keybind = ctrl+w=close_surface
+# Terminator: close_window = <Primary><Shift>w
+# Overrides Ghostty's default, which closes only the tab.
+keybind = ctrl+shift+w=close_window
+
+# Copy
+# Terminator: copy = <Primary><Shift>c (also a Ghostty default)
+keybind = ctrl+shift+c=copy_to_clipboard
+
+# Search
+# Terminator: search = <Primary><Alt>f
+keybind = ctrl+alt+f=start_search
+
+# --- Not ported -----------------------------------------------------------
+#
+# No Ghostty equivalent exists for these Terminator options:
+#
+#   toggle_scrollbar = <Primary><Alt>s
+#       Ghostty has no scrollbar to toggle. Your Terminator profile already
+#       set scrollbar_position = hidden, so the end state matches.
+#
+#   group_all = <Primary>g
+#   group_tab = <Primary><Alt>t
+#       Ghostty has no terminal grouping or broadcast-input feature.
+#
+#   bold_is_bright = True
+#       Ghostty has no such setting.
+#
+#   background_darkness = 0.92
+#       Inert in your Terminator config: it only applies when
+#       background_type = transparent, and yours is left at the default
+#       "solid". Porting it to background-opacity would ADD transparency you
+#       do not currently have, so it is deliberately omitted.
+#
+#   enabled_plugins, [layouts]
+#       Ghostty has no plugin system, and the single-terminal default layout
+#       is already Ghostty's behaviour.
